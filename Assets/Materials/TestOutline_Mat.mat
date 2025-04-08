@@ -115,7 +115,7 @@ Material:
     - _Outline_Depth_Tightening: 1
     - _Outline_Far_Normal_End_Depth: 10
     - _Outline_Far_Normal_Start_Depth: 1
-    - _Outline_Far_Normal_Threshold: 1
+    - _Outline_Far_Normal_Threshold: 5
     - _Outline_Normal_Strength: 1
     - _Outline_Normal_Threshold: 1
     - _Outline_Normal_Tightening: 0.5
@@ -137,7 +137,7 @@ Material:
     - _Base_Colour: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Outline_Colour: {r: 1, g: 0, b: 0, a: 0}
+    - _Outline_Colour: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4838188277868955882
