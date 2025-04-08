@@ -6,33 +6,40 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
+    //Material Variables
     public Material outlineMat;
+    private Material originalMat;
+
+    //Floating variables
     public float speed = 2f;
-    public float height = 0.001f;
+    public float height = 0.01f;
     public float rotation = 0.1f;
 
+    private bool isMoving = false;
     private bool moveComplete = false;
     private Vector3 pos;
-
-    private PlayerInteraction playerStatus_PI;
-
     public bool floating = false;
 
-    private Material originalMat;
+    //Other variables
+    private PlayerInteraction playerStatus_PI;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //Checks to see if the outline material is applies
         if(outlineMat == null)
         {
             Debug.LogError("Error: No Outline Material Set for object " + this.gameObject);
         }
 
+        //Checks to see if it can reference the player interaction script
         if(playerStatus_PI == null)
         {
             playerStatus_PI = FindObjectOfType<PlayerInteraction>();
         }
 
-
+        //redundant but I'm scared to delete
         outlineMat.SetTexture("_MainTex" , gameObject.GetComponent<Renderer>().material.mainTexture);
     }
 
@@ -41,15 +48,23 @@ public class Interactable : MonoBehaviour
     {
         if (floating)
         {
-            if (moveComplete)
+            if (moveComplete && !isMoving)
             {
+                //Controls the floating logic
                 transform.position = new Vector3(transform.position.x, transform.position.y + Mathf.Sin(Time.time * speed) * height, transform.position.z);
                 transform.Rotate(0, 6.0f * 1f * Time.deltaTime, 0);
+                //Temporarily disable it
             }
             else
             {
+                //Controls the upwards movement when clicked
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, (transform.position.y + height), transform.position.z), speed * 50 * Time.deltaTime);
             }
+        }
+
+        if (isMoving)
+        {
+            //Add control logic to this
         }
     }
 
@@ -61,6 +76,7 @@ public class Interactable : MonoBehaviour
      * Spring lock into place
     */
 
+    //Highlights the object when the mouose hovers, and no other object is selected
     private void OnMouseEnter()
     {
         if (!playerStatus_PI.isHolding)
@@ -70,6 +86,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    //Starts the floating logic --> update doesn't trigger until this is called
     private void OnMouseDown()
     {
         if (!floating && playerStatus_PI.itemHeld == null)
@@ -85,7 +102,14 @@ public class Interactable : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
 
         }
-        else if(floating)
+        
+    }
+
+
+    //Removes highlight and stops it moving up
+    private void OnMouseUp()
+    {
+        if (moveComplete)
         {
             moveComplete = false;
             floating = false;
@@ -96,19 +120,18 @@ public class Interactable : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = true;
 
         }
-        
+        else
+        {
+            Vector3 pos = gameObject.transform.position;
+
+            if (floating) moveComplete = true;
+
+            //gameObject.GetComponent<Rigidbody>().useGravity = true;
+            //return to place - try using spring
+        }
     }
 
-    private void OnMouseUp()
-    {
-        Vector3 pos = gameObject.transform.position;
-
-        if(floating) moveComplete = true;
-
-        //gameObject.GetComponent<Rigidbody>().useGravity = true;
-        //return to place - try using spring
-    }
-
+    //Only triggers if no object is selected
     private void OnMouseExit()
     {
         if (!playerStatus_PI.isHolding)
@@ -119,6 +142,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    //Material stuff
     void RemoveMaterial()
     {
         Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
@@ -131,6 +155,7 @@ public class Interactable : MonoBehaviour
         gameObject.GetComponent<Renderer>().materials = newMatArr;
     }
 
+    //Material stuff
     void ApplyMaterial()
     {
         outlineMat.SetTexture("_MainTex", gameObject.GetComponent<Renderer>().material.mainTexture);
