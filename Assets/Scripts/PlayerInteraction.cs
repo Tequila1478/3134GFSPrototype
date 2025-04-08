@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+
+    public bool isHolding = false;
+    public Interactable itemHeld;
     // Start is called before the first frame update
     void Start()
     {
