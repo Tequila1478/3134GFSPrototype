@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
 {
     //Material Variables
     public Material outlineMat;
-    private Material originalMat;
+    public Material originalMat;
 
     //Floating variables
     public float speed = 2f;
@@ -32,12 +32,16 @@ public class Interactable : MonoBehaviour
         {
             Debug.LogError("Error: No Outline Material Set for object " + this.gameObject);
         }
-
+        if (originalMat == null)
+        {
+            originalMat = this.gameObject.GetComponent<Renderer>().material;
+        }
         //Checks to see if it can reference the player interaction script
-        if(playerStatus_PI == null)
+        if (playerStatus_PI == null)
         {
             playerStatus_PI = FindObjectOfType<PlayerInteraction>();
         }
+
 
         //redundant but I'm scared to delete
         outlineMat.SetTexture("_MainTex" , gameObject.GetComponent<Renderer>().material.mainTexture);
@@ -145,14 +149,15 @@ public class Interactable : MonoBehaviour
     //Material stuff
     void RemoveMaterial()
     {
-        Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
+        //Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
 
-        Material[] newMatArr = new Material[matsArr.Length - 1];
-        for (int i = 0; i < matsArr.Length - 1; i++) 
-        {
-            newMatArr[i] = matsArr[i];
-        }
-        gameObject.GetComponent<Renderer>().materials = newMatArr;
+        //Material[] newMatArr = new Material[matsArr.Length - 1];
+        //for (int i = 0; i < matsArr.Length - 1; i++) 
+        //{
+        //    newMatArr[i] = matsArr[i];
+        //}
+        //gameObject.GetComponent<Renderer>().materials = newMatArr;
+        gameObject.GetComponent<Renderer>().material = originalMat;
     }
 
     //Material stuff
@@ -160,10 +165,11 @@ public class Interactable : MonoBehaviour
     {
         outlineMat.SetTexture("_MainTex", gameObject.GetComponent<Renderer>().material.mainTexture);
         //find material array
-        Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
+        //Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
         //Apply Mat
-        Material[] newMatToAdd = {outlineMat};
-        Material[] newMatArr = matsArr.Concat(newMatToAdd).ToArray();
-        gameObject.GetComponent<Renderer>().materials = newMatArr;
+        //Material[] newMatToAdd = {outlineMat};
+        //Material[] newMatArr = matsArr.Concat(newMatToAdd).ToArray();
+        //gameObject.GetComponent<Renderer>().materials = newMatArr;
+        gameObject.GetComponent<Renderer>().material = outlineMat;
     }
 }

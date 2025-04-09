@@ -913,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
+  originalMat: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -1429,6 +1430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
+  originalMat: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -1475,6 +1477,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e933acc11f8d911479e5357f500f8521, type: 2}
+  - {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
