@@ -11,12 +11,14 @@ public class ObjectInteractions : MonoBehaviour
     private Vector3 playerInput;
     private Vector3 upInput;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
-        
+
 
         if (playerStatus_PI == null)
         {
@@ -29,11 +31,13 @@ public class ObjectInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
         //not really sure if I needed to make this its own function but I did it anyway - I 
     }
 
-    void Move()
+
+    //Can we make it based on the camera? That way we can add basic camera controls if we want later?
+    public void Move()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //when rotation is not frozen the cube spins all over the place - I
@@ -41,6 +45,7 @@ public class ObjectInteractions : MonoBehaviour
         characterController.Move(playerInput * Time.deltaTime * moveSpeed);
         //The horizontal and vertical axes are multiplied by -1, otherwise the movement is inverted and it feels weird - I
     }
+
 
     //The character controller seems to mess with an object with the interactable script while floating so if we want to use this movement method we'll have to do something about that - I
 

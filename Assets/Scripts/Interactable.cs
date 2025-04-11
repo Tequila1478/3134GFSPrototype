@@ -23,6 +23,9 @@ public class Interactable : MonoBehaviour
     //Other variables
     private PlayerInteraction playerStatus_PI;
 
+    //Movement variables
+    public ObjectInteractions oi;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,11 @@ public class Interactable : MonoBehaviour
             playerStatus_PI = FindObjectOfType<PlayerInteraction>();
         }
 
+        if(oi == null)
+        {
+            oi = gameObject.GetComponent<ObjectInteractions>();
+        }
+
 
         //redundant but I'm scared to delete
         outlineMat.SetTexture("_MainTex" , gameObject.GetComponent<Renderer>().material.mainTexture);
@@ -59,15 +67,28 @@ public class Interactable : MonoBehaviour
                 transform.Rotate(0, 6.0f * 1f * Time.deltaTime, 0);
                 //Temporarily disable it
             }
-            else
+            else if (!isMoving)
             {
                 //Controls the upwards movement when clicked
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, (transform.position.y + height * 10), transform.position.z), speed * 50 * Time.deltaTime);
             }
         }
 
+        if (playerStatus_PI.itemHeld == this && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.E)))
+        {
+            isMoving = true;
+        }
+
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.E))
+        {
+            isMoving = false;
+            gameObject.GetComponent<CharacterController>().enabled = false;
+        }
+
         if (isMoving)
         {
+            gameObject.GetComponent<CharacterController>().enabled = true;
+            oi.Move();
             //Add control logic to this
         }
     }
@@ -104,6 +125,7 @@ public class Interactable : MonoBehaviour
             playerStatus_PI.itemHeld = this;
             //float
             gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().drag = 4;
 
         }
         
@@ -122,6 +144,7 @@ public class Interactable : MonoBehaviour
             Debug.Log("Object dropped");
 
             gameObject.GetComponent<Rigidbody>().useGravity = true;
+            gameObject.GetComponent<Rigidbody>().drag = 0;
 
         }
         else
