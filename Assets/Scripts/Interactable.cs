@@ -20,6 +20,11 @@ public class Interactable : MonoBehaviour
     private Vector3 pos;
     public bool floating = false;
 
+    public bool hasSetSpot = false;
+    public bool movingToSetSpot = false;
+    public Vector3 newDirection;
+    public Vector3 edgeOfObject;
+
     //Other variables
     private PlayerInteraction playerStatus_PI;
 
@@ -30,8 +35,17 @@ public class Interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        edgeOfObject = new Vector3(this.GetComponent<MeshRenderer>().localBounds.extents.x * this.transform.localScale.x, this.GetComponent<MeshRenderer>().localBounds.extents.y * this.transform.localScale.y, this.GetComponent<MeshRenderer>().localBounds.extents.z * this.transform.localScale.z) ;
+
+
+        //Set Down Parameters
+        routeToGo = 0;
+        tParam = 0f;
+        speedModifier = 0.5f;
+        coroutineAllowed = false;
+
         //Checks to see if the outline material is applies
-        if(outlineMat == null)
+        if (outlineMat == null)
         {
             Debug.LogError("Error: No Outline Material Set for object " + this.gameObject);
         }
@@ -91,6 +105,18 @@ public class Interactable : MonoBehaviour
             oi.Move();
             //Add control logic to this
         }
+
+        if (coroutineAllowed)
+        {
+            StartCoroutine(GoByTheRoute(routeToGo));
+        }
+
+        if (movingToSetSpot)
+        {
+            float singleStep = speed * 0.1f * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(this.transform.forward, newDirection, singleStep, 0));
+            if (Vector3.Angle(transform.forward, newDirection) < 0.1f) movingToSetSpot = false;
+        }
     }
 
     /* Things to do:
@@ -123,12 +149,15 @@ public class Interactable : MonoBehaviour
             floating = true;
             playerStatus_PI.isHolding = true;
             playerStatus_PI.itemHeld = this;
+            this.tag = "Held Item";
             //float
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().drag = 4;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
 
         }
-        
+
     }
 
 
@@ -141,10 +170,19 @@ public class Interactable : MonoBehaviour
             floating = false;
             playerStatus_PI.isHolding = false;
             playerStatus_PI.itemHeld = null;
+            this.tag = "Interactable";
             Debug.Log("Object dropped");
-
-            gameObject.GetComponent<Rigidbody>().useGravity = true;
-            gameObject.GetComponent<Rigidbody>().drag = 0;
+            
+            if (hasSetSpot)
+            {
+                coroutineAllowed = true;
+                movingToSetSpot = true;
+            }
+            else
+            {
+                gameObject.GetComponent<Rigidbody>().useGravity = true;
+                gameObject.GetComponent<Rigidbody>().drag = 0;
+            }
 
         }
         else
@@ -194,5 +232,48 @@ public class Interactable : MonoBehaviour
         //Material[] newMatArr = matsArr.Concat(newMatToAdd).ToArray();
         //gameObject.GetComponent<Renderer>().materials = newMatArr;
         gameObject.GetComponent<Renderer>().material = outlineMat;
+    }
+
+
+    //Set Down stuff
+    [SerializeField]
+
+    public Vector3[] routes;
+    private int routeToGo;
+    private float tParam;
+    private Vector3 objectPosition;
+    private float speedModifier;
+    private bool coroutineAllowed;
+
+    private IEnumerator GoByTheRoute(int routeNum)
+    {
+
+        coroutineAllowed = false;
+
+        Vector3 p0 = routes[0];
+        Vector3 p1 = routes[1];
+        Vector3 p2 = routes[2];
+        Vector3 p3 = routes[3];
+
+        while (tParam < 1)
+        {
+            tParam += Time.deltaTime * speedModifier;
+            objectPosition = Mathf.Pow(1 - tParam, 3) * p0 + 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 + 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 + Mathf.Pow(tParam, 3) * p3;
+            transform.position = objectPosition;
+            yield return new WaitForEndOfFrame();
+        }
+
+        tParam = 0;
+        speedModifier = speedModifier * 0.90f;
+        routeToGo += 1;
+
+        if (routeToGo >= 1)
+        {
+            coroutineAllowed = false;
+            routeToGo = 0;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            
+        }
+        else coroutineAllowed = true;
     }
 }
