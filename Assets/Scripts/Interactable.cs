@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
+    public string taskType;
+    public bool isRequired;
+
     //Material Variables
     public Material outlineMat;
     public Material originalMat;
@@ -16,7 +19,7 @@ public class Interactable : MonoBehaviour
     public float rotation = 0.1f;
 
     private bool isMoving = false;
-    private bool moveComplete = false;
+    public bool moveComplete = false;
     private Vector3 pos;
     public bool floating = false;
 
@@ -24,6 +27,8 @@ public class Interactable : MonoBehaviour
     public bool movingToSetSpot = false;
     public Vector3 newDirection;
     public Vector3 edgeOfObject;
+
+    public CustomCursor cursor;
 
     //Other variables
     private PlayerInteraction playerStatus_PI;
@@ -36,7 +41,7 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         edgeOfObject = new Vector3(this.GetComponent<MeshRenderer>().localBounds.extents.x * this.transform.localScale.x, this.GetComponent<MeshRenderer>().localBounds.extents.y * this.transform.localScale.y, this.GetComponent<MeshRenderer>().localBounds.extents.z * this.transform.localScale.z) ;
-
+        cursor = FindObjectOfType<CustomCursor>();
 
         //Set Down Parameters
         routeToGo = 0;
@@ -134,6 +139,7 @@ public class Interactable : MonoBehaviour
         {
             ApplyMaterial();
             Debug.Log("Item Highlighted");
+            cursor.ChangeVisual(1);
         }
     }
 
@@ -148,14 +154,13 @@ public class Interactable : MonoBehaviour
             //start bobbing
             floating = true;
             playerStatus_PI.isHolding = true;
+            playerStatus_PI.EnablePlacementPointColliders();
             playerStatus_PI.itemHeld = this;
             this.tag = "Held Item";
             //float
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().drag = 4;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
-
         }
 
     }
@@ -169,19 +174,21 @@ public class Interactable : MonoBehaviour
             moveComplete = false;
             floating = false;
             playerStatus_PI.isHolding = false;
+            playerStatus_PI.DisablePlacementPointColliders();
             playerStatus_PI.itemHeld = null;
             this.tag = "Interactable";
             Debug.Log("Object dropped");
             
             if (hasSetSpot)
             {
-                coroutineAllowed = true;
-                movingToSetSpot = true;
+                StartCoroutineMoveToLocation();
+                Debug.Log("has set spot ");
             }
             else
             {
                 gameObject.GetComponent<Rigidbody>().useGravity = true;
                 gameObject.GetComponent<Rigidbody>().drag = 0;
+                Debug.Log("Does not have set spot)");
             }
 
         }
@@ -190,10 +197,18 @@ public class Interactable : MonoBehaviour
             Vector3 pos = gameObject.transform.position;
 
             if (floating) moveComplete = true;
+            cursor.ChangeVisual(0);
 
             //gameObject.GetComponent<Rigidbody>().useGravity = true;
             //return to place - try using spring
         }
+    }
+
+    public void StartCoroutineMoveToLocation()
+    {
+        coroutineAllowed = true;
+        movingToSetSpot = true;
+        Debug.Log("Moving to set spot");
     }
 
     //Only triggers if no object is selected
@@ -204,6 +219,7 @@ public class Interactable : MonoBehaviour
             Debug.Log("Item Highlight removed");
 
             RemoveMaterial();
+            cursor.ChangeVisual(0);
         }
     }
 
@@ -274,6 +290,6 @@ public class Interactable : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             
         }
-        else coroutineAllowed = true;
+        else coroutineAllowed = false;
     }
 }
