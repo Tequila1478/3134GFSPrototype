@@ -7647,7 +7647,7 @@ GameObject:
   - component: {fileID: 1855384141}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16562,6 +16562,7 @@ MonoBehaviour:
   taskRequirements:
   - taskType: Clutter
     minimumRequired: 5
+  totalRequiredTasks: 0
 --- !u!1 &8275326288855191812
 GameObject:
   m_ObjectHideFlags: 0
