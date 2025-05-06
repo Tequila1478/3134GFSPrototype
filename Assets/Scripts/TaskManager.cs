@@ -25,7 +25,7 @@ public class TaskManager : MonoBehaviour
     public TaskRequirements[] taskRequirements;
 
     private Dictionary<string, int> completedByType = new Dictionary<string, int>();
-    private int totalRequiredTasks = 0;
+    public int totalRequiredTasks = 0;
     private int totalRequiredCompleted = 0;
 
     void Start()
@@ -65,6 +65,10 @@ public class TaskManager : MonoBehaviour
         {
             if (task.isRequired)
                 totalRequiredTasks++;
+        }
+        foreach (var task in taskRequirements)
+        {
+            totalRequiredTasks += task.minimumRequired;
         }
     }
 
@@ -108,7 +112,6 @@ public class TaskManager : MonoBehaviour
     {
         if (totalRequiredTasks == 0)
         {
-            Debug.Log("No required Tasks");
             return 1f;
         }
         return (float)totalRequiredCompleted / totalRequiredTasks;

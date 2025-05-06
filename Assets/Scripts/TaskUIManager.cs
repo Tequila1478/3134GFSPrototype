@@ -44,11 +44,14 @@ public class TaskUIManager : MonoBehaviour
     void UpdateUI()
     {
         headerText.text = "Today's Task List! Day: " + GetDayNumber();
-
+        int totalRequired = taskManager.totalRequiredTasks;
+        int totalRequiredCompleted = 0;
         foreach (var req in taskManager.taskRequirements)
         {
             string type = req.taskType;
             int completed = taskManager.GetCompletedCount(type);
+            totalRequiredCompleted += completed;
+
             int required = req.minimumRequired;
             int optional = CountOptionalOfType(type) - req.minimumRequired;
             int optionalCompleted = Mathf.Max(0, completed - required);
@@ -67,7 +70,7 @@ public class TaskUIManager : MonoBehaviour
             taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;
         }
 
-        float percent = taskManager.GetCompletionPercentage();
+        float percent = 0;
         progressBar.value = percent;
         progressText.text = Mathf.RoundToInt(percent * 100) + "%";
     }
