@@ -81,17 +81,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7918335002988649766, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8ca14bd7a7999dc4f8bf021511da9ebd, type: 2}
+    - target: {fileID: -7918335002988649766, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d7405585d4d6354a81961c78a698ece, type: 2}
+    - target: {fileID: -3466108696429068721, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -3466108696429068721, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d079857ac8206af4a933ff50d21adc60, type: 2}
+    - target: {fileID: -3466108696429068721, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d7405585d4d6354a81961c78a698ece, type: 2}
+    - target: {fileID: -532034457134275702, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -532034457134275702, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5e103318929c2774fabc9b917c0e57a0, type: 2}
+    - target: {fileID: -532034457134275702, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 826667fddb552e84b895ab9f64e51374, type: 2}
     - target: {fileID: 919132149155446097, guid: e21ebb72c2ad2134db35056f9527befe, type: 3}
       propertyPath: m_Name
       value: WholeBin
