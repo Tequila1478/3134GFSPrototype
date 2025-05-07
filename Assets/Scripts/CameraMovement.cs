@@ -13,6 +13,7 @@ public class CameraMovement : MonoBehaviour
     public float scrollSensitivity = 100.0f;
 
     private float initialDistance;
+    private PlayerInteraction pi;
 
     //Deals with the visibility of objects in front of the camera
 
@@ -28,6 +29,7 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
+        pi = FindObjectOfType<PlayerInteraction>();
         if (target == null)
         {
             Debug.LogError("NO target for camera");
@@ -44,6 +46,22 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         if (target == null) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (pi.itemHeld)
+            {
+                pi.itemHeld.oi.FreezeObject(); // Freeze immediately on shift press
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            if (pi.itemHeld)
+            {
+                pi.itemHeld.oi.ReEnableObject(); // Re-enable on shift release
+            }
+        }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {

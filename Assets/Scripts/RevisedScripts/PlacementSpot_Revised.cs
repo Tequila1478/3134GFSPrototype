@@ -208,7 +208,7 @@ public class PlacementSpot_Revised : MonoBehaviour
             player.DisablePlacementPointColliders();
 
             // Start moving the object to its set spot
-            player.itemHeld.StartCoroutineMoveToLocation();
+            player.itemHeld.StartMoveToSetSpot();
             player.itemHeld = null;
         }
     }

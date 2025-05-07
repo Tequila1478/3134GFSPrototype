@@ -4,227 +4,229 @@ using UnityEngine;
 
 public class PlacementSpot : MonoBehaviour
 {
-	public Vector3 placementPoint;
-	public Vector3 direction;
-	public int arrowLength = 2;
+    [SerializeField] private Vector3 offset = new Vector3(0, 1, 0);
+    [SerializeField] private float maxHeightAbovePoint;
+    [SerializeField] private GameObject placementVisualisation;
+    [SerializeField] private PlayerInteraction player;
 
-	public bool claimed = false;
+    public bool claimed = false;
+    public bool withinRange = false;
 
-	private Vector3 gizmosPosition;
-	public Vector3[] controlPoints = new Vector3[4];
-	public Vector3 offset = new Vector3(0, 1, 0);
-	public float maxHeightAbovePoint;
-	public Vector3 startingPosition;
 
-	public bool withinRange = false;
 
-	public Collider otherObject;
+    private Vector3[] controlPoints = new Vector3[4];
+    private Vector3 placementPoint;
+    private Vector3 direction;
+    private Vector3 startingPosition;
+    private Vector3 placementOffset;
 
-	public GameObject placementVisualisation;
+    private CustomCursor cursor;
+    private Collider otherObject;
 
-	public PlayerInteraction player;
+    private void Start()
+    {
+        if (player == null)
+            player = FindObjectOfType<PlayerInteraction>();
 
-	private CustomCursor cursor;
-	private Vector3 hell;
+        placementPoint = transform.position;
+        direction = transform.forward;
+        cursor = FindObjectOfType<CustomCursor>();
+    }
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		if(player == null)
-		{
-			player = FindObjectOfType<PlayerInteraction>();
-		}
-		placementPoint = this.gameObject.transform.position;
-		direction = this.transform.forward;
-		cursor = FindObjectOfType<CustomCursor>();
-	}
+    private void Update()
+    {
+        if (otherObject == null) return;
 
-	// Update is called once per frame
-	void Update()
-	{
-		if (otherObject != null)
-		{
-			if (withinRange && !otherObject.GetComponent<Interactable>().movingToSetSpot)
-			{
-				startingPosition = otherObject.gameObject.transform.position;
-				createBezierCurvePoints();
-				otherObject.GetComponent<Interactable>().routes = controlPoints;
+        var interactable = otherObject.GetComponent<Interactable>();
+        if (interactable == null) return;
 
-			}
+        if (withinRange && !interactable.movingToSetSpot)
+        {
+            startingPosition = otherObject.transform.position;
+            CreateBezierCurvePoints(interactable);
+            interactable.routes = controlPoints;
+        }
 
-			if (otherObject.GetComponent<Interactable>().movingToSetSpot)
-			{
-				claimed = true;
-				otherObject = null;
-				placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-			}
-		}
-	}
+        if (interactable.movingToSetSpot)
+        {
+            claimed = true;
+            otherObject = null;
+            placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+        }
+    }
 
-	public void createBezierCurvePoints()
-	{
-		Vector3 modifyingVector = otherObject.GetComponent<Interactable>().edgeOfObject;
-		hell = new Vector3(modifyingVector.x * direction.x, modifyingVector.y * direction.y, modifyingVector.z * direction.z);
-		controlPoints[3] = this.transform.position + hell;
-		controlPoints[2] = this.transform.position + hell + offset * maxHeightAbovePoint;
-		controlPoints[1] = startingPosition - offset * maxHeightAbovePoint;
-		controlPoints[0] = startingPosition;
-	}
-	private void OnDrawGizmos()
-	{
-		DrawArrow.ForGizmo(this.gameObject.transform.position, this.transform.forward);
-		DrawBezierCurve();
-		Gizmos.DrawSphere(this.transform.position, 0.15f);
-	}
+    private void CreateBezierCurvePoints(Interactable interactable)
+    {
+        placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
+        controlPoints[3] = transform.position + placementOffset;
+        controlPoints[2] = controlPoints[3] + offset * maxHeightAbovePoint;
+        controlPoints[1] = startingPosition - offset * maxHeightAbovePoint;
+        controlPoints[0] = startingPosition;
+    }
 
-	private void OnTriggerEnter(Collider other)
-	{
-		SelectObject(other);
-        this.gameObject.layer = 2;
+    private void OnDrawGizmos()
+    {
+        DrawArrow.ForGizmo(transform.position, transform.forward);
+        DrawBezierCurve();
+        Gizmos.DrawSphere(transform.position, 0.15f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        SelectObject(other);
+        gameObject.layer = 2; // Intentional: Ignore Raycast
     }
 
     private void OnTriggerExit(Collider other)
     {
-		DeselectObject(other);
-        this.gameObject.layer = 0;
-		if (other.GetComponent<Interactable>()) other.GetComponent<Interactable>().hasSetSpot = false;
-		claimed = false;
+        DeselectObject(other);
+        gameObject.layer = 0;
+        if (other.GetComponent<Interactable>())
+            other.GetComponent<Interactable>().hasSetSpot = false;
+        claimed = false;
     }
 
     public void DrawBezierCurve()
-	{
-		for (float t = 0; t <= 1; t += 0.05f)
-
-		{
-			gizmosPosition = Mathf.Pow(1 - t, 3) * controlPoints[0] + 3 * Mathf.Pow(1 - t, 2) * t * controlPoints[1] + 3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] + Mathf.Pow(t, 3) * controlPoints[3];
-			Gizmos.DrawSphere(gizmosPosition, 0.15f);
-		}
-
-		Gizmos.DrawLine(new Vector3(controlPoints[0].x, controlPoints[0].y, controlPoints[0].z), new Vector3(controlPoints[1].x, controlPoints[1].y, controlPoints[1].z));
-		Gizmos.DrawLine(new Vector3(controlPoints[2].x, controlPoints[2].y, controlPoints[2].z), new Vector3(controlPoints[3].x, controlPoints[3].y, controlPoints[3].z));
-
-	}
-
-	public void SelectObject(Collider other = null)
-	{
-		if (other != null)
-		{
-			if (other.CompareTag("Held Item") && !claimed)
-			{
-				Debug.Log("Yay Im here!");
-				otherObject = other;
-				withinRange = true;
-				other.GetComponent<Interactable>().hasSetSpot = true;
-				other.GetComponent<Interactable>().newDirection = direction;
-
-				Vector3 modifyingVector = otherObject.GetComponent<Interactable>().edgeOfObject;
-				hell = new Vector3(modifyingVector.x * direction.x, modifyingVector.y * direction.y, modifyingVector.z * direction.z);
-				placementVisualisation.transform.position = this.transform.position + hell;
-				placementVisualisation.GetComponent<MeshFilter>().mesh = other.GetComponent<MeshFilter>().mesh;
-				placementVisualisation.transform.localScale = other.transform.localScale;
-				//placementVisualisation.GetComponent <MeshCollider>().sharedMesh = other.GetComponent<MeshFilter>().mesh;
-
-            }
-		}
-		else
-		{
-            Debug.Log("HI");
-            if (!claimed && player.isHolding)
-            {				
-                Debug.Log("Yay Im here!");
-                otherObject = player.itemHeld.GetComponent<Collider>();
-                withinRange = true;
-                otherObject.GetComponent<Interactable>().hasSetSpot = true;
-                otherObject.GetComponent<Interactable>().newDirection = direction;
-
-                Vector3 modifyingVector = otherObject.GetComponent<Interactable>().edgeOfObject;
-                hell = new Vector3(modifyingVector.x * direction.x, modifyingVector.y * direction.y, modifyingVector.z * direction.z);
-                placementVisualisation.transform.position = this.transform.position + hell;
-                placementVisualisation.GetComponent<MeshFilter>().mesh = otherObject.GetComponent<MeshFilter>().mesh;
-                placementVisualisation.transform.localScale = otherObject.transform.localScale;
-            }
+    {
+        for (float t = 0; t <= 1; t += 0.05f)
+        {
+            Vector3 position = Mathf.Pow(1 - t, 3) * controlPoints[0] +
+                               3 * Mathf.Pow(1 - t, 2) * t * controlPoints[1] +
+                               3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] +
+                               Mathf.Pow(t, 3) * controlPoints[3];
+            Gizmos.DrawSphere(position, 0.15f);
         }
 
+        Gizmos.DrawLine(controlPoints[0], controlPoints[1]);
+        Gizmos.DrawLine(controlPoints[2], controlPoints[3]);
+    }
 
+    public void SelectObject(Collider other = null)
+    {
+        if (claimed) return;
+
+        if (other != null && other.CompareTag("Held Item"))
+        {
+            var interactable = other.GetComponent<Interactable>();
+            if (interactable == null) return;
+
+            otherObject = other;
+            withinRange = true;
+            interactable.hasSetSpot = true;
+            interactable.newDirection = direction;
+            ApplyVisualisation(other.gameObject, interactable);
+        }
+        else if (player.isHolding)
+        {
+            otherObject = player.itemHeld.GetComponent<Collider>();
+            var interactable = otherObject?.GetComponent<Interactable>();
+            if (interactable == null) return;
+
+            withinRange = true;
+            interactable.hasSetSpot = true;
+            interactable.newDirection = direction;
+            ApplyVisualisation(otherObject.gameObject, interactable);
+        }
     }
 
     public void DeselectObject(Collider other = null)
-	{
-		if (other != null)
-		{
-			if (other.CompareTag("Held Item") && !claimed)
-			{
-				Debug.Log("Goodbye!");
-				otherObject = null;
-				withinRange = false;
-				other.GetComponent<Interactable>().hasSetSpot = false;
+    {
+        if (other != null)
+        {
+            var interactable = other.GetComponent<Interactable>();
+            if (interactable != null)
+                interactable.hasSetSpot = false;
 
-				//placementVisualisation.transform.position = Vector3.zero;
-				placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-
-
-			}
-			if (other == otherObject && claimed)
-			{
-                other.GetComponent<Interactable>().hasSetSpot = false;
-                otherObject.GetComponent<Interactable>().hasSetSpot = false;
-                other = null;
-				otherObject = null;
-				claimed = false;
-			}
-		}
-		else
-		{
-            if (!claimed)
+            if (!claimed || other == otherObject)
             {
-                otherObject.GetComponent<Interactable>().hasSetSpot = false;
-                Debug.Log("Goodbye!");
                 otherObject = null;
                 withinRange = false;
-
-                placementVisualisation.transform.position = Vector3.zero;
                 placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-
             }
         }
+        else if (otherObject != null && !claimed)
+        {
+            var interactable = otherObject.GetComponent<Interactable>();
+            if (interactable != null)
+                interactable.hasSetSpot = false;
 
+            otherObject = null;
+            withinRange = false;
+            placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+        }
     }
 
+    private void ApplyVisualisation(GameObject obj, Interactable interactable)
+    {
+        placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
+        placementVisualisation.transform.position = transform.position + placementOffset;
+
+        var meshFilter = obj.GetComponent<MeshFilter>();
+        if (meshFilter != null)
+            placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
+
+        placementVisualisation.transform.localScale = obj.transform.localScale;
+    }
+
+    private Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
+    {
+        return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
+    }
 
     private void OnMouseEnter()
     {
-        Debug.Log("Mouse is currently over " + gameObject.name);
-		SelectObject();
+        if (player.itemHeld == null) return;
+
+        Debug.Log("Mouse is over " + gameObject.name);
+        SelectObject();
         startingPosition = player.itemHeld.transform.position;
-		cursor.ChangeVisual(1);
+        cursor.ChangeVisual(1);
     }
 
     private void OnMouseExit()
     {
         DeselectObject();
-		claimed = false;
-		withinRange=false;
-		cursor.ChangeVisual(0);
+        claimed = false;
+        withinRange = false;
+        cursor.ChangeVisual(0);
     }
 
     private void OnMouseUp()
     {
+        if (player.itemHeld == null)
+            return;
+
         if (player.itemHeld.hasSetSpot)
-		{
+        {
             player.itemHeld.moveComplete = false;
             player.itemHeld.floating = false;
             player.isHolding = false;
-            player.DisablePlacementPointColliders();
-            //player.itemHeld = null;
-            this.tag = "Interactable";
-            Debug.Log("Object dropped");
 
-            player.itemHeld.StartCoroutineMoveToLocation();
-			player.itemHeld = null;
-            Debug.Log("Sup");
-		}
-        Debug.Log("Selected: " + gameObject.name);
+            // Move to placement spot
+            player.itemHeld.StartMoveToSetSpot();
+            player.itemHeld = null;
+        }
+        else
+        {
+            // Free drop
+            player.itemHeld.floating = false;
+            player.itemHeld.moveComplete = true;
+            player.itemHeld.GetComponent<Rigidbody>().isKinematic = false;
+
+            player.itemHeld = null;
+            player.isHolding = false;
+
+            Debug.Log("Dropped freely.");
+        }
+
+        // Disable colliders AFTER object is released and trigger updates
+        Invoke(nameof(DisablePlacementPointCollidersSafely), 0.1f);
     }
+
+    private void DisablePlacementPointCollidersSafely()
+{
+    player.DisablePlacementPointColliders();
+}
 }
 
 	public static class DrawArrow

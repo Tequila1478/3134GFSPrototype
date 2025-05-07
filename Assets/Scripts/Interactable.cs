@@ -1,271 +1,261 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
+    [Header("Interaction Settings")]
     public string taskType;
     public bool isRequired;
 
-    //Material Variables
+    [Header("Materials")]
     public Material outlineMat;
     public Material originalMat;
 
-    //Floating variables
+    [Header("Floating Settings")]
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
 
+    [Header("Movement")]
+    public Vector3[] routes;
+    public ObjectInteractions oi;
+
+    [Header("References")]
+    public CustomCursor cursor;
+
+    private PlayerInteraction playerInteraction;
+    private Rigidbody rb;
+    private Renderer objectRenderer;
+    private CharacterController charController;
+
+    public bool floating = false;
     private bool isMoving = false;
     public bool moveComplete = false;
-    private Vector3 pos;
-    public bool floating = false;
-
     public bool hasSetSpot = false;
     public bool movingToSetSpot = false;
+
     public Vector3 newDirection;
     public Vector3 edgeOfObject;
 
-    public CustomCursor cursor;
+    private int routeToGo = 0;
+    private float tParam = 0f;
+    private float speedModifier = 0.5f;
+    private Coroutine moveCoroutine = null;
 
-    //Other variables
-    private PlayerInteraction playerStatus_PI;
-
-    //Movement variables
-    public ObjectInteractions oi;
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        edgeOfObject = new Vector3(this.GetComponent<MeshRenderer>().localBounds.extents.x * this.transform.localScale.x, this.GetComponent<MeshRenderer>().localBounds.extents.y * this.transform.localScale.y, this.GetComponent<MeshRenderer>().localBounds.extents.z * this.transform.localScale.z) ;
-        cursor = FindObjectOfType<CustomCursor>();
+        CacheComponents();
+        ValidateSetup();
 
-        //Set Down Parameters
-        routeToGo = 0;
-        tParam = 0f;
-        speedModifier = 0.5f;
-        coroutineAllowed = false;
+        edgeOfObject = objectRenderer.localBounds.extents * transform.localScale.magnitude;
 
-        //Checks to see if the outline material is applies
-        if (outlineMat == null)
+        if (outlineMat != null && objectRenderer != null)
         {
-            Debug.LogError("Error: No Outline Material Set for object " + this.gameObject);
+            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
         }
-        if (originalMat == null)
-        {
-            originalMat = this.gameObject.GetComponent<Renderer>().material;
-        }
-        //Checks to see if it can reference the player interaction script
-        if (playerStatus_PI == null)
-        {
-            playerStatus_PI = FindObjectOfType<PlayerInteraction>();
-        }
-
-        if(oi == null)
-        {
-            oi = gameObject.GetComponent<ObjectInteractions>();
-        }
-
-
-        //redundant but I'm scared to delete
-        outlineMat.SetTexture("_MainTex" , gameObject.GetComponent<Renderer>().material.mainTexture);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CacheComponents()
     {
-        if (floating)
+        rb = GetComponent<Rigidbody>();
+        objectRenderer = GetComponent<Renderer>();
+        charController = GetComponent<CharacterController>();
+        playerInteraction = FindObjectOfType<PlayerInteraction>();
+        cursor = FindObjectOfType<CustomCursor>();
+        oi = GetComponent<ObjectInteractions>();
+    }
+
+    private void ValidateSetup()
+    {
+        if (outlineMat == null)
         {
-            if (moveComplete && !isMoving)
-            {
-                //Controls the floating logic
-                transform.position = new Vector3(transform.position.x, transform.position.y + Mathf.Sin(Time.time * speed) * height, transform.position.z);
-                transform.Rotate(0, 6.0f * 1f * Time.deltaTime, 0);
-                //Temporarily disable it
-            }
-            else if (!isMoving)
-            {
-                //Controls the upwards movement when clicked
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, (transform.position.y + height * 10), transform.position.z), speed * 50 * Time.deltaTime);
-            }
+            Debug.LogError("Outline material not assigned for " + gameObject.name);
         }
 
-        if (playerStatus_PI.itemHeld == this && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.E)))
+        if (originalMat == null && objectRenderer != null)
+        {
+            originalMat = objectRenderer.material;
+        }
+
+        if (playerInteraction == null)
+        {
+            Debug.LogError("PlayerInteraction script not found in scene.");
+        }
+    }
+
+    private void Update()
+    {
+        HandleFloating();
+        HandleInput();
+        RotateToDirectionIfNeeded();
+    }
+
+    private void HandleFloating()
+    {
+        if (!floating) return;
+
+        if (moveComplete && !isMoving)
+        {
+            float floatY = Mathf.Sin(Time.time * speed) * height;
+            transform.position += new Vector3(0, floatY, 0);
+            transform.Rotate(0, rotation * Time.deltaTime, 0);
+        }
+        else if (!isMoving)
+        {
+            float targetY = transform.position.y + height * 10;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, transform.position.z), speed * 50 * Time.deltaTime);
+        }
+    }
+
+    private void HandleInput()
+    {
+        if (playerInteraction == null || playerInteraction.itemHeld != this) return;
+
+        if (IsAnyMovementKeyPressed())
         {
             isMoving = true;
         }
-
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.E))
+        else
         {
             isMoving = false;
-            gameObject.GetComponent<CharacterController>().enabled = false;
+            if (charController != null)
+                charController.enabled = false;
         }
 
         if (isMoving)
         {
-            gameObject.GetComponent<CharacterController>().enabled = true;
-            oi.Move();
-            //Add control logic to this
-        }
+            if (charController != null)
+                charController.enabled = true;
 
-        if (coroutineAllowed)
-        {
-            StartCoroutine(GoByTheRoute(routeToGo));
-        }
-
-        if (movingToSetSpot)
-        {
-            float singleStep = speed * 0.1f * Time.deltaTime;
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(this.transform.forward, newDirection, singleStep, 0));
-            if (Vector3.Angle(transform.forward, newDirection) < 0.1f) movingToSetSpot = false;
+            oi?.Move();
         }
     }
 
-    /* Things to do:
-     * Apply outline on mouse hover
-     * On mouse click apply hover
-     * Throw object
-     * Move object
-     * Spring lock into place
-    */
+    private void RotateToDirectionIfNeeded()
+    {
+        if (!movingToSetSpot) return;
 
-    //Highlights the object when the mouose hovers, and no other object is selected
+        float step = speed * 0.1f * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, newDirection, step, 0));
+
+        if (Vector3.Angle(transform.forward, newDirection) < 1f)
+        {
+            movingToSetSpot = false;
+        }
+    }
+
+    private bool IsAnyMovementKeyPressed()
+    {
+        return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
+               Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.E);
+    }
+
     private void OnMouseEnter()
     {
-        if (!playerStatus_PI.isHolding)
+        if (!playerInteraction.isHolding)
         {
-            ApplyMaterial();
-            Debug.Log("Item Highlighted");
-            cursor.ChangeVisual(1);
+            HighlightObject();
+            cursor?.ChangeVisual(1);
+        }
+        if (playerInteraction.itemHeld == this)
+        {
+            cursor?.ChangeVisual(1);
         }
     }
 
-    //Starts the floating logic --> update doesn't trigger until this is called
+    private void OnMouseExit()
+    {
+        if (!playerInteraction.isHolding)
+        {
+            UnhighlightObject();
+            cursor?.ChangeVisual(0);
+        }
+        if (playerInteraction.itemHeld == this)
+        {
+            cursor?.ChangeVisual(1);
+        }
+    }
+
     private void OnMouseDown()
     {
-        if (!floating && playerStatus_PI.itemHeld == null)
+        if (!floating && playerInteraction.itemHeld == null)
         {
-            Debug.Log("Object floating");
-            //move object up to position
-            //gameObject.GetComponent<Rigidbody>().useGravity = true;
-            //start bobbing
-            floating = true;
-            playerStatus_PI.isHolding = true;
-            playerStatus_PI.EnablePlacementPointColliders();
-            playerStatus_PI.itemHeld = this;
-            this.tag = "Held Item";
-            //float
-            gameObject.GetComponent<Rigidbody>().useGravity = false;
-            gameObject.GetComponent<Rigidbody>().drag = 4;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            EnableFloating();
         }
-
+        movingToSetSpot = false;
+        gameObject.layer = 9;
     }
 
-
-    //Removes highlight and stops it moving up
     private void OnMouseUp()
     {
+        if (!floating) return;
+
         if (moveComplete)
         {
-            moveComplete = false;
-            floating = false;
-            playerStatus_PI.isHolding = false;
-            playerStatus_PI.DisablePlacementPointColliders();
-            playerStatus_PI.itemHeld = null;
-            this.tag = "Interactable";
-            Debug.Log("Object dropped");
-            
-            if (hasSetSpot)
-            {
-                StartCoroutineMoveToLocation();
-                Debug.Log("has set spot ");
-            }
-            else
-            {
-                gameObject.GetComponent<Rigidbody>().useGravity = true;
-                gameObject.GetComponent<Rigidbody>().drag = 0;
-                Debug.Log("Does not have set spot)");
-            }
-
+            DropObject(true);
         }
         else
         {
-            Vector3 pos = gameObject.transform.position;
-
-            if (floating) moveComplete = true;
-            cursor.ChangeVisual(0);
-
-            //gameObject.GetComponent<Rigidbody>().useGravity = true;
-            //return to place - try using spring
+            moveComplete = true;
+            cursor?.ChangeVisual(0);
         }
     }
 
-    public void StartCoroutineMoveToLocation()
+    private void EnableFloating()
     {
-        coroutineAllowed = true;
-        movingToSetSpot = true;
-        Debug.Log("Moving to set spot");
+        floating = true;
+        rb.useGravity = false;
+        rb.drag = 4;
+        rb.isKinematic = false;
+
+        playerInteraction.isHolding = true;
+        playerInteraction.itemHeld = this;
+        playerInteraction.EnablePlacementPointColliders();
+        tag = "Held Item";
     }
 
-    //Only triggers if no object is selected
-    private void OnMouseExit()
+    private void DropObject(bool forceDrop = false)
     {
-        if (!playerStatus_PI.isHolding)
+        floating = false;
+        moveComplete = false;
+        playerInteraction.isHolding = false;
+        playerInteraction.itemHeld = null;
+        playerInteraction.DisablePlacementPointColliders();
+        tag = "Interactable";
+
+        if (forceDrop)
         {
-            Debug.Log("Item Highlight removed");
+            hasSetSpot = false;
+        }
 
-            RemoveMaterial();
-            cursor.ChangeVisual(0);
+        if (hasSetSpot)
+        {
+            StartMoveToSetSpot();
+        }
+        else
+        {
+            rb.useGravity = true;
+            rb.drag = 0;
         }
     }
 
-    //Material stuff
-    void RemoveMaterial()
+    public void StartMoveToSetSpot()
     {
-        //Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
+        if (!hasSetSpot) return;
 
-        //Material[] newMatArr = new Material[matsArr.Length - 1];
-        //for (int i = 0; i < matsArr.Length - 1; i++) 
-        //{
-        //    newMatArr[i] = matsArr[i];
-        //}
-        //gameObject.GetComponent<Renderer>().materials = newMatArr;
-        gameObject.GetComponent<Renderer>().material = originalMat;
+        if (moveCoroutine == null)
+        {
+            moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
+            movingToSetSpot = true;
+            
+        }
+        
     }
-
-    //Material stuff
-    void ApplyMaterial()
-    {
-        outlineMat.SetTexture("_MainTex", gameObject.GetComponent<Renderer>().material.mainTexture);
-        //find material array
-        //Material[] matsArr = gameObject.GetComponent<Renderer>().materials;
-        //Apply Mat
-        //Material[] newMatToAdd = {outlineMat};
-        //Material[] newMatArr = matsArr.Concat(newMatToAdd).ToArray();
-        //gameObject.GetComponent<Renderer>().materials = newMatArr;
-        gameObject.GetComponent<Renderer>().material = outlineMat;
-    }
-
-
-    //Set Down stuff
-    [SerializeField]
-
-    public Vector3[] routes;
-    private int routeToGo;
-    private float tParam;
-    private Vector3 objectPosition;
-    private float speedModifier;
-    private bool coroutineAllowed;
 
     private IEnumerator GoByTheRoute(int routeNum)
     {
-
-        coroutineAllowed = false;
-
+        tParam = 0;
         Vector3 p0 = routes[0];
         Vector3 p1 = routes[1];
         Vector3 p2 = routes[2];
@@ -274,22 +264,35 @@ public class Interactable : MonoBehaviour
         while (tParam < 1)
         {
             tParam += Time.deltaTime * speedModifier;
-            objectPosition = Mathf.Pow(1 - tParam, 3) * p0 + 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 + 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 + Mathf.Pow(tParam, 3) * p3;
-            transform.position = objectPosition;
-            yield return new WaitForEndOfFrame();
+            Vector3 position = Mathf.Pow(1 - tParam, 3) * p0 +
+                               3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+                               3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+                               Mathf.Pow(tParam, 3) * p3;
+
+            transform.position = position;
+            yield return null;
         }
 
-        tParam = 0;
-        speedModifier = speedModifier * 0.90f;
-        routeToGo += 1;
-
-        if (routeToGo >= 1)
-        {
-            coroutineAllowed = false;
-            routeToGo = 0;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            
-        }
-        else coroutineAllowed = false;
+        rb.isKinematic = true;
+        moveCoroutine = null;
     }
+
+    private void HighlightObject()
+    {
+        if (outlineMat != null && objectRenderer != null)
+        {
+            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
+            objectRenderer.material = outlineMat;
+        }
+    }
+
+    private void UnhighlightObject()
+    {
+        if (originalMat != null && objectRenderer != null)
+        {
+            objectRenderer.material = originalMat;
+        }
+    }
+
+
 }

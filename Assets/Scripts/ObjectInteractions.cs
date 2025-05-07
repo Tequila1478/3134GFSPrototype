@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.Rendering.Universal.Internal;
 
 public class ObjectInteractions : MonoBehaviour
@@ -40,30 +41,52 @@ public class ObjectInteractions : MonoBehaviour
     //Done
     public void Move()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float upInput = Input.GetAxis("Jump");
+        if (characterController)
+        {
+            float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float upInput = Input.GetAxis("Jump");
 
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
-        Vector3 up = Camera.main.transform.up;
-        forward.y = 0;
-        right.y = 0;
-        forward = forward.normalized;
-        right = right.normalized;
-        up = up.normalized;
+            Vector3 forward = Camera.main.transform.forward;
+            Vector3 right = Camera.main.transform.right;
+            Vector3 up = Camera.main.transform.up;
+            forward.y = 0;
+            right.y = 0;
+            forward = forward.normalized;
+            right = right.normalized;
+            up = up.normalized;
 
-        Vector3 forwardRelativeInput = verticalInput * forward;
-        Vector3 rightRelativeInput = horizontalInput * right;
-        Vector3 upRelativeInput = upInput * up;
+            Vector3 forwardRelativeInput = verticalInput * forward;
+            Vector3 rightRelativeInput = horizontalInput * right;
+            Vector3 upRelativeInput = upInput * up;
 
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        //when rotation is not frozen the cube spins all over the place - I
-        Vector3 playerInput = forwardRelativeInput + rightRelativeInput + upRelativeInput;
-        characterController.Move(playerInput * Time.deltaTime * moveSpeed);
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //when rotation is not frozen the cube spins all over the place - I
+            Vector3 playerInput = forwardRelativeInput + rightRelativeInput + upRelativeInput;
+            characterController.Move(playerInput * Time.deltaTime * moveSpeed);
+        }
     }
 
+    public void FreezeObject()
+    {
+        if (rb)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        characterController = null;
+    }
 
+    public void ReEnableObject()
+    {
+        characterController = GetComponent<CharacterController>();
+
+        if (rb)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
 
 
 }

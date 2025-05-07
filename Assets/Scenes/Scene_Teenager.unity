@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 43979197}
   - component: {fileID: 43979196}
   - component: {fileID: 43979195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 117840520}
   - component: {fileID: 117840519}
   - component: {fileID: 117840518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (5)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -590,15 +590,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &117840522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2440,7 +2440,7 @@ GameObject:
   - component: {fileID: 154397057}
   - component: {fileID: 154397056}
   - component: {fileID: 154397055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2535,7 +2535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 206065388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlacementPoints
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -2787,7 +2787,7 @@ GameObject:
   - component: {fileID: 311874628}
   - component: {fileID: 311874627}
   - component: {fileID: 311874626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (1)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -2880,15 +2880,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &311874630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3209,7 +3209,7 @@ GameObject:
   - component: {fileID: 430831668}
   - component: {fileID: 430831667}
   - component: {fileID: 430831666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3307,7 +3307,7 @@ GameObject:
   - component: {fileID: 447332258}
   - component: {fileID: 447332257}
   - component: {fileID: 447332256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3645,7 +3645,7 @@ GameObject:
   - component: {fileID: 597575448}
   - component: {fileID: 597575447}
   - component: {fileID: 597575446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (3)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -3738,15 +3738,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &597575450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3849,7 +3849,7 @@ GameObject:
   - component: {fileID: 628306011}
   - component: {fileID: 628306010}
   - component: {fileID: 628306009}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (2)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -3942,15 +3942,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &628306013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4049,7 +4049,7 @@ GameObject:
   - component: {fileID: 634466424}
   - component: {fileID: 634466423}
   - component: {fileID: 634466422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4146,7 +4146,7 @@ GameObject:
   - component: {fileID: 652524267}
   - component: {fileID: 652524268}
   - component: {fileID: 652524269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (20)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -4181,22 +4181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 1997798898}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &652524269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4448,7 +4438,7 @@ GameObject:
   - component: {fileID: 691641133}
   - component: {fileID: 691641132}
   - component: {fileID: 691641131}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (4)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -4541,15 +4531,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &691641135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4648,7 +4638,7 @@ GameObject:
   - component: {fileID: 768635650}
   - component: {fileID: 768635649}
   - component: {fileID: 768635648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4971,7 +4961,7 @@ GameObject:
   - component: {fileID: 868179840}
   - component: {fileID: 868179841}
   - component: {fileID: 868179842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (14)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -5006,22 +4996,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 430831664}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &868179842
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5420,7 +5400,7 @@ GameObject:
   - component: {fileID: 1043940439}
   - component: {fileID: 1043940440}
   - component: {fileID: 1043940441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (19)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -5455,22 +5435,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 447332254}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1043940441
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5742,7 +5712,7 @@ GameObject:
   - component: {fileID: 1074782766}
   - component: {fileID: 1074782767}
   - component: {fileID: 1074782768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (11)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -5758,7 +5728,7 @@ Transform:
   m_GameObject: {fileID: 1074782765}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.28, y: -3.477, z: 0.23}
+  m_LocalPosition: {x: 3.03, y: -3.477, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5777,22 +5747,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 1218665187}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1074782768
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5826,7 +5786,7 @@ GameObject:
   - component: {fileID: 1116502758}
   - component: {fileID: 1116502757}
   - component: {fileID: 1116502755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5923,7 +5883,7 @@ GameObject:
   - component: {fileID: 1178795437}
   - component: {fileID: 1178795440}
   - component: {fileID: 1178795439}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (10)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -5979,22 +5939,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 1116502753}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!1 &1193058178
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,7 +6128,7 @@ GameObject:
   - component: {fileID: 1218665191}
   - component: {fileID: 1218665190}
   - component: {fileID: 1218665189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6276,7 +6226,7 @@ GameObject:
   - component: {fileID: 1316355886}
   - component: {fileID: 1316355885}
   - component: {fileID: 1316355884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6644,7 +6594,7 @@ GameObject:
   - component: {fileID: 1403697209}
   - component: {fileID: 1403697208}
   - component: {fileID: 1403697207}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder (6)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -6737,15 +6687,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!65 &1403697211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6892,7 +6842,7 @@ GameObject:
   - component: {fileID: 1427968460}
   - component: {fileID: 1427968461}
   - component: {fileID: 1427968462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (18)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -6927,22 +6877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 1445843470}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1427968462
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6976,7 +6916,7 @@ GameObject:
   - component: {fileID: 1445843474}
   - component: {fileID: 1445843473}
   - component: {fileID: 1445843472}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7207,7 +7147,7 @@ GameObject:
   - component: {fileID: 1539993040}
   - component: {fileID: 1539993041}
   - component: {fileID: 1539993042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (13)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -7242,22 +7182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 634466420}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1539993042
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7290,7 +7220,7 @@ GameObject:
   - component: {fileID: 1692243101}
   - component: {fileID: 1692243102}
   - component: {fileID: 1692243103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (12)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -7325,22 +7255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 768635646}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1692243103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7913,7 +7833,7 @@ GameObject:
   - component: {fileID: 1943743591}
   - component: {fileID: 1943743592}
   - component: {fileID: 1943743593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (16)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -7948,22 +7868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 1316355882}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1943743593
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8254,7 +8164,7 @@ GameObject:
   - component: {fileID: 1987116617}
   - component: {fileID: 1987116618}
   - component: {fileID: 1987116619}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (17)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -8289,22 +8199,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 43979193}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &1987116619
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8338,7 +8238,7 @@ GameObject:
   - component: {fileID: 1997798902}
   - component: {fileID: 1997798901}
   - component: {fileID: 1997798900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8435,7 +8335,7 @@ GameObject:
   - component: {fileID: 2025899182}
   - component: {fileID: 2025899183}
   - component: {fileID: 2025899184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (15)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -8470,22 +8370,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 154397053}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!135 &2025899184
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10003,15 +9893,15 @@ MonoBehaviour:
   speed: 4
   height: 0.001
   rotation: 0.1
-  moveComplete: 0
+  routes: []
+  oi: {fileID: 0}
+  cursor: {fileID: 0}
   floating: 0
+  moveComplete: 0
   hasSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
-  cursor: {fileID: 0}
-  oi: {fileID: 0}
-  routes: []
 --- !u!1 &1391021962418145898
 GameObject:
   m_ObjectHideFlags: 0
@@ -10486,22 +10376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261599769349416}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947387813363554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10514,22 +10394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600181907014}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947388137330131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10542,22 +10412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261599316722935}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947388711444563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10570,22 +10430,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600890204535}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947389114503224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10598,22 +10448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600486637852}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947389219289322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10626,22 +10466,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600381708750}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947389242756776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10654,22 +10484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600328900492}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947389459498993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10682,22 +10502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600678483669}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!114 &1818947389509201736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10710,22 +10520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f9e8625f05a4c850e5d67552a0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementPoint: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  arrowLength: 2
-  claimed: 0
-  controlPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
-  startingPosition: {x: 0, y: 0, z: 0}
-  withinRange: 0
-  otherObject: {fileID: 0}
   placementVisualisation: {fileID: 7335261600595279468}
   player: {fileID: 0}
+  claimed: 0
+  withinRange: 0
 --- !u!224 &1826905362428080105
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15671,7 +15471,7 @@ GameObject:
   - component: {fileID: 2166876720410523251}
   - component: {fileID: 4949427517232451861}
   - component: {fileID: 7335261599316722936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15704,7 +15504,7 @@ GameObject:
   - component: {fileID: 2166876720897425324}
   - component: {fileID: 4949427517584414922}
   - component: {fileID: 7335261599769349417}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15737,7 +15537,7 @@ GameObject:
   - component: {fileID: 2166876721290173634}
   - component: {fileID: 4949427517977967524}
   - component: {fileID: 7335261600181907015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15770,7 +15570,7 @@ GameObject:
   - component: {fileID: 2166876721479773448}
   - component: {fileID: 4949427518098868846}
   - component: {fileID: 7335261600328900493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15803,7 +15603,7 @@ GameObject:
   - component: {fileID: 2166876721492990794}
   - component: {fileID: 4949427518314249260}
   - component: {fileID: 7335261600381708751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15836,7 +15636,7 @@ GameObject:
   - component: {fileID: 2166876721589416856}
   - component: {fileID: 4949427518209299710}
   - component: {fileID: 7335261600486637853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15869,7 +15669,7 @@ GameObject:
   - component: {fileID: 2166876721750265064}
   - component: {fileID: 4949427518369311630}
   - component: {fileID: 7335261600595279469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15902,7 +15702,7 @@ GameObject:
   - component: {fileID: 2166876721800193105}
   - component: {fileID: 4949427518554260279}
   - component: {fileID: 7335261600678483670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15935,7 +15735,7 @@ GameObject:
   - component: {fileID: 2166876721992172531}
   - component: {fileID: 4949427518611842197}
   - component: {fileID: 7335261600890204536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement visualisation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16727,7 +16527,7 @@ GameObject:
   - component: {fileID: 6311648763496047008}
   - component: {fileID: 3498236493826987411}
   - component: {fileID: 5110334347028933237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Movement Placeholder
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -17076,7 +16876,7 @@ GameObject:
   - component: {fileID: 4047113494023304650}
   - component: {fileID: 1818947387813363554}
   - component: {fileID: 2691102953582265433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (7)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17094,7 +16894,7 @@ GameObject:
   - component: {fileID: 4047113494431389348}
   - component: {fileID: 1818947387650628620}
   - component: {fileID: 2691102953476040503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (1)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17112,7 +16912,7 @@ GameObject:
   - component: {fileID: 4047113494884212603}
   - component: {fileID: 1818947388137330131}
   - component: {fileID: 2691102953929387752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (2)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17130,7 +16930,7 @@ GameObject:
   - component: {fileID: 4047113493370546939}
   - component: {fileID: 1818947388711444563}
   - component: {fileID: 2691102952348638056}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (6)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17148,7 +16948,7 @@ GameObject:
   - component: {fileID: 4047113493665441248}
   - component: {fileID: 1818947389509201736}
   - component: {fileID: 2691102953160971379}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (4)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17166,7 +16966,7 @@ GameObject:
   - component: {fileID: 4047113493580877145}
   - component: {fileID: 1818947389459498993}
   - component: {fileID: 2691102953076456650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (8)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17184,7 +16984,7 @@ GameObject:
   - component: {fileID: 4047113493936063488}
   - component: {fileID: 1818947389242756776}
   - component: {fileID: 2691102952890545555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (9)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17202,7 +17002,7 @@ GameObject:
   - component: {fileID: 4047113493819011650}
   - component: {fileID: 1818947389219289322}
   - component: {fileID: 2691102952846902225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (3)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
@@ -17220,7 +17020,7 @@ GameObject:
   - component: {fileID: 4047113493772819088}
   - component: {fileID: 1818947389114503224}
   - component: {fileID: 2691102952750361347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placement (5)
   m_TagString: PlacementPoint
   m_Icon: {fileID: 0}
