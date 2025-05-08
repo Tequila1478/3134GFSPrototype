@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 089e7fda8c5a6704189531e9f8f51341, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 089e7fda8c5a6704189531e9f8f51341, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75,6 +75,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 089e7fda8c5a6704189531e9f8f51341, type: 3}
       propertyPath: m_Name
       value: welcomemat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 089e7fda8c5a6704189531e9f8f51341, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
