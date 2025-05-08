@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlackOutline
+  m_Name: ThickOutline
   m_Shader: {fileID: -6465566751694194690, guid: 802bacf7f983f2149aa9658a59c23739, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,9 +50,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineThickness: 0.06
+    - _OutlineThickness: 0.04
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _OutlineColour: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColour: {r: 0.15723258, g: 0.086527355, b: 0.086527355, a: 0}
   m_BuildTextureStacks: []
