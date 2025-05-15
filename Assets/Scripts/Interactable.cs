@@ -28,6 +28,8 @@ public class Interactable : MonoBehaviour
     private Rigidbody rb;
     private Renderer objectRenderer;
     private CharacterController charController;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] soundEffects;
 
     public bool floating = false;
     private bool isMoving = false;
@@ -64,6 +66,7 @@ public class Interactable : MonoBehaviour
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     private void ValidateSetup()
@@ -182,6 +185,8 @@ public class Interactable : MonoBehaviour
         if (!floating && playerInteraction.itemHeld == null)
         {
             EnableFloating();
+            audioSource.clip = soundEffects[0];
+            audioSource.PlayOneShot(audioSource.clip);
         }
         movingToSetSpot = false;
         gameObject.layer = 9;
@@ -223,6 +228,8 @@ public class Interactable : MonoBehaviour
         playerInteraction.itemHeld = null;
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
+        audioSource.clip = soundEffects[1];
+        audioSource.PlayOneShot(audioSource.clip);
 
         if (forceDrop)
         {
@@ -248,7 +255,8 @@ public class Interactable : MonoBehaviour
         {
             moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
             movingToSetSpot = true;
-            
+            audioSource.clip = soundEffects[1];
+            audioSource.PlayOneShot(audioSource.clip);
         }
         
     }
