@@ -15,6 +15,8 @@ public class TaskUIManager : MonoBehaviour
 
     private Dictionary<string, GameObject> taskEntries = new();
 
+    public GameObject finishDay;
+
     void Start()
     {
         if (taskManager == null)
@@ -44,23 +46,21 @@ public class TaskUIManager : MonoBehaviour
     void UpdateUI()
     {
         headerText.text = "Today's Task List! Day: " + GetDayNumber();
+
         int totalRequired = taskManager.totalRequiredTasks;
         int totalRequiredCompleted = 0;
+
         foreach (var req in taskManager.taskRequirements)
         {
             string type = req.taskType;
             int completed = taskManager.GetCompletedCount(type);
-            totalRequiredCompleted += completed;
+            totalRequiredCompleted += Mathf.Min(completed, req.minimumRequired); // Cap at required
 
             int required = req.minimumRequired;
             int optional = CountOptionalOfType(type) - req.minimumRequired;
             int optionalCompleted = Mathf.Max(0, completed - required);
 
-            string taskLine = "";
-
-            
-          
-            taskLine = $"{type}: {completed} / {required} (required)";            
+            string taskLine = $"{type}: {completed} / {required} (required)";
 
             if (optional > 0)
             {
@@ -70,9 +70,12 @@ public class TaskUIManager : MonoBehaviour
             taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;
         }
 
-        float percent = 0;
+        float percent = (float)totalRequiredCompleted / taskManager.totalRequiredTasks;
         progressBar.value = percent;
         progressText.text = Mathf.RoundToInt(percent * 100) + "%";
+
+        // Check if progress is complete
+        CheckIfTasksComplete(percent);
     }
 
     int CountOptionalOfType(string type)
@@ -92,5 +95,17 @@ public class TaskUIManager : MonoBehaviour
     {
         // Replace with actual day logic if needed
         return 1;
+    }
+
+    void CheckIfTasksComplete(float percent)
+    {
+        if (percent >= 1f)
+        {
+            finishDay.SetActive(true);
+        }
+        else
+        {
+            finishDay.SetActive(false);
+        }
     }
 }
