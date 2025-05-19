@@ -8,6 +8,7 @@ TagManager:
   - Held Item
   - PlacementPoint
   - Orbit Point
+  - BookRow
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - PlacementSpotCollider
   - Interactable
   - OutlineLayer
-  - 
+  - IgnoreMouseRaycast
   - 
   - 
   - 

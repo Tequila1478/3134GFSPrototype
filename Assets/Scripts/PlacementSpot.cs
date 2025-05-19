@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlacementSpot : MonoBehaviour
+public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
+    public bool isTrashcan = false;
+
     [SerializeField] private Vector3 offset = new Vector3(0, 1, 0);
     [SerializeField] private float maxHeightAbovePoint;
     [SerializeField] private GameObject placementVisualisation;
@@ -173,17 +175,17 @@ public class PlacementSpot : MonoBehaviour
         return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
     }
 
-    private void OnMouseEnter()
+    public void OnHoverEnter()
     {
         if (player.itemHeld == null) return;
 
-        Debug.Log("Mouse is over " + gameObject.name);
+        //Debug.Log("Mouse is over " + gameObject.name);
         SelectObject();
         startingPosition = player.itemHeld.transform.position;
         cursor.ChangeVisual(1);
     }
 
-    private void OnMouseExit()
+    public void OnHoverExit()
     {
         DeselectObject();
         claimed = false;
@@ -191,7 +193,7 @@ public class PlacementSpot : MonoBehaviour
         cursor.ChangeVisual(0);
     }
 
-    private void OnMouseUp()
+    public void OnClick()
     {
         if (player.itemHeld == null)
             return;
@@ -221,6 +223,11 @@ public class PlacementSpot : MonoBehaviour
 
         // Disable colliders AFTER object is released and trigger updates
         Invoke(nameof(DisablePlacementPointCollidersSafely), 0.1f);
+    }
+
+    public void OnRelease()
+    {
+
     }
 
     private void DisablePlacementPointCollidersSafely()

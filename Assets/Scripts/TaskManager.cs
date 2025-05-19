@@ -80,6 +80,10 @@ public class TaskManager : MonoBehaviour
             {
                 task.isCompleted = true;
             }
+            if (task.isCompleted && !task.interactable.GetComponent<Interactable>().hasSetSpot)
+            {
+                task.isCompleted = false;
+            }
         }
     }
 

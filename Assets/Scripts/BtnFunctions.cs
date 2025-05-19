@@ -9,8 +9,10 @@ public class BtnFunctions : MonoBehaviour
     public bool playAudioOnClick;
 
     public GameObject nextUI;
-    public GameObject disableUI;
+    public GameObject previousUI;
     public string sceneToLoad;
+
+    public GameObject triggerUI;
 
     public Slider slider;
     private AudioManager audio_AM;
@@ -53,7 +55,7 @@ public class BtnFunctions : MonoBehaviour
 
     public void GoToNextUIOnClick()
     {
-        disableUI.SetActive(false);
+        previousUI?.SetActive(false);
         nextUI.SetActive(true);
 
         if (playAudioOnClick)
@@ -115,4 +117,14 @@ public class BtnFunctions : MonoBehaviour
         FindObjectOfType<PauseGame>().EndPause();
     }
 
+    public void DisableUI()
+    {
+        triggerUI?.SetActive(false);
+        Debug.Log("Disabling UI");
+    }
+
+    public void EnableUI()
+    {
+        triggerUI?.SetActive(true);
+    }
 }

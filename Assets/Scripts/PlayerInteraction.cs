@@ -9,6 +9,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public List<GameObject> allPlacementPoints = new List<GameObject>();
 
+    public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
+    private IHoverable currentHover;
+    private IClickable currentClickTarget;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +24,68 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        HandleHover();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleClick();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            HandleRelease();
+        }
     }
 
+    private void HandleHover()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        IHoverable hoverTarget = null;
+
+        if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
+        {
+            hoverTarget = hit.collider.GetComponent<IHoverable>();
+        }
+
+        if (hoverTarget != currentHover)
+        {
+            // Notify previous object
+            if (currentHover != null)
+                currentHover.OnHoverExit();
+
+            // Notify new object
+            if (hoverTarget != null)
+                hoverTarget.OnHoverEnter();
+
+            currentHover = hoverTarget;
+        }
+    }
+    void HandleClick()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
+        {
+            IClickable clickTarget = hit.collider.GetComponent<IClickable>();
+            if (clickTarget != null)
+            {
+                currentClickTarget = clickTarget;
+                clickTarget.OnClick();
+            }
+        }
+    }
+
+    void HandleRelease()
+    {
+        if (currentClickTarget != null)
+        {
+            currentClickTarget.OnRelease();
+            currentClickTarget = null;
+        }
+    }
     public void UpdatePlacementPoints()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("PlacementPoint");

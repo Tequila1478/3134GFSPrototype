@@ -2,8 +2,11 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IHoverable, IClickable
 {
+    [Header("Interaction Settings")]
+    private bool isHovered = false;
+
     [Header("Interaction Settings")]
     public string taskType;
     public bool isRequired;
@@ -151,8 +154,11 @@ public class Interactable : MonoBehaviour
                Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.E);
     }
 
-    private void OnMouseEnter()
+    public void OnHoverEnter()
     {
+        if (isHovered) return;
+        isHovered = true;
+
         if (!playerInteraction.isHolding)
         {
             HighlightObject();
@@ -164,8 +170,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    public void OnHoverExit()
     {
+        if (!isHovered) return;
+        isHovered = false;
+
         if (!playerInteraction.isHolding)
         {
             UnhighlightObject();
@@ -177,7 +186,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public void OnClick()
     {
         if (!floating && playerInteraction.itemHeld == null)
         {
@@ -187,7 +196,7 @@ public class Interactable : MonoBehaviour
         gameObject.layer = 9;
     }
 
-    private void OnMouseUp()
+    public void OnRelease()
     {
         if (!floating) return;
 

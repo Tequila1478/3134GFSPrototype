@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SearchService;
 
+
 public class CameraMovement : MonoBehaviour
 {
+    private class HiddenObjectData
+    {
+        public Renderer renderer;
+        public int originalLayer;
+    }
+    private List<HiddenObjectData> hiddenObjects = new List<HiddenObjectData>();
+
     public Transform target; // Object to orbit around
     public float orbitSpeed = 50f;
     public float zoomSpeed = 10f;
     public float screenEdgeThreshold = 50f;
     public bool invert = true;
     public float scrollSensitivity = 100.0f;
+    public float minZoomDistance = 2f; // Minimum allowed distance to target
+
+    public string ignoreMouseRaycastLayerName = "IgnoreMouseRaycast"; // Name of the layer to use
+    private int ignoreMouseRaycastLayer;
 
     private float initialDistance;
     private PlayerInteraction pi;
@@ -34,6 +46,12 @@ public class CameraMovement : MonoBehaviour
         {
             Debug.LogError("NO target for camera");
             return;
+        }
+
+        ignoreMouseRaycastLayer = LayerMask.NameToLayer(ignoreMouseRaycastLayerName);
+        if (ignoreMouseRaycastLayer == -1)
+        {
+            Debug.LogError($"Layer '{ignoreMouseRaycastLayerName}' not found! Please create it in Unity.");
         }
 
         // Store initial distance to limit zooming out
@@ -72,33 +90,51 @@ public class CameraMovement : MonoBehaviour
 
         HandleMouseScrollZoom(); // Mouse scroll doesn't require Shift
 
+        HandleVisibility();
+    }
 
-
+    void HandleVisibility()
+    {
         // Raycast forward from the camera
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit[] hits = Physics.RaycastAll(ray, detectionRange, targetLayers);
 
-        // Hide objects that are within the detection range
         foreach (RaycastHit hit in hits)
         {
             Renderer rend = hit.collider.GetComponent<Renderer>();
-            if (rend != null && rend.enabled)
+            GameObject obj = hit.collider.gameObject;
+
+            if (rend != null && !hiddenObjects.Exists(h => h.renderer == rend))
             {
-                if (!invisibleRenderers.Contains(rend))
+                int originalLayer = obj.layer;
+                obj.layer = ignoreMouseRaycastLayer;
+
+                rend.enabled = false;
+
+                hiddenObjects.Add(new HiddenObjectData
                 {
-                    rend.enabled = false;
-                    invisibleRenderers.Add(rend);
-                }
+                    renderer = rend,
+                    originalLayer = originalLayer
+                });
             }
         }
 
-        // Check if objects are beyond detection range and make them visible again
-        foreach (Renderer rend in invisibleRenderers.ToArray()) // Using ToArray() to avoid modification during iteration
+        // Re-enable objects
+        for (int i = hiddenObjects.Count - 1; i >= 0; i--)
         {
-            if (rend != null && Vector3.Distance(transform.position, rend.transform.position) > detectionRange)
+            Renderer rend = hiddenObjects[i].renderer;
+            if (rend == null)
             {
+                hiddenObjects.RemoveAt(i);
+                continue;
+            }
+
+            if (Vector3.Distance(transform.position, rend.transform.position) > detectionRange)
+            {
+                GameObject obj = rend.gameObject;
+                obj.layer = hiddenObjects[i].originalLayer;
                 rend.enabled = true;
-                invisibleRenderers.Remove(rend); // Remove from the list to stop checking
+                hiddenObjects.RemoveAt(i);
             }
         }
     }
@@ -157,8 +193,8 @@ public class CameraMovement : MonoBehaviour
 
         float newDistance = Vector3.Distance(newPosition, target.position);
 
-        // Limit zoom out to initial distance, but allow infinite zoom in
-        if (newDistance <= initialDistance || newDistance < distance)
+        // Only allow zooming if new distance is between min and initial distances
+        if (newDistance >= minZoomDistance && newDistance <= initialDistance)
         {
             transform.position = newPosition;
         }

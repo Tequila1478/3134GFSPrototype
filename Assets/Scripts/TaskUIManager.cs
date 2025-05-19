@@ -44,23 +44,28 @@ public class TaskUIManager : MonoBehaviour
     void UpdateUI()
     {
         headerText.text = "Today's Task List! Day: " + GetDayNumber();
-        int totalRequired = taskManager.totalRequiredTasks;
-        int totalRequiredCompleted = 0;
+        float totalRequired = 0;
+        float totalRequiredCompleted = 0;
+        float percent;
+
         foreach (var req in taskManager.taskRequirements)
         {
             string type = req.taskType;
             int completed = taskManager.GetCompletedCount(type);
-            totalRequiredCompleted += completed;
 
             int required = req.minimumRequired;
+            totalRequired += required;
             int optional = CountOptionalOfType(type) - req.minimumRequired;
             int optionalCompleted = Mathf.Max(0, completed - required);
+
+            int completedReq = (completed > required) ? required : completed;
+            totalRequiredCompleted += completed;
 
             string taskLine = "";
 
             
           
-            taskLine = $"{type}: {completed} / {required} (required)";            
+            taskLine = $"{type}: {completedReq} / {required} (required)";            
 
             if (optional > 0)
             {
@@ -70,7 +75,8 @@ public class TaskUIManager : MonoBehaviour
             taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;
         }
 
-        float percent = 0;
+        totalRequiredCompleted = (totalRequiredCompleted > totalRequired) ? totalRequired : totalRequiredCompleted;
+        percent = totalRequiredCompleted / totalRequired;
         progressBar.value = percent;
         progressText.text = Mathf.RoundToInt(percent * 100) + "%";
     }
@@ -90,7 +96,8 @@ public class TaskUIManager : MonoBehaviour
 
     int GetDayNumber()
     {
-        // Replace with actual day logic if needed
+        // Replace with actual day logic
+
         return 1;
     }
 }
