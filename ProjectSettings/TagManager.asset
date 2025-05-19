@@ -22,8 +22,8 @@ TagManager:
   - Interactable
   - OutlineLayer
   - IgnoreMouseRaycast
-  - 
-  - 
+  - BrownOutlineLayer
+  - BlueOutlineLayer
   - 
   - 
   - 

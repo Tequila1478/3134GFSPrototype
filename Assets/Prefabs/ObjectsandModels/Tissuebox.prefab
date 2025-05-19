@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: 935f4d3f14605114f8a2faf21a1fdef2, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 935f4d3f14605114f8a2faf21a1fdef2, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74,11 +74,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 14bca7a6d34b1f544b42a49804813676, type: 2}
     - target: {fileID: -516098083770646512, guid: 935f4d3f14605114f8a2faf21a1fdef2, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 935f4d3f14605114f8a2faf21a1fdef2, type: 3}
       propertyPath: m_Name
       value: Tissuebox
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 935f4d3f14605114f8a2faf21a1fdef2, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -2508434490610458989, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -1771136883285076994, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -220,13 +224,25 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 568825091286860717, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
       propertyPath: m_Name
       value: bookshelf
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067481012563163285, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3535555285689078467, guid: db0a46adf56f16d40a0e684a95275ee8, type: 3}
       propertyPath: m_Layer

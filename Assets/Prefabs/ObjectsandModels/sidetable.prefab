@@ -129,6 +129,10 @@ PrefabInstance:
       value: sidetable
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 51623497164933a46a1c6530de4d3872, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51623497164933a46a1c6530de4d3872, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

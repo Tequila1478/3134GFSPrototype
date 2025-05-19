@@ -47,7 +47,7 @@ Material:
     - _QueueOffset: 0
     - _Rougness: 1
     m_Colors:
-    - _Color: {r: 0.1377714, g: 0.33962262, b: 0.14653878, a: 0}
+    - _Color: {r: 0.113958925, g: 0.84276724, b: 0.14198995, a: 0}
     - _Emmision: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &629945262460761788
