@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     [Header("Materials")]
     public Material outlineMat;
     public Material originalMat;
+    public GameObject materialObj;
 
     [Header("Floating Settings")]
     public float speed = 2f;
@@ -58,7 +59,13 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (outlineMat != null && objectRenderer != null)
         {
-            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
+            outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
+        }
+
+
+        if(audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
         }
 
     }
@@ -66,13 +73,21 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private void CacheComponents()
     {
         rb = GetComponent<Rigidbody>();
-        objectRenderer = GetComponent<Renderer>();
         charController = GetComponent<CharacterController>();
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
         audioSource = GetComponent<AudioSource>();
         ghostParticles = GetComponent<ParticleSystem>();
+
+        if (materialObj != null)
+        {
+            objectRenderer = materialObj.GetComponent<Renderer>();
+        }
+        else
+        {
+            Debug.LogError("Material object is not assigned in " + gameObject.name);
+        }
     }
 
     private void ValidateSetup()
@@ -162,6 +177,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     public void OnHoverEnter()
     {
+        Debug.Log("Hovering over object");
         if (isHovered) return;
         isHovered = true;
 
@@ -304,7 +320,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (outlineMat != null && objectRenderer != null)
         {
-            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
+            outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
             objectRenderer.material = outlineMat;
         }
     }

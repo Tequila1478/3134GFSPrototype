@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1021044740337535794}
   - component: {fileID: 8975464436712688137}
   - component: {fileID: 3549277921268616311}
+  - component: {fileID: 5310843692937181973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -68,3 +69,17 @@ MonoBehaviour:
   - taskType: Clutter
     minimumRequired: 5
   totalRequiredTasks: 0
+--- !u!114 &5310843692937181973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590336226129060539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a795bf32e8fa0f843a8bb0960fac2135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayStage: 0
+  dailyDialogue: {fileID: 0}

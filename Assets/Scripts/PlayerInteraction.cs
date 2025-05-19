@@ -47,6 +47,9 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
         {
             hoverTarget = hit.collider.GetComponent<IHoverable>();
+            if(hoverTarget == null){
+                hoverTarget = hit.collider.GetComponentInParent<IHoverable>();
+            }
         }
 
         if (hoverTarget != currentHover)

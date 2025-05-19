@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishDayObject : MonoBehaviour
+public class FinishDayObject : MonoBehaviour, IHoverable, IClickable
 {
     public DialogueScript dialogueManager; // Drag in inspector or find in Start()
+
+    public bool isHovered = false;
+    public PlayerInteraction pi;
+    public CustomCursor cursor;
+    public Material outlineMat;
+    public Material originalMat;
+    private Renderer objectRenderer;
 
     void Start()
     {
@@ -12,9 +19,60 @@ public class FinishDayObject : MonoBehaviour
         {
             dialogueManager = FindObjectOfType<DialogueScript>();
         }
+
+        if(pi == null)
+        {
+            pi = FindObjectOfType<PlayerInteraction>();
+        }
+        cursor = FindObjectOfType<CustomCursor>();
+
+        objectRenderer = GetComponent<Renderer>();
+
+        if (outlineMat != null && objectRenderer != null)
+        {
+            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
+        }
+
     }
 
     void OnMouseDown()
+    {
+        
+    }
+
+    public void OnHoverEnter()
+    {
+        if (isHovered) return;
+        isHovered = true;
+
+        if (!pi.isHolding)
+        {
+            HighlightObject();
+            cursor?.ChangeVisual(1);
+        }
+        if (pi.itemHeld == this)
+        {
+            cursor?.ChangeVisual(1);
+        }
+    }
+
+    public void OnHoverExit()
+    {
+        if (!isHovered) return;
+        isHovered = false;
+
+        if (!pi.isHolding)
+        {
+            UnhighlightObject();
+            cursor?.ChangeVisual(0);
+        }
+        if (pi.itemHeld == this)
+        {
+            cursor?.ChangeVisual(1);
+        }
+    }
+
+    public void OnClick()
     {
         if (dialogueManager != null)
         {
@@ -23,6 +81,28 @@ public class FinishDayObject : MonoBehaviour
         else
         {
             Debug.LogWarning("DayDialogueManager not assigned or found.");
+        }
+    }
+
+    private void HighlightObject()
+    {
+        if (outlineMat != null && objectRenderer != null)
+        {
+            outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
+            objectRenderer.material = outlineMat;
+        }
+    }
+
+    public void OnRelease()
+    {
+        
+    }
+
+    private void UnhighlightObject()
+    {
+        if (originalMat != null && objectRenderer != null)
+        {
+            objectRenderer.material = originalMat;
         }
     }
 }

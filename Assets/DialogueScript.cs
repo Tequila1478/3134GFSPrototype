@@ -16,6 +16,7 @@ public class DialogueScript : MonoBehaviour
     public bool dialogueCompleted = false;
     public bool houseClean = true;
     public bool foundDivorcePapers = true;
+    public GameObject hud;
 
 
     [System.Serializable]
@@ -40,11 +41,14 @@ public class DialogueScript : MonoBehaviour
 
     public void StartDay()
     {
+        hud.SetActive(false);
         StartCoroutine(PlayDialogue(startDialogue));
     }
 
     public IEnumerator EndDay()
     {
+        hud.SetActive(false);
+
         if (houseClean)
         {
             yield return StartCoroutine(PlayDialogue(endDialogueGood));
@@ -67,6 +71,7 @@ public class DialogueScript : MonoBehaviour
     {
         dialogueText.gameObject.SetActive(true);
         headingText.gameObject.SetActive(true);
+        
         characterImage.gameObject.SetActive(true);
         dialoguePanel.SetActive(true);
 
@@ -76,6 +81,8 @@ public class DialogueScript : MonoBehaviour
             dialogueText.text = line.text;
             headingText.text = line.heading;
 
+            if(line.characterSprite == null) characterImage.gameObject.SetActive(false);
+            else characterImage.gameObject.SetActive(true);
             characterImage.sprite = line.characterSprite;
             LayoutSprite(line.spriteOnRight);
 
@@ -87,6 +94,8 @@ public class DialogueScript : MonoBehaviour
         headingText.gameObject.SetActive(false);
         characterImage.gameObject.SetActive(false);
         dialoguePanel.SetActive(false);
+
+        hud.SetActive(true);
     }
 
     private void LayoutSprite(bool onRight)
@@ -94,6 +103,6 @@ public class DialogueScript : MonoBehaviour
         imageContainer.anchorMin = new Vector2(onRight ? 1 : 0, 0.5f);
         imageContainer.anchorMax = new Vector2(onRight ? 1 : 0, 0.5f);
         imageContainer.pivot = new Vector2(onRight ? 1 : 0, 0.5f);
-        imageContainer.anchoredPosition = new Vector2(onRight ? -100 : 100, 0);
+        imageContainer.anchoredPosition = new Vector2(onRight ? -50 : 100, 0);
     }
 }
