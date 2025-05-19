@@ -52,9 +52,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -7271449666460269675, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -6763858364670572316, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6763858364670572316, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -5363424281805771908, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Materials.Array.size
@@ -96,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -2181743766629440291, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 327064008815436722, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -112,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: coffeetable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1442450553484104045, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -127,6 +143,10 @@ PrefabInstance:
     - target: {fileID: 1502877291743220047, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502877291743220047, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1738776581880846596, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Materials.Array.size
@@ -168,21 +188,41 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4356877828898064976, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5252682845850649624, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252682845850649624, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6014503084441653313, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6014503084441653313, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8009987137999418058, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8009987137999418058, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8485173162082002552, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485173162082002552, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8567717000986892130, guid: 87df181c947414b46a7f297a439c2cdc, type: 3}
       propertyPath: m_Materials.Array.size

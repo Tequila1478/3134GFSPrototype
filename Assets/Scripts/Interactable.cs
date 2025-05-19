@@ -31,6 +31,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private Rigidbody rb;
     private Renderer objectRenderer;
     private CharacterController charController;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] soundEffects;
+    private ParticleSystem ghostParticles;
 
     public bool floating = false;
     private bool isMoving = false;
@@ -57,6 +60,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             outlineMat.SetTexture("_MainTex", objectRenderer.material.mainTexture);
         }
+
     }
 
     private void CacheComponents()
@@ -67,6 +71,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
+        audioSource = GetComponent<AudioSource>();
+        ghostParticles = GetComponent<ParticleSystem>();
     }
 
     private void ValidateSetup()
@@ -191,6 +197,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (!floating && playerInteraction.itemHeld == null)
         {
             EnableFloating();
+            audioSource.clip = soundEffects[0];
+            audioSource.PlayOneShot(audioSource.clip);
         }
         movingToSetSpot = false;
         gameObject.layer = 9;
@@ -222,6 +230,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = this;
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
+        ghostParticles.Play();
     }
 
     private void DropObject(bool forceDrop = false)
@@ -232,6 +241,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = null;
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
+        audioSource.clip = soundEffects[1];
+        audioSource.PlayOneShot(audioSource.clip);
+        ghostParticles.Stop();
 
         if (forceDrop)
         {
@@ -257,7 +269,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
             movingToSetSpot = true;
-            
+            audioSource.clip = soundEffects[1];
+            audioSource.PlayOneShot(audioSource.clip);
+            ghostParticles.Stop();
         }
         
     }
