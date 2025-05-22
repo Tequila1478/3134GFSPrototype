@@ -48,21 +48,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3dfc17772407ce441840564f872b6a83, type: 2}
+      objectReference: {fileID: 2100000, guid: 24dc30f20c05b9c4688087f32541cd9a, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 22e607f9ad03547438a8c6c51a561cd9, type: 2}
+      objectReference: {fileID: 2100000, guid: 97303f98b32092d40b30af1c583abc13, type: 2}
+    - target: {fileID: -678588488315902003, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -678588488315902003, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f708728b07d43ff42bab26138f995431, type: 2}
+    - target: {fileID: -516098083770646512, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
       propertyPath: m_Name
       value: Curtain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 049fdce68b64d584d9c7915f86e2c6b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
