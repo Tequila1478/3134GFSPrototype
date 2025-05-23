@@ -62,13 +62,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.65392387, z: 0.94328624, w: 0.037902813}
+    m_Value: {x: 1, y: 0.808917, z: 0.7880477, w: 0.037902813}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.65431356, z: 0.5178466, w: 0.08843967}
+    m_Value: {x: 1, y: 0.69629186, z: 0.5540002, w: 0.15795879}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.8721791, z: 0.6500809, w: 0.38534406}
+    m_Value: {x: 1, y: 0.93609786, z: 0.8778667, w: 0.020251373}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0.23
@@ -96,16 +96,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.3962264, g: 0.21221124, b: 0.13332145, a: 1}
+    m_Value: {r: 0.39607844, g: 0.2004791, b: 0.13333337, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.41
+    m_Value: 0.319
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.281
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.115
+    m_Value: 0.031
   response:
     m_OverrideState: 0
     m_Value: 0.8
@@ -153,7 +153,6 @@ MonoBehaviour:
   - {fileID: -7001100857960768076}
   - {fileID: 4223997486512869735}
   - {fileID: 1186202550524950180}
-  - {fileID: 2762077193080431631}
   - {fileID: 103214384528465295}
   - {fileID: -1530481205261319958}
 --- !u!114 &103214384528465295
@@ -171,13 +170,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9767093, z: 0.9495734, w: 0.012634335}
+    m_Value: {x: 1, y: 0.9767093, z: 0.9495734, w: 0.028351499}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.98019195, z: 0.9602926, w: 0.050536957}
+    m_Value: {x: 1, y: 0.9668323, z: 0.9616335, w: 0.117456436}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9860559, z: 0.96382755, w: 0.08212234}
+    m_Value: {x: 1, y: 0.9860559, z: 0.96382755, w: 0.16312632}
 --- !u!114 &1186202550524950180
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -193,199 +192,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -3
+    m_Value: 0.8
   tint:
     m_OverrideState: 1
-    m_Value: 0
---- !u!114 &2762077193080431631
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
-  m_Name: ColorCurves
-  m_EditorClassIdentifier: 
-  active: 0
-  master:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 2
-      m_Loop: 0
-      m_ZeroValue: 0
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  red:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 2
-      m_Loop: 0
-      m_ZeroValue: 0
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  green:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 2
-      m_Loop: 0
-      m_ZeroValue: 0
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  blue:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 2
-      m_Loop: 0
-      m_ZeroValue: 0
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  hueVsHue:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 0
-      m_Loop: 1
-      m_ZeroValue: 0.5
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  hueVsSat:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 0
-      m_Loop: 1
-      m_ZeroValue: 0.5
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  satVsSat:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 0
-      m_Loop: 0
-      m_ZeroValue: 0.5
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  lumVsSat:
-    m_OverrideState: 0
-    m_Value:
-      <length>k__BackingField: 0
-      m_Loop: 0
-      m_ZeroValue: 0.5
-      m_Range: 1
-      m_Curve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+    m_Value: 22.5
 --- !u!114 &4223997486512869735
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -401,10 +211,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.8509804, g: 0.7647059, b: 0.7967212, a: 1}
+    m_Value: {r: 0.8178461, g: 0.7647059, b: 0.8509804, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.6666667, g: 0.5593802, b: 0.47843137, a: 1}
+    m_Value: {r: 0.6666667, g: 0.6200517, b: 0.47843137, a: 1}
   balance:
     m_OverrideState: 1
     m_Value: -47.9
@@ -423,10 +233,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.52
   contrast:
     m_OverrideState: 1
-    m_Value: -5.4
+    m_Value: -0.1
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -435,4 +245,4 @@ MonoBehaviour:
     m_Value: 2
   saturation:
     m_OverrideState: 1
-    m_Value: 16.5
+    m_Value: 26.2
