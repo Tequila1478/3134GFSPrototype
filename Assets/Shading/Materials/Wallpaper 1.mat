@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wallpaper
+  m_Name: Wallpaper 1
   m_Shader: {fileID: -6465566751694194690, guid: 0279287c8bf248a48b1193ca359a9c48, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -47,7 +47,7 @@ Material:
     - _QueueOffset: 0
     - _Rougness: 0
     m_Colors:
-    - _Color: {r: 0.2888729, g: 0.7048259, b: 0.84276724, a: 0}
+    - _Color: {r: 0.9228669, g: 0.9685534, b: 0.96664983, a: 0}
     - _Emmision: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &629945262460761788

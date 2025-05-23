@@ -8452,7 +8452,7 @@ GameObject:
   - component: {fileID: 198970351}
   - component: {fileID: 198970350}
   m_Layer: 0
-  m_Name: Wall3.002 (1)
+  m_Name: roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36674,7 +36674,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: a774c1c972441f841a888413af880ab8, type: 2}
   - {fileID: 2100000, guid: 79f470d32063461438930bb4af32c592, type: 2}
-  - {fileID: 2100000, guid: 95f4e7214c7f8e74b95dd6ec270ee433, type: 2}
+  - {fileID: 2100000, guid: 4d6341d4d88272b4bb2c867d6e105194, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47647,11 +47647,15 @@ PrefabInstance:
     - target: {fileID: -5159665212716187377, guid: dcc97b6154b11014480ca604159638d4, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 95f4e7214c7f8e74b95dd6ec270ee433, type: 2}
+      objectReference: {fileID: 2100000, guid: 4d6341d4d88272b4bb2c867d6e105194, type: 2}
     - target: {fileID: -5159665212716187377, guid: dcc97b6154b11014480ca604159638d4, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 6d7405585d4d6354a81961c78a698ece, type: 2}
+    - target: {fileID: -4320218269186255245, guid: dcc97b6154b11014480ca604159638d4, type: 3}
+      propertyPath: m_Name
+      value: floor
+      objectReference: {fileID: 0}
     - target: {fileID: -4320218269186255245, guid: dcc97b6154b11014480ca604159638d4, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -47707,7 +47711,7 @@ PrefabInstance:
     - target: {fileID: 4984004882429785569, guid: dcc97b6154b11014480ca604159638d4, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 95f4e7214c7f8e74b95dd6ec270ee433, type: 2}
+      objectReference: {fileID: 2100000, guid: 4d6341d4d88272b4bb2c867d6e105194, type: 2}
     - target: {fileID: 4984004882429785569, guid: dcc97b6154b11014480ca604159638d4, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
