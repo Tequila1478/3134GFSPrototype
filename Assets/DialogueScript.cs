@@ -19,20 +19,13 @@ public class DialogueScript : MonoBehaviour
     public GameObject hud;
 
 
-    [System.Serializable]
-    public class DialogueLine
-    {
-        [TextArea]
-        public string text;              // The dialogue line
-        public string heading;           // Speaker name (e.g., "Ghost")
-        public Sprite characterSprite;   // Reference to character image
-        public bool spriteOnRight;       // Layout direction
-    }
-
 
     public List<DialogueLine> startDialogue;
+
     public List<DialogueLine> endDialogueGood;
+
     public List<DialogueLine> endDialogueBad;
+
     public List<DialogueLine> endDialogueFoundDivorcePapers;
 
     public void Start()
@@ -104,5 +97,10 @@ public class DialogueScript : MonoBehaviour
         imageContainer.anchorMax = new Vector2(onRight ? 1 : 0, 0.5f);
         imageContainer.pivot = new Vector2(onRight ? 1 : 0, 0.5f);
         imageContainer.anchoredPosition = new Vector2(onRight ? -50 : 100, 0);
+    }
+
+    public void PlayDialogueList(List<DialogueLine> lines)
+    {
+        StartCoroutine(PlayDialogue(lines));
     }
 }
