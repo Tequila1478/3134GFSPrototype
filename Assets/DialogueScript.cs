@@ -17,6 +17,7 @@ public class DialogueScript : MonoBehaviour
     public bool houseClean = true;
     public bool foundDivorcePapers = true;
     public GameObject hud;
+    public CustomCursor cursor;
 
 
     [System.Serializable]
@@ -42,12 +43,14 @@ public class DialogueScript : MonoBehaviour
     public void StartDay()
     {
         hud.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(PlayDialogue(startDialogue));
     }
 
     public IEnumerator EndDay()
     {
         hud.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
 
         if (houseClean)
         {
@@ -96,6 +99,7 @@ public class DialogueScript : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         hud.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void LayoutSprite(bool onRight)
