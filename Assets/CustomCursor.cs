@@ -33,5 +33,6 @@ public class CustomCursor : MonoBehaviour
         {
             this.GetComponent<Image>().sprite = cursorVisualInteract;
         }
+        
     }
 }
