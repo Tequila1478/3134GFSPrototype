@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public Material outlineMat;
     public Material originalMat;
     public GameObject materialObj;
+    public GameObject visualisationObj;
 
     [Header("Floating Settings")]
     public float speed = 2f;

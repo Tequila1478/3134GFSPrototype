@@ -1453,6 +1453,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 117840517}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -9471,6 +9472,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 311874625}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -15961,15 +15963,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16015,6 +16017,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16027,6 +16041,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_Name
       value: book
@@ -16038,6 +16056,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17613,6 +17647,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 597575445}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -22840,6 +22875,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 628306008}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -30549,6 +30585,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 691641130}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -38129,6 +38166,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1409499391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1020564741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+  m_PrefabInstance: {fileID: 433925972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043940438
 GameObject:
   m_ObjectHideFlags: 0
@@ -40827,6 +40869,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1392589542}
+  visualisationObj: {fileID: 1020564741}
   speed: 2
   height: 0.001
   rotation: 0.1
@@ -41604,7 +41647,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1.72}
+    m_Scale: {x: 0.5, y: 0.5, z: 0.5}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -41927,8 +41970,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.22276738
-          value: 1
+          time: 0.22118047
+          value: 0.74324226
           inSlope: -0.6632331
           outSlope: -0.6632331
           tangentMode: 0
@@ -41936,8 +41979,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.7624979
-          value: 1
+          time: 0.7593241
+          value: 0.6621628
           inSlope: -1.1858071
           outSlope: -1.1858071
           tangentMode: 0
@@ -45726,7 +45769,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.82906723
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -46085,6 +46128,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1403697206}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -58528,6 +58572,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 8431767700884512640}
+  visualisationObj: {fileID: 0}
   speed: 4
   height: 0.001
   rotation: 0.1
@@ -64942,6 +64987,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 206065388}
     m_Modifications:
+    - target: {fileID: 630932622584059902, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3511563629067652023, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_Radius
       value: 0.5
@@ -64952,11 +65001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479394419190207567, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.477
+      value: -3.48
       objectReference: {fileID: 0}
     - target: {fileID: 5479394419190207567, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.707
+      value: -3.05
       objectReference: {fileID: 0}
     - target: {fileID: 5479394419190207567, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64989,6 +65038,18 @@ PrefabInstance:
     - target: {fileID: 6756238646078492606, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_Name
       value: Placement Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201434926003114707, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201434926003114707, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201434926003114707, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

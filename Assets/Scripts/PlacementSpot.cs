@@ -116,7 +116,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             withinRange = true;
             interactable.hasSetSpot = true;
             interactable.newDirection = direction;
-            ApplyVisualisation(other.gameObject, interactable);
+            ApplyVisualisation(other.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
         }
         else if (player.isHolding)
         {
@@ -127,7 +127,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             withinRange = true;
             interactable.hasSetSpot = true;
             interactable.newDirection = direction;
-            ApplyVisualisation(otherObject.gameObject, interactable);
+            ApplyVisualisation(otherObject.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
         }
     }
 
