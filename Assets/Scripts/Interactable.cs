@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private CharacterController charController;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] soundEffects;
-    private ParticleSystem ghostParticles;
+    public ParticleSystem ghostParticles;
 
     public bool floating = false;
     private bool isMoving = false;
@@ -79,6 +79,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
         audioSource = GetComponent<AudioSource>();
+        if(ghostParticles == null)
         ghostParticles = GetComponent<ParticleSystem>();
 
         if (materialObj != null)

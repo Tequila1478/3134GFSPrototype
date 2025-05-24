@@ -6,24 +6,24 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
     public bool isTrashcan = false;
 
-    [SerializeField] private Vector3 offset = new Vector3(0, 1, 0);
-    [SerializeField] private float maxHeightAbovePoint;
-    [SerializeField] private GameObject placementVisualisation;
-    [SerializeField] private PlayerInteraction player;
+    public Vector3 offset = new Vector3(0, 1, 0);
+    public float maxHeightAbovePoint;
+    public GameObject placementVisualisation;
+    public PlayerInteraction player;
 
     public bool claimed = false;
     public bool withinRange = false;
 
 
 
-    private Vector3[] controlPoints = new Vector3[4];
-    private Vector3 placementPoint;
-    private Vector3 direction;
-    private Vector3 startingPosition;
-    private Vector3 placementOffset;
+    public Vector3[] controlPoints = new Vector3[4];
+    public Vector3 placementPoint;
+    public Vector3 direction;
+    public Vector3 startingPosition;
+    public Vector3 placementOffset;
 
-    private CustomCursor cursor;
-    private Collider otherObject;
+    public CustomCursor cursor;
+    public Collider otherObject;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         cursor = FindObjectOfType<CustomCursor>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (otherObject == null) return;
 
@@ -57,7 +57,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    private void CreateBezierCurvePoints(Interactable interactable)
+    protected virtual void CreateBezierCurvePoints(Interactable interactable)
     {
         placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
         controlPoints[3] = transform.position + placementOffset;
@@ -66,20 +66,20 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         controlPoints[0] = startingPosition;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         DrawArrow.ForGizmo(transform.position, transform.forward);
         DrawBezierCurve();
         Gizmos.DrawSphere(transform.position, 0.15f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         SelectObject(other);
         gameObject.layer = 2; // Intentional: Ignore Raycast
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         DeselectObject(other);
         gameObject.layer = 0;
@@ -88,7 +88,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         claimed = false;
     }
 
-    public void DrawBezierCurve()
+    protected virtual void DrawBezierCurve()
     {
         for (float t = 0; t <= 1; t += 0.05f)
         {
@@ -103,7 +103,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         Gizmos.DrawLine(controlPoints[2], controlPoints[3]);
     }
 
-    public void SelectObject(Collider other = null)
+    protected virtual void SelectObject(Collider other = null)
     {
         if (claimed) return;
 
@@ -131,7 +131,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    public void DeselectObject(Collider other = null)
+    protected virtual void DeselectObject(Collider other = null)
     {
         if (other != null)
         {
@@ -158,7 +158,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    private void ApplyVisualisation(GameObject obj, Interactable interactable)
+    protected virtual void ApplyVisualisation(GameObject obj, Interactable interactable)
     {
         placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
         placementVisualisation.transform.position = transform.position + placementOffset;
@@ -170,7 +170,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         placementVisualisation.transform.localScale = obj.transform.localScale;
     }
 
-    private Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
+    protected virtual Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
     {
         return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
     }
@@ -230,7 +230,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     }
 
-    private void DisablePlacementPointCollidersSafely()
+    protected virtual void DisablePlacementPointCollidersSafely()
 {
     player.DisablePlacementPointColliders();
 }
