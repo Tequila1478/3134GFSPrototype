@@ -1067,7 +1067,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 11.52
+  m_Intensity: 2.97
   m_Range: 34.55
   m_SpotAngle: 115.513954
   m_InnerSpotAngle: 107.31603
@@ -15458,6 +15458,7 @@ MonoBehaviour:
   houseClean: 1
   foundDivorcePapers: 1
   hud: {fileID: 1080947470667454537}
+  cursor: {fileID: 0}
   startDialogue:
   - text: '[Wednesday]'
     heading: 
@@ -18734,7 +18735,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 2.14
   m_Range: 8.79
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -34624,15 +34625,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672637233448536364, guid: b5cb935d700d939498b401f788a524ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.1658382
+      value: 3.606354
       objectReference: {fileID: 0}
     - target: {fileID: 5672637233448536364, guid: b5cb935d700d939498b401f788a524ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.03356
+      value: 9.03336
       objectReference: {fileID: 0}
     - target: {fileID: 5672637233448536364, guid: b5cb935d700d939498b401f788a524ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5713754
+      value: -4.761
       objectReference: {fileID: 0}
     - target: {fileID: 5672637233448536364, guid: b5cb935d700d939498b401f788a524ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67775,7 +67776,7 @@ Transform:
   m_GameObject: {fileID: 1180283928}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6981105, y: 0.11243561, z: 0.11243561, w: 0.6981105}
-  m_LocalPosition: {x: 0.56, y: 3.18, z: -6.02}
+  m_LocalPosition: {x: -0.49, y: 2.54, z: -5.373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67816,7 +67817,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 106.18
+  m_Intensity: 45
   m_Range: 24.933441
   m_SpotAngle: 179
   m_InnerSpotAngle: 92.902145
@@ -82595,7 +82596,7 @@ Transform:
   m_GameObject: {fileID: 1633583155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.15900795, w: 0.9872773}
-  m_LocalPosition: {x: 0.67, y: 2.54, z: -5.96}
+  m_LocalPosition: {x: -0.465, y: 2.165, z: -5.313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93842,7 +93843,7 @@ Transform:
   m_GameObject: {fileID: 2099971969}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.15900795, w: 0.9872773}
-  m_LocalPosition: {x: 6.44, y: -1.37, z: -2.748}
+  m_LocalPosition: {x: 6.06, y: -1.5, z: -2.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93883,7 +93884,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.84
+  m_Intensity: 2.5
   m_Range: 23.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -102033,6 +102034,14 @@ PrefabInstance:
     - target: {fileID: 5791749543736509065, guid: e3760a9a04d8e5541a7159f675428ed8, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444366630041458560, guid: e3760a9a04d8e5541a7159f675428ed8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444366630041458560, guid: e3760a9a04d8e5541a7159f675428ed8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
