@@ -109,7 +109,8 @@ public class CameraMovement : MonoBehaviour
                 int originalLayer = obj.layer;
                 obj.layer = ignoreMouseRaycastLayer;
 
-                rend.enabled = false;
+                //rend.enabled = false;
+                obj.SetActive(false);
 
                 hiddenObjects.Add(new HiddenObjectData
                 {
@@ -133,7 +134,8 @@ public class CameraMovement : MonoBehaviour
             {
                 GameObject obj = rend.gameObject;
                 obj.layer = hiddenObjects[i].originalLayer;
-                rend.enabled = true;
+                //rend.enabled = true;
+                obj.SetActive(true);
                 hiddenObjects.RemoveAt(i);
             }
         }
