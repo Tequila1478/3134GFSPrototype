@@ -15216,6 +15216,7 @@ MonoBehaviour:
   foundDivorcePapers: 1
   hud: {fileID: 1080947470667454537}
   cursor: {fileID: 0}
+  loadNextScene: Scene_SecondDay
   startDialogue:
   - text: '[Wednesday]'
     heading: 

@@ -7217,7 +7217,7 @@ MonoBehaviour:
   playAudioOnClick: 0
   nextUI: {fileID: 0}
   previousUI: {fileID: 0}
-  sceneToLoad: Scene_Teenager
+  sceneToLoad: Scene_FirstDay
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
   isMusic: 0

@@ -15216,72 +15216,11 @@ MonoBehaviour:
   foundDivorcePapers: 1
   hud: {fileID: 1080947470667454537}
   cursor: {fileID: 0}
-  startDialogue:
-  - text: '[Wednesday]'
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 1
-  - text: Door clicks shut
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 1
-  - text: And they're off again...
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
-  - text: Seriously, after all this time, they really can't be bothered to clean
-      up after themselves?
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 0763b23136dcec94f8954c039cb47e6c, type: 3}
-    spriteOnRight: 1
-  - text: ...
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
-  - text: Whatever. Let's get to work then. Can't have this place looking like a
-      pig's sty
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
-  endDialogueGood:
-  - text: '[The room looks considerably cleaner than before]'
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 1
-  - text: All in a day's work!
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
-    spriteOnRight: 1
-  - text: Gosh, how would they survive without me?
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
-    spriteOnRight: 1
-  endDialogueBad:
-  - text: 
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 0
-  - text: 
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 0
-  - text: 
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 0
-  endDialogueFoundDivorcePapers:
-  - text: Speaking of which...
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
-    spriteOnRight: 1
-  - text: Those papers... Are they really-
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
-    spriteOnRight: 1
-  - text: No. It's not my problem. The day is finished
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
+  loadNextScene: 
+  startDialogue: []
+  endDialogueGood: []
+  endDialogueBad: []
+  endDialogueFoundDivorcePapers: []
 --- !u!4 &332580962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}

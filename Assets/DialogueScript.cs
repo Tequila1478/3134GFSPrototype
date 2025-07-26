@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueScript : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class DialogueScript : MonoBehaviour
     public bool foundDivorcePapers = true;
     public GameObject hud;
     public CustomCursor cursor;
-
+    public string loadNextScene;
 
 
     public List<DialogueLine> startDialogue;
@@ -61,6 +62,7 @@ public class DialogueScript : MonoBehaviour
         }
 
         Debug.Log("End of day sequence complete.");
+        SceneManager.LoadScene(loadNextScene);
     }
 
     IEnumerator PlayDialogue(List<DialogueLine> lines)
