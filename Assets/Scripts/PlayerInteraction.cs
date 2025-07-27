@@ -120,7 +120,7 @@ public class PlayerInteraction : MonoBehaviour
         foreach (GameObject obj in allPlacementPoints)
         {
             obj.GetComponent<Collider>().enabled = false;
-            obj.GetComponentInChildren<MeshFilter>().mesh = null;
+            //obj.GetComponentInChildren<MeshFilter>().mesh = null;
         }
     }
 

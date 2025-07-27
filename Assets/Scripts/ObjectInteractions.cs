@@ -37,8 +37,6 @@ public class ObjectInteractions : MonoBehaviour
     }
 
 
-    //Can we make it based on the camera? That way we can add basic camera controls if we want later? 
-    //Done
     public void Move()
     {
         if (characterController)

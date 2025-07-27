@@ -60,7 +60,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (outlineMat != null && objectRenderer != null)
         {
-            outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
+            //outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
         }
 
 
@@ -220,6 +220,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
         movingToSetSpot = false;
         gameObject.layer = 9;
+
+        Debug.Log("Clicked: " + this);
     }
 
     public void OnRelease()
@@ -322,8 +324,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (outlineMat != null && objectRenderer != null)
         {
-            outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
-            objectRenderer.material = outlineMat;
+            //outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
+           // objectRenderer.material = outlineMat;
         }
     }
 
@@ -331,7 +333,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (originalMat != null && objectRenderer != null)
         {
-            objectRenderer.material = originalMat;
+            //objectRenderer.material = originalMat;
         }
     }
 
