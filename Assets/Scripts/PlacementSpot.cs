@@ -9,10 +9,13 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public Vector3 offset = new Vector3(0, 1, 0);
     public float maxHeightAbovePoint;
     public GameObject placementVisualisation;
+    public GameObject highlightVisualisation;
     public PlayerInteraction player;
 
     public bool claimed = false;
     public bool withinRange = false;
+
+    //public bool highlightSpots = false;
 
 
 
@@ -33,6 +36,14 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         placementPoint = transform.position;
         direction = transform.forward;
         cursor = FindObjectOfType<CustomCursor>();
+
+        placementVisualisation = transform.GetChild(0).gameObject;
+        placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+
+        //placementVisualisation.SetActive(false);
+        highlightVisualisation = transform.GetChild(1).gameObject;
+        highlightVisualisation.layer = 14;
+        highlightVisualisation.SetActive(false);
     }
 
     protected virtual void Update()
@@ -54,6 +65,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             claimed = true;
             otherObject = null;
             placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+            //placementVisualisation.SetActive(false);
         }
     }
 
@@ -129,6 +141,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             interactable.newDirection = direction;
             ApplyVisualisation(otherObject.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
         }
+        //highlightSpots = true;
     }
 
     protected virtual void DeselectObject(Collider other = null)
@@ -144,6 +157,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
                 otherObject = null;
                 withinRange = false;
                 placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+                //placementVisualisation.SetActive(false);
             }
         }
         else if (otherObject != null && !claimed)
@@ -155,6 +169,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             otherObject = null;
             withinRange = false;
             placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+            //placementVisualisation.SetActive(false);
         }
     }
 
@@ -165,7 +180,10 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
         var meshFilter = obj.GetComponent<MeshFilter>();
         if (meshFilter != null)
+        {
+            //placementVisualisation.SetActive(true);
             placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
+        }
 
         placementVisualisation.transform.localScale = obj.transform.localScale;
     }
@@ -207,6 +225,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             // Move to placement spot
             player.itemHeld.StartMoveToSetSpot();
             player.itemHeld = null;
+            //highlightSpots = false;
         }
         else
         {

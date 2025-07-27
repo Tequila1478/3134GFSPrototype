@@ -147,6 +147,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             isMoving = false;
             if (charController != null)
                 charController.enabled = false;
+
+            //oi?.ClearPlacementSpots();
+            //Change this to be when put to spot!
         }
 
         if (isMoving)
@@ -155,7 +158,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
                 charController.enabled = true;
 
             oi?.Move();
-        }
+        }        
     }
 
     private void RotateToDirectionIfNeeded()
@@ -265,6 +268,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         audioSource.PlayOneShot(audioSource.clip);
         ghostParticles.Stop();
 
+        oi?.ClearPlacementSpots();
+
         if (forceDrop)
         {
             hasSetSpot = false;
@@ -283,6 +288,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     public void StartMoveToSetSpot()
     {
+        oi?.ClearPlacementSpots();
+
         if (!hasSetSpot) return;
 
         if (moveCoroutine == null)

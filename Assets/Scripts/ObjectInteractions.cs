@@ -14,10 +14,16 @@ public class ObjectInteractions : MonoBehaviour
     private Vector3 upInput;
 
 
+    [SerializeField] private float placementRadius = 2f;
+    [SerializeField] private LayerMask glowLayer = 14;
+
+    private List<GameObject> activeGlows = new List<GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
     {
+        glowLayer = 1 << 8;
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 
@@ -62,6 +68,43 @@ public class ObjectInteractions : MonoBehaviour
             //when rotation is not frozen the cube spins all over the place - I
             Vector3 playerInput = forwardRelativeInput + rightRelativeInput + upRelativeInput;
             characterController.Move(playerInput * Time.deltaTime * moveSpeed);
+
+            //Add a way for 
+
+            ShowNearbyPlacementSpots();
+        }
+    }
+    public void ClearPlacementSpots()
+    {
+        foreach(GameObject glow in activeGlows)
+        {
+            glow.SetActive(false);
+        }
+
+        activeGlows.Clear();
+    }
+    private void ShowNearbyPlacementSpots()
+    {
+        foreach (GameObject glow in activeGlows)
+        {
+            glow.SetActive(false);
+        }
+
+        activeGlows.Clear();
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, placementRadius, glowLayer);
+
+        foreach (Collider hit in hits)
+        {
+            PlacementSpot spot = hit.GetComponent<PlacementSpot>();
+            if (spot != null && !spot.claimed)
+            {
+                Debug.Log(spot);
+                //GameObject glow = Instantiate(glowPrefab, hit.transform.position + Vector3.up * 0.1f, Quaternion.identity);
+                GameObject glow = spot.highlightVisualisation;
+                glow.SetActive(true);
+                activeGlows.Add(glow);
+            }
         }
     }
 
