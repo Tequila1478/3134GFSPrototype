@@ -220,6 +220,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 525689796}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 740957659}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -6582,6 +6584,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 16980090}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -6909,6 +6912,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 669720319}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -8838,6 +8842,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 169233231}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -13971,6 +13976,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 429719794}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -15101,6 +15107,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 0}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -15216,33 +15223,8 @@ MonoBehaviour:
   foundDivorcePapers: 1
   hud: {fileID: 1080947470667454537}
   cursor: {fileID: 0}
-  startDialogue:
-  - text: '[Wednesday]'
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 1
-  - text: Door clicks shut
-    heading: 
-    characterSprite: {fileID: 0}
-    spriteOnRight: 1
-  - text: And they're off again...
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
-  - text: Seriously, after all this time, they really can't be bothered to clean
-      up after themselves?
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 0763b23136dcec94f8954c039cb47e6c, type: 3}
-    spriteOnRight: 1
-  - text: ...
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
-  - text: Whatever. Let's get to work then. Can't have this place looking like a
-      pig's sty
-    heading: Ghost
-    characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
-    spriteOnRight: 1
+  loadNextScene: 
+  startDialogue: []
   endDialogueGood:
   - text: '[The room looks considerably cleaner than before]'
     heading: 
@@ -15453,6 +15435,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 633677101}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -16452,6 +16435,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 234318421}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -17681,6 +17665,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1051326327}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -17971,6 +17956,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2144472755}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -18525,6 +18511,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1629875263}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -23495,6 +23482,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &546397389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23784,6 +23775,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1003144014}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -29130,6 +29122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &624744056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32190,6 +32186,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1755296348}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -32695,6 +32692,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1646009252}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -32920,6 +32918,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 779997418}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!143 &779997414
 CharacterController:
   m_ObjectHideFlags: 0
@@ -34347,6 +34349,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 403910706}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -39933,6 +39936,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &970968499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40277,6 +40284,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1676901946}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -45297,6 +45305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &985339310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55476,6 +55488,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1033370115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60613,6 +60629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1044369515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66133,6 +66153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1056953796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66442,6 +66466,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 588869662}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -66707,6 +66732,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1125863723}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!143 &1125863719
 CharacterController:
   m_ObjectHideFlags: 0
@@ -72553,6 +72582,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1228952248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73272,6 +73305,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 537653254}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -79128,6 +79162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!4 &1379537032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3332268632261038770, guid: 9ed5b3ab164b8424a89b50be390722a6, type: 3}
@@ -79231,6 +79269,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1877260049}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -79343,6 +79382,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2089054483}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -79676,6 +79716,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1591864569}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -80835,6 +80876,111 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5717973965163262547, guid: dcc97b6154b11014480ca604159638d4, type: 3}
+--- !u!1001 &1475987388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 618428723210357644, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 1167754245366328599}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716291281585764690, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634313526927100834, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_Name
+      value: Video Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038873553375270840, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 922728074}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae63a9f63d9b7084f96e31278d5c26ca, type: 3}
 --- !u!1 &1481271287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2699142746054641672, guid: 9ed5b3ab164b8424a89b50be390722a6, type: 3}
@@ -81184,6 +81330,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1285406290}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -82375,6 +82522,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1372770858}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -82580,6 +82728,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2017962469}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -83537,6 +83686,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 308572224}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -88564,6 +88714,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1697724003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88740,6 +88894,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 117395294}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -88994,6 +89149,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1037186984}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -89714,6 +89870,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 5
+  placementRadius: 2
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 14
 --- !u!114 &1790913912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90004,6 +90164,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 0}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -90168,6 +90329,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 967074607}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -91037,6 +91199,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 557634056}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -93699,6 +93862,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 455971368}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -93875,6 +94039,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1624594966}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -94166,6 +94331,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 22688277}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -95995,6 +96161,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 7335261600328900492}
+  highlightVisualisation: {fileID: 0}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -103635,6 +103802,7 @@ SceneRoots:
   - {fileID: 104996673}
   - {fileID: 5161237023699026119}
   - {fileID: 6202178683621793568}
+  - {fileID: 1475987388}
   - {fileID: 346047300}
   - {fileID: 5770064490417908724}
   - {fileID: 7843403495348534140}
