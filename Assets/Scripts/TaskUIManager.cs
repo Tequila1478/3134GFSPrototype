@@ -15,6 +15,7 @@ public class TaskUIManager : MonoBehaviour
 
     private Dictionary<string, GameObject> taskEntries = new();
 
+
     void Start()
     {
         if (taskManager == null)

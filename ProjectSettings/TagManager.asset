@@ -9,6 +9,7 @@ TagManager:
   - PlacementPoint
   - Orbit Point
   - BookRow
+  - HUD
   layers:
   - Default
   - TransparentFX
