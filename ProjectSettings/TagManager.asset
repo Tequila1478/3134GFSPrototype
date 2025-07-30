@@ -20,14 +20,14 @@ TagManager:
   - IgnorePlacementSpotColliders
   - PlacementSpotCollider
   - Interactable
-  - OutlineLayer
+  - BlackOutlineLayer
   - IgnoreMouseRaycast
   - BrownOutlineLayer
   - BlueOutlineLayer
   - GlowLayer
-  - 
-  - 
-  - 
+  - BrownOutlineInteractible
+  - BlueOutlineInteractible
+  - BlackOutlineInteractible
   - 
   - 
   - 
