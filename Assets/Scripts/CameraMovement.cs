@@ -15,15 +15,17 @@ public class CameraMovement : MonoBehaviour
     }
     private List<HiddenObjectData> hiddenObjects = new List<HiddenObjectData>();
 
+    [Header("Orbit")]
     public Transform target; // Object to orbit around
     public float orbitSpeed = 50f;
     public Vector2 mouseOrbitMultiplier = new(2.5f, 2.5f);
     public float zoomSpeed = 10f;
     public float screenEdgeThreshold = 50f;
-    public bool invert = true;
+    public bool invertH = true;
     public float scrollSensitivity = 100.0f;
     public float minZoomDistance = 2f; // Minimum allowed distance to target
 
+    [Header("Layers and Masking")]
     public string ignoreMouseRaycastLayerName = "IgnoreMouseRaycast"; // Name of the layer to use
     private int ignoreMouseRaycastLayer;
 
@@ -38,11 +40,12 @@ public class CameraMovement : MonoBehaviour
     private List<Renderer> invisibleRenderers = new List<Renderer>(); // Track rendered objects to make visible again
 
     // Camera vertical rotation settings
+    [Header("Vertical Rotation")]
     public float verticalRotationSpeed = 0.05f; // Speed for vertical rotation
     public float maxVerticalAngle = 40f;  // Maximum vertical angle from the original angle
     private float originalVerticalAngle; // The initial vertical angle of the camera
     
-    // Enum for three styles of camera movement
+    // Enum for three styles of camera movement controls
     private enum CameraMovementMode
     {
         Keyboard, //Shift + Keys
@@ -51,6 +54,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     // Debug
+    [Header("Script Debug")]
     public bool debug = false;
     public TMP_Text debugText;
 
@@ -213,7 +217,7 @@ public class CameraMovement : MonoBehaviour
         // Apply input if it was found
         if (horizontalInput != 0f)
         {
-            float direction = invert ? -1f : 1f; //Invert direction if needed
+            float direction = invertH ? -1f : 1f; //Invert direction if needed
             transform.RotateAround(target.position, Vector3.up, horizontalInput * orbitSpeed * Time.deltaTime * direction); //Apply rotation around target orbit point
         }
     }
