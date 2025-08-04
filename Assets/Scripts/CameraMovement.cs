@@ -267,6 +267,10 @@ public class CameraMovement : MonoBehaviour
         // Calculate the new angle based on the direction
         float newAngle = currentAngle + direction * verticalRotationSpeed;
 
+        // Make new angle negative if it is over 180 degrees (necessary for the clamp to work)
+        if (newAngle > 180)
+            newAngle = newAngle - 360;
+
         // Ensure the new vertical rotation stays within the clamp range from original angle
         float clampedAngle = Mathf.Clamp(newAngle, originalVerticalAngle - maxVerticalAngle, originalVerticalAngle + maxVerticalAngle);
 
