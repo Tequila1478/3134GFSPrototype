@@ -97,7 +97,14 @@ public class CameraMovement : MonoBehaviour
         }
 
         // Camera controls
-        if (Input.GetMouseButton(1)) //Right-click + mouse
+        if (Input.GetKey(KeyCode.LeftShift) && (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold)) //Only continue if left shift modifier is pressed
+        {
+            //Shift + mouse
+            HandleHorizontalOrbit(CameraMovementMode.EdgeMouse); //Do horizontal rotation
+            HandleVerticalRotation(CameraMovementMode.EdgeMouse); //Do vertical rotation
+            Cursor.lockState = CursorLockMode.Confined; //Confine mouse to screen
+        }
+        else if (Input.GetMouseButton(1)) //Right-click + mouse
         {
             HandleHorizontalOrbit(CameraMovementMode.RightClickMouse); //Do horizontal rotation
             HandleVerticalRotation(CameraMovementMode.RightClickMouse); //Do vertical rotation
@@ -108,16 +115,9 @@ public class CameraMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None; //Do not confine mouse to screen
             if (Input.GetKey(KeyCode.LeftShift)) //Only continue if left shift modifier is pressed
             {
-                if (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold) //Shift + mouse
-                {
-                    HandleHorizontalOrbit(CameraMovementMode.EdgeMouse); //Do horizontal rotation
-                    HandleVerticalRotation(CameraMovementMode.EdgeMouse); //Do vertical rotation
-                }
-                else //Shift + keys
-                {
-                    HandleHorizontalOrbit(CameraMovementMode.Keyboard); //Do horizontal rotation
-                    HandleVerticalRotation(CameraMovementMode.Keyboard); //Do vertical rotation
-                }
+                //Shift + keys
+                HandleHorizontalOrbit(CameraMovementMode.Keyboard); //Do horizontal rotation
+                HandleVerticalRotation(CameraMovementMode.Keyboard); //Do vertical rotation
                 HandleZoom(CameraMovementMode.Keyboard); //Do zoom
             }
         }
