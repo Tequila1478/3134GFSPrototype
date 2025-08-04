@@ -103,12 +103,12 @@ public class CameraMovement : MonoBehaviour
                     HandleHorizontalOrbit(CameraOrbitMode.EdgeMouse);
                 else
                     HandleHorizontalOrbit(CameraOrbitMode.Keyboard);
-                HandleZoom();
+                HandleZoom(CameraOrbitMode.Keyboard);
                 HandleVerticalRotation();
             }
         }
 
-            HandleMouseScrollZoom(); // Mouse scroll doesn't require Shift
+        HandleZoom(CameraOrbitMode.RightClickMouse); // Mouse scroll doesn't require Shift
 
         HandleVisibility();
     }
@@ -186,7 +186,6 @@ public class CameraMovement : MonoBehaviour
                 break;
         }
 
-
         // Apply horizontal input
         if (horizontalInput != 0f)
         {
@@ -195,26 +194,31 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void HandleZoom()
+    void HandleZoom(CameraOrbitMode orbitMode)
     {
         float zoomInput = 0f;
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        // W / S keys
-        if (Input.GetKey(KeyCode.W)) zoomInput = -1f;
-        else if (Input.GetKey(KeyCode.S)) zoomInput = 1f;
+        switch (orbitMode)
+        {
+            case (CameraOrbitMode.EdgeMouse):
+            case (CameraOrbitMode.RightClickMouse):
+                if (Mathf.Abs(scroll) > 0.01f)
+                {
+                    ZoomCamera(-scroll * scrollSensitivity); // Invert to make scroll up = zoom in
+                }
+                break;
+            default: // W / S keys
+                if (Input.GetKey(KeyCode.W)) zoomInput = -1f;
+                else if (Input.GetKey(KeyCode.S)) zoomInput = 1f;
+                break;
+        }
+
+        
 
         if (zoomInput != 0f)
         {
             ZoomCamera(zoomInput);
-        }
-    }
-
-    void HandleMouseScrollZoom()
-    {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (Mathf.Abs(scroll) > 0.01f)
-        {
-            ZoomCamera(-scroll * scrollSensitivity); // Invert to make scroll up = zoom in
         }
     }
 
