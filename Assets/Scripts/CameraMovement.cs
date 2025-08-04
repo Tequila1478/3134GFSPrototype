@@ -40,11 +40,13 @@ public class CameraMovement : MonoBehaviour
     public float verticalRotationSpeed = 0.05f; // Speed for vertical rotation
     public float maxVerticalAngle = 40f;  // Maximum vertical angle from the original angle
     private float originalVerticalAngle; // The initial vertical angle of the camera
-    private enum CameraOrbitMode
+    
+    // Enum for three styles of camera movement
+    private enum CameraMovementMode
     {
-        Keyboard,
-        EdgeMouse,
-        RightClickMouse
+        Keyboard, //Shift + WASD
+        EdgeMouse, //Shift + Cursor (at edge of screen)
+        RightClickMouse //Cursor (hold right-click)
     }
 
     void Start()
@@ -91,9 +93,9 @@ public class CameraMovement : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            HandleHorizontalOrbit(CameraOrbitMode.RightClickMouse);
-            HandleVerticalRotation(CameraOrbitMode.RightClickMouse);
-            Cursor.lockState = CursorLockMode.Locked;
+            HandleHorizontalOrbit(CameraMovementMode.RightClickMouse);
+            HandleVerticalRotation(CameraMovementMode.RightClickMouse);
+            Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
@@ -102,19 +104,19 @@ public class CameraMovement : MonoBehaviour
             {
                 if (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold)
                 {
-                    HandleHorizontalOrbit(CameraOrbitMode.EdgeMouse);
-                    HandleVerticalRotation(CameraOrbitMode.EdgeMouse);
+                    HandleHorizontalOrbit(CameraMovementMode.EdgeMouse);
+                    HandleVerticalRotation(CameraMovementMode.EdgeMouse);
                 }
                 else
                 {
-                    HandleHorizontalOrbit(CameraOrbitMode.Keyboard);
-                    HandleVerticalRotation(CameraOrbitMode.Keyboard);
+                    HandleHorizontalOrbit(CameraMovementMode.Keyboard);
+                    HandleVerticalRotation(CameraMovementMode.Keyboard);
                 }
-                HandleZoom(CameraOrbitMode.Keyboard);
+                HandleZoom(CameraMovementMode.Keyboard);
             }
         }
 
-        HandleZoom(CameraOrbitMode.RightClickMouse); // Mouse scroll doesn't require Shift
+        HandleZoom(CameraMovementMode.RightClickMouse); // Mouse scroll doesn't require Shift
 
         HandleVisibility();
     }
@@ -169,20 +171,20 @@ public class CameraMovement : MonoBehaviour
 
     float mousePosX = Input.GetAxis("Mouse X");
     float mousePosY = Input.GetAxis("Mouse Y");
-    void HandleHorizontalOrbit(CameraOrbitMode orbitMode)
+    void HandleHorizontalOrbit(CameraMovementMode orbitMode)
     {
         float horizontalInput = 0f;
 
         switch(orbitMode)
         {
-            case (CameraOrbitMode.EdgeMouse):
+            case (CameraMovementMode.EdgeMouse):
                 Vector3 mousePos = Input.mousePosition;
                 if (mousePos.x < screenEdgeThreshold)
                     horizontalInput = -1f;
                 else if (mousePos.x > Screen.width - screenEdgeThreshold)
                     horizontalInput = 1f;
                 break;
-            case (CameraOrbitMode.RightClickMouse):
+            case (CameraMovementMode.RightClickMouse):
                 float mouseNewX = Input.GetAxis("Mouse X");
                 horizontalInput = mouseNewX - mousePosX;
                 horizontalInput *= mouseOrbitMultiplier.x;
@@ -201,15 +203,15 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void HandleZoom(CameraOrbitMode orbitMode)
+    void HandleZoom(CameraMovementMode orbitMode)
     {
         float zoomInput = 0f;
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         switch (orbitMode)
         {
-            case (CameraOrbitMode.EdgeMouse):
-            case (CameraOrbitMode.RightClickMouse):
+            case (CameraMovementMode.EdgeMouse):
+            case (CameraMovementMode.RightClickMouse):
                 if (Mathf.Abs(scroll) > 0.01f)
                 {
                     ZoomCamera(-scroll * scrollSensitivity); // Invert to make scroll up = zoom in
@@ -244,13 +246,13 @@ public class CameraMovement : MonoBehaviour
     }
 
     // Handle vertical rotation of the camera when holding Shift + Q/E or mouse at top/bottom of the screen
-    void HandleVerticalRotation(CameraOrbitMode orbitMode)
+    void HandleVerticalRotation(CameraMovementMode orbitMode)
     {
         float verticalInput = 0f;
 
         switch (orbitMode)
         {
-            case (CameraOrbitMode.EdgeMouse):
+            case (CameraMovementMode.EdgeMouse):
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     // Handle mouse vertical movement (top/bottom of screen) with Shift held
@@ -261,7 +263,7 @@ public class CameraMovement : MonoBehaviour
                         verticalInput = -1f;
                 }
                 break;
-            case (CameraOrbitMode.RightClickMouse):
+            case (CameraMovementMode.RightClickMouse):
                 float mouseNewY = Input.GetAxis("Mouse Y");
                 verticalInput = mouseNewY - mousePosY;
                 verticalInput *= mouseOrbitMultiplier.y;
