@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   orbitSpeed: 50
+  mouseOrbitMultiplier: 4
   zoomSpeed: 10
   screenEdgeThreshold: 50
   invert: 1

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     public Transform target; // Object to orbit around
     public float orbitSpeed = 50f;
+    public float mouseOrbitMultiplier = 2.5f;
     public float zoomSpeed = 10f;
     public float screenEdgeThreshold = 50f;
     public bool invert = true;
@@ -38,6 +40,12 @@ public class CameraMovement : MonoBehaviour
     public float verticalRotationSpeed = 0.05f; // Speed for vertical rotation
     public float maxVerticalAngle = 40f;  // Maximum vertical angle from the original angle
     private float originalVerticalAngle; // The initial vertical angle of the camera
+    private enum CameraOrbitMode
+    {
+        Keyboard,
+        EdgeMouse,
+        RightClickMouse
+    }
 
     void Start()
     {
@@ -81,14 +89,26 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetMouseButton(1))
         {
-            HandleHorizontalOrbit();
-            HandleZoom();
-            HandleVerticalRotation();
+            HandleHorizontalOrbit(CameraOrbitMode.RightClickMouse);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold)
+                    HandleHorizontalOrbit(CameraOrbitMode.EdgeMouse);
+                else
+                    HandleHorizontalOrbit(CameraOrbitMode.Keyboard);
+                HandleZoom();
+                HandleVerticalRotation();
+            }
         }
 
-        HandleMouseScrollZoom(); // Mouse scroll doesn't require Shift
+            HandleMouseScrollZoom(); // Mouse scroll doesn't require Shift
 
         HandleVisibility();
     }
@@ -141,21 +161,33 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void HandleHorizontalOrbit()
+    float mousePosX = Input.GetAxis("Mouse X");
+    void HandleHorizontalOrbit(CameraOrbitMode orbitMode)
     {
         float horizontalInput = 0f;
 
-        // A / D keys
-        if (Input.GetKey(KeyCode.A)) horizontalInput = -1f;
-        else if (Input.GetKey(KeyCode.D)) horizontalInput = 1f;
+        switch(orbitMode)
+        {
+            case (CameraOrbitMode.EdgeMouse):
+                Vector3 mousePos = Input.mousePosition;
+                if (mousePos.x < screenEdgeThreshold)
+                    horizontalInput = -1f;
+                else if (mousePos.x > Screen.width - screenEdgeThreshold)
+                    horizontalInput = 1f;
+                break;
+            case (CameraOrbitMode.RightClickMouse):
+                float mouseNewX = Input.GetAxis("Mouse X");
+                horizontalInput = mouseNewX - mousePosX;
+                horizontalInput *= mouseOrbitMultiplier;
+                break;
+            default: // A / D keys
+                if (Input.GetKey(KeyCode.A)) horizontalInput = -1f;
+                else if (Input.GetKey(KeyCode.D)) horizontalInput = 1f;
+                break;
+        }
 
-        // Mouse edge of screen
-        Vector3 mousePos = Input.mousePosition;
-        if (mousePos.x < screenEdgeThreshold)
-            horizontalInput = -1f;
-        else if (mousePos.x > Screen.width - screenEdgeThreshold)
-            horizontalInput = 1f;
 
+        // Apply horizontal input
         if (horizontalInput != 0f)
         {
             float direction = invert ? -1f : 1f;
