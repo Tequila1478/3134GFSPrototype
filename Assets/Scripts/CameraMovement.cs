@@ -97,7 +97,7 @@ public class CameraMovement : MonoBehaviour
         }
 
         // Camera controls
-        if (Input.GetKey(KeyCode.LeftShift) && (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold)) //Only continue if left shift modifier is pressed
+        if (Input.GetKey(KeyCode.LeftShift) && (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold || Input.mousePosition.y < screenEdgeThreshold || Input.mousePosition.y > Screen.height - screenEdgeThreshold)) //Only continue if left shift modifier is pressed
         {
             //Shift + mouse
             HandleHorizontalOrbit(CameraMovementMode.EdgeMouse); //Do horizontal rotation
@@ -239,7 +239,7 @@ public class CameraMovement : MonoBehaviour
             //Right-click + mouse
             case (CameraMovementMode.RightClickMouse):
                 float mouseNewY = Input.GetAxis("Mouse Y"); //Get current Y position of mouse cursor
-                verticalInput = mouseNewY - mousePosY; //Read amount of change in cursor Y position this frame
+                verticalInput = mousePosY - mouseNewY; //Read amount of change in cursor Y position this frame
                 verticalInput *= mouseOrbitMultiplier.y; //Apply multiplier to input
                 break;
             //Shift + keys
