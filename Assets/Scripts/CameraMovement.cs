@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SearchService;
 
@@ -44,10 +45,14 @@ public class CameraMovement : MonoBehaviour
     // Enum for three styles of camera movement
     private enum CameraMovementMode
     {
-        Keyboard, //Shift + WASD
-        EdgeMouse, //Shift + Cursor (at edge of screen)
-        RightClickMouse //Cursor (hold right-click)
+        Keyboard, //Shift + Keys
+        EdgeMouse, //Shift + mouse (at edge of screen)
+        RightClickMouse //Right-click + mouse
     }
+
+    // Debug
+    public bool debug = false;
+    public TMP_Text debugText;
 
     void Start()
     {
@@ -91,34 +96,41 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(1))
+        // Camera controls
+        if (Input.GetMouseButton(1)) //Right-click + mouse
         {
-            HandleHorizontalOrbit(CameraMovementMode.RightClickMouse);
-            HandleVerticalRotation(CameraMovementMode.RightClickMouse);
-            Cursor.lockState = CursorLockMode.Confined;
+            HandleHorizontalOrbit(CameraMovementMode.RightClickMouse); //Do horizontal rotation
+            HandleVerticalRotation(CameraMovementMode.RightClickMouse); //Do vertical rotation
+            Cursor.lockState = CursorLockMode.Confined; //Confine mouse to screen
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            if (Input.GetKey(KeyCode.LeftShift))
+            Cursor.lockState = CursorLockMode.None; //Do not confine mouse to screen
+            if (Input.GetKey(KeyCode.LeftShift)) //Only continue if left shift modifier is pressed
             {
-                if (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold)
+                if (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold) //Shift + mouse
                 {
-                    HandleHorizontalOrbit(CameraMovementMode.EdgeMouse);
-                    HandleVerticalRotation(CameraMovementMode.EdgeMouse);
+                    HandleHorizontalOrbit(CameraMovementMode.EdgeMouse); //Do horizontal rotation
+                    HandleVerticalRotation(CameraMovementMode.EdgeMouse); //Do vertical rotation
                 }
-                else
+                else //Shift + keys
                 {
-                    HandleHorizontalOrbit(CameraMovementMode.Keyboard);
-                    HandleVerticalRotation(CameraMovementMode.Keyboard);
+                    HandleHorizontalOrbit(CameraMovementMode.Keyboard); //Do horizontal rotation
+                    HandleVerticalRotation(CameraMovementMode.Keyboard); //Do vertical rotation
                 }
-                HandleZoom(CameraMovementMode.Keyboard);
+                HandleZoom(CameraMovementMode.Keyboard); //Do zoom
             }
         }
 
-        HandleZoom(CameraMovementMode.RightClickMouse); // Mouse scroll doesn't require Shift
+        HandleZoom(CameraMovementMode.RightClickMouse); // Mouse scroll doesn't require Shift or Right-click
 
-        HandleVisibility();
+        HandleVisibility(); //Check for objects to hide from camera view
+
+        //Debug
+        if (debug && debugText) //Only do this if debug is enabled and there is a text object to write to. Note that this is *NOT* using Debug.Log()
+        {
+            debugText.text = transform.eulerAngles.ToString(); //Write current camera angle to debug text
+        }
     }
 
     void HandleVisibility()
@@ -173,43 +185,103 @@ public class CameraMovement : MonoBehaviour
     float mousePosY = Input.GetAxis("Mouse Y");
     void HandleHorizontalOrbit(CameraMovementMode orbitMode)
     {
-        float horizontalInput = 0f;
+        float horizontalInput = 0f; //Initialise variable to store potential input
 
         switch(orbitMode)
         {
+            //Shift + mouse
             case (CameraMovementMode.EdgeMouse):
-                Vector3 mousePos = Input.mousePosition;
-                if (mousePos.x < screenEdgeThreshold)
+                Vector3 mousePos = Input.mousePosition; //Get current X,Y,Z position of mouse cursor
+                if (mousePos.x < screenEdgeThreshold) //Read left input if mouse is at left side of screen
                     horizontalInput = -1f;
-                else if (mousePos.x > Screen.width - screenEdgeThreshold)
+                else if (mousePos.x > Screen.width - screenEdgeThreshold) //Read right input if mouse is at right side of screen
                     horizontalInput = 1f;
                 break;
-            case (CameraMovementMode.RightClickMouse):
-                float mouseNewX = Input.GetAxis("Mouse X");
-                horizontalInput = mouseNewX - mousePosX;
-                horizontalInput *= mouseOrbitMultiplier.x;
+            //Right-click + mouse
+            case (CameraMovementMode.RightClickMouse): 
+                float mouseNewX = Input.GetAxis("Mouse X"); //Get current X position of mouse cursor
+                horizontalInput = mouseNewX - mousePosX; //Read amount of change in cursor X position this frame
+                horizontalInput *= mouseOrbitMultiplier.x; //Apply multiplier to input
                 break;
-            default: // A / D keys
-                if (Input.GetKey(KeyCode.A)) horizontalInput = -1f;
-                else if (Input.GetKey(KeyCode.D)) horizontalInput = 1f;
+            //Shift + keys
+            default:
+                if (Input.GetKey(KeyCode.A)) horizontalInput = -1f; //Read left button
+                else if (Input.GetKey(KeyCode.D)) horizontalInput = 1f; //Read right button
                 break;
         }
 
-        // Apply horizontal input
+        // Apply input if it was found
         if (horizontalInput != 0f)
         {
-            float direction = invert ? -1f : 1f;
-            transform.RotateAround(target.position, Vector3.up, horizontalInput * orbitSpeed * Time.deltaTime * direction);
+            float direction = invert ? -1f : 1f; //Invert direction if needed
+            transform.RotateAround(target.position, Vector3.up, horizontalInput * orbitSpeed * Time.deltaTime * direction); //Apply rotation around target orbit point
         }
+    }
+
+    // Handle vertical rotation of the camera when holding Shift + Q/E or mouse at top/bottom of the screen
+    void HandleVerticalRotation(CameraMovementMode orbitMode)
+    {
+        float verticalInput = 0f; //Initialise variable to store potential input
+
+        switch (orbitMode)
+        {
+            //Shift + mouse
+            case (CameraMovementMode.EdgeMouse):
+                if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
+                {
+                    Vector3 mousePos = Input.mousePosition; //Get current X,Y,Z position of mouse cursor
+                    if (mousePos.y <= screenEdgeThreshold) //Read up input if mouse is at top side of screen
+                        verticalInput = 1f;
+                    else if (mousePos.y >= Screen.height - screenEdgeThreshold) //Read down input if mouse is at bottom side of screen
+                        verticalInput = -1f;
+                }
+                break;
+            //Right-click + mouse
+            case (CameraMovementMode.RightClickMouse):
+                float mouseNewY = Input.GetAxis("Mouse Y"); //Get current Y position of mouse cursor
+                verticalInput = mouseNewY - mousePosY; //Read amount of change in cursor Y position this frame
+                verticalInput *= mouseOrbitMultiplier.y; //Apply multiplier to input
+                break;
+            //Shift + keys
+            default:// Check if Q (down) or E (up) keys are pressed while holding Shift
+                if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
+                {
+                    if (Input.GetKey(KeyCode.Q)) verticalInput = -1f; //Read down button
+                    else if (Input.GetKey(KeyCode.E)) verticalInput = 1f; //Read up button
+                }
+                break;
+        }
+
+        // Apply input if it was found
+        if (verticalInput != 0f)
+        {
+            RotateCameraVertically(verticalInput); //Call function for applying rotation
+        }
+    }
+
+    void RotateCameraVertically(float direction)
+    {
+        // Get the current rotation in the x-axis (vertical angle)
+        float currentAngle = transform.eulerAngles.x;
+
+        // Calculate the new angle based on the direction
+        float newAngle = currentAngle + direction * verticalRotationSpeed;
+
+        // Ensure the new vertical rotation stays within the clamp range from original angle
+        float clampedAngle = Mathf.Clamp(newAngle, originalVerticalAngle - maxVerticalAngle, originalVerticalAngle + maxVerticalAngle);
+
+        // Apply the new vertical rotation while keeping the horizontal rotation unchanged
+        transform.eulerAngles = new Vector3(clampedAngle, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     void HandleZoom(CameraMovementMode orbitMode)
     {
-        float zoomInput = 0f;
+        float zoomInput = 0f; //Initialise variable to store potential input
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         switch (orbitMode)
         {
+            //Both [Shift + mouse] and [Right-click + mouse]
             case (CameraMovementMode.EdgeMouse):
             case (CameraMovementMode.RightClickMouse):
                 if (Mathf.Abs(scroll) > 0.01f)
@@ -217,15 +289,17 @@ public class CameraMovement : MonoBehaviour
                     ZoomCamera(-scroll * scrollSensitivity); // Invert to make scroll up = zoom in
                 }
                 break;
-            default: // W / S keys
-                if (Input.GetKey(KeyCode.W)) zoomInput = -1f;
-                else if (Input.GetKey(KeyCode.S)) zoomInput = 1f;
+            //Shift + keys
+            default:
+                if (Input.GetKey(KeyCode.W)) zoomInput = -1f; //Read up button
+                else if (Input.GetKey(KeyCode.S)) zoomInput = 1f; //Read down button
                 break;
         }
 
+        // Apply input if it was found
         if (zoomInput != 0f)
         {
-            ZoomCamera(zoomInput);
+            ZoomCamera(zoomInput); //Call function for applying zoom
         }
     }
 
@@ -243,59 +317,6 @@ public class CameraMovement : MonoBehaviour
         {
             transform.position = newPosition;
         }
-    }
-
-    // Handle vertical rotation of the camera when holding Shift + Q/E or mouse at top/bottom of the screen
-    void HandleVerticalRotation(CameraMovementMode orbitMode)
-    {
-        float verticalInput = 0f;
-
-        switch (orbitMode)
-        {
-            case (CameraMovementMode.EdgeMouse):
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    // Handle mouse vertical movement (top/bottom of screen) with Shift held
-                    Vector3 mousePos = Input.mousePosition;
-                    if (mousePos.y <= screenEdgeThreshold)
-                        verticalInput = 1f;
-                    else if (mousePos.y >= Screen.height - screenEdgeThreshold)
-                        verticalInput = -1f;
-                }
-                break;
-            case (CameraMovementMode.RightClickMouse):
-                float mouseNewY = Input.GetAxis("Mouse Y");
-                verticalInput = mouseNewY - mousePosY;
-                verticalInput *= mouseOrbitMultiplier.y;
-                break;
-            default:// Check if Q (down) or E (up) keys are pressed while holding Shift
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    if (Input.GetKey(KeyCode.Q)) verticalInput = -1f;
-                    else if (Input.GetKey(KeyCode.E)) verticalInput = 1f;
-                }
-                break;
-        }
-        
-        if (verticalInput != 0f)
-        {
-            RotateCameraVertically(verticalInput);
-        }
-    }
-
-    void RotateCameraVertically(float direction)
-    {
-        // Get the current rotation in the x-axis (vertical angle)
-        float currentAngle = transform.eulerAngles.x;
-
-        // Calculate the new angle based on the direction
-        float newAngle = currentAngle + direction * verticalRotationSpeed;
-
-        // Ensure the new vertical rotation stays within the clamp range from original angle
-        float clampedAngle = Mathf.Clamp(newAngle, originalVerticalAngle - maxVerticalAngle, originalVerticalAngle + maxVerticalAngle);
-
-        // Apply the new vertical rotation while keeping the horizontal rotation unchanged
-        transform.eulerAngles = new Vector3(clampedAngle, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
 }

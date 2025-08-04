@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   orbitSpeed: 50
-  mouseOrbitMultiplier: {x: 5, y: 30}
+  mouseOrbitMultiplier: {x: 5, y: 6}
   zoomSpeed: 10
   screenEdgeThreshold: 50
   invert: 1
@@ -163,5 +163,5 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 64
-  verticalRotationSpeed: 0.05
+  verticalRotationSpeed: 0.25
   maxVerticalAngle: 40
