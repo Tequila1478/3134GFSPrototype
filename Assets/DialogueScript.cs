@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 public class DialogueScript : MonoBehaviour
 {
@@ -21,8 +20,6 @@ public class DialogueScript : MonoBehaviour
     public GameObject hud;
     public CustomCursor cursor;
     public string loadNextScene;
-
-    private float waitSystem;
 
 
     public List<DialogueLine> startDialogue;
@@ -42,14 +39,6 @@ public class DialogueScript : MonoBehaviour
         hud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(PlayDialogue(startDialogue));
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CancelWait();
-        }
     }
 
     public IEnumerator EndDay()
@@ -95,7 +84,7 @@ public class DialogueScript : MonoBehaviour
             characterImage.sprite = line.characterSprite;
             LayoutSprite(line.spriteOnRight);
 
-            yield return StartCoroutine(WaitForSecondsOrTap(delayBetweenLines));
+            yield return new WaitForSeconds(delayBetweenLines);
         }
 
         dialogueCompleted = true;
@@ -106,26 +95,6 @@ public class DialogueScript : MonoBehaviour
 
         hud.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-    }
-
-    IEnumerator WaitForSecondsOrTap(float seconds)
-    {
-        waitSystem = seconds;
-        while (waitSystem > 0.0)
-        {
-            waitSystem -= Time.deltaTime;
-            yield return 0;
-        }
-    }
-
-    void OverrideWait(float newTime)
-    {
-        waitSystem = newTime;
-    }
-
-    void CancelWait()
-    {
-        waitSystem = 0.0f;
     }
 
     private void LayoutSprite(bool onRight)
