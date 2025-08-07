@@ -44,7 +44,12 @@ public class CameraMovement : MonoBehaviour
     public float verticalRotationSpeed = 0.05f; // Speed for vertical rotation
     public float maxVerticalAngle = 40f;  // Maximum vertical angle from the original angle
     private float originalVerticalAngle; // The initial vertical angle of the camera
-    
+
+    //Moved this here bc I was getting an error 
+
+    float mousePosX;
+    float mousePosY;
+
     // Enum for three styles of camera movement controls
     private enum CameraMovementMode
     {
@@ -78,6 +83,11 @@ public class CameraMovement : MonoBehaviour
 
         // Store the initial vertical angle at the start
         originalVerticalAngle = transform.eulerAngles.x;
+
+        //values must be initialised in start
+        mousePosX = Input.GetAxis("Mouse X");
+        mousePosY = Input.GetAxis("Mouse Y");
+
     }
 
     void Update()
@@ -185,8 +195,6 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    float mousePosX = Input.GetAxis("Mouse X");
-    float mousePosY = Input.GetAxis("Mouse Y");
     void HandleHorizontalOrbit(CameraMovementMode orbitMode)
     {
         float horizontalInput = 0f; //Initialise variable to store potential input
