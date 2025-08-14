@@ -33,9 +33,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private Rigidbody rb;
     private Renderer objectRenderer;
     private CharacterController charController;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] soundEffects;
     public ParticleSystem ghostParticles;
+    public AudioClip pickUp;
+    public AudioClip putDown;
 
     public bool floating = false;
     private bool isMoving = false;
@@ -51,6 +51,13 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private float speedModifier = 0.5f;
     private Coroutine moveCoroutine = null;
 
+    private AudioManager sfx_AM;
+
+
+    private void Awake()
+    {
+        sfx_AM = FindObjectOfType<AudioManager>();
+    }
     private void Start()
     {
         CacheComponents();
@@ -64,11 +71,6 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
 
 
-        if(audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
-
     }
 
     private void CacheComponents()
@@ -78,7 +80,6 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
-        audioSource = GetComponent<AudioSource>();
         if(ghostParticles == null)
         ghostParticles = GetComponent<ParticleSystem>();
 
@@ -218,8 +219,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (!floating && playerInteraction.itemHeld == null)
         {
             EnableFloating();
-            audioSource.clip = soundEffects[0];
-            audioSource.PlayOneShot(audioSource.clip);
+            sfx_AM.PlaySFX(pickUp);
         }
         movingToSetSpot = false;
         gameObject.layer = 9;
@@ -264,8 +264,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = null;
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
-        audioSource.clip = soundEffects[1];
-        audioSource.PlayOneShot(audioSource.clip);
+        sfx_AM.PlaySFX(putDown);
         ghostParticles.Stop();
 
         oi?.ClearPlacementSpots();
@@ -296,8 +295,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
             movingToSetSpot = true;
-            audioSource.clip = soundEffects[1];
-            audioSource.PlayOneShot(audioSource.clip);
+            sfx_AM.PlaySFX(putDown);
             ghostParticles.Stop();
         }
         
