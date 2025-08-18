@@ -57,6 +57,10 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private void Awake()
     {
         sfx_AM = FindObjectOfType<AudioManager>();
+        if (sfx_AM == null)
+        {
+            Debug.Log("No audio manager");
+        }
     }
     private void Start()
     {
@@ -166,7 +170,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (!movingToSetSpot) return;
 
-        float step = speed * 0.1f * Time.deltaTime;
+        float step = speed * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, newDirection, step, 0));
 
         if (Vector3.Angle(transform.forward, newDirection) < 1f)
@@ -264,7 +268,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = null;
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
-        sfx_AM.PlaySFX(putDown);
+        sfx_AM?.PlaySFX(putDown);
         ghostParticles.Stop();
 
         oi?.ClearPlacementSpots();
@@ -295,7 +299,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
             movingToSetSpot = true;
-            sfx_AM.PlaySFX(putDown);
+            sfx_AM?.PlaySFX(putDown);
             ghostParticles.Stop();
         }
         
