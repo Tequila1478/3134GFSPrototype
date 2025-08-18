@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Trash
   isRequired: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -167,11 +167,9 @@ MonoBehaviour:
   routes: []
   oi: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 0}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0

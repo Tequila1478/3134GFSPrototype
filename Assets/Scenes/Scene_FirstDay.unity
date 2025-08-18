@@ -124936,6 +124936,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.data[1].taskType
+      value: Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.data[1].minimumRequired
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5590336226129060539, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
       propertyPath: m_Name
       value: Player
