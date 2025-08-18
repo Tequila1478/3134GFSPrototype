@@ -46,7 +46,7 @@ public class TrashPlacementSpot : PlacementSpot, IHoverable, IClickable
             player.itemHeld.floating = false;
             player.isHolding = false;
 
-            player.itemHeld.StartMoveToSetSpot();
+            //player.itemHeld.StartMoveToSetSpot();
             player.itemHeld = null;
         }
         else

@@ -99,7 +99,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             other.GetComponent<Interactable>().hasSetSpot = false;
         claimed = false;
     }
-
+    
+    //Debuggin stuff
     protected virtual void DrawBezierCurve()
     {
         for (float t = 0; t <= 1; t += 0.05f)
@@ -209,6 +210,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         claimed = false;
         withinRange = false;
         cursor.ChangeVisual(0);
+        SetLayer(8);
     }
 
     public void OnClick()
@@ -218,12 +220,14 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
         if (player.itemHeld.hasSetSpot)
         {
+
+
             player.itemHeld.moveComplete = false;
             player.itemHeld.floating = false;
             player.isHolding = false;
 
             // Move to placement spot
-            player.itemHeld.StartMoveToSetSpot();
+            player.itemHeld.StartMoveToSetSpot(this);
             player.itemHeld = null;
             //highlightSpots = false;
         }
@@ -253,6 +257,11 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
     player.DisablePlacementPointColliders();
 }
+
+    public void SetLayer(int layerNum)
+    {
+        this.gameObject.layer = layerNum;
+    }
 }
 
 	public static class DrawArrow

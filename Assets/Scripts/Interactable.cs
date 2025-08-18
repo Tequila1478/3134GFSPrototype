@@ -25,6 +25,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     [Header("Movement")]
     public Vector3[] routes;
     public ObjectInteractions oi;
+    public PlacementSpot ps;
+    private bool coroutineFinished = false;
 
     [Header("References")]
     public CustomCursor cursor;
@@ -120,6 +122,22 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         HandleFloating();
         HandleInput();
         RotateToDirectionIfNeeded();
+
+        if (coroutineFinished)
+        {
+            coroutineFinished = false;
+            if (ps.isTrashcan)
+            {
+                Debug.Log("Im a trashcan");
+                DropObject(true);
+                rb.useGravity = true;
+                rb.drag = 0;
+                rb.isKinematic = false;
+                ps.claimed = false;
+                ps.SetLayer(8);
+            }
+
+        }
     }
 
     private void HandleFloating()
@@ -128,9 +146,18 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (moveComplete && !isMoving)
         {
-            float floatY = Mathf.Sin(Time.time * speed) * height;
-            transform.position += new Vector3(0, floatY, 0);
-            transform.Rotate(0, rotation * Time.deltaTime, 0);
+            //float floatY = Mathf.Sin(Time.time * speed) * height;
+            //transform.position += new Vector3(0, floatY, 0);
+            //transform.Rotate(0, rotation * Time.deltaTime, 0);
+
+            if (ps != null && ps.isTrashcan)
+            {
+                ps.claimed = false;
+                DropObject(true);
+                rb.useGravity = true;
+                rb.drag = 0;
+                ps.SetLayer(8);
+            }
         }
         else if (!isMoving)
         {
@@ -224,6 +251,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             EnableFloating();
             sfx_AM.PlaySFX(pickUp);
+            ps = null;
         }
         movingToSetSpot = false;
         gameObject.layer = 9;
@@ -280,7 +308,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (hasSetSpot)
         {
-            StartMoveToSetSpot();
+            StartMoveToSetSpot(ps);
         }
         else
         {
@@ -289,8 +317,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    public void StartMoveToSetSpot()
+    public void StartMoveToSetSpot(PlacementSpot placementSpot)
     {
+        ps = placementSpot;
         oi?.ClearPlacementSpots();
 
         if (!hasSetSpot) return;
@@ -327,6 +356,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         rb.isKinematic = true;
         moveCoroutine = null;
+        coroutineFinished = true;
     }
 
     private void HighlightObject()
