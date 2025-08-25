@@ -25,7 +25,7 @@ public class PlaySettingsScreen : MonoBehaviour
     void OnLoopPointReached(VideoPlayer source)
     {
         Debug.Log("video ended");
-        if (videoPlayer.clip == transition && b)
+        if (videoPlayer.clip == transition)
         {
             videoPlayer.clip = loop;
         }
