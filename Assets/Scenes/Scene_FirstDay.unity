@@ -124470,7 +124470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.29
+      value: 3.51
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -124478,31 +124478,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.33971834
+      value: -0.33915243
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.012060603
+      value: -0.04247934
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.94044
+      value: 0.93618083
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0043021073
+      value: -0.08207643
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.006
+      value: 10.515
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 219.723
+      value: 219.7
       objectReference: {fileID: 0}
     - target: {fileID: 3191766263621790007, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.467
+      value: -1.391
       objectReference: {fileID: 0}
     - target: {fileID: 5072792821912189365, guid: 1c246d49892126f4bb73e582551849a9, type: 3}
       propertyPath: debug
