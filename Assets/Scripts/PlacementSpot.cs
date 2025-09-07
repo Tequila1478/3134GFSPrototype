@@ -39,7 +39,15 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public CustomCursor cursor;
     public Collider otherObject;
+    public int numOfTrash = 0;
 
+    public void IncrementTrash()
+    {
+        if (isTrashcan)
+        {
+            numOfTrash++;
+        }
+    }
     private void Start()
     {
         if (player == null)
@@ -100,7 +108,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void OnTriggerEnter(Collider other)
     {
         SelectObject(other);
-        gameObject.layer = 2; // Intentional: Ignore Raycast
+        SetLayer(2); // Intentional: Ignore Raycast
     }
 
     public void OnTriggerExit(Collider other)
@@ -282,6 +290,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public void SetLayer(int layerNum)
     {
+        if (isTrashcan) return; //trashcan should never change layer
         this.gameObject.layer = layerNum;
     }
 }

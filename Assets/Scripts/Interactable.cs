@@ -139,6 +139,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             }
 
         }
+
+        if(isAtSetSpot && taskType == "Trash")
+        {
+            Destroy(this, 1f);
+        }
     }
 
     private void HandleFloating()
@@ -360,10 +365,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
 
         rb.isKinematic = true;
-        moveCoroutine = null;
         coroutineFinished = true;
 
         isAtSetSpot = true;
+        ps.IncrementTrash();
+
+       
+        moveCoroutine = null;
+
     }
 
     private void HighlightObject()

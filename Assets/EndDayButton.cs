@@ -20,6 +20,8 @@ public class EndDayButton : MonoBehaviour
 
     public void EndDay()
     {
+        dialogueManager = FindObjectOfType<DialogueScript>();
+
         Debug.Log("Day is ending");
         if (dialogueManager != null)
         {
