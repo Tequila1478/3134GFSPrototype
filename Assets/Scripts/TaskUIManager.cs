@@ -70,7 +70,7 @@ public class TaskUIManager : MonoBehaviour
 
             if (optional > 0)
             {
-                taskLine += $"\n   {type}: {optionalCompleted} / {optional} (optional)";
+                taskLine += $"\n({type}: {optionalCompleted} / {optional} (optional))";
             }
 
             taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;

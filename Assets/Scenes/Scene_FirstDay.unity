@@ -121100,8 +121100,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
-    m_Bottom: 20
+    m_Top: 41
+    m_Bottom: 30
   m_ChildAlignment: 1
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
@@ -124454,6 +124454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb5c4447b2aad14a88f5a36e60b8921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
   isDialogue: 0
 --- !u!1 &5093936779290861649
 GameObject:
