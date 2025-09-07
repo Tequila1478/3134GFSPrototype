@@ -81,6 +81,8 @@ public class DialogueScript : MonoBehaviour
 
     IEnumerator PlayDialogue(List<DialogueLine> lines)
     {
+        Time.timeScale = 0f;
+
         dialogueText.gameObject.SetActive(true);
         headingText.gameObject.SetActive(true);
         
@@ -108,6 +110,7 @@ public class DialogueScript : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         hud.SetActive(true);
+        Time.timeScale = 1;
 
         FindObjectOfType<PauseGame>().isDialogue = false;
         Cursor.lockState = CursorLockMode.None;
@@ -118,7 +121,7 @@ public class DialogueScript : MonoBehaviour
         waitSystem = seconds;
         while (waitSystem > 0.0)
         {
-            waitSystem -= Time.deltaTime;
+            waitSystem -= Time.unscaledDeltaTime;
             yield return 0;
         }
     }
