@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
     private bool isPaused = false;
+    public bool isDialogue = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,11 @@ public class PauseGame : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (isPaused) EndPause();
-            else StartPause();
+            if (!isDialogue)
+            {
+                if (isPaused) EndPause();
+                else StartPause();
+            }
         }
     }
 

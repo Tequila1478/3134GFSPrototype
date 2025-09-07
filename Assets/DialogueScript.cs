@@ -40,6 +40,8 @@ public class DialogueScript : MonoBehaviour
     public void StartDay()
     {
         hud.SetActive(false);
+
+        FindObjectOfType<PauseGame>().isDialogue = true;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(PlayDialogue(startDialogue));
     }
@@ -55,6 +57,7 @@ public class DialogueScript : MonoBehaviour
     public IEnumerator EndDay()
     {
         hud.SetActive(false);
+        FindObjectOfType<PauseGame>().isDialogue = true;
         Cursor.lockState = CursorLockMode.Locked;
 
         if (houseClean)
@@ -105,6 +108,8 @@ public class DialogueScript : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         hud.SetActive(true);
+
+        FindObjectOfType<PauseGame>().isDialogue = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
