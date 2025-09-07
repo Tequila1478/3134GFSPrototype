@@ -45,6 +45,8 @@ public class CameraMovement : MonoBehaviour
     public float maxVerticalAngle = 40f;  // Maximum vertical angle from the original angle
     private float originalVerticalAngle; // The initial vertical angle of the camera
 
+    public bool cameraIsMoving = false;
+
     //Moved this here bc I was getting an error 
 
     float mousePosX;
@@ -93,7 +95,8 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         if (target == null) return;
-
+        cameraIsMoving = false;
+        /*
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (pi.itemHeld)
@@ -108,12 +111,17 @@ public class CameraMovement : MonoBehaviour
             {
                 pi.itemHeld.oi.ReEnableObject(); // Re-enable on shift release
             }
+        }*/
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            return;
         }
 
-        // Camera controls
-        if (Input.GetKey(KeyCode.LeftShift) && (Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold || Input.mousePosition.y < screenEdgeThreshold || Input.mousePosition.y > Screen.height - screenEdgeThreshold)) //Only continue if left shift modifier is pressed
+            // Camera controls
+            if (/*Input.GetKey(KeyCode.LeftShift) && */(Input.mousePosition.x < screenEdgeThreshold || Input.mousePosition.x > Screen.width - screenEdgeThreshold || Input.mousePosition.y < screenEdgeThreshold || Input.mousePosition.y > Screen.height - screenEdgeThreshold)) //Only continue if left shift modifier is pressed
         {
             //Shift + mouse
+            cameraIsMoving = true;
             HandleHorizontalOrbit(CameraMovementMode.EdgeMouse); //Do horizontal rotation
             HandleVerticalRotation(CameraMovementMode.EdgeMouse); //Do vertical rotation
             Cursor.lockState = CursorLockMode.Confined; //Confine mouse to screen
@@ -127,13 +135,13 @@ public class CameraMovement : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.None; //Do not confine mouse to screen
-            if (Input.GetKey(KeyCode.LeftShift)) //Only continue if left shift modifier is pressed
-            {
+            //if (Input.GetKey(KeyCode.LeftShift)) //Only continue if left shift modifier is pressed
+            //{
                 //Shift + keys
                 HandleHorizontalOrbit(CameraMovementMode.Keyboard); //Do horizontal rotation
                 HandleVerticalRotation(CameraMovementMode.Keyboard); //Do vertical rotation
                 HandleZoom(CameraMovementMode.Keyboard); //Do zoom
-            }
+            //}
         }
 
         HandleZoom(CameraMovementMode.RightClickMouse); // Mouse scroll doesn't require Shift or Right-click
@@ -145,6 +153,23 @@ public class CameraMovement : MonoBehaviour
         {
             debugText.text = transform.eulerAngles.ToString(); //Write current camera angle to debug text
         }
+
+        if (cameraIsMoving)
+        {
+            if (pi.itemHeld)
+            {
+                pi.itemHeld.oi.FreezeObject(); // Freeze immediately on shift press
+            }
+        }
+
+        if (!cameraIsMoving)
+        {
+            if (pi.itemHeld)
+            {
+                pi.itemHeld.oi.ReEnableObject(); // Re-enable on shift release
+            }
+        }
+
     }
 
     void HandleVisibility()
@@ -239,14 +264,14 @@ public class CameraMovement : MonoBehaviour
         {
             //Shift + mouse
             case (CameraMovementMode.EdgeMouse):
-                if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
-                {
+                //if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
+                //{
                     Vector3 mousePos = Input.mousePosition; //Get current X,Y,Z position of mouse cursor
                     if (mousePos.y <= screenEdgeThreshold) //Read up input if mouse is at top side of screen
                         verticalInput = 1f;
                     else if (mousePos.y >= Screen.height - screenEdgeThreshold) //Read down input if mouse is at bottom side of screen
                         verticalInput = -1f;
-                }
+                //}
                 break;
             //Right-click + mouse
             case (CameraMovementMode.RightClickMouse):
@@ -256,11 +281,11 @@ public class CameraMovement : MonoBehaviour
                 break;
             //Shift + keys
             default:// Check if Q (down) or E (up) keys are pressed while holding Shift
-                if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
-                {
+                //if (Input.GetKey(KeyCode.LeftShift)) //Only run if left shift modifier is pressed
+                //{
                     if (Input.GetKey(KeyCode.Q)) verticalInput = -1f; //Read down button
                     else if (Input.GetKey(KeyCode.E)) verticalInput = 1f; //Read up button
-                }
+                //}
                 break;
         }
 

@@ -45,7 +45,7 @@ public class ObjectInteractions : MonoBehaviour
 
     public void Move()
     {
-        if (characterController)
+        if (characterController && Input.GetKey(KeyCode.LeftShift))
         {
             float verticalInput = Input.GetAxis("Vertical");
             float horizontalInput = Input.GetAxis("Horizontal");
