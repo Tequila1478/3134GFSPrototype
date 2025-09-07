@@ -85,6 +85,7 @@ public class TaskUIManager : MonoBehaviour
 
         if(Mathf.RoundToInt(percent * 100f) >= 100)
         {
+            FindObjectOfType<DialogueScript>().houseClean = true;
             endDayButton.SetActive(true);
             Debug.Log("All required tasks complete");
         }

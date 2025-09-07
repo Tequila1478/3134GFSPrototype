@@ -16774,8 +16774,8 @@ MonoBehaviour:
   imageContainer: {fileID: 708557753}
   delayBetweenLines: 4
   dialogueCompleted: 0
-  houseClean: 1
-  foundDivorcePapers: 1
+  houseClean: 0
+  foundDivorcePapers: 0
   hud: {fileID: 1080947470667454537}
   cursor: {fileID: 0}
   loadNextScene: Scene_SecondDay
@@ -68905,6 +68905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHovered: 0
   cursor: {fileID: 0}
+  dialogueScript: {fileID: 0}
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1974997150}
@@ -92748,6 +92749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHovered: 0
   cursor: {fileID: 0}
+  dialogueScript: {fileID: 0}
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1355524969}

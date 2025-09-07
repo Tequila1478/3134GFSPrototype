@@ -8,6 +8,8 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     public CustomCursor cursor;
     private Renderer objectRenderer;
 
+    public DialogueScript dialogueScript;
+
     [Header("Materials")]
     public Material outlineMat;
     public Material originalMat;
@@ -44,6 +46,13 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     {
         StartCoroutine(ShowInfo());
         //Show info and dialogue on counter
+        //UPdate state
+
+        if (dialogueScript != null)
+        {
+            dialogueScript.foundDivorcePapers = true;
+        }
+
     }
 
     public IEnumerator ShowInfo()
@@ -58,7 +67,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public void OnRelease()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void OnHoverEnter()
