@@ -777,7 +777,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35960192}
-  m_Mesh: {fileID: 4493585093827132993, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+  m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
 --- !u!1001 &36395480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15929,7 +15929,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284195293}
-  m_Mesh: {fileID: 4493585093827132993, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+  m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
 --- !u!65 &284195298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25788,6 +25788,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -31656,6 +31657,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -40699,6 +40701,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -48201,6 +48204,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -53480,6 +53484,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -63603,6 +63608,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -68678,6 +68684,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -74128,6 +74135,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -79848,6 +79856,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -90426,6 +90435,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -92151,7 +92161,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338803241}
-  m_Mesh: {fileID: 4493585093827132993, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+  m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
 --- !u!1 &1340964696
 GameObject:
   m_ObjectHideFlags: 0
@@ -92813,6 +92823,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -107774,6 +107785,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -108941,7 +108953,6 @@ GameObject:
   - component: {fileID: 1810182319}
   - component: {fileID: 1810182318}
   - component: {fileID: 1810182317}
-  - component: {fileID: 1810182320}
   m_Layer: 14
   m_Name: SelectionHighlight
   m_TagString: Untagged
@@ -109027,28 +109038,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810182315}
-  m_Mesh: {fileID: 4493585093827132993, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
---- !u!65 &1810182320
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810182315}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.015461304, y: 0.018693766, z: 0.0030971218}
-  m_Center: {x: 0.002269357, y: -0.000019274854, z: -0.00011652058}
+  m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
 --- !u!1 &1810946514
 GameObject:
   m_ObjectHideFlags: 0
@@ -124463,6 +124453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb5c4447b2aad14a88f5a36e60b8921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDialogue: 0
 --- !u!1 &5093936779290861649
 GameObject:
   m_ObjectHideFlags: 0

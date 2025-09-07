@@ -43,6 +43,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private bool isMoving = false;
     public bool moveComplete = false;
     public bool hasSetSpot = false;
+    public bool isAtSetSpot = false;
     public bool movingToSetSpot = false;
 
     public Vector3 newDirection;
@@ -286,6 +287,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
         ghostParticles.Play();
+
+        isAtSetSpot = false;
     }
 
     private void DropObject(bool forceDrop = false)
@@ -304,6 +307,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (forceDrop)
         {
             hasSetSpot = false;
+            isAtSetSpot = false;
         }
 
         if (hasSetSpot)
@@ -314,6 +318,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             rb.useGravity = true;
             rb.drag = 0;
+            isAtSetSpot = false;
         }
     }
 
@@ -357,6 +362,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         rb.isKinematic = true;
         moveCoroutine = null;
         coroutineFinished = true;
+
+        isAtSetSpot = true;
     }
 
     private void HighlightObject()

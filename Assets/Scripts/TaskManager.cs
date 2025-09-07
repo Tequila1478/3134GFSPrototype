@@ -52,7 +52,7 @@ public class TaskManager : MonoBehaviour
                 {
                     interactable = obj,
                     taskType = interactable.taskType, 
-                    isCompleted = interactable.hasSetSpot,
+                    isCompleted = interactable.isAtSetSpot,
                     isRequired = interactable.isRequired
                 };
 
@@ -76,11 +76,11 @@ public class TaskManager : MonoBehaviour
     {
         foreach (Task task in allTasks)
         {
-            if (!task.isCompleted && task.interactable.GetComponent<Interactable>().hasSetSpot)
+            if (!task.isCompleted && task.interactable.GetComponent<Interactable>().isAtSetSpot)
             {
                 task.isCompleted = true;
             }
-            if (task.isCompleted && !task.interactable.GetComponent<Interactable>().hasSetSpot)
+            if (task.isCompleted && !task.interactable.GetComponent<Interactable>().isAtSetSpot)
             {
                 task.isCompleted = false;
             }
