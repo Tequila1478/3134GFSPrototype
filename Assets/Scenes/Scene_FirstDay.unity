@@ -225,6 +225,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -334,6 +335,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -7119,6 +7121,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -7589,6 +7592,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -9674,6 +9678,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -14955,6 +14960,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -16659,6 +16665,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 1
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -17067,6 +17074,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -18340,6 +18348,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -19978,6 +19987,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -20323,6 +20333,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -20886,6 +20897,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -25773,7 +25785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -26300,6 +26312,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -31642,7 +31655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -34903,6 +34916,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -40404,6 +40418,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -42238,6 +42253,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 2
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -42449,6 +42465,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -48225,7 +48242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -48567,6 +48584,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -53505,7 +53523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -63629,7 +63647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -68705,7 +68723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -74156,7 +74174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -74505,6 +74523,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -90592,7 +90611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -91335,6 +91354,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -92980,7 +93000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -98023,6 +98043,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -98137,6 +98158,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -98408,6 +98430,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -100108,6 +100131,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -101771,6 +101795,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -101978,6 +102003,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -103064,6 +103090,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -108053,7 +108080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskType: Clutter
+  taskType: Book
   isRequired: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -108227,6 +108254,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -108519,6 +108547,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -109424,6 +109453,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 1
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -109620,6 +109650,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -110928,6 +110959,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -114429,6 +114461,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -114607,6 +114640,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -114900,6 +114934,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -121649,6 +121684,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 0
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -125959,16 +125995,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 55593886}
     - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: totalRequiredTasks
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
       propertyPath: taskRequirements.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
       propertyPath: taskRequirements.Array.data[1].taskType
       value: Trash
       objectReference: {fileID: 0}
     - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.data[2].taskType
+      value: Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.data[0].minimumRequired
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
       propertyPath: taskRequirements.Array.data[1].minimumRequired
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549277921268616311, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
+      propertyPath: taskRequirements.Array.data[2].minimumRequired
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5590336226129060539, guid: f8fc063c16e534f468ab51e6a80d039b, type: 3}
       propertyPath: m_Name

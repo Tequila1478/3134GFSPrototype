@@ -1,6 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+public enum SpotType
+{
+    Book,
+    Clutter,
+    Trash,
+    Any  //for spots that accept any type
+}
+
 
 public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
@@ -17,6 +27,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     //public bool highlightSpots = false;
 
+
+    public SpotType spotType = SpotType.Any;
 
 
     public Vector3[] controlPoints = new Vector3[4];
@@ -120,11 +132,23 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
         if (claimed) return;
 
+        Interactable interactable = null;
+
+        if (other != null && other.CompareTag("Held Item"))
+            interactable = other.GetComponent<Interactable>();
+        else if (player.isHolding)
+            interactable = player.itemHeld.GetComponent<Interactable>();
+
+        if (interactable == null) return;
+
+        if (spotType != SpotType.Any && interactable.taskType != spotType.ToString())
+        {
+            Debug.Log("This item cannot be placed here: " + interactable.taskType + " → " + spotType);
+            return;
+        }
+
         if (other != null && other.CompareTag("Held Item"))
         {
-            var interactable = other.GetComponent<Interactable>();
-            if (interactable == null) return;
-
             otherObject = other;
             withinRange = true;
             interactable.hasSetSpot = true;
@@ -134,8 +158,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         else if (player.isHolding)
         {
             otherObject = player.itemHeld.GetComponent<Collider>();
-            var interactable = otherObject?.GetComponent<Interactable>();
-            if (interactable == null) return;
 
             withinRange = true;
             interactable.hasSetSpot = true;
