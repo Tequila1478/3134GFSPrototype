@@ -66,6 +66,7 @@ public class BtnFunctions : MonoBehaviour
 
     public void LoadSceneOnClick()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
 
         if (playAudioOnClick)
