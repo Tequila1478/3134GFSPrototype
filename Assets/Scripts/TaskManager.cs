@@ -105,6 +105,7 @@ public class TaskManager : MonoBehaviour
                     totalRequiredCompleted++;
             }
         }
+
     }
 
     public int GetCompletedCount(string taskType)

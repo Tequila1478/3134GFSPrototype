@@ -15,6 +15,8 @@ public class TaskUIManager : MonoBehaviour
 
     private Dictionary<string, GameObject> taskEntries = new();
 
+    public GameObject endDayButton;
+
 
     void Start()
     {
@@ -80,6 +82,17 @@ public class TaskUIManager : MonoBehaviour
         percent = totalRequiredCompleted / totalRequired;
         progressBar.value = percent;
         progressText.text = Mathf.RoundToInt(percent * 100) + "%";
+
+        if(Mathf.RoundToInt(percent * 100f) >= 100)
+        {
+            endDayButton.SetActive(true);
+            Debug.Log("All required tasks complete");
+        }
+        else
+        {
+            endDayButton.SetActive(false);
+
+        }
     }
 
     int CountOptionalOfType(string type)
