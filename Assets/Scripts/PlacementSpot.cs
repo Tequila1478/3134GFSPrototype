@@ -114,7 +114,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void OnTriggerExit(Collider other)
     {
         DeselectObject(other);
-        gameObject.layer = 0;
+        SetLayer(0);
         if (other.GetComponent<Interactable>())
             other.GetComponent<Interactable>().hasSetSpot = false;
         claimed = false;

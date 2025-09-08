@@ -113,24 +113,4 @@ public class TaskManager : MonoBehaviour
         return completedByType.ContainsKey(taskType) ? completedByType[taskType] : 0;
     }
 
-    public float GetCompletionPercentage()
-    {
-        if (totalRequiredTasks == 0)
-        {
-            return 1f;
-        }
-        return (float)totalRequiredCompleted / totalRequiredTasks;
-    }
-
-    public bool HasMetMinimum(string taskType)
-    {
-        foreach (var req in taskRequirements)
-        {
-            if (req.taskType == taskType)
-            {
-                return GetCompletedCount(taskType) >= req.minimumRequired;
-            }
-        }
-        return false;
-    }
 }

@@ -131,12 +131,13 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             {
                 Debug.Log("Im a trashcan");
                 DropObject(true);
+                isAtSetSpot = true;
                 rb.useGravity = true;
                 rb.drag = 0;
                 rb.isKinematic = false;
                 ps.claimed = false;
                 ps.SetLayer(8);
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
 
         }
@@ -158,6 +159,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
                 ps.claimed = false;
                 DropObject(true);
                 rb.useGravity = true;
+                rb.freezeRotation = false;
+                rb.constraints = RigidbodyConstraints.None;
                 rb.drag = 0;
                 ps.SetLayer(8);
             }
@@ -361,13 +364,35 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             yield return null;
         }
 
-        rb.isKinematic = true;
         coroutineFinished = true;
 
         isAtSetSpot = true;
-        ps.IncrementTrash();
+        if (ps.isTrashcan)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.None;
 
-       
+            ps.IncrementTrash();
+            Debug.Log("Trash item reached trashcan: " + name);
+
+            // Small delay so it visibly drops in
+            yield return new WaitForSeconds(2f);
+
+            // Disable visuals & interactions, but keep object alive
+            if (objectRenderer != null)
+                objectRenderer.enabled = false;
+
+            Collider col = GetComponent<Collider>();
+            if (col != null) col.enabled = false;
+
+        }
+        else
+        {
+            rb.isKinematic = true;
+        }
+
+
         moveCoroutine = null;
 
     }

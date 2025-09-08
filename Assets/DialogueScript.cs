@@ -16,7 +16,7 @@ public class DialogueScript : MonoBehaviour
     public float delayBetweenLines = 4f;
 
     public bool dialogueCompleted = false;
-    public bool houseClean = true;
+    public bool houseClean = false;
     public bool foundDivorcePapers = true;
     public GameObject hud;
     public CustomCursor cursor;
