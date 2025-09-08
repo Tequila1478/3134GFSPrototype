@@ -9467,7 +9467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
-  isActive: 1
+  isActive: 0
   offset: {x: 0, y: 0, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 169233231}
@@ -20308,7 +20308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.848
+      value: -12.706
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24125,7 +24125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
-  isActive: 1
+  isActive: 0
   offset: {x: 0, y: 0, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1051326327}
@@ -113493,7 +113493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
-  isActive: 1
+  isActive: 0
   offset: {x: 0, y: 0, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2017962469}
@@ -130888,7 +130888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
-  isActive: 1
+  isActive: 0
   offset: {x: 0, y: 0, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 967074607}
@@ -140138,7 +140138,6 @@ MonoBehaviour:
   progressBar: {fileID: 6139589916599120009}
   progressText: {fileID: 7010288656367388672}
   endDayButton: {fileID: 55593886}
-  overallPercent: 0
 --- !u!114 &246059756488477522
 MonoBehaviour:
   m_ObjectHideFlags: 0

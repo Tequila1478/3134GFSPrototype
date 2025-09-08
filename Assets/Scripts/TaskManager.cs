@@ -10,10 +10,7 @@ public class TaskManager : MonoBehaviour
         public GameObject interactable;
         public string taskType;
         public bool isCompleted;
-        public bool isRequired;
     }
-
-    public List<Task> allTasks = new List<Task>();
 
     [System.Serializable]
     public class TaskRequirements
@@ -22,11 +19,10 @@ public class TaskManager : MonoBehaviour
         public int minimumRequired;
     }
 
+    public List<Task> allTasks = new List<Task>();
     public TaskRequirements[] taskRequirements;
 
     private Dictionary<string, int> completedByType = new Dictionary<string, int>();
-    public int totalRequiredTasks = 0;
-    private int totalRequiredCompleted = 0;
 
     void Start()
     {
@@ -51,24 +47,11 @@ public class TaskManager : MonoBehaviour
                 Task newTask = new Task
                 {
                     interactable = obj,
-                    taskType = interactable.taskType, 
-                    isCompleted = interactable.isAtSetSpot,
-                    isRequired = interactable.isRequired
+                    taskType = interactable.taskType,
+                    isCompleted = interactable.isAtSetSpot
                 };
-
                 allTasks.Add(newTask);
             }
-        }
-
-        // Count required tasks
-        foreach (var task in allTasks)
-        {
-            if (task.isRequired)
-                totalRequiredTasks++;
-        }
-        foreach (var task in taskRequirements)
-        {
-            totalRequiredTasks += task.minimumRequired;
         }
     }
 
@@ -76,21 +59,14 @@ public class TaskManager : MonoBehaviour
     {
         foreach (Task task in allTasks)
         {
-            if (!task.isCompleted && task.interactable.GetComponent<Interactable>().isAtSetSpot)
-            {
-                task.isCompleted = true;
-            }
-            if (task.isCompleted && !task.interactable.GetComponent<Interactable>().isAtSetSpot)
-            {
-                task.isCompleted = false;
-            }
+            bool atSpot = task.interactable.GetComponent<Interactable>().isAtSetSpot;
+            task.isCompleted = atSpot;
         }
     }
 
     void UpdateProgress()
     {
         completedByType.Clear();
-        totalRequiredCompleted = 0;
 
         foreach (Task task in allTasks)
         {
@@ -100,17 +76,45 @@ public class TaskManager : MonoBehaviour
                     completedByType[task.taskType] = 0;
 
                 completedByType[task.taskType]++;
-
-                if (task.isRequired)
-                    totalRequiredCompleted++;
             }
         }
-
     }
 
     public int GetCompletedCount(string taskType)
     {
         return completedByType.ContainsKey(taskType) ? completedByType[taskType] : 0;
+    }
+
+    // New helper: total tasks of a type
+    public int GetTotalTasksOfType(string taskType)
+    {
+        int count = 0;
+        foreach (var task in allTasks)
+        {
+            if (task.taskType == taskType)
+                count++;
+        }
+        return count;
+    }
+
+    // Optional: returns required & optional counts for a type
+    public void GetTaskCounts(string taskType, out int required, out int optional)
+    {
+        int completed = GetCompletedCount(taskType);
+        int minimumRequired = 0;
+
+        // Find minimumRequired for this type
+        foreach (var req in taskRequirements)
+        {
+            if (req.taskType == taskType)
+            {
+                minimumRequired = req.minimumRequired;
+                break;
+            }
+        }
+
+        required = Mathf.Min(completed, minimumRequired);
+        optional = Mathf.Max(0, completed - minimumRequired);
     }
 
 }
