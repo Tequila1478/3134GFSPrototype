@@ -21,11 +21,11 @@ public class EndDayButton : MonoBehaviour
     public void EndDay()
     {
         dialogueManager = FindObjectOfType<DialogueScript>();
-
+        Debug.Log(dialogueManager.foundDivorcePapers);
         Debug.Log("Day is ending");
         if (dialogueManager != null)
         {
-            StartCoroutine(dialogueManager.EndDay());
+            dialogueManager.StartEndDay();
         }
         else
         {

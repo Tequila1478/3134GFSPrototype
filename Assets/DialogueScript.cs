@@ -54,6 +54,11 @@ public class DialogueScript : MonoBehaviour
         }
     }
 
+    public void StartEndDay()
+    {
+        StartCoroutine(EndDay());
+    }
+
     public IEnumerator EndDay()
     {
         hud.SetActive(false);
@@ -62,21 +67,46 @@ public class DialogueScript : MonoBehaviour
 
         if (houseClean)
         {
+            Debug.Log("House clean");
+            if(endDialogueGood != null)
             yield return StartCoroutine(PlayDialogue(endDialogueGood));
+
+            else
+            {
+                Debug.Log("End dialogue good not set");
+            }
         }
         else
         {
-            yield return StartCoroutine(PlayDialogue(endDialogueBad));
+            Debug.Log("House not clean");
+            if (endDialogueBad != null)
+                yield return StartCoroutine(PlayDialogue(endDialogueBad));
+            else
+            {
+                Debug.Log("End dialogue bad not set");
+            }
         }
-
+        Debug.Log("Reached after first dialogue sequence");
         //Wait for dialogue to finish and then:
         if (foundDivorcePapers)
         {
+            Debug.Log("Divorce papers found");
             yield return StartCoroutine(PlayDialogue(endDialogueFoundDivorcePapers));
+        }
+        else
+        {
+            Debug.Log("Divorce papers not found");
         }
 
         Debug.Log("End of day sequence complete.");
         SceneManager.LoadScene(loadNextScene);
+    }
+
+    void OnDestroy()
+    {
+        Debug.LogError($"DialogueScript destroyed! Stacktrace:\n{System.Environment.StackTrace}");
+
+        Debug.Log("DialogueScript destroyed!");
     }
 
     IEnumerator PlayDialogue(List<DialogueLine> lines)
@@ -97,6 +127,8 @@ public class DialogueScript : MonoBehaviour
 
             if(line.characterSprite == null) characterImage.gameObject.SetActive(false);
             else characterImage.gameObject.SetActive(true);
+
+            if(line.characterSprite)
             characterImage.sprite = line.characterSprite;
             LayoutSprite(line.spriteOnRight);
 
@@ -114,16 +146,20 @@ public class DialogueScript : MonoBehaviour
 
         FindObjectOfType<PauseGame>().isDialogue = false;
         Cursor.lockState = CursorLockMode.None;
+
+        Debug.Log("PlayDialogue finished with " + lines.Count + " lines");
     }
 
     IEnumerator WaitForSecondsOrTap(float seconds)
     {
         waitSystem = seconds;
-        while (waitSystem > 0.0)
+        while (waitSystem > 0.0f)
         {
+            //Debug.Log($"WaitSystem ticking... {waitSystem}");
             waitSystem -= Time.unscaledDeltaTime;
-            yield return 0;
+            yield return null;
         }
+        waitSystem = 0;
     }
 
     void OverrideWait(float newTime)

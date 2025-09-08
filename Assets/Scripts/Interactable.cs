@@ -136,14 +136,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
                 rb.isKinematic = false;
                 ps.claimed = false;
                 ps.SetLayer(8);
+                gameObject.SetActive(false);
             }
 
         }
 
-        if(isAtSetSpot && taskType == "Trash")
-        {
-            Destroy(this, 1f);
-        }
     }
 
     private void HandleFloating()

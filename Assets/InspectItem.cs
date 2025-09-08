@@ -59,7 +59,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     {
         info.SetActive(true);
         ds.PlayDialogueList(inspectionDialogue);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
         info.SetActive(false);
 
 

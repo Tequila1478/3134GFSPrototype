@@ -16,6 +16,7 @@ public class TaskUIManager : MonoBehaviour
     private Dictionary<string, GameObject> taskEntries = new();
 
     public GameObject endDayButton;
+    private bool dayEnded = false;
 
 
     void Start()
@@ -83,16 +84,20 @@ public class TaskUIManager : MonoBehaviour
         progressBar.value = percent;
         progressText.text = Mathf.RoundToInt(percent * 100) + "%";
 
-        if(Mathf.RoundToInt(percent * 100f) >= 100)
+        if (!dayEnded)
         {
-            FindObjectOfType<DialogueScript>().houseClean = true;
-            endDayButton.SetActive(true);
-            Debug.Log("All required tasks complete");
-        }
-        else
-        {
-            endDayButton.SetActive(false);
+            if (Mathf.RoundToInt(percent * 100f) >= 100)
+            {
+                dayEnded = true;
+                FindObjectOfType<DialogueScript>().houseClean = true;
+                endDayButton.SetActive(true);
+                Debug.Log("All required tasks complete");
+            }
+            else
+            {
+                endDayButton.SetActive(false);
 
+            }
         }
     }
 

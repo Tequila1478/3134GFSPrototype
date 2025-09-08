@@ -9,6 +9,8 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
+    private Coroutine typingCoroutine;
+
     private int index;
 
     // Start is called before the first frame update
@@ -29,7 +31,12 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                StopAllCoroutines();
+                // Stop current typing coroutine if running
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                    typingCoroutine = null;
+                }
                 textComponent.text = lines[index];
             }
         }
@@ -38,16 +45,28 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        StartTyping();
     }
 
     IEnumerator TypeLine()
     {
+        textComponent.text = string.Empty;
+
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
+        typingCoroutine = null; // finished typing
+    }
+
+    void StartTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     void NextLine()
@@ -55,8 +74,7 @@ public class Dialogue : MonoBehaviour
         if (index < lines.Length - 1)
         {
             index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            StartTyping();
         }
         else
         {
