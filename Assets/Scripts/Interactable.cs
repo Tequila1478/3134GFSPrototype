@@ -346,6 +346,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private IEnumerator GoByTheRoute(int routeNum)
     {
+
         tParam = 0;
         Vector3 p0 = routes[0];
         Vector3 p1 = routes[1];
@@ -383,8 +384,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             if (objectRenderer != null)
                 objectRenderer.enabled = false;
 
-            Collider col = GetComponent<Collider>();
-            if (col != null) col.enabled = false;
+            Collider collider = GetComponent<Collider>();
+            if (collider != null) collider.enabled = false;
 
         }
         else

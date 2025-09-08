@@ -15,6 +15,7 @@ public enum SpotType
 public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
     public bool isTrashcan = false;
+    public bool isActive = true;
 
     public Vector3 offset = new Vector3(0, 1, 0);
     public float maxHeightAbovePoint;
@@ -107,14 +108,23 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public void OnTriggerEnter(Collider other)
     {
+        if (!isActive) return;
+        var interactable = other.GetComponent<Interactable>();
+        if (interactable != null && interactable.isAtSetSpot)
+        {
+            // 🚫 Ignore already-placed objects so they don't activate other spots
+            return;
+        }
+
         SelectObject(other);
         SetLayer(2); // Intentional: Ignore Raycast
     }
 
     public void OnTriggerExit(Collider other)
     {
+        isActive = true;
         DeselectObject(other);
-        SetLayer(0);
+        SetLayer(8);
         if (other.GetComponent<Interactable>())
             other.GetComponent<Interactable>().hasSetSpot = false;
         claimed = false;
@@ -138,7 +148,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     protected virtual void SelectObject(Collider other = null)
     {
-        if (claimed) return;
+        if (claimed || !isActive) return;
 
         Interactable interactable = null;
 
