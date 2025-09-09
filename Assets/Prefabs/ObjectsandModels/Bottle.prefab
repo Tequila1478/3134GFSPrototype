@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 193eb611a62947a4b9bd10b70104baee, type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 193eb611a62947a4b9bd10b70104baee, type: 3}
       propertyPath: m_TagString
@@ -166,6 +166,7 @@ MonoBehaviour:
   rotation: 0.1
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
   ghostParticles: {fileID: 0}
   pickUp: {fileID: 0}
@@ -173,6 +174,7 @@ MonoBehaviour:
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
