@@ -34,7 +34,7 @@ public class CameraCinemaSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("keycode Alpha1 pressed");
             SetNewCamera(0);
