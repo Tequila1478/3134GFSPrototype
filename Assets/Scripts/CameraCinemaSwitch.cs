@@ -34,6 +34,7 @@ public class CameraCinemaSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Bee note: too lazy to figure out a loopable alternative to this
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("keycode Alpha1 pressed");
@@ -43,6 +44,46 @@ public class CameraCinemaSwitch : MonoBehaviour
         {
             Debug.Log("keycode Alpha2 pressed");
             SetNewCamera(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("keycode Alpha3 pressed");
+            SetNewCamera(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("keycode Alpha4 pressed");
+            SetNewCamera(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Debug.Log("keycode Alpha5 pressed");
+            SetNewCamera(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Debug.Log("keycode Alpha6 pressed");
+            SetNewCamera(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            Debug.Log("keycode Alpha7 pressed");
+            SetNewCamera(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Debug.Log("keycode Alpha8 pressed");
+            SetNewCamera(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Debug.Log("keycode Alpha9 pressed");
+            SetNewCamera(8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log("keycode Alpha0 pressed");
+            SetNewCamera(9);
         }
     }
 
