@@ -36,6 +36,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private Renderer objectRenderer;
     private CharacterController charController;
     public ParticleSystem ghostParticles;
+    public ParticleSystem secondaryParticles;
+    public ParticleSystem placeParticles;
     public AudioClip pickUp;
     public AudioClip putDown;
 
@@ -64,7 +66,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             Debug.Log("No audio manager");
         }
-        ghostParticles.Stop();
+        ghostParticles?.Stop();
+        secondaryParticles?.Stop();
     }
     private void Start()
     {
@@ -290,8 +293,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = this;
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
-        ghostParticles.Play();
-
+        ghostParticles?.Play();
+        secondaryParticles?.Play();
         isAtSetSpot = false;
     }
 
@@ -304,7 +307,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
         sfx_AM?.PlaySFX(putDown);
-        ghostParticles.Stop();
+        ghostParticles?.Stop();
+        secondaryParticles?.Stop();
+
 
         oi?.ClearPlacementSpots();
 
