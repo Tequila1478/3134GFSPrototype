@@ -64,6 +64,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             Debug.Log("No audio manager");
         }
+        ghostParticles.Stop();
     }
     private void Start()
     {
@@ -87,8 +88,6 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
         oi = GetComponent<ObjectInteractions>();
-        if(ghostParticles == null)
-        ghostParticles = GetComponent<ParticleSystem>();
 
         if (materialObj != null)
         {
