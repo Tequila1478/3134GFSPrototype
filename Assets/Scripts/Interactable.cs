@@ -38,6 +38,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private CharacterController charController;
     public ParticleSystem ghostParticles;
     public ParticleSystem secondaryParticles;
+    public ParticleSystem hoverParticles;
     public ParticleSystem placeParticles;
     public AudioClip pickUp;
     public AudioClip putDown;
@@ -69,6 +70,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
         if (ghostParticles != null) ghostParticles.Stop();
         if (secondaryParticles != null) secondaryParticles.Stop();
+        if (hoverParticles != null) hoverParticles.Stop();
     }
     private void Start()
     {
@@ -224,14 +226,16 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     public void OnHoverEnter()
     {
-        Debug.Log("Hovering over object");
+        Debug.Log("Hovering over object"); //Debug
         if (isHovered) return;
         isHovered = true;
+
 
         if (!playerInteraction.isHolding)
         {
             HighlightObject();
             cursor?.ChangeVisual(1);
+            if (hoverParticles != null) hoverParticles.Play();
         }
         if (playerInteraction.itemHeld == this)
         {
@@ -243,6 +247,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (!isHovered) return;
         isHovered = false;
+
+
+        if (hoverParticles != null) hoverParticles.Stop();
 
         if (!playerInteraction.isHolding)
         {
@@ -297,6 +304,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         tag = "Held Item";
         if (ghostParticles != null) ghostParticles.Play();
         if (secondaryParticles != null) secondaryParticles.Play();
+        if (hoverParticles != null) hoverParticles.Stop();
         isAtSetSpot = false;
     }
 
