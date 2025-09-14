@@ -88,11 +88,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Height
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Radius
-      value: 0.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Center.x
