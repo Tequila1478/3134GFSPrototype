@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -66,11 +67,12 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             Debug.Log("No audio manager");
         }
-        ghostParticles?.Stop();
-        secondaryParticles?.Stop();
+        if (ghostParticles != null) ghostParticles.Stop();
+        if (secondaryParticles != null) secondaryParticles.Stop();
     }
     private void Start()
     {
+        Debug.Log("POOP START INTERACTABLE");
         CacheComponents();
         ValidateSetup();
 
@@ -293,13 +295,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.itemHeld = this;
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
-        ghostParticles?.Play();
-        secondaryParticles?.Play();
+        if (ghostParticles != null) ghostParticles.Play();
+        if (secondaryParticles != null) secondaryParticles.Play();
         isAtSetSpot = false;
     }
 
     private void DropObject(bool forceDrop = false)
     {
+        Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
         floating = false;
         moveComplete = false;
         playerInteraction.isHolding = false;
@@ -307,24 +310,27 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.DisablePlacementPointColliders();
         tag = "Interactable";
         sfx_AM?.PlaySFX(putDown);
-        ghostParticles?.Stop();
-        secondaryParticles?.Stop();
+        if (ghostParticles != null) ghostParticles.Stop();
+        if (secondaryParticles != null) secondaryParticles.Stop();
 
 
         oi?.ClearPlacementSpots();
 
         if (forceDrop)
         {
+            Debug.Log("Poop3: Doing forceDrop");
             hasSetSpot = false;
             isAtSetSpot = false;
         }
 
         if (hasSetSpot)
         {
+            Debug.Log("Poop3: Moving to set spot");
             StartMoveToSetSpot(ps);
         }
         else
         {
+            Debug.Log("Poop3: Reenabling gravity");
             rb.useGravity = true;
             rb.drag = 0;
             isAtSetSpot = false;

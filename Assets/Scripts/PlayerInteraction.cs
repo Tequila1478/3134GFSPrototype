@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -13,10 +14,13 @@ public class PlayerInteraction : MonoBehaviour
     private IHoverable currentHover;
     private IClickable currentClickTarget;
 
+    public TextMeshProUGUI debugText;
+    private bool isHovering = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("POOP START PLAYERINTERACTION");
         UpdatePlacementPoints();
         DisablePlacementPointColliders();
     }
@@ -24,6 +28,9 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isHovering = (currentHover != null);
+        debugText.text = string.Concat(Input.mousePosition.ToString(), "\n", isHovering);
+
         HandleHover();
 
         if (Input.GetMouseButtonDown(0))
