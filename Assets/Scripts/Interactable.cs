@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public string taskType;
     public bool isRequired;
     public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
+    private bool testMode = false;
 
     [Header("Materials")]
     public Material outlineMat;
@@ -132,7 +133,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         HandleInput();
         RotateToDirectionIfNeeded();
 
-        if (floating) {
+        if (floating && testMode) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
