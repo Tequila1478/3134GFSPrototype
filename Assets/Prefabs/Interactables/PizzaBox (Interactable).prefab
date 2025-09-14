@@ -28,6 +28,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.00447
       objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Height
+      value: 0.024
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.z
+      value: 0.007
+      objectReference: {fileID: 0}
     - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Center.z
       value: 0.006
@@ -84,6 +96,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: pickUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 72d86b860c118344cafaa6f271ff7820, type: 3}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: putDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 45e66df2b7b96a344a8a34e9820ad33d, type: 3}
     - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: taskType
       value: Trash

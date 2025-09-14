@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillow (Interactable)
       objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Height
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 1676963992563340833, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalScale.x
       value: 71.716
