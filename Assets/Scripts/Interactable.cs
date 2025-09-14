@@ -138,7 +138,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
             if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
             {
-                transform.position = Vector3.MoveTowards(transform.position, hit.point, speed * 50 * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, hit.point, speed * 500 * Time.deltaTime);
             }
         }
 
