@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 525689796}
@@ -224,6 +225,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -235,6 +237,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &11380574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8127302905496709573, guid: 0057f8334b208fe4f9d78d482bee6e84, type: 3}
@@ -330,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 740957659}
@@ -337,6 +341,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -348,6 +353,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &16980090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6581,6 +6587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 16980090}
@@ -6588,6 +6595,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -6599,6 +6607,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &94861634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
@@ -6909,6 +6918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 669720319}
@@ -6916,6 +6926,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -6927,6 +6938,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &134450589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8839,6 +8851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 169233231}
@@ -8846,6 +8859,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -8857,6 +8871,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &157998370
 GameObject:
   m_ObjectHideFlags: 0
@@ -13973,6 +13988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 429719794}
@@ -13980,6 +13996,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -13991,6 +14008,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &177373021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
@@ -15104,6 +15122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 0}
@@ -15111,6 +15130,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -15122,6 +15142,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &329657080
 GameObject:
   m_ObjectHideFlags: 0
@@ -15215,6 +15236,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 738406961}
   dialogueText: {fileID: 1240207858}
   headingText: {fileID: 1836102514}
+  skipReminderText: {fileID: 0}
   characterImage: {fileID: 708557754}
   imageContainer: {fileID: 708557753}
   delayBetweenLines: 4
@@ -15400,6 +15422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 633677101}
@@ -15407,6 +15430,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -15418,6 +15442,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &355665441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
@@ -16400,6 +16425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 234318421}
@@ -16407,6 +16433,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -16418,6 +16445,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &427743120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
@@ -17630,6 +17658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1051326327}
@@ -17637,6 +17666,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -17648,6 +17678,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &525689796
 GameObject:
   m_ObjectHideFlags: 0
@@ -17921,6 +17952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2144472755}
@@ -17928,6 +17960,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -17939,6 +17972,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &535953360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18476,6 +18510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1629875263}
@@ -18483,6 +18518,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -18494,6 +18530,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &546397383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
@@ -23468,6 +23505,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 391106667}
@@ -23475,17 +23517,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 546397386}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -23740,6 +23786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1003144014}
@@ -23747,6 +23794,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -23758,6 +23806,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &579979809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3287962396972231697, guid: 634b15533781ecb4e804cb278e1add6e, type: 3}
@@ -29108,6 +29157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1412609944}
@@ -29115,17 +29169,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 624744053}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -31970,7 +32028,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a098a7f4bc88d3459f5331200de7a64, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -32151,6 +32209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1755296348}
@@ -32158,6 +32217,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -32169,6 +32229,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &724830311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
@@ -32657,6 +32718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1646009252}
@@ -32664,6 +32726,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -32675,6 +32738,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &777477867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33047,6 +33111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 779997412}
@@ -33054,17 +33123,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 779997416}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 1029711480}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -34314,6 +34387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 403910706}
@@ -34321,6 +34395,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -34332,6 +34407,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &911626734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39922,6 +39998,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 2042463465}
@@ -39929,17 +40010,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 970968496}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -40249,6 +40334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1676901946}
@@ -40256,6 +40342,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -40267,6 +40354,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &980559914
 GameObject:
   m_ObjectHideFlags: 0
@@ -45291,6 +45379,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1950776598}
@@ -45298,17 +45391,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 985339307}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -55474,6 +55571,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 2142253991}
@@ -55481,17 +55583,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1033370112}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -60615,6 +60721,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1839699270}
@@ -60622,17 +60733,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1044369512}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -60781,6 +60896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHovered: 0
   cursor: {fileID: 0}
+  dialogueScript: {fileID: 0}
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1974997150}
@@ -66139,6 +66255,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 459408285}
@@ -66146,17 +66267,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1056953793}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -66431,6 +66556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 588869662}
@@ -66438,6 +66564,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -66449,6 +66576,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1074490164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66861,6 +66989,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 586900500}
@@ -66868,17 +67001,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1125863721}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 62281726}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -67115,55 +67252,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15073803
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.15073803
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.15073803
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.361
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.17
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalPosition.z
       value: -31.818
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8083246633351251873, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -67171,9 +67308,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b31d8247f2b905645b33eb2665b571b1, type: 2}
-    - target: {fileID: 919132149155446097, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+    - target: {fileID: 8891976281306324251, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
       propertyPath: m_Name
-      value: PotPlant
+      value: potplant
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
       propertyPath: m_Layer
@@ -67184,7 +67321,7 @@ PrefabInstance:
     - {fileID: 8164078558771037576, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 405fe4cde6f599c4085d337502d00abb, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 63bc3cd79a9b1894098b2e4807a27a54, type: 3}
 --- !u!1 &1174732889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3131636773813464339, guid: 333171e40f38d144996279c4843990be, type: 3}
@@ -72568,6 +72705,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 2125902240}
@@ -72575,17 +72717,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1228952245}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -72777,7 +72923,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'YOU SHOULD NOT BE HERE
+
+    LEAVE WHILE YOU STILL CAN'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -73270,6 +73418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 537653254}
@@ -73277,6 +73426,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -73288,6 +73438,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1285406290
 GameObject:
   m_ObjectHideFlags: 0
@@ -73856,6 +74007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHovered: 0
   cursor: {fileID: 0}
+  dialogueScript: {fileID: 0}
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1355524969}
@@ -74110,6 +74262,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1392589542}
@@ -74117,17 +74274,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1372806995}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -79234,6 +79395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1877260049}
@@ -79241,6 +79403,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -79252,6 +79415,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1392589542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
@@ -79347,6 +79511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2089054483}
@@ -79354,6 +79519,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -79365,6 +79531,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1402203128
 GameObject:
   m_ObjectHideFlags: 0
@@ -79681,6 +79848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1591864569}
@@ -79688,6 +79856,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -79699,6 +79868,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1412609944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
@@ -80863,6 +81033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHovered: 0
   cursor: {fileID: 0}
+  dialogueScript: {fileID: 0}
   outlineMat: {fileID: 0}
   originalMat: {fileID: 0}
   materialObj: {fileID: 0}
@@ -81190,6 +81361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1285406290}
@@ -81197,6 +81369,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -81208,6 +81381,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1534530576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7935352730651090313, guid: 634b15533781ecb4e804cb278e1add6e, type: 3}
@@ -82382,6 +82556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1372770858}
@@ -82389,6 +82564,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -82400,6 +82576,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1646009252
 GameObject:
   m_ObjectHideFlags: 0
@@ -82588,6 +82765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 2017962469}
@@ -82595,6 +82773,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -82606,6 +82785,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1656891247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83546,6 +83726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 308572224}
@@ -83553,6 +83734,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -83564,6 +83746,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1692765604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88595,6 +88778,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 902452138}
@@ -88602,17 +88790,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1697724000}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 0}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -88754,6 +88946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 117395294}
@@ -88761,6 +88954,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -88772,6 +88966,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!4 &1706903952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3865693957747818821, guid: 91eee7dc24f812d429bc85ead74ffc09, type: 3}
@@ -89009,6 +89204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1037186984}
@@ -89016,6 +89212,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -89027,6 +89224,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &1731176867
 GameObject:
   m_ObjectHideFlags: 0
@@ -89751,6 +89949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 0
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWhenSelected: 
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 102791269}
@@ -89758,17 +89961,21 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
+  ps: {fileID: 0}
   cursor: {fileID: 0}
-  audioSource: {fileID: 1790913909}
-  soundEffects:
-  - {fileID: 8300000, guid: 96465f42ad348994ab7d01187661f73a, type: 3}
-  - {fileID: 8300000, guid: 1bd79bef2f392d54ab032dd4fcdbb2ce, type: 3}
   ghostParticles: {fileID: 169331806}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 0}
+  placeParticles: {fileID: 0}
+  pickUp: {fileID: 0}
+  putDown: {fileID: 0}
   floating: 0
   moveComplete: 0
   hasSetSpot: 0
+  isAtSetSpot: 0
   movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
@@ -90024,6 +90231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 0}
@@ -90031,6 +90239,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -90042,6 +90251,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1812484601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90189,6 +90399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 967074607}
@@ -90196,6 +90407,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -90207,6 +90419,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1827289638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91059,6 +91272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 557634056}
@@ -91066,6 +91280,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -91077,6 +91292,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1919104759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93722,6 +93938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 455971368}
@@ -93729,6 +93946,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -93740,6 +93958,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &2112091222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93899,6 +94118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 1624594966}
@@ -93906,6 +94126,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -93917,6 +94138,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &2119255402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94191,6 +94413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 22688277}
@@ -94198,6 +94421,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -94209,6 +94433,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1 &2142253991 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
@@ -94617,6 +94842,7 @@ MonoBehaviour:
   taskEntryPrefab: {fileID: 5771835666798196148, guid: 91bb05967383d42448d659ddd51b53b2, type: 3}
   progressBar: {fileID: 6139589916599120009}
   progressText: {fileID: 7010288656367388672}
+  endDayButton: {fileID: 0}
 --- !u!114 &246059756488477522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96126,6 +96352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashcan: 0
+  isActive: 1
   offset: {x: 0, y: 1, z: 0}
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 7335261600328900492}
@@ -96133,6 +96360,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -96144,6 +96372,7 @@ MonoBehaviour:
   placementOffset: {x: 0, y: 0, z: 0}
   cursor: {fileID: 0}
   otherObject: {fileID: 0}
+  numOfTrash: 0
 --- !u!1001 &1874368934022935770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99213,6 +99442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb5c4447b2aad14a88f5a36e60b8921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  isDialogue: 0
 --- !u!1 &5093936779290861649
 GameObject:
   m_ObjectHideFlags: 0
@@ -102827,6 +103058,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5938aa32fe7e5134ca43c5d71634f7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerUI: {fileID: 0}
+  endDayButtonFade: {fileID: 0}
+  fadeDuration: 0.5
 --- !u!222 &8202692787047714078
 CanvasRenderer:
   m_ObjectHideFlags: 0

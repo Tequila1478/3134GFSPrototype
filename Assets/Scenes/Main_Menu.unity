@@ -796,23 +796,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Camera controls:
-
-    WASDQE
-
-    Right-click & mouse
-
-    or cursor at
-    edge of screen
+  m_text: 'Move the camera with number keys 1-6
 
 
-    Click an object to select/deselect it
+    Use the mouse to find a moveable
+    object (it''ll leave ghostly particles while mouse is on top)
 
-    Use WASDE and
-    Space to move selected object towards where you want to place it
+    Click to select
+    the object and move it with the mouse
 
-    Click highlighted
-    area to place object there'
+    Click on a highlighted area to place
+    the object there'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}

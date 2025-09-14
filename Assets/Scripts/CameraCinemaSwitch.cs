@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class CameraCinemaSwitch : MonoBehaviour
     public CinemachineVirtualCamera[] cameras;
     public int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
     private int currentCamera = 0; //Tracks the index of the current camera in the scene
+
+    public TextMeshProUGUI debugText;
 
     // OnValidate is called whenever a value for this script is updated in the inspector
     private void OnValidate()
@@ -34,6 +37,11 @@ public class CameraCinemaSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (debugText != null) // Display debug information
+        {
+            debugText.text = "Current camera: " + (currentCamera+1).ToString();
+        }
+
         // Bee note: too lazy to figure out a loopable alternative to this
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
