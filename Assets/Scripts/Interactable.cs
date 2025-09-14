@@ -1,7 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -90,7 +89,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         CacheComponents();
         ValidateSetup();
 
-        edgeOfObject = objectRenderer.localBounds.extents * transform.localScale.magnitude;
+        edgeOfObject = objectRenderer != null ? objectRenderer.localBounds.extents * transform.localScale.magnitude : new Vector3(1, 1, 1) * transform.localScale.magnitude;
 
         if (outlineMat != null && objectRenderer != null)
         {

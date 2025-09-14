@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: taskType
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayOffset
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00243
