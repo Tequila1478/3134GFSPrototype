@@ -15446,7 +15446,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 8
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1069205218}
   m_Follow: {fileID: 0}
@@ -15814,7 +15814,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 8
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 784405843}
   m_Follow: {fileID: 0}
@@ -35361,8 +35361,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888405343}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09079813, y: -0.57848704, z: 0.065005936, w: 0.8080116}
-  m_LocalPosition: {x: -8.338, y: 3.23, z: -30.68}
+  m_LocalRotation: {x: 0.028981047, y: -0.7799584, z: 0.036217995, w: 0.62411004}
+  m_LocalPosition: {x: -8.338, y: 2.6, z: -23.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
