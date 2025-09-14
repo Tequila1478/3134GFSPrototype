@@ -48,7 +48,8 @@ public class DialogueScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Skip dialogue by clicking or pressing space bar
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             CancelWait();
         }
