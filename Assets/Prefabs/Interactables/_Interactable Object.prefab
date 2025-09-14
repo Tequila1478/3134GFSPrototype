@@ -131,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: Clutter
   isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 243137
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 68092545606601618}

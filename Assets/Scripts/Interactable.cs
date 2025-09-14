@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     [Header("Interaction Settings")]
     public string taskType;
     public bool isRequired;
+    public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
 
     [Header("Materials")]
     public Material outlineMat;
@@ -129,6 +131,16 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         HandleFloating();
         HandleInput();
         RotateToDirectionIfNeeded();
+
+        if (floating) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
+            {
+                transform.position = Vector3.MoveTowards(transform.position, hit.point, speed * 50 * Time.deltaTime);
+            }
+        }
 
         if (coroutineFinished)
         {
