@@ -134,6 +134,8 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 243137
+  layerWhenSelected: SelectedInteractable
+  disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 68092545606601618}
@@ -141,6 +143,7 @@ MonoBehaviour:
   speed: 2
   height: 0.001
   rotation: 0.1
+  rayOffset: 2
   routes: []
   oi: {fileID: 0}
   ps: {fileID: 0}

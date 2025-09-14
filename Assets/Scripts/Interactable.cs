@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,7 +14,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public string taskType;
     public bool isRequired;
     public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
-    private bool testMode = false;
+    private string layerWhenUnselected; // Will be set to gameobject's layer in Awake()
+    [Tooltip("Object will temporarily switch to this layer while it is selected in-game.")]
+    public string layerWhenSelected; // Must be set in the inspector
+    [Tooltip("Disabling cursor controls will instead allow the object to be controlled using keyboard.")]
+    public bool disableCursorControls = false;
 
     [Header("Materials")]
     public Material outlineMat;
@@ -25,6 +30,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
+    [Tooltip("Ray Offset controls how far a selected object floats from whatever surfaces you are pointing the cursor at.")]
+    public float rayOffset = 2f;
 
     [Header("Movement")]
     public Vector3[] routes;
@@ -66,6 +73,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private void Awake()
     {
+        layerWhenUnselected = LayerMask.LayerToName(gameObject.layer);
+
         sfx_AM = FindObjectOfType<AudioManager>();
         if (sfx_AM == null)
         {
@@ -133,13 +142,22 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         HandleInput();
         RotateToDirectionIfNeeded();
 
-        if (floating && testMode) {
+        // Release object with right-click
+        if (Input.GetMouseButtonDown(1))
+        {
+            OnRelease();
+        }
+
+        gameObject.layer = floating ? LayerMask.NameToLayer(layerWhenSelected) : LayerMask.NameToLayer(layerWhenUnselected); // Set layer
+
+        if (floating && !disableCursorControls) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
             {
-                transform.position = Vector3.MoveTowards(transform.position, hit.point, speed * 500 * Time.deltaTime);
+                Vector3 newPoint = ray.GetPoint(hit.distance - rayOffset);
+                transform.position = Vector3.MoveTowards(transform.position, newPoint, speed * 500 * Time.deltaTime);
             }
         }
 
@@ -275,6 +293,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
+    // This is run by PlayerInteraction.cs to select the interactable
     public void OnClick()
     {
         if (!floating && playerInteraction.itemHeld == null)
@@ -284,11 +303,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             ps = null;
         }
         movingToSetSpot = false;
-        gameObject.layer = 9;
 
         Debug.Log("Clicked: " + this);
     }
 
+    // This is run by PlayerInteraction.cs to deselect the interactable
     public void OnRelease()
     {
         if (!floating) return;
