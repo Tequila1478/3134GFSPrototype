@@ -190,6 +190,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book (Interactable)
       objectReference: {fileID: 0}
+    - target: {fileID: 1366770635112351394, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00243
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Size.z
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 1676963992563340833, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
@@ -245,6 +269,10 @@ PrefabInstance:
     - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: taskType
       value: Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00243
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7634291269770852689, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
