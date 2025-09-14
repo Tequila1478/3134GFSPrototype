@@ -11,6 +11,7 @@ public class DialogueScript : MonoBehaviour
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText; 
     public TextMeshProUGUI headingText;
+    public TextMeshProUGUI skipReminderText;
     public Image characterImage; 
     public RectTransform imageContainer;
     public float delayBetweenLines = 4f;
@@ -116,6 +117,7 @@ public class DialogueScript : MonoBehaviour
 
         dialogueText.gameObject.SetActive(true);
         headingText.gameObject.SetActive(true);
+        skipReminderText.gameObject.SetActive(true);
         
         characterImage.gameObject.SetActive(true);
         dialoguePanel.SetActive(true);
@@ -139,6 +141,7 @@ public class DialogueScript : MonoBehaviour
         dialogueCompleted = true;
         dialogueText.gameObject.SetActive(false);
         headingText.gameObject.SetActive(false);
+        skipReminderText.gameObject.SetActive(false);
         characterImage.gameObject.SetActive(false);
         dialoguePanel.SetActive(false);
 
