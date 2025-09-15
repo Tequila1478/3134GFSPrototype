@@ -97,6 +97,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         controlPoints[2] = controlPoints[3] + offset * maxHeightAbovePoint;
         controlPoints[1] = startingPosition - offset * maxHeightAbovePoint;
         controlPoints[0] = startingPosition;
+
+        Debug.Log($"Point 1: {controlPoints[0]}, Point 2: {controlPoints[0]}, Point 3: {controlPoints[0]}, Point 4: {controlPoints[0]},");
     }
 
     protected virtual void OnDrawGizmos()
