@@ -125,8 +125,8 @@ public class DialogueScript : MonoBehaviour
 
         foreach (DialogueLine line in lines)
         {
-            dialogueText.text = line.text;
             headingText.text = line.heading;
+            dialogueText.text = (headingText.text.Length > 0) ? "<br>" + line.text : line.text; // Dialogue text is shifted into next line if there is a heading present
 
             if(line.characterSprite == null) characterImage.gameObject.SetActive(false);
             else characterImage.gameObject.SetActive(true);
