@@ -10,6 +10,7 @@ public class ToggleLight : MonoBehaviour, IHoverable, IClickable
     private MaterialPropertyBlock mpb;
     private Color[] originalColors;
     private Color hoverColor = Color.white;
+    public ParticleSystem sparks;
 
     private void Start()
     {
@@ -63,6 +64,7 @@ public class ToggleLight : MonoBehaviour, IHoverable, IClickable
     {
         isOn = !isOn;
         light.enabled = isOn;
+        sparks.Play();
     }
 
     private void HighlightObject()
