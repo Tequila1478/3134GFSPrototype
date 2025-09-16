@@ -6,7 +6,16 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public bool isHolding = false;
-    public Interactable itemHeld;
+    public Interactable itemHeld
+    {
+        get => _itemHeld;
+        set
+        {
+            _itemHeld = value;
+            RefreshSpotHighlights(); // automatically update highlights
+        }
+    }
+    private Interactable _itemHeld;
 
     public List<GameObject> allPlacementPoints = new List<GameObject>();
 
@@ -42,6 +51,15 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             HandleRelease();
+        }
+    }
+
+    void RefreshSpotHighlights()
+    {
+        var spots = FindObjectsOfType<PlacementSpot>();
+        foreach (var spot in spots)
+        {
+            spot.UpdateHighlightForHeldItem(itemHeld);
         }
     }
 

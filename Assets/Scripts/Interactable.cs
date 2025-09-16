@@ -121,7 +121,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
 
         Renderer rend = GetComponent<Renderer>();
-        if(rend == null)
+        if (rend == null)
         {
             renderers = GetComponentsInChildren<Renderer>();
         }
@@ -129,10 +129,20 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             renderers = new Renderer[] { rend };
         }
+
         originalColors = new Color[renderers.Length];
+
         for (int i = 0; i < renderers.Length; i++)
         {
-            originalColors[i] = renderers[i].sharedMaterial.GetColor("_OutlineColour");
+            Material mat = renderers[i].sharedMaterial; // or .material if you want a unique instance
+            if (mat != null && mat.HasProperty("_OutlineColour"))
+            {
+                originalColors[i] = mat.GetColor("_OutlineColour");
+            }
+            else
+            {
+                originalColors[i] = Color.clear; // or some default value
+            }
         }
     }
 
@@ -252,6 +262,36 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
             oi?.Move();
         }        
+    }
+
+    private IEnumerator ShrinkAndRemove()
+    {
+        float duration = 3f; // total time to shrink
+        float elapsed = 0f;
+        Vector3 originalScale = transform.localScale;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            t = Mathf.Pow(t, 0.5f);
+
+            transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, t);
+            yield return null;
+        }
+
+        transform.localScale = Vector3.zero;
+
+        // Finally, disable visuals and colliders
+        if (objectRenderer != null)
+            objectRenderer.enabled = false;
+
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+            col.enabled = false;
+
+        gameObject.SetActive(false); // or Destroy(gameObject)
     }
 
     private void RotateToDirectionIfNeeded()
@@ -441,6 +481,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             Debug.Log("Trash item reached trashcan: " + name);
 
             // small delay so it visibly drops in
+
+            StartCoroutine(ShrinkAndRemove());
+            /*
             yield return new WaitForSeconds(2f);
 
             if (objectRenderer != null)
@@ -448,6 +491,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
             Collider collider = GetComponent<Collider>();
             if (collider != null) collider.enabled = false;
+            */
         }
         else
         {

@@ -187,6 +187,35 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         //highlightSpots = true;
     }
 
+    public void UpdateHighlightForHeldItem(Interactable heldItem)
+    {
+        bool valid = false;
+
+        if (heldItem != null && isActive && !claimed)
+        {
+            // Check if heldItem matches this spot's type
+            if (spotType == SpotType.Any || heldItem.taskType == spotType.ToString())
+            {
+                valid = true;
+            }
+        }
+
+        highlightVisualisation.SetActive(valid);
+
+        // Special case for trashcan
+        if (isTrashcan && valid)
+        {
+            var meshFilter = highlightVisualisation.GetComponent<MeshFilter>();
+            var heldMeshFilter = heldItem.visualisationObj.GetComponent<MeshFilter>();
+
+            if (meshFilter != null && heldMeshFilter != null)
+            {
+                meshFilter.mesh = heldMeshFilter.mesh;
+                highlightVisualisation.transform.localScale = heldItem.visualisationObj.transform.localScale;
+            }
+        }
+    }
+
     protected virtual void DeselectObject(Collider other = null)
     {
         if (other != null)
