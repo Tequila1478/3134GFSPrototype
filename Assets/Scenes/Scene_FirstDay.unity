@@ -12948,7 +12948,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282006074
+    rgba: 4285300096
   m_fontColor: {r: 0.5, g: 0.49027124, b: 0.4221698, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -20914,7 +20914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &738406962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29064,7 +29064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: <br>New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
@@ -29127,7 +29127,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 74.104034, y: 12.102484, z: -314.78903, w: -52.16311}
+  m_margin: {x: 74.104034, y: -10.187881, z: -314.78903, w: -52.16311}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
