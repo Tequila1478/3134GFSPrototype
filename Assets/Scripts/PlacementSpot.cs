@@ -193,7 +193,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
         if (heldItem != null && isActive && !claimed)
         {
-            // Check if heldItem matches this spot's type
             if (spotType == SpotType.Any || heldItem.taskType == spotType.ToString())
             {
                 valid = true;
@@ -202,17 +201,20 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
         highlightVisualisation.SetActive(valid);
 
-        // Special case for trashcan
-        if (isTrashcan && valid)
-        {
-            var meshFilter = highlightVisualisation.GetComponent<MeshFilter>();
-            var heldMeshFilter = heldItem.visualisationObj.GetComponent<MeshFilter>();
+        if (!valid) return;
 
-            if (meshFilter != null && heldMeshFilter != null)
-            {
-                meshFilter.mesh = heldMeshFilter.mesh;
-                highlightVisualisation.transform.localScale = heldItem.visualisationObj.transform.localScale;
-            }
+        var meshFilter = highlightVisualisation.GetComponent<MeshFilter>();
+        var heldMeshFilter = heldItem.visualisationObj.GetComponent<MeshFilter>();
+
+        if (meshFilter != null && heldMeshFilter != null)
+        {
+            meshFilter.mesh = heldMeshFilter.mesh;
+            highlightVisualisation.transform.localScale = heldItem.visualisationObj.transform.localScale;
+
+            // Align highlight position with placementVisualisation
+            highlightVisualisation.transform.position = isTrashcan
+                ? transform.position
+                : transform.position + GetModifiedOffsetPosition(heldItem.edgeOfObject);
         }
     }
 
@@ -247,17 +249,26 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     protected virtual void ApplyVisualisation(GameObject obj, Interactable interactable)
     {
-        placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
-        placementVisualisation.transform.position = transform.position + placementOffset;
-
         var meshFilter = obj.GetComponent<MeshFilter>();
-        if (meshFilter != null)
-        {
-            //placementVisualisation.SetActive(true);
-            placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
-        }
+        if (meshFilter == null) return;
 
+        // Set mesh
+        placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
+
+        // Set scale
         placementVisualisation.transform.localScale = obj.transform.localScale;
+
+        if (isTrashcan)
+        {
+            // Trashcan: center placement visualisation on bin, ignore offset
+            placementVisualisation.transform.position = transform.position;
+        }
+        else
+        {
+            // Normal spots: apply offset
+            placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
+            placementVisualisation.transform.position = transform.position + placementOffset;
+        }
     }
 
     protected virtual Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
