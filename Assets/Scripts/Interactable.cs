@@ -24,6 +24,10 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public Material originalMat;
     public GameObject materialObj;
     public GameObject visualisationObj;
+    private Renderer[] renderers;
+    private MaterialPropertyBlock mpb;
+    private Color[] originalColors;
+    private Color hoverColor = Color.white;
 
     [Header("Floating Settings")]
     public float speed = 2f;
@@ -114,6 +118,21 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         else
         {
             Debug.LogError("Material object is not assigned in " + gameObject.name);
+        }
+
+        Renderer rend = GetComponent<Renderer>();
+        if(rend == null)
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+        }
+        else
+        {
+            renderers = new Renderer[] { rend };
+        }
+        originalColors = new Color[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            originalColors[i] = renderers[i].sharedMaterial.GetColor("_Color");
         }
     }
 
@@ -271,6 +290,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             cursor?.ChangeVisual(1);
         }
+
     }
 
     public void OnHoverExit()
@@ -449,6 +469,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private void HighlightObject()
     {
+        foreach (var rend in renderers)
+        {
+            var mpb = new MaterialPropertyBlock();
+            rend.GetPropertyBlock(mpb);
+            mpb.SetColor("_Color", hoverColor);
+            rend.SetPropertyBlock(mpb);
+        }
+
         if (outlineMat != null && objectRenderer != null)
         {
             //outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
@@ -458,6 +486,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private void UnhighlightObject()
     {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            var mpb = new MaterialPropertyBlock();
+            var rend = renderers[i];
+            rend.GetPropertyBlock(mpb);
+            mpb.SetColor("_Color", originalColors[i]);
+            rend.SetPropertyBlock(mpb);
+        }
         if (originalMat != null && objectRenderer != null)
         {
             //objectRenderer.material = originalMat;
