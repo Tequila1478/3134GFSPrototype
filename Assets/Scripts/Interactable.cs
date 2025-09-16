@@ -132,7 +132,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         originalColors = new Color[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
         {
-            originalColors[i] = renderers[i].sharedMaterial.GetColor("_Color");
+            originalColors[i] = renderers[i].sharedMaterial.GetColor("_OutlineColour");
         }
     }
 
@@ -405,12 +405,56 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (moveCoroutine == null)
         {
-            moveCoroutine = StartCoroutine(GoByTheRoute(routeToGo));
+            moveCoroutine = StartCoroutine(MoveDirectlyToSpot(ps.transform.position));
             movingToSetSpot = true;
             sfx_AM?.PlaySFX(putDown);
             ghostParticles.Stop();
         }
         
+    }
+
+    private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
+    {
+        while (Vector3.Distance(transform.position, targetPos) > 0.05f) // small threshold
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                targetPos,
+                speed * Time.deltaTime
+            );
+            yield return null;
+        }
+
+        // Snap to exact position
+        transform.position = targetPos;
+
+        coroutineFinished = true;
+        isAtSetSpot = true;
+
+        if (ps.isTrashcan)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.None;
+
+            ps.IncrementTrash();
+            Debug.Log("Trash item reached trashcan: " + name);
+
+            // small delay so it visibly drops in
+            yield return new WaitForSeconds(2f);
+
+            if (objectRenderer != null)
+                objectRenderer.enabled = false;
+
+            Collider collider = GetComponent<Collider>();
+            if (collider != null) collider.enabled = false;
+        }
+        else
+        {
+            rb.isKinematic = true;
+        }
+
+        moveCoroutine = null;
     }
 
     private IEnumerator GoByTheRoute(int routeNum)
@@ -473,7 +517,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             var mpb = new MaterialPropertyBlock();
             rend.GetPropertyBlock(mpb);
-            mpb.SetColor("_Color", hoverColor);
+            mpb.SetColor("_OutlineColour", hoverColor);
             rend.SetPropertyBlock(mpb);
         }
 
@@ -491,7 +535,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             var mpb = new MaterialPropertyBlock();
             var rend = renderers[i];
             rend.GetPropertyBlock(mpb);
-            mpb.SetColor("_Color", originalColors[i]);
+            mpb.SetColor("_OutlineColour", originalColors[i]);
             rend.SetPropertyBlock(mpb);
         }
         if (originalMat != null && objectRenderer != null)
