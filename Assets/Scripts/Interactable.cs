@@ -53,6 +53,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public ParticleSystem secondaryParticles;
     public ParticleSystem hoverParticles;
     public ParticleSystem placeParticles;
+
+    public GameObject floatingParticles;
+    private ParticleSystem[] floatingParticleSystems;
     public AudioClip pickUp;
     public AudioClip putDown;
 
@@ -86,6 +89,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (ghostParticles != null) ghostParticles.Stop();
         if (secondaryParticles != null) secondaryParticles.Stop();
         if (hoverParticles != null) hoverParticles.Stop();
+        floatingParticleSystems = floatingParticles.GetComponentsInChildren<ParticleSystem>(true);
+        //if (floatingParticles != null) floatingParticles.SetActive(false);
+
     }
     private void Start()
     {
@@ -325,6 +331,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             HighlightObject();
             cursor?.ChangeVisual(1);
             if (hoverParticles != null) hoverParticles.Play();
+
         }
         if (playerInteraction.itemHeld == this)
         {
@@ -340,6 +347,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
 
         if (hoverParticles != null) hoverParticles.Stop();
+
 
         if (!playerInteraction.isHolding)
         {
@@ -394,9 +402,31 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
         if (ghostParticles != null) ghostParticles.Play();
+        PlayAllFloatingParticles();
         if (secondaryParticles != null) secondaryParticles.Play();
         if (hoverParticles != null) hoverParticles.Stop();
         isAtSetSpot = false;
+    }
+
+    public void PlayAllFloatingParticles()
+    {
+        foreach (var ps in floatingParticleSystems)
+        {
+            ps.Play();
+        }
+    }
+
+    public void StopAllFloatingParticles(bool clear = false)
+    {
+        foreach (var ps in floatingParticleSystems)
+        {
+            ps.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmitting);
+
+            if (clear)
+            {
+                ps.Clear();
+            }
+        }
     }
 
     private void DropObject(bool forceDrop = false)
@@ -410,6 +440,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         tag = "Interactable";
         sfx_AM?.PlaySFX(putDown);
         if (ghostParticles != null) ghostParticles.Stop();
+        //if (floatingParticles != null) floatingParticles.SetActive(false);
+        StopAllFloatingParticles();
         if (secondaryParticles != null) secondaryParticles.Stop();
 
 
@@ -449,8 +481,10 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             movingToSetSpot = true;
             sfx_AM?.PlaySFX(putDown);
             ghostParticles.Stop();
+            //if (floatingParticles != null) floatingParticles.SetActive(false);
+            StopAllFloatingParticles();
         }
-        
+
     }
 
     private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
