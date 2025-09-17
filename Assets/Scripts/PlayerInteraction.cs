@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("POOP START PLAYERINTERACTION");
+        //Debug.Log("POOP START PLAYERINTERACTION");
         UpdatePlacementPoints();
         DisablePlacementPointColliders();
     }

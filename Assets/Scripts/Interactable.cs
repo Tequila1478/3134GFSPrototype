@@ -95,7 +95,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     }
     private void Start()
     {
-        Debug.Log("POOP START INTERACTABLE");
+        //Debug.Log("POOP START INTERACTABLE");
         CacheComponents();
         ValidateSetup();
 

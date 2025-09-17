@@ -11,6 +11,8 @@ public class CameraCinemaSwitch : MonoBehaviour
     public int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
     private int currentCamera = 0; //Tracks the index of the current camera in the scene
 
+    private int camOneIncrement = 0;
+
     public TextMeshProUGUI debugText;
 
     // OnValidate is called whenever a value for this script is updated in the inspector
@@ -46,58 +48,90 @@ public class CameraCinemaSwitch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("keycode Alpha1 pressed");
-            SetNewCamera(0);
+            camOneIncrement++;
+            if (camOneIncrement == 1)
+                SetNewCamera(0, true);
+            else if (camOneIncrement == 2)
+                SetNewCamera(1, true);
+            else if (camOneIncrement == 3)
+                SetNewCamera(2, true);
+            else
+            {
+                camOneIncrement = 0;
+                SetNewCamera(0, true);
+            }
+           
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Debug.Log("keycode Alpha2 pressed");
             SetNewCamera(1);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Debug.Log("keycode Alpha3 pressed");
             SetNewCamera(2);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Debug.Log("keycode Alpha4 pressed");
-            SetNewCamera(3);
+            camOneIncrement++;
+            if (camOneIncrement == 1)
+                SetNewCamera(3, true);
+            else if (camOneIncrement == 2)
+                SetNewCamera(4, true);
+            else if (camOneIncrement == 3)
+                SetNewCamera(5, true);
+            else
+            {
+                camOneIncrement = 0;
+                SetNewCamera(3, true);
+            }
+            
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Debug.Log("keycode Alpha5 pressed");
             SetNewCamera(4);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Debug.Log("keycode Alpha6 pressed");
             SetNewCamera(5);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             Debug.Log("keycode Alpha7 pressed");
             SetNewCamera(6);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             Debug.Log("keycode Alpha8 pressed");
             SetNewCamera(7);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             Debug.Log("keycode Alpha9 pressed");
             SetNewCamera(8);
+            camOneIncrement = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Debug.Log("keycode Alpha0 pressed");
             SetNewCamera(9);
+            camOneIncrement = 0;
         }
     }
 
-    public void SetNewCamera(int newIndex)
+    public void SetNewCamera(int newIndex, bool force = false)
     {
-        if (currentCamera != newIndex) //Check if initial camera num has been changed in inspector
+        if (force || currentCamera != newIndex) //Check if initial camera num has been changed in inspector
         {
             cameras[currentCamera].m_Priority = 8; //Set previous "initial camera" to lower priority
             cameras[newIndex].m_Priority = 10; //Set new "initial camera" to higher priority
