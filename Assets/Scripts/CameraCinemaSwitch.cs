@@ -11,6 +11,8 @@ public class CameraCinemaSwitch : MonoBehaviour
     public int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
     private int currentCamera = 0; //Tracks the index of the current camera in the scene
 
+    public CinemachineVirtualCamera calendarCamera;
+
     private int camOneIncrement = 0;
 
     public TextMeshProUGUI debugText;
@@ -137,5 +139,14 @@ public class CameraCinemaSwitch : MonoBehaviour
             cameras[newIndex].m_Priority = 10; //Set new "initial camera" to higher priority
             currentCamera = newIndex; //Update script to start with this "initial camera"
         }
+    }
+
+    public void SwitchToCalendarCamera()
+    {
+        // Lower the priority of the current camera
+        cameras[currentCamera].m_Priority = 8;
+
+        // Raise the priority of the calendar camera
+        calendarCamera.m_Priority = 10;
     }
 }

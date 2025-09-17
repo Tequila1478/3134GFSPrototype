@@ -20,12 +20,19 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     private DialogueScript ds;
 
+    public bool isDivorcePapers = false;
+
+    public bool displayInfoImage = true;
+
+
 
 
     private PlayerInteraction playerInteraction;
 
 
     public List<DialogueLine> inspectionDialogue;
+    public List<DialogueLine> alternativeDialogue;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +55,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         //Show info and dialogue on counter
         //UPdate state
 
-        if (dialogueScript != null)
+        if (dialogueScript != null && isDivorcePapers)
         {
             dialogueScript.foundDivorcePapers = true;
         }
@@ -57,12 +64,15 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public IEnumerator ShowInfo()
     {
-        info.SetActive(true);
-        ds.PlayDialogueList(inspectionDialogue);
+        info.SetActive(displayInfoImage);
+
+        if (dialogueScript.foundDivorcePapers)
+            ds.PlayDialogueList(alternativeDialogue);
+        else
+            ds.PlayDialogueList(inspectionDialogue);
+
         yield return new WaitForSecondsRealtime(2);
         info.SetActive(false);
-
-
     }
 
     public void OnRelease()
@@ -94,18 +104,10 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     private void HighlightObject()
     {
-        if (outlineMat != null && objectRenderer != null)
-        {
-            outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
-            objectRenderer.material = outlineMat;
-        }
+
     }
 
     private void UnhighlightObject()
     {
-        if (originalMat != null && objectRenderer != null)
-        {
-            objectRenderer.material = originalMat;
-        }
     }
 }
