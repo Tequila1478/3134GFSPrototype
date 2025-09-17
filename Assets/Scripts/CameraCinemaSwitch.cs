@@ -131,6 +131,18 @@ public class CameraCinemaSwitch : MonoBehaviour
         }
     }
 
+    public void NextCamera()
+    {
+        int newIndex = (currentCamera + 1) % cameras.Length; // wraps back to 0
+        SetNewCamera(newIndex);
+    }
+
+    public void PreviousCamera()
+    {
+        int newIndex = (currentCamera - 1 + cameras.Length) % cameras.Length; // wraps to last camera
+        SetNewCamera(newIndex);
+    }
+
     public void SetNewCamera(int newIndex, bool force = false)
     {
         if (force || currentCamera != newIndex) //Check if initial camera num has been changed in inspector
