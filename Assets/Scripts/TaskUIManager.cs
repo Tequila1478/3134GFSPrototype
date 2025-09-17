@@ -12,6 +12,7 @@ public class TaskUIManager : MonoBehaviour
     public GameObject taskEntryPrefab;            // Prefab with a TextMeshProUGUI component
     public Slider progressBar;                    // Completion percentage bar
     public TextMeshProUGUI progressText;          // Text to show percent complete
+    public TextMeshProUGUI progressTextShadow;
     public GameObject endDayButton;               // Button to end the day
 
     private Dictionary<string, GameObject> taskEntries = new();
@@ -85,6 +86,8 @@ public class TaskUIManager : MonoBehaviour
         // Update UI
         progressBar.value = requiredPercent;
         progressText.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
+        progressTextShadow.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
+
 
         // Show end day button if all required tasks are complete
         if (!dayEnded && Mathf.RoundToInt(requiredPercent * 100f) >= 100)
