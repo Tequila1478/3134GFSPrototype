@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable
+public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable, IInteractable
 {
     private Renderer[] renderers;
     private MaterialPropertyBlock mpb;
@@ -13,6 +13,8 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable
     private bool _isFocussedOn = false;
 
     public CameraCinemaSwitch cameraController;
+    public GameObject cycleCameras;
+    public GameObject backCamera;
 
     private InspectItem ii;
 
@@ -61,10 +63,14 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable
         if (!isFocussedOn)
         {
             cameraController.SwitchToCalendarCamera();
+            cycleCameras.SetActive(false);
+            backCamera.SetActive(true);
         }
         else
         {
             ii.OnClick();
+            cycleCameras.SetActive(false);
+            backCamera.SetActive(true);
         }
         isFocussedOn = !isFocussedOn;
     }
@@ -110,5 +116,18 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable
     private void PlayAnim()
     {
         
+    }
+
+    public void EndInteraction()
+    {
+        isFocussedOn = false;
+        if (cameraController != null && cameraController.currentFocused == this)
+            cameraController.currentFocused = null;
+
+    }
+
+    public void BeginInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }

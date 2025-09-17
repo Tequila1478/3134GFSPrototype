@@ -14,8 +14,10 @@ public class CameraCinemaSwitch : MonoBehaviour
     public CinemachineVirtualCamera calendarCamera;
 
     private int camOneIncrement = 0;
-
+    private int previousCamera = -1;
     public TextMeshProUGUI debugText;
+
+    public IInteractable currentFocused;
 
     // OnValidate is called whenever a value for this script is updated in the inspector
     private void OnValidate()
@@ -147,6 +149,8 @@ public class CameraCinemaSwitch : MonoBehaviour
     {
         if (force || currentCamera != newIndex) //Check if initial camera num has been changed in inspector
         {
+            previousCamera = currentCamera;
+
             cameras[currentCamera].m_Priority = 8; //Set previous "initial camera" to lower priority
             cameras[newIndex].m_Priority = 10; //Set new "initial camera" to higher priority
             currentCamera = newIndex; //Update script to start with this "initial camera"
@@ -160,5 +164,21 @@ public class CameraCinemaSwitch : MonoBehaviour
 
         // Raise the priority of the calendar camera
         calendarCamera.m_Priority = 10;
+    }
+
+    public void BackCamera()
+    {
+        if (previousCamera >= 0)
+        {
+            SetNewCamera(previousCamera);
+        }
+        else
+            SetNewCamera(0);
+
+        if (currentFocused != null)
+        {
+            currentFocused.EndInteraction();
+        }
+
     }
 }
