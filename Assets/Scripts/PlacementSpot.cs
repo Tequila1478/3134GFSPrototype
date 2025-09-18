@@ -14,6 +14,7 @@ public enum SpotType
 
 public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 {
+    [Tooltip("Setting isTrashcan to true will cause any object placed here to shrink and be destroyed.")]
     public bool isTrashcan = false;
     public bool isActive = true;
 

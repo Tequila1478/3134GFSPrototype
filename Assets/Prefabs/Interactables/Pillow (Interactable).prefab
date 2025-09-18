@@ -19394,6 +19394,30 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 0.015
       objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.020693487
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.0103717595
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Size.z
+      value: 0.02047751
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0002600518
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0003467383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1676963992563340833, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalScale.x
       value: 71.716
