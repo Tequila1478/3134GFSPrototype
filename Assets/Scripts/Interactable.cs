@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +18,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private string layerWhenUnselected; // Will be set to gameobject's layer in Awake()
     [Tooltip("Object will temporarily switch to this layer while it is selected in-game.")]
     public string layerWhenSelected; // Must be set in the inspector
+    [Tooltip("Put all GameObjects that can change layer here. (This is important for GameObjects with multiple children.) This will always include the GameObject this script is attached to.")]
+    public List<GameObject> layerableObjects;
     [Tooltip("Disabling cursor controls will instead allow the object to be controlled using keyboard.")]
     public bool disableCursorControls = false;
 
@@ -76,6 +80,19 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private AudioManager sfx_AM;
 
+
+
+    private void OnValidate()
+    {
+        if (layerableObjects.Count == 0) // Set a default layerableObjects with the gameObject this script is attached to (do NOT programmatically attach child objects here!)
+        {
+            layerableObjects = new List<GameObject> { gameObject };
+        }
+        else if (!layerableObjects.Contains(gameObject)) // Readd attached gameObject if it is removed from list
+        {
+            layerableObjects.Insert(0, gameObject);
+        }
+    }
 
     private void Awake()
     {
@@ -170,6 +187,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
+    private void SetNewLayer(string layerName)
+    {
+        foreach (GameObject component in layerableObjects)
+        {
+            component.layer = LayerMask.NameToLayer(layerName);
+        }
+    }
+
     private void Update()
     {
         HandleFloating();
@@ -182,7 +207,33 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             OnRelease();
         }
 
-        gameObject.layer = floating ? LayerMask.NameToLayer(layerWhenSelected) : LayerMask.NameToLayer(layerWhenUnselected); // Set layer
+        if (!floating)
+        {
+            if (isHovered)
+            {
+                SetNewLayer("HoverOutline");
+            } else
+            {
+                SetNewLayer(layerWhenUnselected);
+            }
+        }
+        else
+        {
+            SetNewLayer(layerWhenSelected);
+        }
+
+        /*if (isHovered && !floating)
+        {
+            SetNewLayer("HoverOutline");
+        }
+        else if (floating)
+        {
+            SetNewLayer(layerWhenSelected);
+        }
+        else
+        {
+            SetNewLayer(layerWhenUnselected);
+        }*/
 
         if (floating && !disableCursorControls) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

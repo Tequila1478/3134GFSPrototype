@@ -206,7 +206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2561197014680162015}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
   m_Name: 
@@ -217,6 +217,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243137
   layerWhenSelected: SelectedInteractable
+  layerableObjects:
+  - {fileID: 2561197014680162015}
   disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -234,6 +236,7 @@ MonoBehaviour:
   secondaryParticles: {fileID: 0}
   hoverParticles: {fileID: 6011732598666605266}
   placeParticles: {fileID: 0}
+  floatingParticles: {fileID: 0}
   pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
   putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
   floating: 0
@@ -477,8 +480,23 @@ PrefabInstance:
       propertyPath: taskType
       value: Trash
       objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2561197014680162015}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 375988695087786088}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 2927797735664504978}
     m_RemovedComponents:
-    - {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     - {fileID: 373699228119165412, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:

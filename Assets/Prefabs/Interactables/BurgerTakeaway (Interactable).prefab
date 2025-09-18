@@ -19431,6 +19431,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+--- !u!1 &1186667843873140409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 382773124344995548, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+  m_PrefabInstance: {fileID: 1528978932794765413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7146636563705404621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8508973333594975400, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+  m_PrefabInstance: {fileID: 1528978932794765413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7233060599498118136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8167551118411047837, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+  m_PrefabInstance: {fileID: 1528978932794765413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8010547929419204930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8796419419909421351, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
@@ -19536,6 +19551,22 @@ PrefabInstance:
       propertyPath: floatingParticles
       value: 
       objectReference: {fileID: 2922862949063737516}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 7233060599498118136}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7146636563705404621}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1186667843873140409}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

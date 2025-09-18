@@ -298,6 +298,46 @@ PrefabInstance:
       propertyPath: rayOffset
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: modelComponents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: modelComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 4447783242137429637}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: modelComponents.Array.data[1]
+      value: 
+      objectReference: {fileID: 1383714296037121547}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: modelComponents.Array.data[2]
+      value: 
+      objectReference: {fileID: 6200910536787688838}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1383714296037121547}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 6200910536787688838}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 4447783242137429637}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableComponents.Array.data[1]
+      value: 
+      objectReference: {fileID: 1383714296037121547}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableComponents.Array.data[2]
+      value: 
+      objectReference: {fileID: 6200910536787688838}
     - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00243
@@ -318,5 +358,10 @@ PrefabInstance:
 --- !u!4 &3030253332731624246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1676963992563340833, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4447783242137429637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 68092545606601618, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
   m_PrefabInstance: {fileID: 4415878958175923479}
   m_PrefabAsset: {fileID: 0}

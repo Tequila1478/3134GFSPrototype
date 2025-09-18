@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHolding: 0
-  itemHeld: {fileID: 0}
   allPlacementPoints: []
   interactionLayer:
     serializedVersion: 2
-    m_Bits: 230272
+    m_Bits: 754560
+  debugText: {fileID: 0}
 --- !u!114 &3549277921268616311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +68,6 @@ MonoBehaviour:
   taskRequirements:
   - taskType: Clutter
     minimumRequired: 5
-  totalRequiredTasks: 0
 --- !u!114 &5310843692937181973
 MonoBehaviour:
   m_ObjectHideFlags: 0

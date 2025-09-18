@@ -135,6 +135,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243137
   layerWhenSelected: SelectedInteractable
+  layerableComponents:
+  - {fileID: 9049241438060978422}
+  - {fileID: 9049241438060978422}
+  - {fileID: 68092545606601618}
   disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
@@ -152,6 +156,7 @@ MonoBehaviour:
   secondaryParticles: {fileID: 0}
   hoverParticles: {fileID: 2613107453020168141}
   placeParticles: {fileID: 0}
+  floatingParticles: {fileID: 0}
   pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
   putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
   floating: 0
