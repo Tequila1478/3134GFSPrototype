@@ -64742,13 +64742,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameras:
+  - {fileID: 2058764061}
   - {fileID: 678113575}
   - {fileID: 671491979}
-  - {fileID: 2058764061}
-  - {fileID: 1726219371}
   - {fileID: 1294998900}
+  - {fileID: 1726219371}
   - {fileID: 1483018847}
-  initialCamera: 0
+  initialCamera: 1
   calendarCamera: {fileID: 844245352}
   debugText: {fileID: 33735990}
 --- !u!1 &1286828862
