@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: thongR
       objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: 1e797365b7c2fa44d9aa1e0e9ab94c2b, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
