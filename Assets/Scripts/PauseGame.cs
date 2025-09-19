@@ -6,13 +6,22 @@ public class PauseGame : MonoBehaviour
 {
     public bool isPaused = false;
     public bool isDialogue = false;
-    // Start is called before the first frame update
+
+    public Animator pauseAnimator;
+    public GameObject pauseScreen;
+    public GameObject settingsScreen;
+    public GameObject HUDScreen;
+
     void Start()
     {
-        
+        if (pauseAnimator != null)
+        {
+            // Make sure the animator ignores Time.timeScale
+            pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            pauseAnimator.SetBool("isPaused", false);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -28,18 +37,25 @@ public class PauseGame : MonoBehaviour
     private void StartPause()
     {
         Time.timeScale = 0;
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(3).gameObject.SetActive(false);
+        pauseScreen.SetActive(true);
+        HUDScreen.SetActive(false);
 
-        isPaused = !isPaused;
+        isPaused = true;
+
+        if (pauseAnimator != null)
+            pauseAnimator.SetBool("isPaused", true);
     }
 
     public void EndPause()
     {
         Time.timeScale = 1;
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(3).gameObject.SetActive(true);
-        isPaused = !isPaused;
+        pauseScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        HUDScreen.SetActive(true);
+
+        isPaused = false;
+
+        if (pauseAnimator != null)
+            pauseAnimator.SetBool("isPaused", false);
     }
 }

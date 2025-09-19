@@ -55,7 +55,7 @@ public class BtnFunctions : MonoBehaviour
 
     public void GoToNextUIOnClick()
     {
-        previousUI?.SetActive(false);
+        if(previousUI != null) previousUI?.SetActive(false);
         nextUI.SetActive(true);
 
         if (playAudioOnClick)

@@ -59,7 +59,7 @@ public class WavyText : MonoBehaviour
             Vector3[] sourceVerts = cachedMeshInfo[meshIndex].vertices;   // original baseline
             Vector3[] destVerts = textInfo.meshInfo[meshIndex].vertices; // mesh we will modify
 
-            float wave = Mathf.Sin(Time.time * frequency + i * waveSpacing) * amplitude;
+            float wave = Mathf.Sin(Time.unscaledTime * frequency + i * waveSpacing) * amplitude;
             Vector3 offset = new Vector3(0f, wave, 0f);
 
             destVerts[vertexIndex + 0] = sourceVerts[vertexIndex + 0] + offset;

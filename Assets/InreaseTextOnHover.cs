@@ -30,7 +30,7 @@ public class InreaseTextOnHover : MonoBehaviour
     private void Update()
     {
         // Smooth interpolation stored in our own float
-        currentSize = Mathf.Lerp(currentSize, targetSize, Time.deltaTime * speed);
+        currentSize = Mathf.Lerp(currentSize, targetSize, Time.unscaledDeltaTime * speed);
         text.fontSize = currentSize;
     }
 
