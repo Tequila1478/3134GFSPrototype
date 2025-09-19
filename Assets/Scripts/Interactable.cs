@@ -528,6 +528,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (moveCoroutine == null)
         {
+            if (taskType == "Clutter")
+            {
+                SetCollidersTrigger(true);
+            }
+
             moveCoroutine = StartCoroutine(MoveDirectlyToSpot(ps.transform.position));
             movingToSetSpot = true;
             sfx_AM?.PlaySFX(putDown);
@@ -673,5 +678,14 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
+
+    private void SetCollidersTrigger(bool isTrigger)
+    {
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.isTrigger = isTrigger;
+        }
+    }
 
 }

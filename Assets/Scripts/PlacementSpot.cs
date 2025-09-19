@@ -274,7 +274,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     protected virtual Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
     {
-        return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
+        return Vector3.zero;
+        //return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
     }
 
     public void OnHoverEnter()
