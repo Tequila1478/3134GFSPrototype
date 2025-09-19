@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class TaskUIManager : MonoBehaviour
 {
+    public bool usePercentageBar = false;
+    public GameObject completeCheck;
+
     public TaskManager taskManager;               // Reference to TaskManager
     public TextMeshProUGUI headerText;            // e.g. "Today's Task List! Day: X"
     public Transform taskListParent;              // Parent object to hold task items
@@ -14,6 +17,9 @@ public class TaskUIManager : MonoBehaviour
     public TextMeshProUGUI progressText;          // Text to show percent complete
     public TextMeshProUGUI progressTextShadow;
     public GameObject endDayButton;               // Button to end the day
+
+    public Sprite completedTaskUI;
+    public Sprite incompleteTaskUI;
 
     private Dictionary<string, GameObject> taskEntries = new();
     private bool dayEnded = false;
@@ -70,23 +76,61 @@ public class TaskUIManager : MonoBehaviour
             totalAllTasksCompleted += requiredCompleted + optionalCompleted;
 
             // Build display string
-            string taskLine = $"{type}: {requiredCompleted} / {req.minimumRequired} (required)";
+            string taskLine = $"{type}: {requiredCompleted} / {req.minimumRequired}";
             /*if (optionalTotal > 0)
             {
                 taskLine += $"\n({optionalCompleted} / {optionalTotal} optional)";
             }*/
 
             taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;
+
+            // Update text
+            taskEntries[type].GetComponent<TextMeshProUGUI>().text = taskLine;
+
+            // Update icon sprite
+            Image icon = taskEntries[type].GetComponentInChildren<Image>();
+            if (icon != null)
+            {
+                if (requiredCompleted >= req.minimumRequired)
+                {
+                    icon.sprite = completedTaskUI;
+                }
+                else
+                {
+                    icon.sprite = incompleteTaskUI;
+                }
+            }
+
         }
 
         // Calculate percentages
         float requiredPercent = totalRequired > 0 ? totalRequiredCompleted / totalRequired : 1f;
         overallPercent = totalAllTasks > 0 ? totalAllTasksCompleted / totalAllTasks : 1f;
 
-        // Update UI
-        progressBar.value = requiredPercent;
-        progressText.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
-        progressTextShadow.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
+        if (usePercentageBar)
+        {
+            progressBar.gameObject.SetActive(true);
+            progressText.gameObject.SetActive(true);
+            progressTextShadow.gameObject.SetActive(true);
+            if (completeCheck != null) completeCheck.SetActive(false);
+
+            progressBar.value = requiredPercent;
+            progressText.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
+            progressTextShadow.text = $"{Mathf.RoundToInt(requiredPercent * 100)}%";
+        }
+        else
+        {
+            progressBar.gameObject.SetActive(false);
+            progressText.gameObject.SetActive(false);
+            progressTextShadow.gameObject.SetActive(false);
+            if (completeCheck != null)
+            {
+                // Show completeCheck only when all required tasks are done
+                completeCheck.SetActive(Mathf.RoundToInt(requiredPercent * 100f) >= 100);
+            }
+
+        }
+
 
 
         // Show end day button if all required tasks are complete

@@ -457,6 +457,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (secondaryParticles != null) secondaryParticles.Play();
         if (hoverParticles != null) hoverParticles.Stop();
         isAtSetSpot = false;
+
+        if (taskType == "Clutter")
+        {
+            SetCollidersTrigger(false);
+        }
     }
 
     public void PlayAllFloatingParticles()
