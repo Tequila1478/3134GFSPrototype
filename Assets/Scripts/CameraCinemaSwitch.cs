@@ -70,23 +70,27 @@ public class CameraCinemaSwitch : MonoBehaviour
             debugText.text = "Current camera: " + (currentCamera+1).ToString();
         }
 
-        // Check if any button from 1-9 is pressed...
-        int i = 0;
-        for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
+        // Enable number controls if a special camera is not active
+        if (currentSpecialCamera == -1)
         {
-            if (Input.GetKeyDown(key)) //If number key is pressed, go to that camera
+            // Check if any button from 1-9 is pressed...
+            int i = 0;
+            for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
             {
-                Debug.Log($"Key {key} was pressed!");
-                SetNewCamera(i, true);
+                if (Input.GetKeyDown(key)) //If number key is pressed, go to that camera
+                {
+                    Debug.Log($"Key {key} was pressed!");
+                    SetNewCamera(i, true);
+                }
+                i++;
             }
-            i++;
-        }
 
-        // ...then check for number key 0
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Debug.Log($"Key {KeyCode.Alpha0} was pressed!");
-            SetNewCamera(9);
+            // ...then check for number key 0
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                Debug.Log($"Key {KeyCode.Alpha0} was pressed!");
+                SetNewCamera(9);
+            }
         }
     }
 
