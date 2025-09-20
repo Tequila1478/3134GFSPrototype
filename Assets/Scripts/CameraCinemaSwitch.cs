@@ -8,18 +8,28 @@ using UnityEngine;
 
 public class CameraCinemaSwitch : MonoBehaviour
 {
+    [Header("UI")]
+    public GameObject cycleCameras;
+    public GameObject backCamera;
+
+    [Header("Standard Cameras")]
+    [Tooltip("Use this list for cameras that can be accessed through the number keys, or the arrows on both sides of the screen.")]
     public CinemachineVirtualCamera[] cameras;
     [Range(0, 9)]
     public int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
     private int currentCamera = 0; //Tracks the index of the current camera in the scene
 
+    [Header("Special Cameras")]
+    [Tooltip("Use this list for any cameras that can only be accessed by clicking a certain object in the scene.")]
     public CinemachineVirtualCamera[] specialCameras;
     [Range(-1, 9)]
     public int initialSpecialCamera = -1; //Also used in inspector-related logic
     private int currentSpecialCamera = -1;
 
+    [Header("Debug")]
     public TextMeshProUGUI debugText;
 
+    //Bee note: idk what this is for lmao
     public IInteractable currentFocused;
 
     // OnValidate is called whenever a value for this script is updated in the inspector
@@ -70,27 +80,35 @@ public class CameraCinemaSwitch : MonoBehaviour
             debugText.text = "Current camera: " + (currentCamera+1).ToString();
         }
 
-        // Enable number controls if a special camera is not active
+        // Check if any button from 1-9 is pressed...
+        int i = 0;
+        for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
+        {
+            if (Input.GetKeyDown(key)) //If number key is pressed, go to that camera
+            {
+                Debug.Log($"Key {key} was pressed!");
+                SetNewCamera(i, true);
+            }
+            i++;
+        }
+
+        // ...then check for number key 0
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log($"Key {KeyCode.Alpha0} was pressed!");
+            SetNewCamera(9);
+        }
+
+        // Set camera cycle UI
         if (currentSpecialCamera == -1)
         {
-            // Check if any button from 1-9 is pressed...
-            int i = 0;
-            for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
-            {
-                if (Input.GetKeyDown(key)) //If number key is pressed, go to that camera
-                {
-                    Debug.Log($"Key {key} was pressed!");
-                    SetNewCamera(i, true);
-                }
-                i++;
-            }
-
-            // ...then check for number key 0
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                Debug.Log($"Key {KeyCode.Alpha0} was pressed!");
-                SetNewCamera(9);
-            }
+            //Do cycling between standard cameras if no special camera is active
+            cycleCameras.SetActive(true);
+            backCamera.SetActive(false);
+        } else
+        { //Do cycling for special camera if one is active
+            cycleCameras.SetActive(false);
+            backCamera.SetActive(true);
         }
     }
 

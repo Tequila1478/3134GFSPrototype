@@ -15,8 +15,6 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public CameraCinemaSwitch cameraController;
     public CinemachineVirtualCamera specialCamera;
-    public GameObject cycleCameras;
-    public GameObject backCamera;
 
     private InspectItem ii;
 
@@ -90,15 +88,11 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         {
             ii.OnClick(); //Run OnClick on InspectItem component to play dialogue
         }
-        cycleCameras.SetActive(false); // Disable cycling between standard cameras
-        backCamera.SetActive(true); // Enable button for leaving special camera
     }
 
     public void EndSpecialView()
     {
         cameraController.LeaveSpecialCamera(); // Deactivate special camera view
-        cycleCameras.SetActive(true); // Enable cycling between standard cameras
-        backCamera.SetActive(false); // Disable button for leaving special camera
 
         isFocusedOn = false; //Switch focus mode
     }

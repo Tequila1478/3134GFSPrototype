@@ -65396,6 +65396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d073c1321e24e14289db8dedf924341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cycleCameras: {fileID: 1681557999}
+  backCamera: {fileID: 671118699}
   cameras:
   - {fileID: 2058764061}
   - {fileID: 678113575}
