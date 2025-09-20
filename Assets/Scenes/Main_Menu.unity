@@ -10899,7 +10899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 178, y: 12.2}
+  m_AnchoredPosition: {x: 178, y: 45}
   m_SizeDelta: {x: 205.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087707120
@@ -10925,14 +10925,16 @@ MonoBehaviour:
   m_text: 'Move the camera with number keys 1-6
 
 
-    Use the mouse to find a moveable
-    object (it''ll leave ghostly particles while mouse is on top)
+    Use the mouse to find and highlight
+    a moveable object
 
-    Click to select
-    the object and move it with the mouse
+    Left click to select the object and move it with the mouse
 
-    Click on a highlighted area to place
-    the object there'
+    Left
+    click on a highlighted area to place the object there
+
+    Right click to drop
+    a selected object'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
