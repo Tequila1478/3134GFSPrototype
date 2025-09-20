@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,15 +17,15 @@ public class CameraCinemaSwitch : MonoBehaviour
     [Tooltip("Use this list for cameras that can be accessed through the number keys, or the arrows on both sides of the screen.")]
     public CinemachineVirtualCamera[] cameras;
     [Range(0, 9)]
-    public int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
-    private int currentCamera = 0; //Tracks the index of the current camera in the scene
+    [SerializeField] private int initialCamera = 0; //The index of the starting camera; is used in inspector-related logic
+    [NonSerialized] public int currentCamera = 0; //Tracks the index of the current camera in the scene
 
     [Header("Special Cameras")]
     [Tooltip("Use this list for any cameras that can only be accessed by clicking a certain object in the scene.")]
     public CinemachineVirtualCamera[] specialCameras;
     [Range(-1, 9)]
-    public int initialSpecialCamera = -1; //Also used in inspector-related logic
-    private int currentSpecialCamera = -1;
+    [SerializeField] private int initialSpecialCamera = -1; //Also used in inspector-related logic
+    [NonSerialized] public int currentSpecialCamera = -1;
 
     [Header("Debug")]
     public TextMeshProUGUI debugText;
@@ -124,20 +125,23 @@ public class CameraCinemaSwitch : MonoBehaviour
         SetNewCamera(newIndex);
     }
 
-    // This only works for standard cameras, not for special cameras.
+    // This is used to set a new standard camera, using a specific index.
     public void SetNewCamera(int newIndex, bool force = false)
     {
-        if (force || currentCamera != newIndex) //Check if initial camera num has been changed in inspector
+        if (force || currentCamera != newIndex) //Check if there is a new active camera (or a camera is being forced to be active)
         {
-            cameras[currentCamera].m_Priority = 8; //Set previous "initial camera" to lower priority
+            cameras[currentCamera].m_Priority = 8; //Set previous camera to lower priority
             if (currentSpecialCamera > -1) specialCameras[currentSpecialCamera].m_Priority = 8; //Also set special camera to lower priority if it is currently active
-            cameras[newIndex].m_Priority = 10; //Set new "initial camera" to higher priority
+            cameras[newIndex].m_Priority = 10; //Set new camera to higher priority
 
-            currentCamera = newIndex; //Update script to start with this "initial camera"
+            currentCamera = newIndex; //Remember the new camera index
             currentSpecialCamera = -1; //Reset special camera index
         }
     }
 
+    // This is used to set a new special camera.
+    // This function will take a given virtual camera, and see if that virtual camera is registered as a special camera in the camera switch.
+    // If so, another function is called to switch to that special camera's index.
     public void EnterSpecialCamera(CinemachineVirtualCamera virtualCamera)
     {
         int newIndex = ArrayUtility.IndexOf(specialCameras, virtualCamera);
@@ -147,6 +151,7 @@ public class CameraCinemaSwitch : MonoBehaviour
         }
     }
 
+    // This is used to set a new special camera, using a specific index.
     public void EnterSpecialCamera(int newIndex)
     {
         // Lower the priority of the current camera

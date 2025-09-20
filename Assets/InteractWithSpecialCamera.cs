@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, IInteractable
@@ -79,18 +80,24 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public void StartSpecialView()
     {
-        if (!isFocusedOn)
+        if (cameraController.currentSpecialCamera == -1)
         {
             cameraController.EnterSpecialCamera(specialCamera); // Activate special camera to focus on sometime else
-            isFocusedOn = true; //Switch focus mode
+            StartCoroutine(SetFocus(true, 1f)); //Switch focus mode
         }
-        else
+        else if (isFocusedOn)
         {
             ii.OnClick(); //Run OnClick on InspectItem component to play dialogue
         }
     }
 
-    public void EndSpecialView()
+    IEnumerator SetFocus(bool newFocus, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+        isFocusedOn = newFocus;
+    }
+
+public void EndSpecialView()
     {
         cameraController.LeaveSpecialCamera(); // Deactivate special camera view
 
