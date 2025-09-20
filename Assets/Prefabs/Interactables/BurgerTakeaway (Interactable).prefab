@@ -206,10 +206,6 @@ PrefabInstance:
       value: Trash
       objectReference: {fileID: 0}
     - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
-      propertyPath: floatingParticles
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: layerableObjects.Array.size
       value: 4
       objectReference: {fileID: 0}
