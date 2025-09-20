@@ -48,88 +48,23 @@ public class CameraCinemaSwitch : MonoBehaviour
             debugText.text = "Current camera: " + (currentCamera+1).ToString();
         }
 
-        // Bee note: too lazy to figure out a loopable alternative to this
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // Check if any button from 1-9 is pressed...
+        int i = 0;
+        for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
         {
-            Debug.Log("keycode Alpha1 pressed");
-            camOneIncrement++;
-            if (camOneIncrement == 1)
-                SetNewCamera(0, true);
-            else if (camOneIncrement == 2)
-                SetNewCamera(1, true);
-            else if (camOneIncrement == 3)
-                SetNewCamera(2, true);
-            else
+            if (Input.GetKeyDown(key)) //If number key is pressed, go to that camera
             {
-                camOneIncrement = 0;
-                SetNewCamera(0, true);
+                Debug.Log($"Key {key} was pressed!");
+                SetNewCamera(i, true);
             }
-           
+            i++;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debug.Log("keycode Alpha2 pressed");
-            SetNewCamera(1);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Debug.Log("keycode Alpha3 pressed");
-            SetNewCamera(2);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Debug.Log("keycode Alpha4 pressed");
-            camOneIncrement++;
-            if (camOneIncrement == 1)
-                SetNewCamera(3, true);
-            else if (camOneIncrement == 2)
-                SetNewCamera(4, true);
-            else if (camOneIncrement == 3)
-                SetNewCamera(5, true);
-            else
-            {
-                camOneIncrement = 0;
-                SetNewCamera(3, true);
-            }
-            
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Debug.Log("keycode Alpha5 pressed");
-            SetNewCamera(4);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Debug.Log("keycode Alpha6 pressed");
-            SetNewCamera(5);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            Debug.Log("keycode Alpha7 pressed");
-            SetNewCamera(6);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            Debug.Log("keycode Alpha8 pressed");
-            SetNewCamera(7);
-            camOneIncrement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            Debug.Log("keycode Alpha9 pressed");
-            SetNewCamera(8);
-            camOneIncrement = 0;
-        }
+
+        // ...then check for number key 0
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            Debug.Log("keycode Alpha0 pressed");
+            Debug.Log($"Key {KeyCode.Alpha0} was pressed!");
             SetNewCamera(9);
-            camOneIncrement = 0;
         }
     }
 
