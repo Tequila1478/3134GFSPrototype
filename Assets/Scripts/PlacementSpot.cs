@@ -285,7 +285,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         //Debug.Log("Mouse is over " + gameObject.name);
         SelectObject();
         startingPosition = player.itemHeld.transform.position;
-        cursor.ChangeVisual(1);
+        //cursor.ChangeVisual(1);
+        CursorScript.instance.UpdateCursor("Interact");
     }
 
     public void OnHoverExit()
@@ -293,7 +294,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         DeselectObject();
         claimed = false;
         withinRange = false;
-        cursor.ChangeVisual(0);
+        //cursor.ChangeVisual(0);
+        CursorScript.instance.UpdateCursor("Default");
         SetLayer(8);
     }
 

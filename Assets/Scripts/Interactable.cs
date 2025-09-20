@@ -380,13 +380,15 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (!playerInteraction.isHolding)
         {
             HighlightObject();
-            cursor?.ChangeVisual(1);
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
             if (hoverParticles != null) hoverParticles.Play();
 
         }
         if (playerInteraction.itemHeld == this)
         {
-            cursor?.ChangeVisual(1);
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
         }
 
     }
@@ -403,11 +405,13 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (!playerInteraction.isHolding)
         {
             UnhighlightObject();
-            cursor?.ChangeVisual(0);
+            //cursor?.ChangeVisual(0);
+            CursorScript.instance.UpdateCursor("Default");
         }
         if (playerInteraction.itemHeld == this)
         {
-            cursor?.ChangeVisual(1);
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
         }
     }
 
@@ -437,7 +441,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         else
         {
             moveComplete = true;
-            cursor?.ChangeVisual(0);
+            //cursor?.ChangeVisual(0);
+            CursorScript.instance.UpdateCursor("Default");
         }
     }
 
