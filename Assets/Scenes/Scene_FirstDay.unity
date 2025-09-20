@@ -1025,10 +1025,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle (Interactable) (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Layer
       value: 17
@@ -22161,17 +22157,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Orange)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Layer
@@ -22220,10 +22208,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 60.257
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Layer
@@ -25593,17 +25577,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -25648,10 +25624,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -32539,10 +32511,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PizzaBox (Interactable)
       objectReference: {fileID: 0}
-    - target: {fileID: 8056393463686958196, guid: 7af0b22beabf4d641ab5703abd0372fc, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 8526614708545168375, guid: 7af0b22beabf4d641ab5703abd0372fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -33522,10 +33490,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 1186667843873140409, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 6947836299290229566, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -33582,14 +33546,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7146636563705404621, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7233060599498118136, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 8022681987934273779, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
       propertyPath: materialObj
       value: 
@@ -33601,10 +33557,6 @@ PrefabInstance:
     - target: {fileID: 8637763757669492365, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
       propertyPath: m_Name
       value: BurgerTakeaway (Interactable)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8637763757669492365, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8871278369642784403, guid: ab2a84ef8774c034a8cb5cf4ccb4df68, type: 3}
       propertyPath: m_Layer
@@ -40575,10 +40527,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Name
       value: Bottle (Interactable)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Layer
@@ -64246,17 +64194,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Red)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Layer
@@ -64301,10 +64241,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -213.841
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Layer
@@ -82445,17 +82381,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime) (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -82500,10 +82428,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -111.597
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -82879,17 +82803,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Orange) (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Layer
@@ -82946,10 +82862,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -81.411
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: ee25f473b1a0c0843aa232d0166c55ad, type: 3}
       propertyPath: m_Layer
@@ -83230,17 +83142,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime) (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -83297,10 +83201,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -159.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -86706,17 +86606,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime) (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -86773,10 +86665,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -81.411
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -86842,10 +86730,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Name
       value: Bottle (Interactable) (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Layer
@@ -86991,10 +86875,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 2110562204553350919, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2626819793486998074, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
       propertyPath: m_LocalScale.x
       value: 40
@@ -87051,19 +86931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book (Interactable) (Blue)
       objectReference: {fileID: 0}
-    - target: {fileID: 3729115446761355145, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 4540444597044246423, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5666881100308585709, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6374782261717134474, guid: 38e0f3b45286b754793447315a8fe249, type: 3}
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
@@ -87127,10 +86999,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Name
       value: Bottle (Interactable) (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Layer
@@ -87265,10 +87133,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Name
       value: Bottle (Interactable) (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: 641af4ec31af87841aa4f17940034891, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: 641af4ec31af87841aa4f17940034891, type: 3}
       propertyPath: m_Layer
@@ -90050,17 +89914,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime) (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -90105,10 +89961,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -157.874
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -103153,17 +103005,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Red) (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Layer
@@ -103220,10 +103064,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -157.874
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: a7e87e1dc38aa154a8a8762b4f4d2463, type: 3}
       propertyPath: m_Layer
@@ -103427,10 +103267,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       propertyPath: m_Name
       value: Pillow (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -104478,17 +104314,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 419692757}
     m_Modifications:
-    - target: {fileID: 782200541148850616, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Name
       value: Book (Interactable) (Lime) (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616781213577171254, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2923452253935685928, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -104533,10 +104361,6 @@ PrefabInstance:
     - target: {fileID: 3739255104416435333, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -81.411
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757588974681147957, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6427789290927536722, guid: f56434342e9b54e45b445dcf205db85b, type: 3}
       propertyPath: m_Layer
@@ -118782,10 +118606,6 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       propertyPath: m_Name
       value: Pillow (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
-      propertyPath: m_Layer
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4673900375201025505, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       propertyPath: m_Layer

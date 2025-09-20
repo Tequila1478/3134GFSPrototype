@@ -19370,9 +19370,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6947836299290229566}
     m_Modifications:
+    - target: {fileID: 382773124344995548, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+      propertyPath: m_Name
+      value: Handle
+      objectReference: {fileID: 0}
+    - target: {fileID: 382773124344995548, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8167551118411047837, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
       propertyPath: m_Name
       value: takeoutbag (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167551118411047837, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508973333594975400, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+      propertyPath: m_Name
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508973333594975400, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8796419419909421351, guid: 34fdee2fec3f14d44a989a2f27ba3b90, type: 3}
       propertyPath: m_LocalScale.x

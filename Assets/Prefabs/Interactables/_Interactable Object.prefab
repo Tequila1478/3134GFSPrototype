@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1531631957759763986}
   - component: {fileID: 1389294153605519289}
   - component: {fileID: 373699228119165412}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: _Interactable Object
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -135,9 +135,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243137
   layerWhenSelected: SelectedInteractable
-  layerableComponents:
-  - {fileID: 9049241438060978422}
-  - {fileID: 9049241438060978422}
+  layerableObjects:
   - {fileID: 68092545606601618}
   disableCursorControls: 0
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
