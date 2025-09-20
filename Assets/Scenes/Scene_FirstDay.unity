@@ -125608,7 +125608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerUI: {fileID: 0}
-  endDayButtonFade: {fileID: 0}
   fadeDuration: 0.5
 --- !u!222 &8202692787047714078
 CanvasRenderer:
@@ -126459,7 +126458,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerUI: {fileID: 947609941}
-  endDayButtonFade: {fileID: 1625849217}
   fadeDuration: 0.5
 --- !u!222 &8900635140977562714
 CanvasRenderer:
