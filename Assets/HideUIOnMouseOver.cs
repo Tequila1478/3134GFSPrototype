@@ -6,6 +6,7 @@ public class HideUIOnMouseOver : MonoBehaviour
 {
 
     [SerializeField] private GameObject triggerUI;
+    [SerializeField] private GameObject endDayButtonFade;
 
     [SerializeField] private float fadeDuration = 0.5f;
     private CanvasGroup canvasGroupFade;
@@ -26,6 +27,19 @@ public class HideUIOnMouseOver : MonoBehaviour
             if (!triggerUI.activeSelf)
                 canvasGroupFade.alpha = 0f;
         }
+
+        if (endDayButtonFade != null)
+        {
+            canvasGroupButton = endDayButtonFade.GetComponent<CanvasGroup>();
+            if (canvasGroupButton == null)
+            {
+                canvasGroupButton = endDayButtonFade.AddComponent<CanvasGroup>();
+            }
+
+            // Ensure starting state is consistent
+            if (!triggerUI.activeSelf)
+                canvasGroupButton.alpha = 0f;
+        }
     }
 
     public void EnableUI()
@@ -36,6 +50,11 @@ public class HideUIOnMouseOver : MonoBehaviour
 
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeCanvas(1f));
+
+        if (endDayButtonFade != null)
+        {
+            endDayButtonFade.SetActive(true);
+        }
     }
 
     public void DisableUI()
@@ -44,6 +63,11 @@ public class HideUIOnMouseOver : MonoBehaviour
 
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeCanvas(0f));
+
+        if (canvasGroupButton != null)
+        {
+            endDayButtonFade.SetActive(true);
+        }
     }
 
     private IEnumerator FadeCanvas(float targetAlpha)
