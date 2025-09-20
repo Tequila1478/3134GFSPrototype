@@ -113,5 +113,5 @@ MonoBehaviour:
   - Default
   - Interact
   cursorHotspot:
-  - {x: 100, y: 100}
-  - {x: 100, y: 100}
+  - {x: 82, y: 69}
+  - {x: 82, y: 88}
