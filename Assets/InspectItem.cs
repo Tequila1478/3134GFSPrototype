@@ -89,11 +89,13 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         if (!playerInteraction.isHolding)
         {
             HighlightObject();
-            cursor?.ChangeVisual(1);
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
         }
         if (playerInteraction.itemHeld == this)
         {
-            cursor?.ChangeVisual(1);
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
         }
     }
 

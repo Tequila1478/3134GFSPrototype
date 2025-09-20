@@ -23642,7 +23642,7 @@ MonoBehaviour:
   foundDivorcePapers: 0
   hud: {fileID: 1080947470667454537}
   cursor: {fileID: 0}
-  loadNextScene: Scene_SecondDay
+  loadNextScene: Main_Menu
   startDialogue:
   - text: '[Wednesday]'
     heading: 
@@ -40363,7 +40363,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 8
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 784405843}
   m_Follow: {fileID: 0}
@@ -48031,7 +48031,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1283655138}
         m_TargetAssemblyTypeName: CameraCinemaSwitch, Assembly-CSharp
-        m_MethodName: BackCamera
+        m_MethodName: LeaveSpecialCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65403,8 +65403,10 @@ MonoBehaviour:
   - {fileID: 1294998900}
   - {fileID: 1726219371}
   - {fileID: 1483018847}
-  initialCamera: 1
-  calendarCamera: {fileID: 844245352}
+  initialCamera: 3
+  specialCameras:
+  - {fileID: 844245352}
+  initialSpecialCamera: -1
   debugText: {fileID: 33735990}
 --- !u!1 &1286828862
 GameObject:
@@ -75398,7 +75400,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 8
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1238609973}
   m_Follow: {fileID: 0}
@@ -83876,7 +83878,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1283655138}
           m_TargetAssemblyTypeName: CameraCinemaSwitch, Assembly-CSharp
-          m_MethodName: BackCamera
+          m_MethodName: LeaveSpecialCamera
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -84058,6 +84060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1283655138}
+  specialCamera: {fileID: 844245352}
   cycleCameras: {fileID: 1681557999}
   backCamera: {fileID: 671118699}
 --- !u!114 &1524950706
@@ -95727,8 +95730,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888405343}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.021712499, y: -0.75316256, z: 0.02489029, w: 0.6570048}
-  m_LocalPosition: {x: 0.464, y: 2.75, z: -23.967}
+  m_LocalRotation: {x: 0.21116658, y: 0.28283212, z: -0.06398304, w: 0.93344575}
+  m_LocalPosition: {x: -1.84, y: 3.92, z: -33.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

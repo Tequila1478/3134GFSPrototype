@@ -1,18 +1,20 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable, IInteractable
+public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, IInteractable
 {
     private Renderer[] renderers;
     private MaterialPropertyBlock mpb;
     private Color[] originalColors;
     private Color hoverColor = Color.white;
 
-    private bool isFocussedOn = false;
-    private bool _isFocussedOn = false;
+    private bool isFocusedOn = false;
+    private bool _isFocusedOn = false;
 
     public CameraCinemaSwitch cameraController;
+    public CinemachineVirtualCamera specialCamera;
     public GameObject cycleCameras;
     public GameObject backCamera;
 
@@ -51,28 +53,16 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable, IInte
     private void Update()
     {
         /*
-        if(isFocussedOn != _isFocussedOn)
+        if(isFocusedOn != _isFocusedOn)
         {
-            GetComponent<BoxCollider>().enabled = _isFocussedOn;
-            _isFocussedOn = isFocussedOn;
+            GetComponent<BoxCollider>().enabled = _isFocusedOn;
+            _isFocusedOn = isFocusedOn;
         }*/
     }
 
     public void OnClick()
     {
-        if (!isFocussedOn)
-        {
-            cameraController.SwitchToCalendarCamera();
-            cycleCameras.SetActive(false);
-            backCamera.SetActive(true);
-        }
-        else
-        {
-            ii.OnClick();
-            cycleCameras.SetActive(false);
-            backCamera.SetActive(true);
-        }
-        isFocussedOn = !isFocussedOn;
+        StartSpecialView(); // Start special camera view when clicked on
     }
 
     public void OnHoverEnter()
@@ -87,7 +77,30 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable, IInte
 
     public void OnRelease()
     {
+    }
 
+    public void StartSpecialView()
+    {
+        if (!isFocusedOn)
+        {
+            cameraController.EnterSpecialCamera(specialCamera); // Activate special camera to focus on sometime else
+            isFocusedOn = true; //Switch focus mode
+        }
+        else
+        {
+            ii.OnClick(); //Run OnClick on InspectItem component to play dialogue
+        }
+        cycleCameras.SetActive(false); // Disable cycling between standard cameras
+        backCamera.SetActive(true); // Enable button for leaving special camera
+    }
+
+    public void EndSpecialView()
+    {
+        cameraController.LeaveSpecialCamera(); // Deactivate special camera view
+        cycleCameras.SetActive(true); // Enable cycling between standard cameras
+        backCamera.SetActive(false); // Disable button for leaving special camera
+
+        isFocusedOn = false; //Switch focus mode
     }
 
     private void HighlightObject()
@@ -120,7 +133,7 @@ public class InteractWithCalendar : MonoBehaviour, IHoverable, IClickable, IInte
 
     public void EndInteraction()
     {
-        isFocussedOn = false;
+        isFocusedOn = false;
         if (cameraController != null && cameraController.currentFocused == this)
             cameraController.currentFocused = null;
 
