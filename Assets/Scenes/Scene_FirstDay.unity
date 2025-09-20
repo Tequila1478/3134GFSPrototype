@@ -84065,15 +84065,15 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   alternativeDialogue:
-  - text: ... Oh, I see
+  - text: ... Oh, I see.
     heading: Ghost
     characterSprite: {fileID: 21300000, guid: 81591ffb65f145b45a7de39819703ba7, type: 3}
     spriteOnRight: 1
-  - text: I was wondering for so long what this meant
+  - text: I was wondering for so long what this meant.
     heading: Ghost
     characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
     spriteOnRight: 1
-  - text: But it must be the day the divorce goes through
+  - text: But this must be the day the divorce goes through...
     heading: Ghost
     characterSprite: {fileID: 21300000, guid: 0763b23136dcec94f8954c039cb47e6c, type: 3}
     spriteOnRight: 1
