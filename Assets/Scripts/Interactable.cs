@@ -463,10 +463,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (hoverParticles != null) hoverParticles.Stop();
         isAtSetSpot = false;
 
-        if (taskType == "Clutter")
-        {
-            SetCollidersTrigger(false);
-        }
+
+        SetCollidersTrigger(false);
+
     }
 
     public void PlayAllFloatingParticles()
@@ -538,10 +537,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
         if (moveCoroutine == null)
         {
-            if (taskType == "Clutter")
-            {
                 SetCollidersTrigger(true);
-            }
 
             moveCoroutine = StartCoroutine(MoveDirectlyToSpot(ps.transform.position));
             movingToSetSpot = true;
