@@ -144,7 +144,7 @@ public class CameraCinemaSwitch : MonoBehaviour
     // If so, another function is called to switch to that special camera's index.
     public void EnterSpecialCamera(CinemachineVirtualCamera virtualCamera)
     {
-        int newIndex = ArrayUtility.IndexOf(specialCameras, virtualCamera);
+        int newIndex = Array.IndexOf(specialCameras, virtualCamera);
         if (newIndex != -1)
         {
             EnterSpecialCamera(newIndex);
