@@ -8,7 +8,8 @@ public class EnterHowToPlayMenu : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //FindObjectOfType<PauseGame>().SetPauseMenuActive(false);
-       
+        FindObjectOfType<MainMenu>().UpdateMenu("HowToPlayScreen");
+
         //Do nothing
     }
 

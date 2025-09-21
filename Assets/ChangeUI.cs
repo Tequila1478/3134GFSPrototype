@@ -6,6 +6,7 @@ public class ChangeUI : MonoBehaviour
 {
     public GameObject settingsUI;
     public GameObject howToPlayUI;
+    public GameObject mainMenuUI;
 
     public void DisplayHowToPlayUI()
     {
@@ -15,6 +16,16 @@ public class ChangeUI : MonoBehaviour
     public void DisplaySettingUI()
     {
         settingsUI.SetActive(true);
+    }
+
+    public void DisplayMainMenuUI()
+    {
+        mainMenuUI.SetActive(true);
+    }
+
+    public void RemoveMainMenuUI()
+    {
+        mainMenuUI.SetActive(false);
     }
 
     public void RemoveHowToPlayUI()
