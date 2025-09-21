@@ -6,6 +6,7 @@ public class PullOutDrawer : MonoBehaviour, IHoverable, IClickable
 {
     public bool active = false;
     private CameraCinemaSwitch css;
+    public int specialCameraNum = 1;
 
     public void OnClick()
     {
@@ -33,7 +34,7 @@ public class PullOutDrawer : MonoBehaviour, IHoverable, IClickable
     // Update is called once per frame
     void Update()
     {
-        if (css.currentSpecialCamera == 1)
+        if (css.currentSpecialCamera == specialCameraNum)
         {
             active = true;
             GetComponent<BoxCollider>().enabled = true;
