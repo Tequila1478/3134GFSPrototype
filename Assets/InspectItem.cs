@@ -24,9 +24,6 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public bool displayInfoImage = true;
 
-
-
-
     private PlayerInteraction playerInteraction;
 
 
@@ -84,18 +81,14 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     {
         Debug.Log("Hovering over object");
         if (isHovered) return;
-        isHovered = true;
 
         if (!playerInteraction.isHolding)
         {
             HighlightObject();
+            Debug.Log("hi"); ;
             //cursor?.ChangeVisual(1);
             CursorScript.instance.UpdateCursor("Interact");
-        }
-        if (playerInteraction.itemHeld == this)
-        {
-            //cursor?.ChangeVisual(1);
-            CursorScript.instance.UpdateCursor("Interact");
+            isHovered = true;
         }
     }
 

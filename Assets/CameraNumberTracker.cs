@@ -27,22 +27,5 @@ public class CameraNumberTracker : MonoBehaviour
             text.text = ((int)(css.currentCamera) + 1).ToString();
         }
         
-        if (Input.GetMouseButtonDown(0)) // or just run every frame if you like
-        {
-            PointerEventData pointerData = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerData, results);
-
-            Debug.Log("UI raycast hit:");
-            foreach (RaycastResult r in results)
-            {
-                Debug.Log(r.gameObject);
-            }
-        }
-        
     }
 }
