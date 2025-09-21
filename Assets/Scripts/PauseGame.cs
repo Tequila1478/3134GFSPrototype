@@ -11,6 +11,7 @@ public class PauseGame : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject settingsScreen;
     public GameObject HUDScreen;
+    public GameObject howToPlayScreen;
 
     void Start()
     {
@@ -53,7 +54,7 @@ public class PauseGame : MonoBehaviour
     {
         pauseScreen.SetActive(active);
         settingsScreen.SetActive(false);
-
+        howToPlayScreen.SetActive(false);
     }
 
     public void EndPause()
