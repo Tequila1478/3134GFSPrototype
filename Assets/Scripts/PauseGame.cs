@@ -13,6 +13,8 @@ public class PauseGame : MonoBehaviour
     public GameObject HUDScreen;
     public GameObject howToPlayScreen;
 
+    private CameraCinemaSwitch css;
+
     void Start()
     {
         if (pauseAnimator != null)
@@ -21,6 +23,7 @@ public class PauseGame : MonoBehaviour
             pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
             pauseAnimator.SetBool("isPaused", false);
         }
+        css = FindObjectOfType<CameraCinemaSwitch>();
     }
 
     void Update()
@@ -29,6 +32,11 @@ public class PauseGame : MonoBehaviour
         {
             if (!isDialogue)
             {
+                if (css.currentSpecialCamera != -1)
+                {
+                    css.LeaveSpecialCamera();
+                    return;
+                }
                 if (isPaused) EndPause();
                 else StartPause();
             }
