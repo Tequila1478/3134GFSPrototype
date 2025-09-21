@@ -37,25 +37,32 @@ public class PauseGame : MonoBehaviour
     private void StartPause()
     {
         Time.timeScale = 0;
-        pauseScreen.SetActive(true);
-        HUDScreen.SetActive(false);
-
-        isPaused = true;
 
         if (pauseAnimator != null)
             pauseAnimator.SetBool("isPaused", true);
+
+        isPaused = true;
+    }
+
+    public void SetHUDActive(bool active)
+    {
+        HUDScreen.SetActive(active);
+    }
+
+    public void SetPauseMenuActive(bool active)
+    {
+        pauseScreen.SetActive(active);
+        settingsScreen.SetActive(false);
+
     }
 
     public void EndPause()
     {
         Time.timeScale = 1;
-        pauseScreen.SetActive(false);
-        settingsScreen.SetActive(false);
-        HUDScreen.SetActive(true);
-
-        isPaused = false;
 
         if (pauseAnimator != null)
             pauseAnimator.SetBool("isPaused", false);
+
+        isPaused = false;
     }
 }

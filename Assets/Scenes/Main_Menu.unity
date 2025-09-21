@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 86148900}
   - component: {fileID: 86148899}
   - component: {fileID: 86148901}
+  - component: {fileID: 86148902}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -353,6 +354,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &86148902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86148897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d96ede239c31c54c8690570d747a321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsUI: {fileID: 2690898997617887173}
+  howToPlayUI: {fileID: 919145690}
 --- !u!1 &111283744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,7 +5163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.99756, y: -280.89368}
+  m_AnchoredPosition: {x: 150.99756, y: -280.73026}
   m_SizeDelta: {x: 199.99512, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1175809119
@@ -5224,7 +5239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playAudioOnClick: 0
-  nextUI: {fileID: 919145690}
+  nextUI: {fileID: 0}
   previousUI: {fileID: 7224467646822753510}
   sceneToLoad: 
   triggerUI: {fileID: 0}
@@ -11918,7 +11933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.99756, y: -402.68103}
+  m_AnchoredPosition: {x: 150.99756, y: -402.19077}
   m_SizeDelta: {x: 199.99512, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &891816325731412870
@@ -15004,7 +15019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.99756, y: -341.78735}
+  m_AnchoredPosition: {x: 150.99756, y: -341.4605}
   m_SizeDelta: {x: 199.99512, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8313914048798775535
@@ -15088,7 +15103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playAudioOnClick: 0
-  nextUI: {fileID: 2690898997617887173}
+  nextUI: {fileID: 0}
   previousUI: {fileID: 7224467646822753510}
   sceneToLoad: 
   triggerUI: {fileID: 0}
