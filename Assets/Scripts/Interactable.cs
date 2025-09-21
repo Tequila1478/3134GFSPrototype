@@ -418,13 +418,21 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     // This is run by PlayerInteraction.cs to select the interactable
     public void OnClick()
     {
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+            movingToSetSpot = false;
+            isAtSetSpot = false;
+            coroutineFinished = false;
+        }
+
         if (!floating && playerInteraction.itemHeld == null)
         {
             EnableFloating();
             sfx_AM.PlaySFX(pickUp);
             ps = null;
         }
-        movingToSetSpot = false;
 
         Debug.Log("Clicked: " + this);
     }
@@ -595,60 +603,6 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
 
         moveCoroutine = null;
-    }
-
-    private IEnumerator GoByTheRoute(int routeNum)
-    {
-
-        tParam = 0;
-        Vector3 p0 = routes[0];
-        Vector3 p1 = routes[1];
-        Vector3 p2 = routes[2];
-        Vector3 p3 = routes[3];
-
-        while (tParam < 1)
-        {
-            tParam += Time.deltaTime * speedModifier;
-            Vector3 position = Mathf.Pow(1 - tParam, 3) * p0 +
-                               3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
-                               3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
-                               Mathf.Pow(tParam, 3) * p3;
-
-            transform.position = position;
-            yield return null;
-        }
-
-        coroutineFinished = true;
-
-        isAtSetSpot = true;
-        if (ps.isTrashcan)
-        {
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.constraints = RigidbodyConstraints.None;
-
-            ps.IncrementTrash();
-            Debug.Log("Trash item reached trashcan: " + name);
-
-            // Small delay so it visibly drops in
-            yield return new WaitForSeconds(2f);
-
-            // Disable visuals & interactions, but keep object alive
-            if (objectRenderer != null)
-                objectRenderer.enabled = false;
-
-            Collider collider = GetComponent<Collider>();
-            if (collider != null) collider.enabled = false;
-
-        }
-        else
-        {
-            rb.isKinematic = true;
-        }
-
-
-        moveCoroutine = null;
-
     }
 
     private void HighlightObject()

@@ -115,7 +115,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         var interactable = other.GetComponent<Interactable>();
         if (interactable != null && interactable.isAtSetSpot)
         {
-            // 🚫 Ignore already-placed objects so they don't activate other spots
             return;
         }
 
@@ -172,8 +171,9 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         {
             otherObject = other;
             withinRange = true;
-            interactable.hasSetSpot = true;
             interactable.newDirection = direction;
+
+            interactable.hasSetSpot = true;
             ApplyVisualisation(other.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
         }
         else if (player.isHolding)
