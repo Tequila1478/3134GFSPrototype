@@ -20,6 +20,10 @@ public class BtnFunctions : MonoBehaviour
     public bool isSFX;
     public bool isDialogue;
 
+    public Animator animator;
+    public string animationBoolName;
+    public bool startingState = true;
+
     public AudioClip onClickAudio;
 
     // Start is called before the first frame update --> awake is called before start when the object is initialised
@@ -44,9 +48,6 @@ public class BtnFunctions : MonoBehaviour
     {
         audio_AM.SetMusicVolume(slider.value);
     }
-
-
-
 
     public void SetSFXVolumeOnSlider()
     {
@@ -118,6 +119,11 @@ public class BtnFunctions : MonoBehaviour
         FindObjectOfType<PauseGame>().EndPause();
     }
 
+    public void PauseGame()
+    {
+        FindObjectOfType<PauseGame>().StartPause();
+    }
+
     public void DisableUI()
     {
         triggerUI?.SetActive(false);
@@ -127,5 +133,11 @@ public class BtnFunctions : MonoBehaviour
     public void EnableUI()
     {
         triggerUI?.SetActive(true);
+    }
+
+    public void SetAnimationBool()
+    {
+        startingState = !startingState;
+        animator.SetBool(animationBoolName, startingState);
     }
 }
