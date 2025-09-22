@@ -118,16 +118,26 @@ public class CameraCinemaSwitch : MonoBehaviour
             SetNewCamera(9);
         }
 
-        // Check if A or D is pressed
-        if (Input.GetKeyDown(KeyCode.A))
+        // Check if W, A, S or D is pressed
+        if (Input.GetKeyDown(KeyCode.A)) //PREVIOUS CAMERA
         {
             Debug.Log($"Key {KeyCode.A} was pressed!");
             PreviousCamera();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) //NEXT CAMERA
         {
             Debug.Log($"Key {KeyCode.D} was pressed!");
             NextCamera();
+        }
+        if (Input.GetKeyDown(KeyCode.W)) //LEAVE SPECIAL CAMERA
+        {
+            Debug.Log($"Key {KeyCode.W} was pressed!");
+            LeaveSpecialCamera();
+        }
+        if (Input.GetKeyDown(KeyCode.S)) //LEAVE SPECIAL CAMERA
+        {
+            Debug.Log($"Key {KeyCode.S} was pressed!");
+            LeaveSpecialCamera();
         }
     }
 

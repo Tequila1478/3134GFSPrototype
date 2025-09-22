@@ -64143,7 +64143,7 @@ PrefabInstance:
     - target: {fileID: 9139284526712146610, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8153d4e253fc01a4d93d4dfed3b7397b, type: 3}
+      objectReference: {fileID: 21300000, guid: edd61193241462a44aea587ddee1866c, type: 3}
     - target: {fileID: 9180303934436453032, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_fontColor.b
       value: 0.735849
