@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 5648284788874698338}
   - component: {fileID: 113581681998467634}
   - component: {fileID: 8922494227122990447}
-  - component: {fileID: 8863656217766336014}
   m_Layer: 5
   m_Name: CameraNum
   m_TagString: Untagged
@@ -210,18 +209,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8863656217766336014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454025546965098455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08425022ced37f459a358b1ba763c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &498982090782709023
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +966,9 @@ MonoBehaviour:
   isMusic: 0
   isSFX: 0
   isDialogue: 0
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
   onClickAudio: {fileID: 0}
 --- !u!114 &5054583184330000125
 MonoBehaviour:
@@ -1471,6 +1461,9 @@ MonoBehaviour:
   isMusic: 0
   isSFX: 0
   isDialogue: 0
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
   onClickAudio: {fileID: 0}
 --- !u!1 &4236234954059639229
 GameObject:
@@ -3857,6 +3850,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 6327843561782292421}
   settingsScreen: {fileID: 7469972485473197915}
   HUDScreen: {fileID: 4607640005946366050}
+  howToPlayScreen: {fileID: 0}
 --- !u!1 &8010586499773268371
 GameObject:
   m_ObjectHideFlags: 0

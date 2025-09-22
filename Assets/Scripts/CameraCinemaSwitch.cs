@@ -10,7 +10,11 @@ using UnityEngine;
 public class CameraCinemaSwitch : MonoBehaviour
 {
     [Header("UI")]
+    [Tooltip("Display of current camera number.")]
+    public TextMeshProUGUI cameraText;
+    [Tooltip("Parent of buttons used to switch between standard cameras.")]
     public GameObject cycleCameras;
+    [Tooltip("Button used to leave special camera.")]
     public GameObject backCamera;
 
     [Header("Standard Cameras")]
@@ -28,6 +32,7 @@ public class CameraCinemaSwitch : MonoBehaviour
     [NonSerialized] public int currentSpecialCamera = -1;
 
     [Header("Debug")]
+    [Tooltip("Optional. Set a text object here for debug purposes only.")]
     public TextMeshProUGUI debugText;
 
     //Bee note: idk what this is for lmao
@@ -66,6 +71,9 @@ public class CameraCinemaSwitch : MonoBehaviour
             cameras[initialCamera].m_Priority = 10; //Set standard "initial camera" to higher priority
         }
         currentCamera = initialCamera; //Update script to start with currently set "initial camera"
+        currentSpecialCamera = initialSpecialCamera;
+
+        UpdateCameraUIText();
     }
 
     // Start is called before the first frame update
@@ -76,11 +84,21 @@ public class CameraCinemaSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (debugText != null) // Display debug information
-        {
-            debugText.text = "Current camera: " + (currentCamera+1).ToString();
-        }
+        if (debugText != null)
+            DisplayDebugInformation();
 
+        RegisterControls();
+        UpdateCameraUIText();
+        UpdateCameraUIVisibility();
+    }
+
+    private void DisplayDebugInformation()
+    {
+        debugText.text = "Current camera: " + (currentCamera + 1).ToString();
+    }
+
+    private void RegisterControls()
+    {
         // Check if any button from 1-9 is pressed...
         int i = 0;
         for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
@@ -100,13 +118,48 @@ public class CameraCinemaSwitch : MonoBehaviour
             SetNewCamera(9);
         }
 
+        // Check if A or D is pressed
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log($"Key {KeyCode.A} was pressed!");
+            PreviousCamera();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log($"Key {KeyCode.D} was pressed!");
+            NextCamera();
+        }
+    }
+
+    private void UpdateCameraUIText()
+    {
+        if (currentSpecialCamera != -1)
+        {
+            cameraText.text = "";
+        }
+        else
+        {
+            cameraText.text = ((int)(currentCamera) + 1).ToString();
+        }
+    }
+    private void UpdateCameraUIVisibility()
+    {
+        if (currentSpecialCamera != -1)
+        {
+            cameraText.text = "";
+        }
+        else
+        {
+            cameraText.text = ((int)(currentCamera) + 1).ToString();
+        }
         // Set camera cycle UI
         if (currentSpecialCamera == -1)
         {
             //Do cycling between standard cameras if no special camera is active
             cycleCameras.SetActive(true);
             backCamera.SetActive(false);
-        } else
+        }
+        else
         { //Do cycling for special camera if one is active
             cycleCameras.SetActive(false);
             backCamera.SetActive(true);
