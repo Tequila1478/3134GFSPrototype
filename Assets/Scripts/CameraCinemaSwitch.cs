@@ -132,12 +132,18 @@ public class CameraCinemaSwitch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W)) //LEAVE SPECIAL CAMERA
         {
             Debug.Log($"Key {KeyCode.W} was pressed!");
-            LeaveSpecialCamera();
+            if (currentSpecialCamera > -1)
+                LeaveSpecialCamera();
+            else
+                NextCamera(3);
         }
         if (Input.GetKeyDown(KeyCode.S)) //LEAVE SPECIAL CAMERA
         {
             Debug.Log($"Key {KeyCode.S} was pressed!");
-            LeaveSpecialCamera();
+            if (currentSpecialCamera > -1)
+                LeaveSpecialCamera();
+            else
+                PreviousCamera(3);
         }
     }
 
@@ -176,15 +182,15 @@ public class CameraCinemaSwitch : MonoBehaviour
         }
     }
 
-    public void NextCamera()
+    public void NextCamera(int jump = 1)
     {
-        int newIndex = (currentCamera + 1) % cameras.Length; // wraps back to 0
+        int newIndex = (currentCamera + jump) % cameras.Length; // wraps back to 0
         SetNewCamera(newIndex);
     }
 
-    public void PreviousCamera()
+    public void PreviousCamera(int jump = 1)
     {
-        int newIndex = (currentCamera - 1 + cameras.Length) % cameras.Length; // wraps to last camera
+        int newIndex = (currentCamera - jump + cameras.Length) % cameras.Length; // wraps to last camera
         SetNewCamera(newIndex);
     }
 
