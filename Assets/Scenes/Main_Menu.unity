@@ -10621,19 +10621,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move the camera with number keys 1-6
+  m_text: 'Clean up the room by moving objects to where they need to be!
 
 
-    Use the mouse to find and highlight
-    a moveable object
+    Press
+    WASD or 1-6 to look around the room
 
-    Left click to select the object and move it with the mouse
 
-    Left
-    click on a highlighted area to place the object there
+    Use the mouse to find, highlight and
+    move objects
 
-    Right click to drop
-    a selected object'
+    Left click to interact with/pick up/place an object, right
+    click to drop an object'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
