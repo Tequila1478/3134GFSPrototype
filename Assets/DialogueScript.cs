@@ -22,8 +22,10 @@ public class DialogueScript : MonoBehaviour
     public GameObject hud;
     public CustomCursor cursor;
     public string loadNextScene;
+    public AudioClip nextDialogueSFX;
 
     private float waitSystem;
+    private AudioManager audio_AM; 
 
 
     public List<DialogueLine> startDialogue;
@@ -36,6 +38,7 @@ public class DialogueScript : MonoBehaviour
 
     public void Start()
     {
+        audio_AM = FindObjectOfType<AudioManager>();
     }
 
     public void StartDay()
@@ -136,6 +139,10 @@ public class DialogueScript : MonoBehaviour
             LayoutSprite(line.spriteOnRight);
 
             yield return StartCoroutine(WaitForSecondsOrTap(delayBetweenLines));
+            if (nextDialogueSFX != null)
+            {
+                audio_AM.PlaySFX(nextDialogueSFX);
+            }
         }
 
         dialogueCompleted = true;

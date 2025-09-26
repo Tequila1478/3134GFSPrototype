@@ -63882,6 +63882,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: nextDialogueSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
     - target: {fileID: 5025415053366279225, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
