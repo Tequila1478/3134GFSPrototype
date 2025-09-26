@@ -117,11 +117,21 @@ public class BtnFunctions : MonoBehaviour
     public void ResumeGame()
     {
         FindObjectOfType<PauseGame>().EndPause();
+
+        if (playAudioOnClick)
+        {
+            audio_AM.PlaySFX(onClickAudio);
+        }
     }
 
     public void PauseGame()
     {
         FindObjectOfType<PauseGame>().StartPause();
+
+        if (playAudioOnClick)
+        {
+            audio_AM.PlaySFX(onClickAudio);
+        }
     }
 
     public void DisableUI()

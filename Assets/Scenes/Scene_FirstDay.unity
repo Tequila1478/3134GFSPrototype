@@ -30166,7 +30166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAudioOnClick: 0
+  playAudioOnClick: 1
   nextUI: {fileID: 2005626493}
   previousUI: {fileID: 1903025774}
   sceneToLoad: 
@@ -30178,7 +30178,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
 --- !u!114 &806115795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63246,6 +63246,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2346668240140643957, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: onClickAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 17fe3da6c1808b444aee1007b1511b19, type: 3}
+    - target: {fileID: 2346668240140643957, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: playAudioOnClick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367576876745039106, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endPauseSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 17fe3da6c1808b444aee1007b1511b19, type: 3}
+    - target: {fileID: 2367576876745039106, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: startPauseSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a9f80763acb9524bb0717a642d1cc50, type: 3}
     - target: {fileID: 2367576876745039106, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: howToPlayScreen
       value: 
@@ -63282,6 +63298,14 @@ PrefabInstance:
       propertyPath: previousUI
       value: 
       objectReference: {fileID: 2005626493}
+    - target: {fileID: 2471759141360539967, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: onClickAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
+    - target: {fileID: 2471759141360539967, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: playAudioOnClick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2485001138073872033, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: taskManager
       value: 
@@ -63757,6 +63781,18 @@ PrefabInstance:
     - target: {fileID: 6698206254492148587, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -39.902496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927617781948852090, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: isSFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927617781948852090, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: onClickAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a9f80763acb9524bb0717a642d1cc50, type: 3}
+    - target: {fileID: 6927617781948852090, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: playAudioOnClick
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7032554381427598172, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_AnchorMax.y

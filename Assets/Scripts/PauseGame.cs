@@ -13,7 +13,11 @@ public class PauseGame : MonoBehaviour
     public GameObject HUDScreen;
     public GameObject howToPlayScreen;
 
+    public AudioClip startPauseSFX;
+    public AudioClip endPauseSFX;
+
     private CameraCinemaSwitch css;
+    private AudioManager sfx_AM;
 
     void Start()
     {
@@ -24,6 +28,7 @@ public class PauseGame : MonoBehaviour
             pauseAnimator.SetBool("isPaused", false);
         }
         css = FindObjectOfType<CameraCinemaSwitch>();
+        sfx_AM = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -50,6 +55,11 @@ public class PauseGame : MonoBehaviour
         if (pauseAnimator != null)
             pauseAnimator.SetBool("isPaused", true);
 
+        if (startPauseSFX != null)
+        {
+            sfx_AM.PlaySFX(startPauseSFX);
+        }
+
         isPaused = true;
     }
 
@@ -71,6 +81,11 @@ public class PauseGame : MonoBehaviour
 
         if (pauseAnimator != null)
             pauseAnimator.SetBool("isPaused", false);
+
+        if (endPauseSFX != null)
+        {
+            sfx_AM.PlaySFX(endPauseSFX);
+        }
 
         isPaused = false;
     }

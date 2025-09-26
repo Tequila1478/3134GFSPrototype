@@ -3048,7 +3048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAudioOnClick: 0
+  playAudioOnClick: 1
   nextUI: {fileID: 7224467646822753510}
   previousUI: {fileID: 919145690}
   sceneToLoad: Scene_FirstDay
@@ -3060,7 +3060,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 17fe3da6c1808b444aee1007b1511b19, type: 3}
 --- !u!114 &794534343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4888,7 +4888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAudioOnClick: 0
+  playAudioOnClick: 1
   nextUI: {fileID: 0}
   previousUI: {fileID: 2690898997617887173}
   sceneToLoad: Scene_FirstDay
@@ -4900,7 +4900,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 17fe3da6c1808b444aee1007b1511b19, type: 3}
 --- !u!114 &1121873351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5255,7 +5255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAudioOnClick: 0
+  playAudioOnClick: 1
   nextUI: {fileID: 0}
   previousUI: {fileID: 7224467646822753510}
   sceneToLoad: 
@@ -5267,7 +5267,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 4a9f80763acb9524bb0717a642d1cc50, type: 3}
 --- !u!114 &1175809122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10452,7 +10452,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 4a9f80763acb9524bb0717a642d1cc50, type: 3}
 --- !u!114 &2064977584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14181,7 +14181,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 8300000, guid: fea04bb619f9dde49b1a2bc354188f73, type: 3}
+  onClickAudio: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
 --- !u!222 &8077646492670050387
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14429,7 +14429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAudioOnClick: 0
+  playAudioOnClick: 1
   nextUI: {fileID: 0}
   previousUI: {fileID: 7224467646822753510}
   sceneToLoad: 
@@ -14441,7 +14441,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   animationBoolName: 
   startingState: 1
-  onClickAudio: {fileID: 0}
+  onClickAudio: {fileID: 8300000, guid: 4a9f80763acb9524bb0717a642d1cc50, type: 3}
 --- !u!114 &8379804074487899159
 MonoBehaviour:
   m_ObjectHideFlags: 0
