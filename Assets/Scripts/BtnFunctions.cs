@@ -69,7 +69,7 @@ public class BtnFunctions : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
-
+        audio_AM.NextMusicClip();
         if (playAudioOnClick)
         {
             audio_AM.PlaySFX(onClickAudio);

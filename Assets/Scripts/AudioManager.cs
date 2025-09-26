@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
     //Contains all music clips
     //Music volume
 
-    public float musicVol = 1f;
+    public float musicVol = 0.5f;
     public AudioSource musicSource; // Assign in the Inspector
     public AudioClip[] musicClips; // Assign in the Inspector
 
@@ -100,7 +100,7 @@ public class AudioManager : MonoBehaviour
     //Contains references to the sfx to play at any point
     //SFX volume
 
-    public float sfxVol = 0.5f;
+    public float sfxVol = 1f;
 
     //Plays non 3D SFX
     public void PlaySFX(AudioClip clip, float volumeOverride = 1f)
@@ -114,6 +114,7 @@ public class AudioManager : MonoBehaviour
         tempSource.volume = sfxVol * volumeOverride;
         tempSource.Play();
         Destroy(tempGO, clip.length);
+
     }
 
     //Plays SFX at point

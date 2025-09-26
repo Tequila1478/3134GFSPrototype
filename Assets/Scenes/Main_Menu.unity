@@ -3396,13 +3396,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a4cd52caf389b3b438934be43a6aa1d8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 172
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3492,11 +3492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cdd9133037dfe4fb8536600184d253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVol: 1
+  musicVol: 0.5
   musicSource: {fileID: 841643610}
   musicClips:
   - {fileID: 8300000, guid: a4cd52caf389b3b438934be43a6aa1d8, type: 3}
-  sfxVol: 0.5
+  - {fileID: 8300000, guid: 8f0eb7daf652b6c47b05e25e23e800c8, type: 3}
+  sfxVol: 1
   dialogueVol: 0.75
 --- !u!4 &841643612
 Transform:
