@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PLant 1
+  m_Name: GhostPoster
   m_Shader: {fileID: -6465566751694194690, guid: 0279287c8bf248a48b1193ca359a9c48, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
