@@ -21042,7 +21042,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 8
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 133469103}
   m_Follow: {fileID: 0}
@@ -47183,7 +47183,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 8
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1238609973}
   m_Follow: {fileID: 0}
@@ -56603,8 +56603,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888405343}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19156301, y: -0.042006332, z: 0.008206503, w: 0.98054665}
-  m_LocalPosition: {x: 2.19, y: -0.12, z: -23.73}
+  m_LocalRotation: {x: 0.21116658, y: 0.28283212, z: -0.06398304, w: 0.93344575}
+  m_LocalPosition: {x: -1.84, y: 3.92, z: -33.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56737,13 +56737,13 @@ MonoBehaviour:
   - {fileID: 1726219371}
   - {fileID: 1483018847}
   - {fileID: 2058764061}
-  initialCamera: 0
+  initialCamera: 2
   specialCameras:
   - {fileID: 844245352}
   - {fileID: 438955433}
   - {fileID: 2100694406}
   - {fileID: 1081202592}
-  initialSpecialCamera: 1
+  initialSpecialCamera: -1
   debugText: {fileID: 0}
 --- !u!1 &1890933339
 GameObject:
