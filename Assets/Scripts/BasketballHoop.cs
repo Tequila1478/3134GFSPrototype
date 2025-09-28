@@ -6,31 +6,25 @@ public class BasketballHoop : MonoBehaviour
 {
     public PlacementSpot placementSpot;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
+        // HoopIt() if other object is an Interactable.cs
         Interactable interactable = other.GetComponent<Interactable>();
-        if (interactable != null && placementSpot != null) // Only do if other object has Interactable.cs, and same task type as placementSpot
+        if (interactable != null) HoopIt(interactable);
+    }
+
+    public void HoopIt(Interactable interactable)
+    {
+        if (placementSpot != null) // Only do stuff if this script's placementSpot exists
         {
-            if (!interactable.hasSetSpot && !interactable.isAtSetSpot && placementSpot.spotType.ToString() == interactable.taskType)
+            if (!interactable.hasSetSpot && !interactable.isAtSetSpot && placementSpot.spotType.ToString() == interactable.taskType) // Only do task type is shared between other object and placementSpot
             {
-                Debug.Log("POOP BasketballHoop success triggered by: " + other.gameObject);
+                Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
                 interactable.hasSetSpot = true;
-                interactable.DropObject(placementSpot); // Pass onto Interactable's DropObject function
+                interactable.DropObject(placementSpot); // Pass onto Interactable's DropObject function for object placement behaviour
                 return;
             }
         }
-        Debug.Log("POOP BasketballHoop fail triggered by: " + other.gameObject);
+        Debug.Log("POOP BasketballHoop fail triggered by: " + interactable.gameObject);
     }
 }
