@@ -2913,7 +2913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &794534338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3768,7 +3768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &919145691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10624,16 +10624,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Clean up the room by moving objects to where they need to be!
 
-
     Press
     WASD or 1-6 to look around the room
-
 
     Use the mouse to find, highlight and
     move objects
 
     Left click to interact with/pick up/place an object, right
-    click to drop an object'
+    click to drop an object
+
+    Scroll mouse wheel to move object forward/backward'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
@@ -10670,11 +10670,11 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_characterSpacing: -1
+  m_wordSpacing: -10
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -10696,7 +10696,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -66.322586, y: 0, z: -75.082146, w: -170.65636}
+  m_margin: {x: -66.322586, y: -9.183973, z: -75.082146, w: -170.65636}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
