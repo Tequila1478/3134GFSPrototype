@@ -84,6 +84,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1966582688553688205, guid: af60b11ba7bdbab4da015bc3276fe850, type: 3}
   m_PrefabInstance: {fileID: 5421428774675696503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6574600811001466176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1153313092715447863, guid: af60b11ba7bdbab4da015bc3276fe850, type: 3}
+  m_PrefabInstance: {fileID: 5421428774675696503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6661007224492769909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1678838224246769922, guid: af60b11ba7bdbab4da015bc3276fe850, type: 3}
@@ -138,15 +143,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 6661007224492769909}
+      objectReference: {fileID: 6574600811001466176}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 3398729862606139393}
+      objectReference: {fileID: 6661007224492769909}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 3398729862606139393}
+    - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[4]
       value: 
       objectReference: {fileID: 170812445467865805}
     - target: {fileID: 8637763757669492365, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}

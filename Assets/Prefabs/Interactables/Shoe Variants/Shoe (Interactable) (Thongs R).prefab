@@ -65,6 +65,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457b1999c2d2bac49b7af9fdd6eac49d, type: 3}
+--- !u!1 &1168490299235003904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1901108556715863970, guid: 457b1999c2d2bac49b7af9fdd6eac49d, type: 3}
+  m_PrefabInstance: {fileID: 744597609047736738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1980632831026803898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1236740043833439512, guid: 457b1999c2d2bac49b7af9fdd6eac49d, type: 3}
@@ -130,14 +135,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 7782598694638227641}
+      objectReference: {fileID: 1168490299235003904}
     - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7782598694638227641}
+    - target: {fileID: 8022681987934273779, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
       value: 
       objectReference: {fileID: 6593942286003761222}
     - target: {fileID: 8637763757669492365, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -192,13 +193,23 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void UpdateHighlightForHeldItem(Interactable heldItem)
     {
         bool valid = false;
+        Debug.Log("POOP Updating Highlights");
 
         if (heldItem != null && isActive && !claimed)
         {
             if (spotType == SpotType.Any || heldItem.taskType == spotType.ToString())
             {
                 valid = true;
+                Debug.Log("POOP valid = true");
             }
+            else
+            {
+                Debug.Log("POOP valid = false");
+            }
+        }
+        else
+        {
+            Debug.Log("POOP valid = false");
         }
 
         highlightVisualisation.SetActive(valid);
