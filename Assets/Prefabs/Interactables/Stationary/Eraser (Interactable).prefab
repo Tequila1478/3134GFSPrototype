@@ -20,6 +20,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eraser (Interactable)
       objectReference: {fileID: 0}
+    - target: {fileID: 1366770635112351394, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366770635112351394, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366770635112351394, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366770635112351394, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Height
       value: 0.015
@@ -132,6 +148,22 @@ PrefabInstance:
       propertyPath: rayVisualOffset
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2440299169341529260, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2440299169341529260, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356756130064715850, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356756130064715850, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3966331914746873831, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.04
@@ -163,6 +195,30 @@ PrefabInstance:
     - target: {fileID: 3966331914746873831, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.6793067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654056713942618700, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745289917864795662, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745289917864795662, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

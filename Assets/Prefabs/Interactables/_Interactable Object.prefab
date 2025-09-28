@@ -143,10 +143,12 @@ MonoBehaviour:
   originalMat: {fileID: 0}
   materialObj: {fileID: 68092545606601618}
   visualisationObj: {fileID: 68092545606601618}
-  speed: 2
+  followRate: 0.05
+  speed: 6
   height: 0.001
   rotation: 0.1
   rayOffset: 2
+  rayVisualOffset: 2
   routes: []
   oi: {fileID: 0}
   ps: {fileID: 0}

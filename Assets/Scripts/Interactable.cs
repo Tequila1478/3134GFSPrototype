@@ -326,7 +326,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         else if (!isMoving)
         {
             float targetY = transform.position.y + height * 10;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, transform.position.z), speed * 50 * Time.deltaTime);
+            var newPosition = new Vector3(transform.position.x, targetY, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * 50 * Time.deltaTime );
         }
     }
 
