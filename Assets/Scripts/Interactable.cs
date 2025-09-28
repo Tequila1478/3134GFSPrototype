@@ -551,6 +551,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     public void DropObject(bool forceDrop = false)
     {
+        DropObject(ps, forceDrop);
+    }
+
+    public void DropObject(PlacementSpot newPlacementSpot, bool forceDrop = false)
+    {
         Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
         floating = false;
         moveComplete = false;
@@ -577,7 +582,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (hasSetSpot)
         {
             Debug.Log("Poop3: Moving to set spot");
-            StartMoveToSetSpot(ps);
+            StartMoveToSetSpot(newPlacementSpot);
         }
         else
         {

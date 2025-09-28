@@ -23,11 +23,11 @@ public class BasketballHoop : MonoBehaviour
         Interactable interactable = other.GetComponent<Interactable>();
         if (interactable != null && placementSpot != null) // Only do if other object has Interactable.cs, and same task type as placementSpot
         {
-            if (!interactable.hasSetSpot && placementSpot.spotType.ToString() == interactable.taskType)
+            if (!interactable.hasSetSpot && !interactable.isAtSetSpot && placementSpot.spotType.ToString() == interactable.taskType)
             {
                 Debug.Log("POOP BasketballHoop success triggered by: " + other.gameObject);
                 interactable.hasSetSpot = true;
-                interactable.StartMoveToSetSpot(placementSpot, true);
+                interactable.DropObject(placementSpot); // Pass onto Interactable's DropObject function
                 return;
             }
         }
