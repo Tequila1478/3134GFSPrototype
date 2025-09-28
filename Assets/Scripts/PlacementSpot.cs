@@ -8,7 +8,8 @@ public enum SpotType
     Book,
     Clutter,
     Trash,
-    Any  //for spots that accept any type
+    Any,  //for spots that accept any type
+    Stationary
 }
 
 

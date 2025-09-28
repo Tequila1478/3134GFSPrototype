@@ -258,6 +258,10 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
                 {
                     rayOffset = rayVisualOffset;
                 }
+                if (Input.mouseScrollDelta.y > 0 && rayOffset > rayVisualOffset)
+                {
+                    rayOffset = rayVisualOffset;
+                }
 
                 Vector3 newPoint = ray.GetPoint(hit.distance - (maxRayOffset - rayVisualOffset));
                 transform.position = Vector3.MoveTowards(transform.position, newPoint, followRate * Vector3.Distance(transform.position, newPoint));

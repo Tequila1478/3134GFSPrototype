@@ -19,6 +19,14 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     private InspectItem ii;
 
+    private void OnValidate()
+    {
+        if (cameraController == null)
+        {
+            cameraController = FindObjectOfType<CameraCinemaSwitch>();
+        }
+    }
+
     private void Start()
     {
         Renderer rend = GetComponent<Renderer>();
@@ -57,6 +65,15 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
             GetComponent<BoxCollider>().enabled = _isFocusedOn;
             _isFocusedOn = isFocusedOn;
         }*/
+
+        if (cameraController.currentSpecialCamera == CameraCinemaSwitch.FindIndexOfSpecialCamera(specialCamera))
+        {
+            if (!isFocusedOn)
+                StartCoroutine(SetFocus(true, 1f)); //Switch focus mode
+        } else
+        {
+            isFocusedOn = false;
+        }
     }
 
     public void OnClick()
@@ -83,7 +100,6 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         if (cameraController.currentSpecialCamera == -1)
         {
             cameraController.EnterSpecialCamera(specialCamera); // Activate special camera to focus on sometime else
-            StartCoroutine(SetFocus(true, 1f)); //Switch focus mode
         }
         else if (isFocusedOn && ii != null)
         {
@@ -97,11 +113,9 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         isFocusedOn = newFocus;
     }
 
-public void EndSpecialView()
+    public void EndSpecialView()
     {
         cameraController.LeaveSpecialCamera(); // Deactivate special camera view
-
-        isFocusedOn = false; //Switch focus mode
     }
 
     private void HighlightObject()

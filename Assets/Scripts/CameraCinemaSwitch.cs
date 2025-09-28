@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class CameraCinemaSwitch : MonoBehaviour
 {
+    public static CameraCinemaSwitch instance;
+
     [Header("UI")]
     [Tooltip("Display of current camera number.")]
     public TextMeshProUGUI cameraText;
@@ -74,6 +76,20 @@ public class CameraCinemaSwitch : MonoBehaviour
         currentSpecialCamera = initialSpecialCamera;
 
         UpdateCameraUIText();
+    }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Start is called before the first frame update
@@ -243,5 +259,10 @@ public class CameraCinemaSwitch : MonoBehaviour
             currentFocused.EndInteraction();
         }
 
+    }
+    static public int FindIndexOfSpecialCamera(CinemachineVirtualCamera cam)
+    {
+        int index = Array.IndexOf(instance.specialCameras, cam);
+        return index;
     }
 }

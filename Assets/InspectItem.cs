@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     public GameObject materialObj;
     public GameObject visualisationObj;
 
+    [Header("Other stuff")]
     public GameObject info;
 
     private DialogueScript ds;
@@ -48,6 +50,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public void OnClick()
     {
+
         StartCoroutine(ShowInfo());
         //Show info and dialogue on counter
         //UPdate state
