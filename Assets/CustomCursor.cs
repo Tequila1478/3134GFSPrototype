@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CustomCursor : MonoBehaviour
 {
+    // Note: This is OLD, use CursorScript.cs instead
     public Sprite cursorVisualIdle;
     public Sprite cursorVisualInteract;
 
