@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public string taskType;
     public bool isRequired;
     public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
+    public LayerMask pickupLayer; // Set in inspector to object layers that can be interacted with and picked up
     private string layerWhenUnselected; // Will be set to gameobject's layer in Awake()
     [Tooltip("Object will temporarily switch to this layer while it is selected in-game.")]
     public string layerWhenSelected; // Must be set in the inspector
@@ -508,8 +509,22 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (hoverParticles != null) hoverParticles.Stop();
         isAtSetSpot = false;
 
+        ///MOVE THIS ONCE DONE TESTING
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        SetCollidersTrigger(false);
+        if (Physics.Raycast(ray, out hit, 100f, pickupLayer))
+        {
+            Debug.Log("POOP distance: " + hit.distance);
+            rayOffset = Mathf.Max(hit.distance, minRayOffset);
+            rayVisualOffset = Mathf.Clamp(rayOffset, minRayOffset, maxRayOffset);
+        } else
+        {
+            Debug.Log("POOP distance: NO.");
+        }
+            ///
+
+            SetCollidersTrigger(false);
 
     }
 

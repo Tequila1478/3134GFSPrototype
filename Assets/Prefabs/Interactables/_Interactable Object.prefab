@@ -135,6 +135,9 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 243137
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 917504
   layerWhenSelected: SelectedInteractable
   layerableObjects:
   - {fileID: 68092545606601618}
