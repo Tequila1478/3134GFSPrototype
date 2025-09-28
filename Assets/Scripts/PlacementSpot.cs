@@ -308,27 +308,22 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (player.itemHeld.hasSetSpot)
         {
 
-
-            player.itemHeld.moveComplete = false;
-            player.itemHeld.floating = false;
-            player.isHolding = false;
-
             // Move to placement spot
-            player.itemHeld.StartMoveToSetSpot(this);
-            player.itemHeld = null;
-            //highlightSpots = false;
+            bool success = player.itemHeld.StartMoveToSetSpot(this);
+
+            if (success)
+            {
+                player.itemHeld.moveComplete = false;
+                player.itemHeld.floating = false;
+                player.isHolding = false;
+
+                player.itemHeld = null;
+                //highlightSpots = false;
+            }
         }
         else
         {
-            // Free drop
-            player.itemHeld.floating = false;
-            player.itemHeld.moveComplete = true;
-            player.itemHeld.GetComponent<Rigidbody>().isKinematic = false;
-
-            player.itemHeld = null;
-            player.isHolding = false;
-
-            Debug.Log("Dropped freely.");
+            Debug.Log("Selected incorrect placement spot.");
         }
 
         // Disable colliders AFTER object is released and trigger updates

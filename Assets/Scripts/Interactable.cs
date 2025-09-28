@@ -533,7 +533,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    private void DropObject(bool forceDrop = false)
+    public void DropObject(bool forceDrop = false)
     {
         Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
         floating = false;
@@ -572,12 +572,12 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    public void StartMoveToSetSpot(PlacementSpot placementSpot)
+    public bool StartMoveToSetSpot(PlacementSpot placementSpot) // Will return bool of whether object has started moving to set spot
     {
         ps = placementSpot;
         oi?.ClearPlacementSpots();
 
-        if (!hasSetSpot) return;
+        if (!hasSetSpot) return false;
 
         if (moveCoroutine == null)
         {
@@ -589,7 +589,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             ghostParticles.Stop();
             //if (floatingParticles != null) floatingParticles.SetActive(false);
             StopAllFloatingParticles();
+
+            return true;
         }
+
+        return false;
 
     }
 
