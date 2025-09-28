@@ -458,8 +458,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     {
         if (moveCoroutine != null)
         {
-            StopCoroutine(moveCoroutine);
-            moveCoroutine = null;
+            StopCoroutine(moveCoroutine); // Prevent object from continuing to move towards a placement spot
+            moveCoroutine = null;         // Forget placement movement
             movingToSetSpot = false;
             isAtSetSpot = false;
             coroutineFinished = false;
@@ -588,16 +588,16 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    public bool StartMoveToSetSpot(PlacementSpot placementSpot) // Will return bool of whether object has started moving to set spot
+    public bool StartMoveToSetSpot(PlacementSpot placementSpot, bool forceMove = false) // Will return bool of whether object has started moving to set spot
     {
         ps = placementSpot;
         oi?.ClearPlacementSpots();
 
-        if (!hasSetSpot) return false;
+        if (!hasSetSpot && !forceMove) return false;
 
-        if (moveCoroutine == null)
+        if (moveCoroutine == null || forceMove)
         {
-                SetCollidersTrigger(true);
+            SetCollidersTrigger(true);
 
             moveCoroutine = StartCoroutine(MoveDirectlyToSpot(ps.transform.position));
             movingToSetSpot = true;
