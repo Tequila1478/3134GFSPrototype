@@ -85,7 +85,7 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
             cameraController.EnterSpecialCamera(specialCamera); // Activate special camera to focus on sometime else
             StartCoroutine(SetFocus(true, 1f)); //Switch focus mode
         }
-        else if (isFocusedOn)
+        else if (isFocusedOn && ii != null)
         {
             ii.OnClick(); //Run OnClick on InspectItem component to play dialogue
         }

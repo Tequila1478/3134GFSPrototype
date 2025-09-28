@@ -34,11 +34,19 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     private Color hoverColor = Color.white;
 
     [Header("Floating Settings")]
+    [Tooltip("Rate at which the object follows the cursor when selected.")]
+    [Range(0.01f, 1f)]
+    public float followRate = 0.05f;
+    [Tooltip("Speed of the object when moving to a placement spot.")]
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
     [Tooltip("Ray Offset controls how far a selected object floats from whatever surfaces you are pointing the cursor at.")]
-    public float rayOffset = 2f;
+    public float rayOffset = 2f; // This is the literal offset.
+    public float rayVisualOffset = 2f; // This is the offset that can be seen in-game.
+    private float inspectorOffset = 2f; // Exclusively used for inspector logic
+    private float minRayOffset;
+    private float maxRayOffset;
 
     [Header("Movement")]
     public Vector3[] routes;
@@ -92,11 +100,24 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         {
             layerableObjects.Insert(0, gameObject);
         }
+
+        if (rayVisualOffset != inspectorOffset)
+        {
+            inspectorOffset = rayVisualOffset;
+            rayOffset = rayVisualOffset;
+        }
+        if (rayOffset != inspectorOffset)
+        {
+            inspectorOffset = rayOffset;
+            rayVisualOffset = rayOffset;
+        }
     }
 
     private void Awake()
     {
         layerWhenUnselected = LayerMask.LayerToName(gameObject.layer);
+
+        minRayOffset = rayOffset; //Update minimum RayOffset to match inspector
 
         sfx_AM = FindObjectOfType<AudioManager>();
         if (sfx_AM == null)
@@ -207,6 +228,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             OnRelease();
         }
 
+        //Update layer
         if (!floating)
         {
             if (isHovered)
@@ -222,27 +244,23 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             SetNewLayer(layerWhenSelected);
         }
 
-        /*if (isHovered && !floating)
-        {
-            SetNewLayer("HoverOutline");
-        }
-        else if (floating)
-        {
-            SetNewLayer(layerWhenSelected);
-        }
-        else
-        {
-            SetNewLayer(layerWhenUnselected);
-        }*/
-
+        // Get and move to mouse position
         if (floating && !disableCursorControls) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
             {
-                Vector3 newPoint = ray.GetPoint(hit.distance - rayOffset);
-                transform.position = Vector3.MoveTowards(transform.position, newPoint, speed * 500 * Time.deltaTime);
+                maxRayOffset = hit.distance - minRayOffset; // Update maximum offset to match ray hit distance
+                rayOffset = Mathf.Max(rayOffset + Input.mouseScrollDelta.normalized.y, minRayOffset);
+                rayVisualOffset = Mathf.Clamp(rayOffset, minRayOffset, maxRayOffset);
+                if (Input.mouseScrollDelta.y < 0)
+                {
+                    rayOffset = rayVisualOffset;
+                }
+
+                Vector3 newPoint = ray.GetPoint(hit.distance - (maxRayOffset - rayVisualOffset));
+                transform.position = Vector3.MoveTowards(transform.position, newPoint, followRate * Vector3.Distance(transform.position, newPoint));
             }
         }
 
@@ -263,7 +281,21 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             }
 
         }
+    }
 
+    public Vector2 NormalizeScroll()
+    {
+        Debug.Log(Input.mouseScrollDelta);
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            return Vector2.up;
+        } else if (Input.mouseScrollDelta.y < 0)
+        {
+            return Vector2.down;
+        } else
+        {
+            return Vector2.zero;
+        }
     }
 
     private void HandleFloating()
