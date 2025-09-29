@@ -25,7 +25,9 @@ public class DialogueScript : MonoBehaviour
     public AudioClip nextDialogueSFX;
 
     private float waitSystem;
-    private AudioManager audio_AM; 
+    private AudioManager audio_AM;
+
+    public bool isMonologuing = false;
 
 
     public List<DialogueLine> startDialogue;
@@ -116,6 +118,7 @@ public class DialogueScript : MonoBehaviour
 
     IEnumerator PlayDialogue(List<DialogueLine> lines)
     {
+        isMonologuing = true;
         Time.timeScale = 0f;
 
         dialogueText.gameObject.SetActive(true);
@@ -159,6 +162,7 @@ public class DialogueScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         Debug.Log("PlayDialogue finished with " + lines.Count + " lines");
+        isMonologuing = false;
     }
 
     IEnumerator WaitForSecondsOrTap(float seconds)

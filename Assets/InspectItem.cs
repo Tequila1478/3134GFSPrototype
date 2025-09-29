@@ -50,6 +50,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public void OnClick()
     {
+        if (ds.isMonologuing) return; //Don't do stuff if dialogue is already monologuing
 
         StartCoroutine(ShowInfo());
         //Show info and dialogue on counter
