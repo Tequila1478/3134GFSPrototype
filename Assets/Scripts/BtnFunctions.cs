@@ -46,6 +46,7 @@ public class BtnFunctions : MonoBehaviour
 
     public void SetMusicVolumeOnSlider()
     {
+        Debug.Log("POOOP new slider value: " + slider.value);
         audio_AM.SetMusicVolume(slider.value);
     }
 
