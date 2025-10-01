@@ -620,7 +620,11 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
 
     private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
     {
-        while (Vector3.Distance(transform.position, targetPos) > 0.05f) // small threshold
+        // Ensure rigidbody doesn't interfere
+        rb.useGravity = false;
+        rb.isKinematic = true;
+
+        while (Vector3.Distance(transform.position, targetPos) > 0.05f) // threshold
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
@@ -630,38 +634,20 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             yield return null;
         }
 
-        // Snap to exact position
+        // Snap to final position
         transform.position = targetPos;
 
-        coroutineFinished = true;
+        // If the placement spot wants alignment, also set rotation
+        if (ps != null)
+        {
+            transform.rotation = Quaternion.LookRotation(ps.direction);
+        }
+
+        // Mark as complete
+        movingToSetSpot = false;
+        moveComplete = true;
         isAtSetSpot = true;
-
-        if (ps.isTrashcan)
-        {
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.constraints = RigidbodyConstraints.None;
-
-            ps.IncrementTrash();
-            Debug.Log("Trash item reached trashcan: " + name);
-
-            // small delay so it visibly drops in
-
-            StartCoroutine(ShrinkAndRemove());
-            /*
-            yield return new WaitForSeconds(2f);
-
-            if (objectRenderer != null)
-                objectRenderer.enabled = false;
-
-            Collider collider = GetComponent<Collider>();
-            if (collider != null) collider.enabled = false;
-            */
-        }
-        else
-        {
-            rb.isKinematic = true;
-        }
+        coroutineFinished = true;
 
         moveCoroutine = null;
     }

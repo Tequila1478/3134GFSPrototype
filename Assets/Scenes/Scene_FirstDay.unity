@@ -31018,7 +31018,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
-  spotType: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -43885,7 +43885,7 @@ MonoBehaviour:
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
-  spotType: 0
+  spotType: 3
   controlPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
