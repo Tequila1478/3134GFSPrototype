@@ -7,10 +7,11 @@ using UnityEngine;
 public enum SpotType
 {
     Book,
-    Clutter,
+    Pillow,
     Trash,
     Any,  //for spots that accept any type
-    Stationary
+    Stationary,
+    Shoes
 }
 
 

@@ -299,6 +299,9 @@ MonoBehaviour:
   isMusic: 0
   isSFX: 0
   isDialogue: 0
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
   onClickAudio: {fileID: 0}
 --- !u!114 &2845238403070857302
 MonoBehaviour:
@@ -652,6 +655,9 @@ MonoBehaviour:
   isMusic: 0
   isSFX: 0
   isDialogue: 0
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
   onClickAudio: {fileID: 0}
 --- !u!114 &6260068283867382780
 MonoBehaviour:
@@ -1180,6 +1186,9 @@ MonoBehaviour:
   isMusic: 0
   isSFX: 0
   isDialogue: 0
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
   onClickAudio: {fileID: 0}
 --- !u!114 &6938609074439133366
 MonoBehaviour:
