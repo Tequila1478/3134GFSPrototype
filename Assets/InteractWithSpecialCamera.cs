@@ -19,6 +19,10 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     private InspectItem ii;
 
+    public GameObject GodRays;
+    public bool disableGodRays;
+
+
     private void OnValidate()
     {
         if (cameraController == null)
@@ -73,6 +77,8 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         } else
         {
             isFocusedOn = false;
+            if(GodRays != null)
+                GodRays.SetActive(true);
         }
     }
 
@@ -80,6 +86,10 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
     {
         Debug.Log("going to special camera");
         StartSpecialView(); // Start special camera view when clicked on
+        if (disableGodRays)
+        {
+            GodRays.SetActive(false);
+        }
     }
 
     public void OnHoverEnter()

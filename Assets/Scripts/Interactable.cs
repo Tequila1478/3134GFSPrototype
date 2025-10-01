@@ -456,6 +456,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     // This is run by PlayerInteraction.cs to select the interactable
     public void OnClick()
     {
+        if(ps != null) ps.claimed = false;
+
+        transform.SetParent(null, true);
         if (moveCoroutine != null)
         {
             StopCoroutine(moveCoroutine); // Prevent object from continuing to move towards a placement spot
@@ -641,6 +644,8 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (ps != null)
         {
             transform.rotation = Quaternion.LookRotation(ps.direction);
+
+            transform.SetParent(ps.transform, true);
         }
 
         // Mark as complete

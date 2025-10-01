@@ -136,7 +136,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (ps != obj)
             {
-                obj.GetComponent<PlacementSpot>().claimed = false;
+               // obj.GetComponent<PlacementSpot>().claimed = false;
             }
         }
     }

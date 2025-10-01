@@ -87,7 +87,10 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
         if (interactable.movingToSetSpot)
         {
-            claimed = true;
+            if (interactable.ps != this) return;
+                
+                claimed = true;
+           
             otherObject = null;
             placementVisualisation.GetComponent<MeshFilter>().mesh = null;
             //placementVisualisation.SetActive(false);
@@ -132,7 +135,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         SetLayer(8);
         if (other.GetComponent<Interactable>())
             other.GetComponent<Interactable>().hasSetSpot = false;
-        claimed = false;
+        //claimed = false;
     }
     
     //Debuggin stuff
@@ -305,7 +308,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void OnHoverExit()
     {
         DeselectObject();
-        claimed = false;
+        //claimed = false;
         withinRange = false;
         //cursor.ChangeVisual(0);
         CursorScript.instance.UpdateCursor("Default");

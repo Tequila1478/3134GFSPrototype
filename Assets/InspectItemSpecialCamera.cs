@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InspectItem : MonoBehaviour, IClickable, IHoverable
+public class InspectItemWithSpecialCamera : MonoBehaviour, IClickable, IHoverable
 {
     public bool isHovered;
     public CustomCursor cursor;
@@ -70,7 +70,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         {
             dialogueScript.foundDivorcePapers = true;
         }
-
+        
 
     }
 
@@ -79,12 +79,12 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         if (displayInfoImage)
         {
             info.SetActive(displayInfoImage);
-            Transform spriteChild = info.transform.GetChild(0).GetChild(1);
+            Transform spriteChild = info.transform.GetChild(0).GetChild(1); 
             SpriteRenderer sr = spriteChild.GetComponent<SpriteRenderer>();
             if (sr != null)
                 sr.sprite = inspectionImage;
 
-            Transform textChild = info.transform.GetChild(0).GetChild(0);
+            Transform textChild = info.transform.GetChild(0).GetChild(0); 
             TMPro.TextMeshProUGUI tmp = textChild.GetComponent<TMPro.TextMeshProUGUI>();
             if (tmp != null)
                 tmp.text = inspectionText;
