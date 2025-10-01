@@ -125,9 +125,10 @@ public class DialogueScript : MonoBehaviour
         headingText.gameObject.SetActive(true);
         skipReminderText.gameObject.SetActive(true);
         
-        characterImage.gameObject.SetActive(true);
+        //characterImage.gameObject.SetActive(true);
         dialoguePanel.SetActive(true);
 
+        yield return null;
 
         foreach (DialogueLine line in lines)
         {

@@ -98,8 +98,8 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
         {
-            IClickable clickTarget = hit.collider.GetComponent<IClickable>();
-            if (clickTarget != null)
+            var clickTargets = hit.collider.GetComponents<IClickable>();
+            foreach (var clickTarget in clickTargets)
             {
                 currentClickTarget = clickTarget;
                 clickTarget.OnClick();

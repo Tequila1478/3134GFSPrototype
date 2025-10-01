@@ -78,6 +78,7 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public void OnClick()
     {
+        Debug.Log("going to special camera");
         StartSpecialView(); // Start special camera view when clicked on
     }
 

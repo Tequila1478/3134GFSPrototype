@@ -38,7 +38,6 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     {
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
-        objectRenderer = materialObj.GetComponent<Renderer>();
         ds = FindObjectOfType<DialogueScript>();
     }
 
@@ -72,8 +71,17 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         else
             ds.PlayDialogueList(inspectionDialogue);
 
-        yield return new WaitForSecondsRealtime(2);
+
+        // Wait until dialogue finishes
+        while (ds.isMonologuing)
+        {
+            yield return null; // wait a frame
+        }
+
         info.SetActive(false);
+
+        //yield return new WaitForSecondsRealtime(2);
+        //info.SetActive(false);
     }
 
     public void OnRelease()
