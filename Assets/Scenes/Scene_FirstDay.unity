@@ -42034,15 +42034,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
---- !u!114 &1185708807 stripped
+--- !u!114 &1185708805 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2679775744230686971, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4064498611924485363, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
   m_PrefabInstance: {fileID: 6576206708000241747}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185708796}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e12d45ede7621e46b4fd20f893f8714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1185708811
@@ -42057,9 +42057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e844fff06051f1a4d9d3dc6207b49485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 1185708807}
-  taskType: 
-  isRequired: 0
+  taskType: Pillow
+  isRequired: 1
   interactionLayer:
     serializedVersion: 2
     m_Bits: 243137
@@ -42069,10 +42068,9 @@ MonoBehaviour:
   basketballLayer:
     serializedVersion: 2
     m_Bits: 1048576
-  layerWhenSelected: 
+  layerWhenSelected: SelectedInteractable
   layerableObjects:
   - {fileID: 1185708796}
-  disableCursorControls: 1
   outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
   originalMat: {fileID: 0}
   materialObj: {fileID: 1185708796}
@@ -42084,9 +42082,8 @@ MonoBehaviour:
   rayOffset: 2
   rayVisualOffset: 2
   routes: []
-  oi: {fileID: 0}
+  oi: {fileID: 1185708805}
   ps: {fileID: 0}
-  cursor: {fileID: 0}
   ghostParticles: {fileID: 920641392}
   secondaryParticles: {fileID: 0}
   hoverParticles: {fileID: 259238860}
@@ -74609,6 +74606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2884882815052843781, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+    - {fileID: 2679775744230686971, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

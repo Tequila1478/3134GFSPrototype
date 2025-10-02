@@ -21,4 +21,12 @@ public class PoppedState : State
     {
         // "Must've been the wind"
     }
+    public override void OnHoverEnter()
+    {
+        // Do nothing
+    }
+    public override void OnHoverExit()
+    {
+        // Do nothing
+    }
 }

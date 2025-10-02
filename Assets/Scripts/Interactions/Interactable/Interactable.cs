@@ -131,7 +131,6 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         if (hoverParticles != null) hoverParticles.Stop();
         floatingParticleSystems = floatingParticles.GetComponentsInChildren<ParticleSystem>(true);
         //if (floatingParticles != null) floatingParticles.SetActive(false);
-
     }
     private void Start()
     {

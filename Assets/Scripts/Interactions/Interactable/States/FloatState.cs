@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoverState : State
+public class FloatState : State
 {
     protected override void OnEnter()
     {
@@ -12,6 +12,8 @@ public class HoverState : State
         sc.rb.useGravity = false;
         sc.rb.drag = 4;
         sc.rb.isKinematic = false;
+
+        sc.ToggleParticles("FLOAT");
     }
 
     protected override void OnUpdate()
@@ -59,5 +61,34 @@ public class HoverState : State
     protected override void OnExit()
     {
         // "Must've been the wind"
+        sc.ToggleParticles();
+    }
+
+    public override void OnHoverEnter()
+    {
+        // Do nothing
+    }
+    public override void OnHoverExit()
+    {
+        // Do nothing
+    }
+    public override void OnClick()
+    {
+        // Do nothing
+    }
+    public override void OnRelease()
+    {
+        if (sc.moveComplete)
+        {
+            sc.ChangeState(sc.idleState);
+        }
+        else
+        {
+            sc.moveComplete = true;
+            //cursor?.ChangeVisual(0);
+            CursorScript.instance.UpdateCursor("Default");
+        }
+
+        base.OnRelease();
     }
 }

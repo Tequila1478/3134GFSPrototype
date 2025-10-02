@@ -80,6 +80,8 @@ public class PlayerInteraction : MonoBehaviour
 
         if (hoverTarget != currentHover)
         {
+            Debug.Log("HandleHover has changed current hover.");
+
             // Notify previous object
             if (currentHover != null)
                 currentHover.OnHoverExit();

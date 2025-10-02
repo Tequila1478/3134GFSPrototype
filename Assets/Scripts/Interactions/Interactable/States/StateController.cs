@@ -1,23 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-public class StateController : MonoBehaviour
+public class StateController : MonoBehaviour, IHoverable
 {
     State currentState;
 
     public IdleState idleState = new IdleState();
-    public HoverState hoverState = new HoverState();
+    public FloatState floatState = new FloatState();
     public PushedState pushedState = new PushedState();
     public PoppedState poppedState = new PoppedState();
     public HoopedState hoopedState = new HoopedState();
 
-    public Interactable interactable;
-
     [Header("Interaction Settings")]
-    [NonSerialized] public bool isHovered = false;
+    [NonSerialized] public bool isHovered = false; //Whether object is currently hovered over with mouse
 
     public string taskType;
     public bool isRequired;
@@ -29,8 +27,6 @@ public class StateController : MonoBehaviour
     public string layerWhenSelected; // Must be set in the inspector
     [Tooltip("Put all GameObjects that can change layer here. (This is important for GameObjects with multiple children.) This will always include the GameObject this script is attached to.")]
     public List<GameObject> layerableObjects;
-    [Tooltip("Disabling cursor controls will instead allow the object to be controlled using keyboard.")]
-    public bool disableCursorControls = false;
 
     [Header("Materials")]
     public Material outlineMat;
@@ -64,8 +60,6 @@ public class StateController : MonoBehaviour
     [NonSerialized] public bool coroutineFinished = false;
 
     [Header("References")]
-    public CustomCursor cursor;
-
     [NonSerialized] public PlayerInteraction playerInteraction;
     [NonSerialized] public Rigidbody rb;
     [NonSerialized] public Renderer objectRenderer;
@@ -100,15 +94,68 @@ public class StateController : MonoBehaviour
     private void OnValidate()
     {
         // Automatically cache components
-        if (interactable == null)
-            interactable = GetComponent<Interactable>();
         if (rb == null)
             rb = GetComponent<Rigidbody>();
+        if (charController == null)
+            charController = GetComponent<CharacterController>();
+        if (playerInteraction == null)
+            playerInteraction = FindObjectOfType<PlayerInteraction>();
+        if (oi == null)
+            oi = GetComponent<ObjectInteractions>();
+
+        if (materialObj != null)
+            objectRenderer = materialObj.GetComponent<Renderer>();
+        else
+        {
+            objectRenderer = null;
+            Debug.LogError("Material object is not assigned in " + gameObject.name);
+        }
+
+        Renderer rend = GetComponent<Renderer>();
+        if (rend == null)
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+        }
+        else
+        {
+            renderers = new Renderer[] { rend };
+        }
+
+        originalColors = new Color[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            Material mat = renderers[i].sharedMaterial; // or .material if you want a unique instance
+            if (mat != null && mat.HasProperty("_OutlineColour"))
+            {
+                originalColors[i] = mat.GetColor("_OutlineColour");
+            }
+            else
+            {
+                originalColors[i] = Color.clear; // or some default value
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        layerWhenUnselected = LayerMask.LayerToName(gameObject.layer);
+
+        minRayOffset = rayOffset; //Update minimum RayOffset to match inspector
+
+        sfx_AM = FindObjectOfType<AudioManager>();
+        if (sfx_AM == null)
+        {
+            Debug.Log("No audio manager");
+        }
+        floatingParticleSystems = floatingParticles.GetComponentsInChildren<ParticleSystem>(true);
+        ToggleParticles();
+        //if (floatingParticles != null) floatingParticles.SetActive(false);
     }
 
     private void Start()
     {
-        ChangeState(hoverState);
+        ChangeState(idleState);
     }
 
     void Update()
@@ -129,6 +176,44 @@ public class StateController : MonoBehaviour
         }
         currentState = newState;
         currentState.OnStateEnter(this);
+    }
+
+    public void OnHoverEnter()
+    {
+        Debug.Log("Please run OnHoverEnter"); //Debug
+        currentState.OnHoverEnter(); // Call script of current state
+    }
+    public void OnHoverExit()
+    {
+        Debug.Log("Please run OnHoverExit"); //Debug
+        currentState.OnHoverExit(); // Call script of current state
+    }
+
+    public void ToggleParticles(string mode = "", bool clear = false)
+    {
+        mode = mode.ToUpper();
+
+        if (mode == "FLOAT")
+        {
+            foreach (var ps in floatingParticleSystems) ps.Play();
+            if (ghostParticles != null) ghostParticles.Play();
+            if (secondaryParticles != null) secondaryParticles.Play();
+        } else {
+            foreach (var ps in floatingParticleSystems)
+            {
+                ps.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmitting);
+                if (clear) ps.Clear();
+            }
+            if (ghostParticles != null) ghostParticles.Stop();
+            if (secondaryParticles != null) secondaryParticles.Stop();
+        }
+
+        if (mode == "HOVER")
+        {
+            if (hoverParticles != null) hoverParticles.Play();
+        } else {
+            if (hoverParticles != null) hoverParticles.Stop();
+        }
     }
 }
 
@@ -179,5 +264,94 @@ public abstract class State
     protected virtual void OnExit()
     {
         // Code placed here can be overridden
+    }
+
+
+
+
+
+    // This is run by PlayerInteraction.cs to select the interactable
+    public virtual void OnClick()
+    {
+        Debug.Log("State Controller: Running OnClick");
+    }
+
+    // This is run by PlayerInteraction.cs to deselect the interactable
+    public virtual void OnRelease()
+    {
+        Debug.Log("State Controller: Running OnRelease");
+    }
+    public virtual void OnHoverEnter()
+    {
+        Debug.Log("StateController: Hovering over object"); //Debug
+
+        if (!sc.playerInteraction.isHolding)
+        {
+            HighlightObject();
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
+            if (sc.hoverParticles != null) sc.hoverParticles.Play();
+
+        }
+        if (sc.playerInteraction.itemHeld == sc)
+        {
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
+        }
+    }
+
+    public virtual void OnHoverExit()
+    {
+        Debug.Log("StateController: No longer hovering over object"); //Debug
+
+        if (sc.hoverParticles != null) sc.hoverParticles.Stop();
+
+
+        if (!sc.playerInteraction.isHolding)
+        {
+            UnhighlightObject();
+            //cursor?.ChangeVisual(0);
+            CursorScript.instance.UpdateCursor("Default");
+        }
+        if (sc.playerInteraction.itemHeld == sc)
+        {
+            //cursor?.ChangeVisual(1);
+            CursorScript.instance.UpdateCursor("Interact");
+        }
+    }
+
+    private void HighlightObject()
+    {
+        Debug.Log("StateController: Highlighting object"); //Debug
+        foreach (var rend in sc.renderers)
+        {
+            var mpb = new MaterialPropertyBlock();
+            rend.GetPropertyBlock(mpb);
+            mpb.SetColor("_OutlineColour", sc.hoverColor);
+            rend.SetPropertyBlock(mpb);
+        }
+
+        if (sc.outlineMat != null && sc.objectRenderer != null)
+        {
+            //outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
+            // objectRenderer.material = outlineMat;
+        }
+    }
+
+    private void UnhighlightObject()
+    {
+        Debug.Log("StateController: Un-highlighting object"); //Debug
+        for (int i = 0; i < sc.renderers.Length; i++)
+        {
+            var mpb = new MaterialPropertyBlock();
+            var rend = sc.renderers[i];
+            rend.GetPropertyBlock(mpb);
+            mpb.SetColor("_OutlineColour", sc.originalColors[i]);
+            rend.SetPropertyBlock(mpb);
+        }
+        if (sc.originalMat != null && sc.objectRenderer != null)
+        {
+            //objectRenderer.material = originalMat;
+        }
     }
 }
