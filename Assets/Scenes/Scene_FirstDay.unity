@@ -12976,6 +12976,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253817756}
   m_Mesh: {fileID: -5717973965163262547, guid: dcc97b6154b11014480ca604159638d4, type: 3}
+--- !u!198 &259238860 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1804753667728077530, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+  m_PrefabInstance: {fileID: 6576206708000241747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259311777
 GameObject:
   m_ObjectHideFlags: 0
@@ -34708,6 +34713,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831956790}
   m_Mesh: {fileID: 4493585093827132993, guid: 8b0b6a5468214e44492d76578ce40185, type: 3}
+--- !u!1 &834976191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3250308519709040985, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+  m_PrefabInstance: {fileID: 6576206708000241747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839325794 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4534672379005017087, guid: 91eee7dc24f812d429bc85ead74ffc09, type: 3}
@@ -36524,6 +36534,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
+--- !u!198 &920641392 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2733966946314595601, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+  m_PrefabInstance: {fileID: 6576206708000241747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &926213226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7058576270630453158, guid: 634b15533781ecb4e804cb278e1add6e, type: 3}
@@ -42019,6 +42034,73 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4747795219173961485, guid: 13755b3ce0de36949a16743865314f85, type: 3}
+--- !u!114 &1185708807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2679775744230686971, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+  m_PrefabInstance: {fileID: 6576206708000241747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185708796}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1185708811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185708796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e844fff06051f1a4d9d3dc6207b49485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1185708807}
+  taskType: 
+  isRequired: 0
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 243137
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 917504
+  basketballLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  layerWhenSelected: 
+  layerableObjects:
+  - {fileID: 1185708796}
+  disableCursorControls: 1
+  outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
+  originalMat: {fileID: 0}
+  materialObj: {fileID: 1185708796}
+  visualisationObj: {fileID: 1185708796}
+  followRate: 0.05
+  speed: 6
+  height: 2
+  rotation: 0.1
+  rayOffset: 2
+  rayVisualOffset: 2
+  routes: []
+  oi: {fileID: 0}
+  ps: {fileID: 0}
+  cursor: {fileID: 0}
+  ghostParticles: {fileID: 920641392}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 259238860}
+  placeParticles: {fileID: 0}
+  floatingParticles: {fileID: 834976191}
+  pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
+  putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
+  floating: 0
+  moveComplete: 0
+  hasSetSpot: 0
+  isAtSetSpot: 0
+  movingToSetSpot: 0
+  newDirection: {x: 0, y: 0, z: 0}
+  edgeOfObject: {x: 0, y: 0, z: 0}
 --- !u!4 &1188058282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830866866537071622, guid: 5c192595381a6ab4693eafa0c2bb6714, type: 3}
@@ -74453,6 +74535,10 @@ PrefabInstance:
       propertyPath: taskType
       value: Pillow
       objectReference: {fileID: 0}
+    - target: {fileID: 2679775744230686971, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3030253332731624246, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       propertyPath: m_LocalScale.x
       value: 85.66476
@@ -74529,6 +74615,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1185708804}
+    - targetCorrespondingSourceObject: {fileID: 4447783242137429637, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185708811}
   m_SourcePrefab: {fileID: 100100000, guid: d86a7f9675bfe2141b6ea9a383d19d3c, type: 3}
 --- !u!1 &6822665442878420142
 GameObject:

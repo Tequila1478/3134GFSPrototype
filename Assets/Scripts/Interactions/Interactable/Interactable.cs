@@ -313,7 +313,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    private void HandleFloating()
+    public void HandleFloating()
     {
         if (!floating) return;
 

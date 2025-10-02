@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultState : State
+public class IdleState : State
 {
     protected override void OnEnter()
     {
         // "What was that!?"
+        Debug.Log("Ran OnEnter in IdleState");
+
+        sc.rb.useGravity = true;
+        sc.rb.drag = 0;
+        sc.rb.isKinematic = false;
     }
 
     protected override void OnUpdate()
