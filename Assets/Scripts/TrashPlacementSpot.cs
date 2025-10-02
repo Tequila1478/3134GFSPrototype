@@ -43,7 +43,6 @@ public class TrashPlacementSpot : PlacementSpot, IHoverable, IClickable
         if (player.itemHeld.hasSetSpot)
         {
             player.itemHeld.moveComplete = false;
-            player.itemHeld.floating = false;
             player.isHolding = false;
 
             //player.itemHeld.StartMoveToSetSpot();
@@ -52,7 +51,6 @@ public class TrashPlacementSpot : PlacementSpot, IHoverable, IClickable
         else
         {
             // Free drop
-            player.itemHeld.floating = false;
             player.itemHeld.moveComplete = true;
             var rb = player.itemHeld.GetComponent<Rigidbody>();
             if (rb != null)

@@ -203,7 +203,6 @@ public class PlacementSpot_Revised : MonoBehaviour
         if (player.itemHeld.hasSetSpot)
         {
             player.itemHeld.moveComplete = false;
-            player.itemHeld.floating = false;
             player.isHolding = false;
             player.DisablePlacementPointColliders();
 

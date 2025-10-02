@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using TMPro;
@@ -69,6 +70,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     [NonSerialized] public Rigidbody rb;
     [NonSerialized] public Renderer objectRenderer;
     [NonSerialized] public CharacterController charController;
+
     public ParticleSystem ghostParticles;
     public ParticleSystem secondaryParticles;
     public ParticleSystem hoverParticles;
@@ -76,10 +78,10 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 
     public GameObject floatingParticles;
     [NonSerialized] public ParticleSystem[] floatingParticleSystems;
+    
     public AudioClip pickUp;
     public AudioClip putDown;
 
-    public bool floating = false;
     [NonSerialized] public bool isMoving = false;
     public bool moveComplete = false;
     public bool hasSetSpot = false;
@@ -89,10 +91,8 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public Vector3 newDirection;
     public Vector3 edgeOfObject;
 
-    [NonSerialized] public int routeToGo = 0;
-    [NonSerialized] public float tParam = 0f;
-    [NonSerialized] public float speedModifier = 0.5f;
-    [NonSerialized] public Coroutine moveCoroutine = null;
+    //[NonSerialized] public Coroutine moveCoroutine = null;
+    [NonSerialized] public bool isInteractive = true;
 
     [NonSerialized] public AudioManager sfx_AM;
 
@@ -211,6 +211,11 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         currentState.OnRelease();
     }
 
+    public void OnLeftClick()
+    {
+        Debug.Log("Please run OnLeftClick"); //Debug
+        currentState.OnStateLeftClick();
+    }
     public void OnRightClick()
     {
         Debug.Log("Please run OnRightClick"); //Debug
@@ -255,6 +260,15 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         }
     }
 
+    public void SetCollidersAsTrigger(bool isTrigger)
+    {
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.isTrigger = isTrigger;
+        }
+    }
+
     public void SetNewLayer(string layerName)
     {
         foreach (GameObject component in layerableObjects)
@@ -263,48 +277,18 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         }
     }
 
-
-    public void DropObject(bool forceDrop = false)
+    public IEnumerator HaltInteractions(float waitTime)
     {
-        DropObject(ps, forceDrop);
+        isInteractive = false;
+
+        yield return new WaitForSeconds(waitTime);
+
+        isInteractive = true;
     }
 
-    public void DropObject(PlacementSpot newPlacementSpot, bool forceDrop = false)
+    public void DropObject(PlacementSpot newPlacementSpot)
     {
-        Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
-
-        /*if (forceDrop)
-        {
-            Debug.Log("Poop3: Doing forceDrop");
-            hasSetSpot = false;
-            isAtSetSpot = false;
-        }*/
-
-        //if (hasSetSpot)
-        {
-            //Debug.Log("Poop3: Moving to set spot");
-            ChangeState(pushedState);
-        }
-        /*else
-        {
-            Debug.Log("Poop3: Reenabling gravity");
-            floating = false;
-            moveComplete = false;
-            playerInteraction.isHolding = false;
-            playerInteraction.itemHeld = null;
-            playerInteraction.DisablePlacementPointColliders();
-            tag = "Interactable";
-            sfx_AM?.PlaySFX(putDown);
-            ToggleParticles();
-
-
-            oi?.ClearPlacementSpots();
-
-
-            rb.useGravity = true;
-            rb.drag = 0;
-            isAtSetSpot = false;
-        }*/
+        ChangeState(pushedState);
     }
 }
 
@@ -326,6 +310,10 @@ public abstract class State
 
     public void OnStateUpdate()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnStateLeftClick();
+        }
         if (Input.GetMouseButtonDown(1))
         {
             OnStateRightClick();
@@ -347,6 +335,16 @@ public abstract class State
     }
 
     protected virtual void OnHurt()
+    {
+        // Code placed here can be overridden
+    }
+
+    public void OnStateLeftClick()
+    {
+        // Code placed here will always run
+        OnLeftClick();
+    }
+    protected virtual void OnLeftClick()
     {
         // Code placed here can be overridden
     }

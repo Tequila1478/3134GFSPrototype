@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 
 public class PushedState : State
@@ -13,6 +14,7 @@ public class PushedState : State
         sc.rb.useGravity = false;
         sc.rb.drag = 4;
         sc.rb.isKinematic = true;
+        sc.SetCollidersAsTrigger(true);
 
         // Update particles
         sc.ToggleParticles("FLOAT");
@@ -32,6 +34,8 @@ public class PushedState : State
 
     protected override void OnUpdate()
     {
+        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -58,10 +62,23 @@ public class PushedState : State
     {
         // Transition to Hurt State
     }
-    protected override void OnRightClick()
+    protected override void OnRightClick() // Instead of dropping object, activate left-click behaviour
     {
-        base.OnRightClick();
+        OnLeftClick();
     }
+    protected override void OnLeftClick() // In PushedState, left-click will confirm place the interactable in its current placement spot.
+    {
+        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+
+        sc.ps.claimed = true; // Set placement spot as claimed
+
+        sc.playerInteraction.DisablePlacementPointColliders(); // Disable placement point colliders
+
+        sc.ChangeState(sc.poppedState); // Change state to "popped"
+
+        base.OnLeftClick();
+    }
+
     protected override void OnExit()
     {
         // "Must've been the wind"
@@ -77,6 +94,8 @@ public class PushedState : State
 
     public bool StartMoveToSetSpot(PlacementSpot placementSpot, bool forceMove = false) // Will return bool of whether object has started moving to set spot
     {
+        if (!sc.isInteractive) return false; // Cancel if not currently interactive 
+
         Debug.Log("Started StartMoveToSetSpot");
 
         sc.ps = placementSpot;
@@ -84,29 +103,13 @@ public class PushedState : State
 
         //if (!sc.hasSetSpot && !forceMove) return false;
 
-        if (sc.moveCoroutine == null || forceMove)
-        {
-            SetCollidersTrigger(true);
+        //sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
+        sc.movingToSetSpot = true;
+        sc.sfx_AM?.PlaySFX(sc.putDown);
+        //sc.ToggleParticles();
 
-            //sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
-            sc.movingToSetSpot = true;
-            sc.sfx_AM?.PlaySFX(sc.putDown);
-            //sc.ToggleParticles();
+        return true;
 
-            return true;
-        }
-
-        return false;
-
-    }
-
-    private void SetCollidersTrigger(bool isTrigger)
-    {
-        Collider[] colliders = sc.GetComponentsInChildren<Collider>();
-        foreach (Collider col in colliders)
-        {
-            col.isTrigger = isTrigger;
-        }
     }
 
     /*private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)

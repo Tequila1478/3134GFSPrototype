@@ -317,32 +317,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public void OnClick()
     {
-        if (player.itemHeld == null)
-            return;
-
-        Debug.Log("POOP: " + (player.itemHeld.currentState == player.itemHeld.pushedState));
-        if (/*player.itemHeld.hasSetSpot &&*/ player.itemHeld.currentState == player.itemHeld.pushedState)
-        {
-            // Move to placement spot
-            bool success = player.itemHeld.pushedState.StartMoveToSetSpot(this);
-
-            if (success)
-            {
-                player.itemHeld.moveComplete = false;
-                player.itemHeld.floating = false;
-                player.isHolding = false;
-
-                player.itemHeld = null;
-                //highlightSpots = false;
-            }
-        }
-        else
-        {
-            Debug.Log("Selected incorrect placement spot.");
-        }
-
-        // Disable colliders AFTER object is released and trigger updates
-        Invoke(nameof(DisablePlacementPointCollidersSafely), 0.1f);
+        Debug.Log("Placement Spot running OnClick");
     }
 
     public void OnRelease()
@@ -351,9 +326,9 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     }
 
     protected virtual void DisablePlacementPointCollidersSafely()
-{
-    player.DisablePlacementPointColliders();
-}
+    {
+        player.DisablePlacementPointColliders();
+    }
 
     public void SetLayer(int layerNum)
     {

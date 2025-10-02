@@ -13,9 +13,9 @@ public class FloatState : State
         sc.rb.useGravity = false;
         sc.rb.drag = 4;
         sc.rb.isKinematic = false;
+        sc.SetCollidersAsTrigger(false);
 
         // Cancel movement lock-ons
-        sc.moveCoroutine = null;
         sc.ps = null;
 
         // Update particles
@@ -33,6 +33,8 @@ public class FloatState : State
 
     protected override void OnUpdate()
     {
+        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 

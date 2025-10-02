@@ -7,6 +7,28 @@ public class HoopedState : State
     protected override void OnEnter()
     {
         // "What was that!?"
+        Debug.Log("Ran OnEnter in HoopedState");
+
+        // Update physics
+        sc.rb.useGravity = true;
+        sc.rb.drag = 0;
+        sc.rb.isKinematic = false;
+        sc.SetCollidersAsTrigger(true);
+
+        // Update particles
+        sc.ToggleParticles();
+
+        // Update held item
+        if (sc.playerInteraction.itemHeld == sc)
+        {
+            sc.playerInteraction.itemHeld = null;
+        }
+
+        // Update layer
+        sc.SetNewLayer(sc.layerWhenUnselected);
+
+        // Set parent
+        sc.transform.SetParent(sc.ps.transform, true);
     }
 
     protected override void OnUpdate()

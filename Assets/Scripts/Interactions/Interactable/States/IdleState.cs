@@ -13,9 +13,7 @@ public class IdleState : State
         sc.rb.useGravity = true;
         sc.rb.drag = 0;
         sc.rb.isKinematic = false;
-
-        // Cancel movement coroutine
-        sc.moveCoroutine = null;
+        sc.SetCollidersAsTrigger(false);
 
         // Update particles
         sc.ToggleParticles();
@@ -23,6 +21,8 @@ public class IdleState : State
 
     protected override void OnUpdate()
     {
+        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+
         // Search for player
         if (sc.isHovered)
         {
@@ -58,6 +58,8 @@ public class IdleState : State
     }
     public override void OnClick()
     {
+        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+
         if (sc.ps != null) sc.ps.claimed = false;
 
         sc.transform.SetParent(null, true);
