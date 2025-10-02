@@ -40,4 +40,20 @@ public class BasketballHoop : MonoBehaviour
         }
         Debug.Log("POOP BasketballHoop fail triggered by: " + interactable.gameObject);
     }
+
+    public void HoopIt(InteractableStateController interactable)
+    {
+        if (placementSpot != null) // Only do stuff if this script's placementSpot exists
+        {
+            if (placementSpot.spotType.ToString() == interactable.taskType) // Only do task type is shared between other object and placementSpot
+            {
+                Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
+                interactable.hasSetSpot = true;
+                interactable.ps = placementSpot;
+                interactable.DropObject(interactable.ps); // Pass onto Interactable's DropObject function for object placement behaviour
+                return;
+            }
+        }
+        Debug.Log("POOP BasketballHoop fail triggered by: " + interactable.gameObject);
+    }
 }

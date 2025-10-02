@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public bool isHolding = false;
-    public Interactable itemHeld
+    public InteractableStateController itemHeld
     {
         get => _itemHeld;
         set
@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
             RefreshSpotHighlights(); // automatically update highlights
         }
     }
-    private Interactable _itemHeld;
+    private InteractableStateController _itemHeld;
 
     public List<GameObject> allPlacementPoints = new List<GameObject>();
 

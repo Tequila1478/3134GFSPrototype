@@ -54,19 +54,11 @@ public class IdleState : State
         if (sc.ps != null) sc.ps.claimed = false;
 
         sc.transform.SetParent(null, true);
-        if (sc.moveCoroutine != null)
-        {
-            sc.StopCoroutine(sc.moveCoroutine); // Prevent object from continuing to move towards a placement spot
-            sc.moveCoroutine = null;         // Forget placement movement
-            sc.movingToSetSpot = false;
-            sc.isAtSetSpot = false;
-            sc.coroutineFinished = false;
-        }
 
-        if (!sc.floating && sc.playerInteraction.itemHeld == null)
+        if (sc.playerInteraction.itemHeld == null) // Check if an item isn't being held
         {
-            sc.ChangeState(sc.floatState);
-            sc.sfx_AM.PlaySFX(sc.pickUp);
+            sc.ChangeState(sc.floatState); // Change to float state
+            sc.sfx_AM.PlaySFX(sc.pickUp); // Play pick up sound
             sc.ps = null;
         }
 

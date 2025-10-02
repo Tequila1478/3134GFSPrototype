@@ -512,7 +512,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
         rb.isKinematic = false;
 
         playerInteraction.isHolding = true;
-        playerInteraction.itemHeld = this;
+        //playerInteraction.itemHeld = this;
         playerInteraction.EnablePlacementPointColliders();
         tag = "Held Item";
         if (ghostParticles != null) ghostParticles.Play();

@@ -7,6 +7,7 @@ public class PushedState : State
     protected override void OnEnter()
     {
         // "What was that!?"
+        StartMoveToSetSpot(sc.ps);
     }
 
     protected override void OnUpdate()
@@ -28,5 +29,75 @@ public class PushedState : State
     public override void OnHoverExit()
     {
         // Do nothing
+    }
+
+    public bool StartMoveToSetSpot(PlacementSpot placementSpot, bool forceMove = false) // Will return bool of whether object has started moving to set spot
+    {
+        Debug.Log("Started StartMoveToSetSpot");
+
+        sc.ps = placementSpot;
+        sc.oi?.ClearPlacementSpots();
+
+        if (!sc.hasSetSpot && !forceMove) return false;
+
+        if (sc.moveCoroutine == null || forceMove)
+        {
+            SetCollidersTrigger(true);
+
+            sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
+            sc.movingToSetSpot = true;
+            sc.sfx_AM?.PlaySFX(sc.putDown);
+            sc.ToggleParticles();
+
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private void SetCollidersTrigger(bool isTrigger)
+    {
+        Collider[] colliders = sc.GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.isTrigger = isTrigger;
+        }
+    }
+
+    private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
+    {
+        // Ensure rigidbody doesn't interfere
+        sc.rb.useGravity = false;
+        sc.rb.isKinematic = true;
+
+        while (Vector3.Distance(sc.transform.position, targetPos) > 0.05f) // threshold
+        {
+            sc.transform.position = Vector3.MoveTowards(
+                sc.transform.position,
+                targetPos,
+                sc.speed * Time.deltaTime
+            );
+            yield return null;
+        }
+
+        // Snap to final position
+        sc.transform.position = targetPos;
+
+        // If the placement spot wants alignment, also set rotation
+        if (sc.ps != null)
+        {
+            sc.transform.rotation = Quaternion.LookRotation(sc.ps.direction);
+
+            sc.transform.SetParent(sc.ps.transform, true);
+        }
+
+        // Mark as complete
+        sc.movingToSetSpot = false;
+        sc.moveComplete = true;
+        sc.isAtSetSpot = true;
+        sc.coroutineFinished = true;
+
+        sc.moveCoroutine = null;
     }
 }

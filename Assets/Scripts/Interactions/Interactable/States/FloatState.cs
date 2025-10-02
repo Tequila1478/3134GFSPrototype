@@ -15,6 +15,11 @@ public class FloatState : State
 
         sc.ToggleParticles("FLOAT");
 
+        sc.playerInteraction.isHolding = true;
+        sc.playerInteraction.itemHeld = sc.GetComponent<InteractableStateController>();
+        sc.playerInteraction.EnablePlacementPointColliders();
+        sc.tag = "Held Item";
+
         sc.SetNewLayer(sc.layerWhenSelected);
     }
 
@@ -34,7 +39,7 @@ public class FloatState : State
         {
             if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
             {
-                bbhoop.HoopIt(sc.GetComponent<Interactable>());
+                bbhoop.HoopIt(sc.GetComponent<InteractableStateController>());
             }
         }
         // Move to mouse position within world
@@ -66,6 +71,11 @@ public class FloatState : State
         sc.ToggleParticles();
 
         sc.SetNewLayer(sc.layerWhenUnselected);
+
+        if (sc.playerInteraction.itemHeld == sc.GetComponent<InteractableStateController>())
+        {
+            sc.playerInteraction.itemHeld = null;
+        }
     }
 
     public override void OnHoverEnter()

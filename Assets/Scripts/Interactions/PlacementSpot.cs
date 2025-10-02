@@ -194,7 +194,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         //highlightSpots = true;
     }
 
-    public void UpdateHighlightForHeldItem(Interactable heldItem)
+    public void UpdateHighlightForHeldItem(InteractableStateController heldItem)
     {
         bool valid = false;
         Debug.Log("POOP Updating Highlights");
@@ -320,11 +320,11 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (player.itemHeld == null)
             return;
 
-        if (player.itemHeld.hasSetSpot)
+        Debug.Log("POOP: " + (player.itemHeld.currentState == player.itemHeld.pushedState));
+        if (/*player.itemHeld.hasSetSpot &&*/ player.itemHeld.currentState == player.itemHeld.pushedState)
         {
-
             // Move to placement spot
-            bool success = player.itemHeld.StartMoveToSetSpot(this);
+            bool success = player.itemHeld.pushedState.StartMoveToSetSpot(this);
 
             if (success)
             {

@@ -4,9 +4,9 @@ using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StateController : MonoBehaviour, IClickable, IHoverable
+public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 {
-    State currentState;
+    public State currentState;
 
     public IdleState idleState = new IdleState();
     public FloatState floatState = new FloatState();
@@ -96,13 +96,9 @@ public class StateController : MonoBehaviour, IClickable, IHoverable
     private void OnValidate()
     {
         if (layerableObjects.Count == 0) // Set a default layerableObjects with the gameObject this script is attached to (do NOT programmatically attach child objects here!)
-        {
             layerableObjects = new List<GameObject> { gameObject };
-        }
         else if (!layerableObjects.Contains(gameObject)) // Readd attached gameObject if it is removed from list
-        {
             layerableObjects.Insert(0, gameObject);
-        }
 
         if (rayVisualOffset != inspectorOffset)
         {
@@ -116,17 +112,12 @@ public class StateController : MonoBehaviour, IClickable, IHoverable
         }
 
         // Automatically cache components
-        if (rb == null)
-            rb = GetComponent<Rigidbody>();
-        if (charController == null)
-            charController = GetComponent<CharacterController>();
-        if (playerInteraction == null)
-            playerInteraction = FindObjectOfType<PlayerInteraction>();
-        if (oi == null)
-            oi = GetComponent<ObjectInteractions>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
+        if (charController == null) charController = GetComponent<CharacterController>();
+        if (playerInteraction == null) playerInteraction = FindObjectOfType<PlayerInteraction>();
+        if (oi == null) oi = GetComponent<ObjectInteractions>();
 
-        if (materialObj != null)
-            objectRenderer = materialObj.GetComponent<Renderer>();
+        if (materialObj != null) objectRenderer = materialObj.GetComponent<Renderer>();
         else
         {
             objectRenderer = null;
@@ -229,14 +220,14 @@ public class StateController : MonoBehaviour, IClickable, IHoverable
 
         if (mode == "FLOAT")
         {
-            foreach (var ps in floatingParticleSystems) ps.Play();
+            foreach (var particle in floatingParticleSystems) particle.Play();
             if (ghostParticles != null) ghostParticles.Play();
             if (secondaryParticles != null) secondaryParticles.Play();
         } else {
-            foreach (var ps in floatingParticleSystems)
+            foreach (var particle in floatingParticleSystems)
             {
-                ps.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmitting);
-                if (clear) ps.Clear();
+                particle.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmitting);
+                if (clear) particle.Clear();
             }
             if (ghostParticles != null) ghostParticles.Stop();
             if (secondaryParticles != null) secondaryParticles.Stop();
@@ -257,13 +248,55 @@ public class StateController : MonoBehaviour, IClickable, IHoverable
             component.layer = LayerMask.NameToLayer(layerName);
         }
     }
+
+
+    public void DropObject(bool forceDrop = false)
+    {
+        DropObject(ps, forceDrop);
+    }
+
+    public void DropObject(PlacementSpot newPlacementSpot, bool forceDrop = false)
+    {
+        Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
+        floating = false;
+        moveComplete = false;
+        playerInteraction.isHolding = false;
+        playerInteraction.itemHeld = null;
+        playerInteraction.DisablePlacementPointColliders();
+        tag = "Interactable";
+        sfx_AM?.PlaySFX(putDown);
+        ToggleParticles();
+
+
+        oi?.ClearPlacementSpots();
+
+        if (forceDrop)
+        {
+            Debug.Log("Poop3: Doing forceDrop");
+            hasSetSpot = false;
+            isAtSetSpot = false;
+        }
+
+        if (hasSetSpot)
+        {
+            Debug.Log("Poop3: Moving to set spot");
+            ChangeState(pushedState);
+        }
+        else
+        {
+            Debug.Log("Poop3: Reenabling gravity");
+            rb.useGravity = true;
+            rb.drag = 0;
+            isAtSetSpot = false;
+        }
+    }
 }
 
 public abstract class State
 {
-    public StateController sc;
+    public InteractableStateController sc;
 
-    public void OnStateEnter(StateController stateController)
+    public void OnStateEnter(InteractableStateController stateController)
     {
         // Code placed here will always run
         sc = stateController;
