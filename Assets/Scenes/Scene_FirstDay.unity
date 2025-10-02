@@ -39624,6 +39624,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4107659355794598977, guid: 84238a2b105df3443bd4d662d713c2a2, type: 3}
+      propertyPath: interactionLayer.m_Bits
+      value: 1048576
+      objectReference: {fileID: 0}
     - target: {fileID: 5129683796947745676, guid: 84238a2b105df3443bd4d662d713c2a2, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -39695,6 +39699,10 @@ PrefabInstance:
     - target: {fileID: 5995676366188652733, guid: 84238a2b105df3443bd4d662d713c2a2, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096041586905736902, guid: 84238a2b105df3443bd4d662d713c2a2, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8917881448857812018, guid: 84238a2b105df3443bd4d662d713c2a2, type: 3}
       propertyPath: m_LocalPosition.x

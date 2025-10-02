@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
     public bool isRequired;
     public LayerMask interactionLayer; // Set in inspector to only hit interactable objects
     public LayerMask pickupLayer; // Set in inspector to object layers that can be interacted with and picked up
+    public LayerMask basketballLayer; // Set in inspector to basketballhoop layers
     private string layerWhenUnselected; // Will be set to gameobject's layer in Awake()
     [Tooltip("Object will temporarily switch to this layer while it is selected in-game.")]
     public string layerWhenSelected; // Must be set in the inspector
@@ -245,12 +246,21 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             SetNewLayer(layerWhenSelected);
         }
 
-        // Get and move to mouse position
+        // Move the interactable using raycasts to find position
         if (floating && !disableCursorControls) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
+            // Move to basketball hoop (if elligible)
+            if (Physics.Raycast(ray, out hit, 100f, basketballLayer))
+            {
+                if (hit.collider.TryGetComponent<BasketballHoop>(out var bshoop))
+                {
+                    bshoop.HoopIt(this.GetComponent<Interactable>());
+                }
+            }
+            // Move to mouse position within world
+            else if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
             {
                 maxRayOffset = hit.distance - minRayOffset; // Update maximum offset to match ray hit distance
                 rayOffset = Mathf.Max(rayOffset + Input.mouseScrollDelta.normalized.y, minRayOffset);

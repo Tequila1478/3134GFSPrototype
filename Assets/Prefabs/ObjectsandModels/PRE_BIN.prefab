@@ -395,9 +395,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 541288019371740670}
-  - component: {fileID: 7280085635416129641}
+  - component: {fileID: 8366845252179046275}
   - component: {fileID: 4107659355794598977}
-  m_Layer: 2
+  m_Layer: 20
   m_Name: BasketballTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,15 +412,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6096041586905736902}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 101.6032, y: 101.60319, z: 101.60319}
+  m_LocalRotation: {x: -0.7071069, y: -0.000000008234989, z: -0.000000039840018, w: 0.70710665}
+  m_LocalPosition: {x: -0, y: 1.35, z: -0}
+  m_LocalScale: {x: 348.47443, y: 348.4744, z: 348.4744}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5415273404441755545}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7280085635416129641
-SphereCollider:
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!136 &8366845252179046275
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -429,7 +429,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 655872
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -437,9 +437,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.01
-  m_Center: {x: 0.00006878842, y: 0.0000023539176, z: 0.013}
+  serializedVersion: 2
+  m_Radius: 0.007
+  m_Height: 0.02
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4107659355794598977
 MonoBehaviour:
   m_ObjectHideFlags: 0
