@@ -13,6 +13,19 @@ public class BasketballHoop : MonoBehaviour
         if (interactable != null) HoopIt(interactable);
     }
 
+    public void PushIt(Interactable interactable)
+    {
+        /*
+         * If not trash: PopIt()
+         * If is trash: HoopIt()
+        */
+    }
+
+    public void PopIt(Interactable interactable)
+    {
+
+    }
+
     public void HoopIt(Interactable interactable)
     {
         if (placementSpot != null) // Only do stuff if this script's placementSpot exists
