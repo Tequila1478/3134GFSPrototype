@@ -106,6 +106,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 6563821528457670802}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 6654748749397032871}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 3386841817715412435}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: layerableObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 176789917427879711}
     - target: {fileID: 6947836299290229566, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

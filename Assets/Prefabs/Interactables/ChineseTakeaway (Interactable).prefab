@@ -375,6 +375,26 @@ PrefabInstance:
       propertyPath: layerableObjects.Array.data[3]
       value: 
       objectReference: {fileID: 2927797735664504978}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2561197014680162015}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 375988695087786088}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 2927797735664504978}
     m_RemovedComponents:
     - {fileID: -755046647451622097, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     - {fileID: -7634291269770852689, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}

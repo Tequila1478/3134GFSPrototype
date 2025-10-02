@@ -8,8 +8,6 @@ using UnityEngine;
 
 public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 {
-    public TextMeshProUGUI debugText;
-
     public State currentState;
 
     public IdleState idleState = new IdleState();
@@ -17,6 +15,9 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public PushedState pushedState = new PushedState();
     public PoppedState poppedState = new PoppedState();
     public HoopedState hoopedState = new HoopedState();
+
+    [Header("Debug Settings")]
+    public TextMeshProUGUI debugText;
 
     [Header("Interaction Settings")]
     [NonSerialized] public bool isHovered = false; //Whether object is currently hovered over with mouse
@@ -52,6 +53,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
+    public Quaternion rotationOffset = new Quaternion(0, 0, 90, 0);
     [Tooltip("Ray Offset controls how far a selected object floats from whatever surfaces you are pointing the cursor at.")]
     public float rayOffset = 2f; // This is the literal offset.
     public float rayVisualOffset = 2f; // This is the offset that can be seen in-game.

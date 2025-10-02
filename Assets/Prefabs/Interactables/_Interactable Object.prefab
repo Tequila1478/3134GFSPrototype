@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -755046647451622097}
   - component: {fileID: -7634291269770852689}
   - component: {fileID: 834416104060707333}
-  - component: {fileID: 1763198094606249452}
   - component: {fileID: 1531631957759763986}
   - component: {fileID: 1389294153605519289}
+  - component: {fileID: 4998259659521233945}
   - component: {fileID: 373699228119165412}
   m_Layer: 17
   m_Name: _Interactable Object
@@ -118,61 +118,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1763198094606249452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 68092545606601618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbeb0adeab555054cac63c6ca4ad5a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskType: Clutter
-  isRequired: 1
-  interactionLayer:
-    serializedVersion: 2
-    m_Bits: 243137
-  pickupLayer:
-    serializedVersion: 2
-    m_Bits: 917504
-  basketballLayer:
-    serializedVersion: 2
-    m_Bits: 1048576
-  layerWhenSelected: SelectedInteractable
-  layerableObjects:
-  - {fileID: 68092545606601618}
-  disableCursorControls: 0
-  outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
-  originalMat: {fileID: 0}
-  materialObj: {fileID: 68092545606601618}
-  visualisationObj: {fileID: 68092545606601618}
-  followRate: 0.05
-  speed: 6
-  height: 0.001
-  rotation: 0.1
-  rayOffset: 2
-  rayVisualOffset: 2
-  routes: []
-  oi: {fileID: 0}
-  ps: {fileID: 0}
-  cursor: {fileID: 0}
-  ghostParticles: {fileID: 1781555148658507782}
-  secondaryParticles: {fileID: 0}
-  hoverParticles: {fileID: 2613107453020168141}
-  placeParticles: {fileID: 0}
-  floatingParticles: {fileID: 1176337686011333710}
-  pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
-  putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
-  floating: 0
-  moveComplete: 0
-  hasSetSpot: 0
-  isAtSetSpot: 0
-  movingToSetSpot: 0
-  newDirection: {x: 0, y: 0, z: 0}
-  edgeOfObject: {x: 0, y: 0, z: 0}
 --- !u!65 &1531631957759763986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -220,6 +165,60 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4998259659521233945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68092545606601618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e844fff06051f1a4d9d3dc6207b49485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
+  taskType: Clutter
+  isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 243137
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 917504
+  basketballLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  layerWhenSelected: SelectedInteractable
+  layerWhenHovered: HoverOutline
+  layerableObjects:
+  - {fileID: 68092545606601618}
+  outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
+  originalMat: {fileID: 0}
+  materialObj: {fileID: 68092545606601618}
+  visualisationObj: {fileID: 68092545606601618}
+  followRate: 0.25
+  speed: 6
+  height: 2
+  rotation: 0.1
+  rayOffset: 2
+  rayVisualOffset: 2
+  routes: []
+  oi: {fileID: 373699228119165412}
+  ps: {fileID: 0}
+  ghostParticles: {fileID: 1781555148658507782}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 2613107453020168141}
+  placeParticles: {fileID: 0}
+  floatingParticles: {fileID: 1176337686011333710}
+  pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
+  putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
+  moveComplete: 0
+  hasSetSpot: 0
+  isAtSetSpot: 0
+  movingToSetSpot: 0
+  newDirection: {x: 0, y: 0, z: 0}
+  edgeOfObject: {x: 0, y: 0, z: 0}
 --- !u!114 &373699228119165412
 MonoBehaviour:
   m_ObjectHideFlags: 0

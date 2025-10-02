@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2534964839176971238, guid: e8db97ce41cd68c4688506db2ae5e81d, type: 3}
     - target: {fileID: 68092545606601618, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Name
-      value: Cup (Interactable)
+      value: Cup (Interactable) (Tea)
       objectReference: {fileID: 0}
     - target: {fileID: 1389294153605519289, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_Height
@@ -151,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 3966331914746873831, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.6793067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Trash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

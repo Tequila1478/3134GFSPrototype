@@ -212,6 +212,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Stationary
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayOffset
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: isRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayVisualOffset
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6745289917864795662, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.1

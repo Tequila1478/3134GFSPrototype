@@ -253,6 +253,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.10795296
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 7233060599498118136}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7146636563705404621}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1186667843873140409}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

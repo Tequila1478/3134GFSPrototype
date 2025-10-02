@@ -53,7 +53,7 @@ public class PushedState : State
 
         // Move to target placement spot
         Vector3 newPoint = sc.ps.transform.position;
-        Quaternion newAngle = sc.ps.transform.rotation;
+        Quaternion newAngle = sc.ps.transform.rotation * sc.rotationOffset;
         sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
         sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
         

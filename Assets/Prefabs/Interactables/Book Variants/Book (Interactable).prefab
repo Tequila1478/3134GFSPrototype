@@ -299,6 +299,10 @@ PrefabInstance:
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayVisualOffset
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: modelComponents.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -342,6 +346,46 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.00243
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: pickUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 72d86b860c118344cafaa6f271ff7820, type: 3}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: putDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 45e66df2b7b96a344a8a34e9820ad33d, type: 3}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayOffset
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayVisualOffset
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rotationOffset.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rotationOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1383714296037121547}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 6200910536787688838}
     m_RemovedComponents:
     - {fileID: -7634291269770852689, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     - {fileID: -755046647451622097, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}

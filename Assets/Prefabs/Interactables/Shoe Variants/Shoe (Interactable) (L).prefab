@@ -243,6 +243,42 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.10795296
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Any
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: materialObj
+      value: 
+      objectReference: {fileID: 1758215692155232477}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: visualisationObj
+      value: 
+      objectReference: {fileID: 1758215692155232477}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 5051542566785449089}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 4474146109133750325}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 6199682382898294177}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1758215692155232477}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 4191928523972280888}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

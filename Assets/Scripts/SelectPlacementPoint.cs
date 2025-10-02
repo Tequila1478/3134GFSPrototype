@@ -8,7 +8,6 @@ public class SelectPlacementPoint : MonoBehaviour
 {
     public PlayerInteraction player;
     public PlacementSpot place;
-    public 
 
     // Start is called before the first frame update
     void Start()

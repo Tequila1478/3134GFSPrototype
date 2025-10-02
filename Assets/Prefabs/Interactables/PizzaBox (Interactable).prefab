@@ -148,6 +148,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.00447
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: pickUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 72d86b860c118344cafaa6f271ff7820, type: 3}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: putDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 45e66df2b7b96a344a8a34e9820ad33d, type: 3}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: taskType
+      value: Trash
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

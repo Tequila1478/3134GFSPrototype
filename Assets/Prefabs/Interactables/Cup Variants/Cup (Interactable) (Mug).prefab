@@ -234,6 +234,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cup (Interactable) (Mug)
       objectReference: {fileID: 0}
+    - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8653521068702600395}
+    - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: layerableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 372460948659651769}
     m_RemovedComponents:
     - {fileID: 5246081787338770488, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
     - {fileID: 3118133672377838520, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
