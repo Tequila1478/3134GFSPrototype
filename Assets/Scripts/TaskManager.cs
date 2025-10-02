@@ -41,14 +41,14 @@ public class TaskManager : MonoBehaviour
         GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (GameObject obj in interactables)
         {
-            Interactable interactable = obj.GetComponent<Interactable>();
+            InteractableStateController interactable = obj.GetComponent<InteractableStateController>();
             if (interactable != null)
             {
                 Task newTask = new Task
                 {
                     interactable = obj,
                     taskType = interactable.taskType,
-                    isCompleted = interactable.isAtSetSpot
+                    isCompleted = interactable.IsComplete()
                 };
                 allTasks.Add(newTask);
             }
@@ -59,8 +59,7 @@ public class TaskManager : MonoBehaviour
     {
         foreach (Task task in allTasks)
         {
-            bool atSpot = task.interactable.GetComponent<Interactable>().isAtSetSpot;
-            task.isCompleted = atSpot;
+            task.isCompleted = task.interactable.GetComponent<InteractableStateController>().IsComplete();
         }
     }
 

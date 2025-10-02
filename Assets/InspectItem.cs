@@ -29,15 +29,13 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public bool specialCameraReq = false;
     public bool active = false;
-    private CameraCinemaSwitch css;
-    public int specialCameraNum = 1;
+    public CinemachineVirtualCamera specialCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         cursor = FindObjectOfType<CustomCursor>();
-        css = FindObjectOfType<CameraCinemaSwitch>();
 
         ds = FindObjectOfType<DialogueScript>();
     }
@@ -45,7 +43,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     void Update()
     {
-        if (css.currentSpecialCamera == specialCameraNum)
+        if (CameraCinemaSwitch.instance.currentSpecialCamera == CameraCinemaSwitch.FindIndexOfSpecialCamera(specialCamera))
         {
             active = true;
         }

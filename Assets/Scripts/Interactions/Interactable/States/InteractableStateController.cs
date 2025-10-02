@@ -209,6 +209,12 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         currentState.OnStateEnter(this);
     }
 
+    // This function checks the current state. If it is a state in which the object is considered placed and thus "complete", this returns true.
+    public bool IsComplete()
+    {
+        return (currentState == poppedState || currentState == hoopedState);
+    }
+
     public void OnClick()
     {
         Debug.Log("Please run OnClick"); //Debug
