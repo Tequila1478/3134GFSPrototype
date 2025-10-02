@@ -14,6 +14,8 @@ public class FloatState : State
         sc.rb.isKinematic = false;
 
         sc.ToggleParticles("FLOAT");
+
+        sc.SetNewLayer(sc.layerWhenSelected);
     }
 
     protected override void OnUpdate()
@@ -62,6 +64,8 @@ public class FloatState : State
     {
         // "Must've been the wind"
         sc.ToggleParticles();
+
+        sc.SetNewLayer(sc.layerWhenUnselected);
     }
 
     public override void OnHoverEnter()
@@ -78,7 +82,7 @@ public class FloatState : State
     }
     public override void OnRelease()
     {
-        if (sc.moveComplete)
+        /*if (sc.moveComplete)
         {
             sc.ChangeState(sc.idleState);
         }
@@ -87,7 +91,7 @@ public class FloatState : State
             sc.moveComplete = true;
             //cursor?.ChangeVisual(0);
             CursorScript.instance.UpdateCursor("Default");
-        }
+        }*/
 
         base.OnRelease();
     }

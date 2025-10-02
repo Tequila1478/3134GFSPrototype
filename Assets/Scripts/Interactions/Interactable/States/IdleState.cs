@@ -21,6 +21,14 @@ public class IdleState : State
     protected override void OnUpdate()
     {
         // Search for player
+        if (sc.isHovered)
+        {
+            sc.SetNewLayer(sc.layerWhenHovered);
+        }
+        else
+        {
+            sc.SetNewLayer(sc.layerWhenUnselected);
+        }
     }
     protected override void OnHurt()
     {

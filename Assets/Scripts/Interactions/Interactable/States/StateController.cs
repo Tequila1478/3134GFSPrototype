@@ -4,7 +4,7 @@ using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StateController : MonoBehaviour, IHoverable
+public class StateController : MonoBehaviour, IClickable, IHoverable
 {
     State currentState;
 
@@ -25,6 +25,8 @@ public class StateController : MonoBehaviour, IHoverable
     [NonSerialized] public string layerWhenUnselected; // Will be set to gameobject's layer in Awake()
     [Tooltip("Object will temporarily switch to this layer while it is selected in-game.")]
     public string layerWhenSelected; // Must be set in the inspector
+    [Tooltip("Object will temporarily switch to this layer while it is hovered over in-game.")]
+    public string layerWhenHovered = "HoverOutline"; // Must be set in the inspector
     [Tooltip("Put all GameObjects that can change layer here. (This is important for GameObjects with multiple children.) This will always include the GameObject this script is attached to.")]
     public List<GameObject> layerableObjects;
 
@@ -93,6 +95,26 @@ public class StateController : MonoBehaviour, IHoverable
 
     private void OnValidate()
     {
+        if (layerableObjects.Count == 0) // Set a default layerableObjects with the gameObject this script is attached to (do NOT programmatically attach child objects here!)
+        {
+            layerableObjects = new List<GameObject> { gameObject };
+        }
+        else if (!layerableObjects.Contains(gameObject)) // Readd attached gameObject if it is removed from list
+        {
+            layerableObjects.Insert(0, gameObject);
+        }
+
+        if (rayVisualOffset != inspectorOffset)
+        {
+            inspectorOffset = rayVisualOffset;
+            rayOffset = rayVisualOffset;
+        }
+        if (rayOffset != inspectorOffset)
+        {
+            inspectorOffset = rayOffset;
+            rayVisualOffset = rayOffset;
+        }
+
         // Automatically cache components
         if (rb == null)
             rb = GetComponent<Rigidbody>();
@@ -178,6 +200,18 @@ public class StateController : MonoBehaviour, IHoverable
         currentState.OnStateEnter(this);
     }
 
+    public void OnClick()
+    {
+        Debug.Log("Please run OnClick"); //Debug
+        currentState.OnClick();
+    }
+
+    public void OnRelease()
+    {
+        Debug.Log("Please run OnRelease"); //Debug
+        currentState.OnRelease();
+    }
+
     public void OnHoverEnter()
     {
         Debug.Log("Please run OnHoverEnter"); //Debug
@@ -213,6 +247,14 @@ public class StateController : MonoBehaviour, IHoverable
             if (hoverParticles != null) hoverParticles.Play();
         } else {
             if (hoverParticles != null) hoverParticles.Stop();
+        }
+    }
+
+    public void SetNewLayer(string layerName)
+    {
+        foreach (GameObject component in layerableObjects)
+        {
+            component.layer = LayerMask.NameToLayer(layerName);
         }
     }
 }
@@ -284,6 +326,7 @@ public abstract class State
     public virtual void OnHoverEnter()
     {
         Debug.Log("StateController: Hovering over object"); //Debug
+        sc.isHovered = true;
 
         if (!sc.playerInteraction.isHolding)
         {
@@ -303,6 +346,7 @@ public abstract class State
     public virtual void OnHoverExit()
     {
         Debug.Log("StateController: No longer hovering over object"); //Debug
+        sc.isHovered = false;
 
         if (sc.hoverParticles != null) sc.hoverParticles.Stop();
 
