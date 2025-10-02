@@ -51,7 +51,7 @@ public class FloatState : State
             }
         }
         // Move to mouse position within world
-        else if (Physics.Raycast(ray, out hit, 100f, sc.interactionLayer))
+        if (Physics.Raycast(ray, out hit, 100f, sc.interactionLayer))
         {
             sc.maxRayOffset = hit.distance - sc.minRayOffset; // Update maximum offset to match ray hit distance
             sc.rayOffset = Mathf.Max(sc.rayOffset + Input.mouseScrollDelta.normalized.y, sc.minRayOffset);

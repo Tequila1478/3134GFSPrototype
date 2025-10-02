@@ -53,6 +53,7 @@ public class BasketballHoop : MonoBehaviour
             (
                 placementSpot.spotType.ToString() == interactable.taskType // Only do if task types match between interactable and placementSpot
                 && interactable.ps != placementSpot // Only do if interactable isn't already at placement spot
+                && !placementSpot.claimed // Only do if placement spot isn't already claimed
             )
             {
                 Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
