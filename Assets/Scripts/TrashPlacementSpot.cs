@@ -80,7 +80,7 @@ public class TrashPlacementSpot : PlacementSpot, IHoverable, IClickable
     {
         if (other != null && other.CompareTag("Held Item"))
         {
-            var interactable = other.GetComponent<Interactable>();
+            var interactable = other.GetComponent<InteractableStateController>();
             if (interactable == null) return;
 
             otherObject = other;
@@ -92,7 +92,7 @@ public class TrashPlacementSpot : PlacementSpot, IHoverable, IClickable
         else if (player.isHolding)
         {
             otherObject = player.itemHeld.GetComponent<Collider>();
-            var interactable = otherObject?.GetComponent<Interactable>();
+            var interactable = otherObject?.GetComponent<InteractableStateController>();
             if (interactable == null) return;
 
             withinRange = true;

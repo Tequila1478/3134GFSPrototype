@@ -11,7 +11,7 @@ public enum SpotType
     Trash,
     Any,  //for spots that accept any type
     Stationary,
-    Shoes
+    Shoe
 }
 
 
@@ -25,6 +25,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public float maxHeightAbovePoint;
     public GameObject placementVisualisation;
     public GameObject highlightVisualisation;
+    public Vector3 placementRescale = new Vector3 (1f, 1f, 1f);
+    public Vector3 highlightRescale = new Vector3 (1f, 1f, 1f);
     public PlayerInteraction player;
 
     public bool claimed = false;
@@ -53,6 +55,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             numOfTrash++;
         }
     }
+
     private void Start()
     {
         if (player == null)
@@ -158,12 +161,12 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
         if (claimed || !isActive) return;
 
-        Interactable interactable = null;
+        InteractableStateController interactable = null;
 
         if (other != null && other.CompareTag("Held Item"))
-            interactable = other.GetComponent<Interactable>();
+            interactable = other.GetComponent<InteractableStateController>();
         else if (player.isHolding)
-            interactable = player.itemHeld.GetComponent<Interactable>();
+            interactable = player.itemHeld.GetComponent<InteractableStateController>();
 
         if (interactable == null) return;
 
@@ -226,7 +229,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (meshFilter != null && heldMeshFilter != null)
         {
             meshFilter.mesh = heldMeshFilter.mesh;
-            highlightVisualisation.transform.localScale = heldItem.visualisationObj.transform.localScale;
+            highlightVisualisation.transform.localScale = new Vector3(heldItem.visualisationObj.transform.localScale.x * highlightRescale.x, heldItem.visualisationObj.transform.localScale.y * highlightRescale.y, heldItem.visualisationObj.transform.localScale.z * highlightRescale.z);
 
             // Align highlight position with placementVisualisation
             highlightVisualisation.transform.position = isTrashcan
@@ -264,7 +267,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         }
     }
 
-    protected virtual void ApplyVisualisation(GameObject obj, Interactable interactable)
+    protected virtual void ApplyVisualisation(GameObject obj, InteractableStateController interactable)
     {
         var meshFilter = obj.GetComponent<MeshFilter>();
         if (meshFilter == null) return;
@@ -273,7 +276,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
 
         // Set scale
-        placementVisualisation.transform.localScale = obj.transform.localScale;
+        placementVisualisation.transform.localScale = new Vector3(obj.transform.localScale.x * placementRescale.x, obj.transform.localScale.y * placementRescale.y, obj.transform.localScale.z * placementRescale.z);
 
         if (isTrashcan)
         {

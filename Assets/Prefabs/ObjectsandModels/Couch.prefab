@@ -314,6 +314,8 @@ MonoBehaviour:
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 8944433722302854328}
   highlightVisualisation: {fileID: 0}
+  placementRescale: {x: 1, y: 1, z: 1}
+  highlightRescale: {x: 1, y: 1, z: 1}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -522,7 +524,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 85.66476, y: 85.66476, z: 85.66477}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6672906270378652770}
@@ -646,6 +648,8 @@ MonoBehaviour:
   maxHeightAbovePoint: 3
   placementVisualisation: {fileID: 7620589523012495459}
   highlightVisualisation: {fileID: 0}
+  placementRescale: {x: 1, y: 1, z: 1}
+  highlightRescale: {x: 1, y: 1, z: 1}
   player: {fileID: 0}
   claimed: 0
   withinRange: 0
@@ -733,7 +737,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 85.66476, y: 85.66476, z: 85.66477}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3361688980671501023}
