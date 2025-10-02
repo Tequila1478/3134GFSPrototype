@@ -73,7 +73,7 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         if (cameraController.currentSpecialCamera == CameraCinemaSwitch.FindIndexOfSpecialCamera(specialCamera))
         {
             if (!isFocusedOn)
-                StartCoroutine(SetFocus(true, 1f)); //Switch focus mode
+                StartCoroutine(SetFocus(true, 1f)); //Switch focus mode on a delay
         } else
         {
             isFocusedOn = false;

@@ -14,7 +14,7 @@ public class PoppedState : State
 
         // Teleport to placement spot
         sc.transform.position = sc.ps.transform.position;
-        sc.transform.rotation = sc.ps.transform.rotation * sc.rotationOffset;
+        sc.transform.rotation = sc.ps.transform.rotation * sc._rotationOffset;
 
         // Update physics
         sc.rb.useGravity = false;

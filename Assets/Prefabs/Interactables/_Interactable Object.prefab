@@ -201,9 +201,9 @@ MonoBehaviour:
   speed: 6
   height: 2
   rotation: 0.1
-  rayOffset: 2
-  rayVisualOffset: 2
-  routes: []
+  rotationOffset: {x: 0, y: 0, z: 90}
+  rayOffset: 1
+  rayVisualOffset: 1
   oi: {fileID: 373699228119165412}
   ps: {fileID: 0}
   ghostParticles: {fileID: 1781555148658507782}
@@ -213,10 +213,6 @@ MonoBehaviour:
   floatingParticles: {fileID: 1176337686011333710}
   pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
   putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
-  moveComplete: 0
-  hasSetSpot: 0
-  isAtSetSpot: 0
-  movingToSetSpot: 0
   newDirection: {x: 0, y: 0, z: 0}
   edgeOfObject: {x: 0, y: 0, z: 0}
 --- !u!114 &373699228119165412

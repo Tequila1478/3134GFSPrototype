@@ -17,19 +17,6 @@ public class BasketballHoop : MonoBehaviour
         if (interactableSC != null) HoopIt(interactableSC);*/
     }
 
-    public void PushIt(Interactable interactable)
-    {
-        /*
-         * If not trash: PopIt()
-         * If is trash: HoopIt()
-        */
-    }
-
-    public void PopIt(Interactable interactable)
-    {
-
-    }
-
     public void HoopIt(Interactable interactable)
     {
         if (placementSpot != null) // Only do stuff if this script's placementSpot exists
@@ -57,35 +44,11 @@ public class BasketballHoop : MonoBehaviour
             )
             {
                 Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
-                interactable.hasSetSpot = true;
                 interactable.ps = placementSpot;
                 interactable.DropObject(interactable.ps); // Pass onto Interactable's DropObject function for object placement behaviour
                 return;
             }
         }
         Debug.Log("POOP BasketballHoop fail triggered by: " + interactable.gameObject);
-    }
-
-    public void UnhoopIt(InteractableStateController interactable)
-    {
-        if (placementSpot != null) // Only do stuff if this script's placementSpot exists
-        {
-            if // Only do task type is shared between other object and placementSpot
-            (
-                placementSpot.spotType.ToString() == interactable.taskType
-                && interactable.currentState != interactable.idleState
-            )
-            {
-                Debug.Log("POOP BasketballUnhoop success triggered by: " + interactable.gameObject);
-                if (interactable.ps == placementSpot)
-                {
-                    interactable.hasSetSpot = false;
-                    interactable.ps = null;
-                }
-                interactable.ChangeState(interactable.floatState);
-                return;
-            }
-        }
-        Debug.Log("POOP BasketballUnhoop fail triggered by: " + interactable.gameObject);
     }
 }

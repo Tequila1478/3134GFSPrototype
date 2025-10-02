@@ -78,29 +78,11 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
         if (otherObject == null) return;
 
-        var interactable = otherObject.GetComponent<Interactable>();
+        var interactable = otherObject.GetComponent<InteractableStateController>();
         if (interactable == null) return;
-
-        if (withinRange && !interactable.movingToSetSpot)
-        {
-            startingPosition = otherObject.transform.position;
-            CreateBezierCurvePoints(interactable);
-            interactable.routes = controlPoints;
-        }
-
-        if (interactable.movingToSetSpot)
-        {
-            if (interactable.ps != this) return;
-                
-                claimed = true;
-           
-            otherObject = null;
-            placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-            //placementVisualisation.SetActive(false);
-        }
     }
 
-    protected virtual void CreateBezierCurvePoints(Interactable interactable)
+    protected virtual void CreateBezierCurvePoints(InteractableStateController interactable)
     {
         placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
         controlPoints[3] = transform.position + placementOffset;
@@ -121,11 +103,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void OnTriggerEnter(Collider other)
     {
         if (!isActive) return;
-        var interactable = other.GetComponent<Interactable>();
-        if (interactable != null && interactable.isAtSetSpot)
-        {
-            return;
-        }
 
         SelectObject(other);
         SetLayer(2); // Intentional: Ignore Raycast
@@ -136,8 +113,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         isActive = true;
         DeselectObject(other);
         SetLayer(8);
-        if (other.GetComponent<Interactable>())
-            other.GetComponent<Interactable>().hasSetSpot = false;
         //claimed = false;
     }
     
@@ -182,17 +157,15 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             withinRange = true;
             interactable.newDirection = direction;
 
-            interactable.hasSetSpot = true;
-            ApplyVisualisation(other.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
+            ApplyVisualisation(other.gameObject.GetComponent<InteractableStateController>().visualisationObj, interactable);
         }
         else if (player.isHolding)
         {
             otherObject = player.itemHeld.GetComponent<Collider>();
 
             withinRange = true;
-            interactable.hasSetSpot = true;
             interactable.newDirection = direction;
-            ApplyVisualisation(otherObject.gameObject.GetComponent<Interactable>().visualisationObj, interactable);
+            ApplyVisualisation(otherObject.gameObject.GetComponent<InteractableStateController>().visualisationObj, interactable);
         }
         //highlightSpots = true;
     }
@@ -242,10 +215,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
         if (other != null)
         {
-            var interactable = other.GetComponent<Interactable>();
-            if (interactable != null)
-                interactable.hasSetSpot = false;
-
             if (!claimed || other == otherObject)
             {
                 otherObject = null;
@@ -256,10 +225,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         }
         else if (otherObject != null && !claimed)
         {
-            var interactable = otherObject.GetComponent<Interactable>();
-            if (interactable != null)
-                interactable.hasSetSpot = false;
-
             otherObject = null;
             withinRange = false;
             placementVisualisation.GetComponent<MeshFilter>().mesh = null;

@@ -57,10 +57,13 @@ public class PushedState : State
         }
 
         // Move to target placement spot
-        Vector3 newPoint = sc.ps.transform.position;
-        Quaternion newAngle = sc.ps.transform.rotation * sc.rotationOffset;
-        sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
-        sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
+        if (sc.ps)
+        {
+            Vector3 newPoint = sc.ps.transform.position;
+            Quaternion newAngle = sc.ps.transform.rotation * sc._rotationOffset;
+            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+            sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
+        }
         
     }
     protected override void OnHurt()
@@ -75,7 +78,7 @@ public class PushedState : State
     {
         if (!sc.isInteractive) return; // Cancel if not currently interactive 
 
-        sc.ps.claimed = true; // Set placement spot as claimed
+        sc.ps.claimed = !sc.ps.isTrashcan; // Set placement spot as claimed (if it isn't a trash can)
 
         sc.playerInteraction.DisablePlacementPointColliders(); // Disable placement point colliders
 
@@ -109,14 +112,8 @@ public class PushedState : State
         Debug.Log("Started StartMoveToSetSpot");
 
         sc.ps = placementSpot;
-        //sc.oi?.ClearPlacementSpots();
-
-        //if (!sc.hasSetSpot && !forceMove) return false;
-
-        //sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
-        sc.movingToSetSpot = true;
         sc.sfx_AM?.PlaySFX(sc.putDown);
-        //sc.ToggleParticles();
+        sc.ToggleParticles("PLACE");
 
         return true;
 

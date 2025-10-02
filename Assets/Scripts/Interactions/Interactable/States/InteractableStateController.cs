@@ -53,7 +53,8 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
-    public Quaternion rotationOffset = new Quaternion(0, 0, 90, 0);
+    public Vector3 rotationOffset = new Vector3(0, 0, 90);
+    [NonSerialized] public Quaternion _rotationOffset = new Quaternion(0, 0, 90, 0);
     [Tooltip("Ray Offset controls how far a selected object floats from whatever surfaces you are pointing the cursor at.")]
     public float rayOffset = 2f; // This is the literal offset.
     public float rayVisualOffset = 2f; // This is the offset that can be seen in-game.
@@ -62,8 +63,8 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     [NonSerialized] public float maxRayOffset;
 
     [Header("Movement")]
-    public Vector3[] routes;
     public ObjectInteractions oi;
+    [Tooltip("The Placement Spot this object is attached to. Should be left unassigned in inspector, unless needed otherwise.")]
     public PlacementSpot ps;
     [NonSerialized] public bool coroutineFinished = false;
 
@@ -73,11 +74,17 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     [NonSerialized] public Renderer objectRenderer;
     [NonSerialized] public CharacterController charController;
 
+    [Header("References")]
+    [Tooltip("These particles show up when object is selected.")]
     public ParticleSystem ghostParticles;
+    [Tooltip("These particles also show up when object is selected.")]
     public ParticleSystem secondaryParticles;
+    [Tooltip("These particles show up when object is hovered over.")]
     public ParticleSystem hoverParticles;
+    [Tooltip("These particles show up when object is placed.")]
     public ParticleSystem placeParticles;
 
+    [Tooltip("This gameObject is activated whenever object is selected. This gameobject should contain multiple particles.")]
     public GameObject floatingParticles;
     [NonSerialized] public ParticleSystem[] floatingParticleSystems;
     
@@ -85,10 +92,6 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public AudioClip putDown;
 
     [NonSerialized] public bool isMoving = false;
-    public bool moveComplete = false;
-    public bool hasSetSpot = false;
-    public bool isAtSetSpot = false;
-    public bool movingToSetSpot = false;
 
     public Vector3 newDirection;
     public Vector3 edgeOfObject;
@@ -168,6 +171,11 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         }
         floatingParticleSystems = floatingParticles.GetComponentsInChildren<ParticleSystem>(true);
         ToggleParticles();
+
+        edgeOfObject = objectRenderer != null ? objectRenderer.localBounds.extents * transform.localScale.magnitude : new Vector3(1, 1, 1) * transform.localScale.magnitude;
+
+        _rotationOffset = Quaternion.Euler(rotationOffset);
+
         //if (floatingParticles != null) floatingParticles.SetActive(false);
     }
 
@@ -237,9 +245,15 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 
     public void ToggleParticles(string mode = "", bool clear = false)
     {
-        mode = mode.ToUpper();
+        mode = mode.ToUpper(); // Small failsafe for formatting differences
 
-        if (mode == "FLOAT")
+        if (mode == "PLACE") // For playing particles when placing object
+        {
+            if (placeParticles != null) placeParticles.Play();
+            return;
+        }
+
+        if (mode == "FLOAT") // For playing particles when object is floating
         {
             foreach (var particle in floatingParticleSystems) particle.Play();
             if (ghostParticles != null) ghostParticles.Play();
@@ -254,7 +268,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             if (secondaryParticles != null) secondaryParticles.Stop();
         }
 
-        if (mode == "HOVER")
+        if (mode == "HOVER") // For playing particles when hovered over with cursor
         {
             if (hoverParticles != null) hoverParticles.Play();
         } else {

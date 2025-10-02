@@ -150,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: rotationOffset.z
-      value: 0.70710677
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
