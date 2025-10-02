@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* PoppedState - State used by InteractableStateController when an interactable has been placed.
+ * Uses some logic from IdleState so that the interactable can be picked up again.
+ */
 public class PoppedState : State
 {
     protected override void OnEnter()

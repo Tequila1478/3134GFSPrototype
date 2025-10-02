@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* FloatState - State used by InteractableStateController when an interactable is selected and moving around the game world.
+ * Right click will cancel the float selection, switching to IdleState.
+ * Moving the mouse near a placement spot will trigger the PushedState.
+ */
 public class FloatState : State
 {
     protected override void OnEnter()

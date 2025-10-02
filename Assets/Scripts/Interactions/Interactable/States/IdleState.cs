@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* IdleState - The default state used by InteractableStateController.
+ * In this state, the interactable uses gravity and isn't controlled by the player.
+ */
 public class IdleState : State
 {
     protected override void OnEnter()

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using UnityEngine;
 
+
+/* PushedState - State used by InteractableStateController when an interactable is positioned at a placement spot.
+ * Both Left and Right click will place the interactable at the placement spot, changing to PoppedState or HoopedState.
+ * Pulling the mouse away will switch back to FloatState.
+ */
 public class PushedState : State
 {
     protected override void OnEnter()
@@ -74,9 +79,14 @@ public class PushedState : State
 
         sc.playerInteraction.DisablePlacementPointColliders(); // Disable placement point colliders
 
-        sc.ChangeState(sc.poppedState); // Change state to "popped"
-
-        base.OnLeftClick();
+        if (sc.taskType == "Trash")
+        {
+            sc.ChangeState(sc.hoopedState); // Change state to "hooped"
+        } else
+        {
+            sc.ChangeState(sc.poppedState); // Change state to "popped"
+        }
+            base.OnLeftClick();
     }
 
     protected override void OnExit()

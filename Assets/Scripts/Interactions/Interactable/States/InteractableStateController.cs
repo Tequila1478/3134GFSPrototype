@@ -292,6 +292,15 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     {
         ChangeState(pushedState);
     }
+
+    public void DoDestroy()
+    {
+        Destroy(this);
+    }
+    public void DoDestroy(GameObject gameobject)
+    {
+        Destroy(gameobject);
+    }
 }
 
 public abstract class State
@@ -373,6 +382,7 @@ public abstract class State
     {
         // Code placed here can be overridden
     }
+
 
 
 

@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
+/* HoopedState - State used by InteractableStateController when trash is thrown away.
+ */
 public class HoopedState : State
 {
+    private Vector3 scaleShrink = new Vector3(0.95f, 0.98f, 0.95f);
+
     protected override void OnEnter()
     {
         // "What was that!?"
@@ -14,6 +20,8 @@ public class HoopedState : State
         sc.rb.drag = 0;
         sc.rb.isKinematic = false;
         sc.SetCollidersAsTrigger(true);
+        sc.rb.constraints = RigidbodyConstraints.None;
+        //sc.ps.SetLayer(8);
 
         // Update particles
         sc.ToggleParticles();
@@ -29,11 +37,21 @@ public class HoopedState : State
 
         // Set parent
         sc.transform.SetParent(sc.ps.transform, true);
+
+        // Update progress counter
+        sc.ps.IncrementTrash();
     }
 
     protected override void OnUpdate()
     {
-        // Search for player
+        // Shrink
+        sc.transform.localScale = new Vector3(sc.transform.localScale.x * scaleShrink.x, sc.transform.localScale.y * scaleShrink.y, sc.transform.localScale.z * scaleShrink.z);
+        
+        // Destroy
+        if (sc.transform.localScale.magnitude < 0.01f)
+        {
+            sc.DoDestroy(sc.gameObject);
+        }
     }
     protected override void OnHurt()
     {
