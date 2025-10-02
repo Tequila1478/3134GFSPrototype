@@ -17,6 +17,10 @@ public class HoopedState : State
     {
         // Transition to Hurt State
     }
+    protected override void OnRightClick()
+    {
+        // Do nothing
+    }
     protected override void OnExit()
     {
         // "Must've been the wind"

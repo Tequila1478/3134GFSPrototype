@@ -14,6 +14,9 @@ public class IdleState : State
         sc.rb.drag = 0;
         sc.rb.isKinematic = false;
 
+        // Cancel movement coroutine
+        sc.moveCoroutine = null;
+
         // Update particles
         sc.ToggleParticles();
     }
@@ -33,6 +36,10 @@ public class IdleState : State
     protected override void OnHurt()
     {
         // Transition to Hurt State
+    }
+    protected override void OnRightClick()
+    {
+        // Do nothing
     }
     protected override void OnExit()
     {

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Transactions;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 {
+    public TextMeshProUGUI debugText;
+
     public State currentState;
 
     public IdleState idleState = new IdleState();
@@ -177,6 +180,11 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         {
             currentState.OnStateUpdate();
         }
+
+        if (debugText != null)
+        {
+            debugText.text = currentState.ToString();
+        }
     }
 
     public void ChangeState(State newState)
@@ -201,6 +209,12 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     {
         Debug.Log("Please run OnRelease"); //Debug
         currentState.OnRelease();
+    }
+
+    public void OnRightClick()
+    {
+        Debug.Log("Please run OnRightClick"); //Debug
+        currentState.OnStateRightClick();
     }
 
     public void OnHoverEnter()
@@ -258,37 +272,39 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public void DropObject(PlacementSpot newPlacementSpot, bool forceDrop = false)
     {
         Debug.Log("Poop3: Started DropObject(" + forceDrop + ")");
-        floating = false;
-        moveComplete = false;
-        playerInteraction.isHolding = false;
-        playerInteraction.itemHeld = null;
-        playerInteraction.DisablePlacementPointColliders();
-        tag = "Interactable";
-        sfx_AM?.PlaySFX(putDown);
-        ToggleParticles();
 
-
-        oi?.ClearPlacementSpots();
-
-        if (forceDrop)
+        /*if (forceDrop)
         {
             Debug.Log("Poop3: Doing forceDrop");
             hasSetSpot = false;
             isAtSetSpot = false;
-        }
+        }*/
 
-        if (hasSetSpot)
+        //if (hasSetSpot)
         {
-            Debug.Log("Poop3: Moving to set spot");
+            //Debug.Log("Poop3: Moving to set spot");
             ChangeState(pushedState);
         }
-        else
+        /*else
         {
             Debug.Log("Poop3: Reenabling gravity");
+            floating = false;
+            moveComplete = false;
+            playerInteraction.isHolding = false;
+            playerInteraction.itemHeld = null;
+            playerInteraction.DisablePlacementPointColliders();
+            tag = "Interactable";
+            sfx_AM?.PlaySFX(putDown);
+            ToggleParticles();
+
+
+            oi?.ClearPlacementSpots();
+
+
             rb.useGravity = true;
             rb.drag = 0;
             isAtSetSpot = false;
-        }
+        }*/
     }
 }
 
@@ -310,6 +326,11 @@ public abstract class State
 
     public void OnStateUpdate()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            OnStateRightClick();
+        }
+
         // Code placed here will always run
         OnUpdate();
     }
@@ -328,6 +349,18 @@ public abstract class State
     protected virtual void OnHurt()
     {
         // Code placed here can be overridden
+    }
+
+    public void OnStateRightClick()
+    {
+        // Code placed here will always run
+        OnRightClick();
+    }
+
+    protected virtual void OnRightClick()
+    {
+        // Code placed here can be overridden
+        sc.ChangeState(sc.idleState); // Deselect item
     }
 
     public void OnStateExit()

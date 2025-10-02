@@ -7,16 +7,60 @@ public class PushedState : State
     protected override void OnEnter()
     {
         // "What was that!?"
+        Debug.Log("Ran OnEnter in PushedState");
+
+        // Update physics
+        sc.rb.useGravity = false;
+        sc.rb.drag = 4;
+        sc.rb.isKinematic = true;
+
+        // Update particles
+        sc.ToggleParticles("FLOAT");
+
+        // Update held item
+        if (sc.playerInteraction.itemHeld != sc)
+        {
+            sc.playerInteraction.itemHeld = sc;
+        }
+
+        // Update layer
+        sc.SetNewLayer(sc.layerWhenSelected);
+
+
         StartMoveToSetSpot(sc.ps);
     }
 
     protected override void OnUpdate()
     {
-        // Search for player
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // Move to basketball hoop (if elligible)
+        if (Physics.Raycast(ray, out hit, 100f, sc.basketballLayer))
+        {
+            if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
+            {
+                bbhoop.HoopIt(sc.GetComponent<InteractableStateController>());
+            }
+        } else // If illegible, go back to flaoting
+        {
+            sc.ChangeState(sc.floatState);
+        }
+
+        // Move to target placement spot
+        Vector3 newPoint = sc.ps.transform.position;
+        Quaternion newAngle = sc.ps.transform.rotation;
+        sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+        sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
+        
     }
     protected override void OnHurt()
     {
         // Transition to Hurt State
+    }
+    protected override void OnRightClick()
+    {
+        base.OnRightClick();
     }
     protected override void OnExit()
     {
@@ -36,18 +80,18 @@ public class PushedState : State
         Debug.Log("Started StartMoveToSetSpot");
 
         sc.ps = placementSpot;
-        sc.oi?.ClearPlacementSpots();
+        //sc.oi?.ClearPlacementSpots();
 
-        if (!sc.hasSetSpot && !forceMove) return false;
+        //if (!sc.hasSetSpot && !forceMove) return false;
 
         if (sc.moveCoroutine == null || forceMove)
         {
             SetCollidersTrigger(true);
 
-            sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
+            //sc.moveCoroutine = sc.StartCoroutine(MoveDirectlyToSpot(sc.ps.transform.position));
             sc.movingToSetSpot = true;
             sc.sfx_AM?.PlaySFX(sc.putDown);
-            sc.ToggleParticles();
+            //sc.ToggleParticles();
 
             return true;
         }
@@ -65,7 +109,7 @@ public class PushedState : State
         }
     }
 
-    private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
+    /*private IEnumerator MoveDirectlyToSpot(Vector3 targetPos)
     {
         // Ensure rigidbody doesn't interfere
         sc.rb.useGravity = false;
@@ -89,7 +133,7 @@ public class PushedState : State
         {
             sc.transform.rotation = Quaternion.LookRotation(sc.ps.direction);
 
-            sc.transform.SetParent(sc.ps.transform, true);
+            //sc.transform.SetParent(sc.ps.transform, true);
         }
 
         // Mark as complete
@@ -99,5 +143,5 @@ public class PushedState : State
         sc.coroutineFinished = true;
 
         sc.moveCoroutine = null;
-    }
+    }*/
 }

@@ -7,6 +7,7 @@ public class PoppedState : State
     protected override void OnEnter()
     {
         // "What was that!?"
+        sc.transform.SetParent(sc.ps.transform, true);
     }
 
     protected override void OnUpdate()
@@ -16,6 +17,10 @@ public class PoppedState : State
     protected override void OnHurt()
     {
         // Transition to Hurt State
+    }
+    protected override void OnRightClick()
+    {
+        // Do nothing
     }
     protected override void OnExit()
     {

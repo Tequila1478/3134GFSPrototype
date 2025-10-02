@@ -9,28 +9,30 @@ public class FloatState : State
         // "What was that!?"
         Debug.Log("Ran OnEnter in HoverState");
 
+        // Update physics
         sc.rb.useGravity = false;
         sc.rb.drag = 4;
         sc.rb.isKinematic = false;
 
+        // Cancel movement lock-ons
+        sc.moveCoroutine = null;
+        sc.ps = null;
+
+        // Update particles
         sc.ToggleParticles("FLOAT");
 
+        // Update held item
         sc.playerInteraction.isHolding = true;
         sc.playerInteraction.itemHeld = sc.GetComponent<InteractableStateController>();
         sc.playerInteraction.EnablePlacementPointColliders();
         sc.tag = "Held Item";
 
+        // Update layer
         sc.SetNewLayer(sc.layerWhenSelected);
     }
 
     protected override void OnUpdate()
     {
-        if(Input.GetMouseButtonDown(1))
-        {
-            sc.ChangeState(sc.idleState);
-            return;
-        }
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -65,6 +67,10 @@ public class FloatState : State
     {
         // Transition to Hurt State
     }
+    protected override void OnRightClick()
+    {
+        base.OnRightClick();
+    }
     protected override void OnExit()
     {
         // "Must've been the wind"
@@ -72,7 +78,7 @@ public class FloatState : State
 
         sc.SetNewLayer(sc.layerWhenUnselected);
 
-        if (sc.playerInteraction.itemHeld == sc.GetComponent<InteractableStateController>())
+        if (sc.playerInteraction.itemHeld == sc)
         {
             sc.playerInteraction.itemHeld = null;
         }

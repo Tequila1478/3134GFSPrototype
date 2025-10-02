@@ -11,6 +11,10 @@ public class BasketballHoop : MonoBehaviour
         // HoopIt() if other object is an Interactable.cs
         Interactable interactable = other.GetComponent<Interactable>();
         if (interactable != null) HoopIt(interactable);
+
+        // HoopIt() if other object is an InteractableStateController.cs
+        /*InteractableStateController interactableSC = other.GetComponent<InteractableStateController>();
+        if (interactableSC != null) HoopIt(interactableSC);*/
     }
 
     public void PushIt(Interactable interactable)
@@ -45,7 +49,11 @@ public class BasketballHoop : MonoBehaviour
     {
         if (placementSpot != null) // Only do stuff if this script's placementSpot exists
         {
-            if (placementSpot.spotType.ToString() == interactable.taskType) // Only do task type is shared between other object and placementSpot
+            if 
+            (
+                placementSpot.spotType.ToString() == interactable.taskType // Only do if task types match between interactable and placementSpot
+                && interactable.ps != placementSpot // Only do if interactable isn't already at placement spot
+            )
             {
                 Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
                 interactable.hasSetSpot = true;
@@ -55,5 +63,28 @@ public class BasketballHoop : MonoBehaviour
             }
         }
         Debug.Log("POOP BasketballHoop fail triggered by: " + interactable.gameObject);
+    }
+
+    public void UnhoopIt(InteractableStateController interactable)
+    {
+        if (placementSpot != null) // Only do stuff if this script's placementSpot exists
+        {
+            if // Only do task type is shared between other object and placementSpot
+            (
+                placementSpot.spotType.ToString() == interactable.taskType
+                && interactable.currentState != interactable.idleState
+            )
+            {
+                Debug.Log("POOP BasketballUnhoop success triggered by: " + interactable.gameObject);
+                if (interactable.ps == placementSpot)
+                {
+                    interactable.hasSetSpot = false;
+                    interactable.ps = null;
+                }
+                interactable.ChangeState(interactable.floatState);
+                return;
+            }
+        }
+        Debug.Log("POOP BasketballUnhoop fail triggered by: " + interactable.gameObject);
     }
 }
