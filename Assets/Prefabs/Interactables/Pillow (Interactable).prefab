@@ -140,8 +140,97 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.10795296
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1763198094606249452, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 68092545606601618, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8652884010187307278}
   m_SourcePrefab: {fileID: 100100000, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+--- !u!198 &1804753667728077530 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2613107453020168141, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2733966946314595601 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1781555148658507782, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3250308519709040985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1176337686011333710, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4064498611924485363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 373699228119165412, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447783242137429637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e12d45ede7621e46b4fd20f893f8714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4447783242137429637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 68092545606601618, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+  m_PrefabInstance: {fileID: 4415878958175923479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8652884010187307278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447783242137429637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e844fff06051f1a4d9d3dc6207b49485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
+  taskType: Pillow
+  isRequired: 1
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 243137
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 917504
+  basketballLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  layerWhenSelected: SelectedInteractable
+  layerWhenHovered: HoverOutline
+  layerableObjects:
+  - {fileID: 4447783242137429637}
+  outlineMat: {fileID: 2100000, guid: ba25d5d3c2f13414aba376c760fbf432, type: 2}
+  originalMat: {fileID: 0}
+  materialObj: {fileID: 4447783242137429637}
+  visualisationObj: {fileID: 4447783242137429637}
+  followRate: 0.548
+  speed: 6
+  height: 2
+  rotation: 0.1
+  rayOffset: 2
+  rayVisualOffset: 2
+  routes: []
+  oi: {fileID: 4064498611924485363}
+  ps: {fileID: 0}
+  ghostParticles: {fileID: 2733966946314595601}
+  secondaryParticles: {fileID: 0}
+  hoverParticles: {fileID: 1804753667728077530}
+  placeParticles: {fileID: 0}
+  floatingParticles: {fileID: 3250308519709040985}
+  pickUp: {fileID: 8300000, guid: 25949d054b987584a861bc0c0a60f979, type: 3}
+  putDown: {fileID: 8300000, guid: b242248642f91aa4e9d340a366ab0a41, type: 3}
+  moveComplete: 0
+  hasSetSpot: 0
+  isAtSetSpot: 0
+  movingToSetSpot: 0
+  newDirection: {x: 0, y: 0, z: 0}
+  edgeOfObject: {x: 0, y: 0, z: 0}
