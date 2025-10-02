@@ -254,9 +254,9 @@ public class Interactable : MonoBehaviour, IHoverable, IClickable
             // Move to basketball hoop (if elligible)
             if (Physics.Raycast(ray, out hit, 100f, basketballLayer))
             {
-                if (hit.collider.TryGetComponent<BasketballHoop>(out var bshoop))
+                if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
                 {
-                    bshoop.HoopIt(this.GetComponent<Interactable>());
+                    bbhoop.HoopIt(this.GetComponent<Interactable>());
                 }
             }
             // Move to mouse position within world
