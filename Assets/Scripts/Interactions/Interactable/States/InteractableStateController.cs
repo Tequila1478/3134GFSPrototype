@@ -119,6 +119,12 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             rayVisualOffset = rayOffset;
         }
 
+        CacheComponents();
+    }
+
+
+    private void CacheComponents()
+    {
         // Automatically cache components
         if (rb == null) rb = GetComponent<Rigidbody>();
         if (charController == null) charController = GetComponent<CharacterController>();
@@ -157,9 +163,10 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             }
         }
     }
-
     private void Awake()
     {
+        CacheComponents();
+
         layerWhenUnselected = LayerMask.LayerToName(gameObject.layer);
 
         minRayOffset = rayOffset; //Update minimum RayOffset to match inspector
