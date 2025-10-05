@@ -50,7 +50,7 @@ public class HoopedState : State
         // Destroy
         if (sc.transform.localScale.magnitude < 0.01f)
         {
-            sc.DoDestroy(sc.gameObject);
+            //sc.DoDestroy(sc.gameObject);
         }
     }
     protected override void OnHurt()

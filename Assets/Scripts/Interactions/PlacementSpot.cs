@@ -23,7 +23,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public Vector3 offset = new Vector3(0, 1, 0);
     public float maxHeightAbovePoint;
-    public GameObject placementVisualisation;
+    //public GameObject placementVisualisation;
     public GameObject highlightVisualisation;
     public Vector3 placementRescale = new Vector3 (1f, 1f, 1f);
     public Vector3 highlightRescale = new Vector3 (1f, 1f, 1f);
@@ -65,8 +65,8 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         direction = transform.forward;
         cursor = FindObjectOfType<CustomCursor>();
 
-        placementVisualisation = transform.GetChild(0).gameObject;
-        placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+        //placementVisualisation = transform.GetChild(0).gameObject;
+        //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
 
         //placementVisualisation.SetActive(false);
         highlightVisualisation = transform.GetChild(1).gameObject;
@@ -219,7 +219,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             {
                 otherObject = null;
                 withinRange = false;
-                placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+                //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
                 //placementVisualisation.SetActive(false);
             }
         }
@@ -227,7 +227,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         {
             otherObject = null;
             withinRange = false;
-            placementVisualisation.GetComponent<MeshFilter>().mesh = null;
+            //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
             //placementVisualisation.SetActive(false);
         }
     }
@@ -238,21 +238,21 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (meshFilter == null) return;
 
         // Set mesh
-        placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
+        //placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
 
         // Set scale
-        placementVisualisation.transform.localScale = new Vector3(obj.transform.localScale.x * placementRescale.x, obj.transform.localScale.y * placementRescale.y, obj.transform.localScale.z * placementRescale.z);
+        //placementVisualisation.transform.localScale = new Vector3(obj.transform.localScale.x * placementRescale.x, obj.transform.localScale.y * placementRescale.y, obj.transform.localScale.z * placementRescale.z);
 
         if (isTrashcan)
         {
             // Trashcan: center placement visualisation on bin, ignore offset
-            placementVisualisation.transform.position = transform.position;
+            //placementVisualisation.transform.position = transform.position;
         }
         else
         {
             // Normal spots: apply offset
             placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
-            placementVisualisation.transform.position = transform.position + placementOffset;
+            //placementVisualisation.transform.position = transform.position + placementOffset;
         }
     }
 

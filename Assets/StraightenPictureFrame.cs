@@ -19,6 +19,19 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
     private CameraCinemaSwitch css;
     public int specialCameraNum = 3;
 
+    [Header("Sound Settings")]
+    public AudioManager audio_AM;
+    public AudioClip correctAlignmentNoise;
+
+    [Header("Completed Settings")]
+    public GameObject shadow;
+    public ParticleSystem ps;
+    public AudioClip FinishedCorrectNoise;
+    private bool wasCorrect = false;
+    private bool playedSFX = false;
+
+    private bool inPosition = false;
+
     public void OnClick()
     {
         if (!active || targetObject == null) return;
@@ -37,11 +50,18 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
 
         isDragging = false;
 
+        if (inPosition && !playedSFX)
+        {
+            CorrectOrientation();
+            playedSFX = true;
+        }
+
     }
 
     void Start()
     {
         css = FindObjectOfType<CameraCinemaSwitch>();
+        audio_AM = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -79,10 +99,27 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
             if (Mathf.Abs(delta) <= stickiness)
             {
                 euler.x = targetRotationEuler.x;
+                inPosition = true;
+            }
+            else{
+                inPosition = false;
+                playedSFX = false;
             }
 
             // Apply final rotation
             targetObject.localEulerAngles = euler;
+
+            shadow.SetActive(true);
+                        
+            if (inPosition && !wasCorrect)
+            {
+                PlayAudio(correctAlignmentNoise);
+            }
+            wasCorrect = inPosition;
+        }
+        else{
+            shadow.SetActive(false);
+            //wasCorrect = false;
         }
     }
 
@@ -90,5 +127,17 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
     {
         angle = Mathf.Repeat(angle + 180f, 360f) - 180f; // convert to -180..180
         return Mathf.Clamp(angle, min, max);
+    }
+
+    private void CorrectOrientation()
+    {
+        PlayAudio(FinishedCorrectNoise);
+        ps.Play();
+    }
+
+    private void PlayAudio(AudioClip audioToPlay)
+    {
+        audio_AM.PlaySFX(audioToPlay);
+        Debug.Log("Noise played");
     }
 }

@@ -84,7 +84,7 @@ public class TaskManager : MonoBehaviour
         return completedByType.ContainsKey(taskType) ? completedByType[taskType] : 0;
     }
 
-    // New helper: total tasks of a type
+
     public int GetTotalTasksOfType(string taskType)
     {
         int count = 0;
@@ -96,7 +96,7 @@ public class TaskManager : MonoBehaviour
         return count;
     }
 
-    // Optional: returns required & optional counts for a type
+
     public void GetTaskCounts(string taskType, out int required, out int optional)
     {
         int completed = GetCompletedCount(taskType);

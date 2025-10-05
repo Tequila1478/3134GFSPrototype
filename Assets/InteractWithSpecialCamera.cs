@@ -22,6 +22,8 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
     public GameObject GodRays;
     public bool disableGodRays;
 
+    public bool disableColliderOnInteract;
+
 
     private void OnValidate()
     {
@@ -63,13 +65,6 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     private void Update()
     {
-        /*
-        if(isFocusedOn != _isFocusedOn)
-        {
-            GetComponent<BoxCollider>().enabled = _isFocusedOn;
-            _isFocusedOn = isFocusedOn;
-        }*/
-
         if (cameraController.currentSpecialCamera == CameraCinemaSwitch.FindIndexOfSpecialCamera(specialCamera))
         {
             if (!isFocusedOn)
@@ -89,6 +84,11 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         if (disableGodRays)
         {
             GodRays.SetActive(false);
+        }
+
+        if (disableColliderOnInteract)
+        {
+            GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -162,6 +162,9 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         isFocusedOn = false;
         if (cameraController != null && cameraController.currentFocused == this)
             cameraController.currentFocused = null;
+
+        if(disableColliderOnInteract)
+        GetComponent<Collider>().enabled = true;
 
     }
 
