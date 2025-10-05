@@ -219,16 +219,12 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             {
                 otherObject = null;
                 withinRange = false;
-                //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-                //placementVisualisation.SetActive(false);
             }
         }
         else if (otherObject != null && !claimed)
         {
             otherObject = null;
             withinRange = false;
-            //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-            //placementVisualisation.SetActive(false);
         }
     }
 

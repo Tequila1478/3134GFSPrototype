@@ -434,14 +434,12 @@ public abstract class State
         if (!sc.playerInteraction.isHolding)
         {
             HighlightObject();
-            //cursor?.ChangeVisual(1);
             CursorScript.instance.UpdateCursor("Interact");
             if (sc.hoverParticles != null) sc.hoverParticles.Play();
 
         }
         if (sc.playerInteraction.itemHeld == sc)
         {
-            //cursor?.ChangeVisual(1);
             CursorScript.instance.UpdateCursor("Interact");
         }
     }
@@ -457,12 +455,10 @@ public abstract class State
         if (!sc.playerInteraction.isHolding)
         {
             UnhighlightObject();
-            //cursor?.ChangeVisual(0);
             CursorScript.instance.UpdateCursor("Default");
         }
         if (sc.playerInteraction.itemHeld == sc)
         {
-            //cursor?.ChangeVisual(1);
             CursorScript.instance.UpdateCursor("Interact");
         }
     }
@@ -477,12 +473,6 @@ public abstract class State
             mpb.SetColor("_OutlineColour", sc.hoverColor);
             rend.SetPropertyBlock(mpb);
         }
-
-        if (sc.outlineMat != null && sc.objectRenderer != null)
-        {
-            //outlineMat.SetTexture("_Texture2D", objectRenderer.material.mainTexture);
-            // objectRenderer.material = outlineMat;
-        }
     }
 
     private void UnhighlightObject()
@@ -495,10 +485,6 @@ public abstract class State
             rend.GetPropertyBlock(mpb);
             mpb.SetColor("_OutlineColour", sc.originalColors[i]);
             rend.SetPropertyBlock(mpb);
-        }
-        if (sc.originalMat != null && sc.objectRenderer != null)
-        {
-            //objectRenderer.material = originalMat;
         }
     }
 }
