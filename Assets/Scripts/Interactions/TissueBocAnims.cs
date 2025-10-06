@@ -14,6 +14,11 @@ public class TissueBocAnims : MonoBehaviour, IHoverable, IClickable
 
     private int previousInt = 0;
 
+
+    public AudioClip InteractNoise;
+
+    public AudioManager audio_AM;
+
     private void Start()
     {
         Renderer rend = GetComponent<Renderer>();
@@ -41,12 +46,16 @@ public class TissueBocAnims : MonoBehaviour, IHoverable, IClickable
             }
         }
 
+
+        audio_AM = FindObjectOfType<AudioManager>();
+
     }
 
 
     public void OnClick()
     {
         Debug.Log("tissuebox clicked");
+        audio_AM.PlaySFX(InteractNoise);
         PlayAnim();
     }
 

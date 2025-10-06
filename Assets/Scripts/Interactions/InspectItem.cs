@@ -31,6 +31,10 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     public bool active = false;
     public CinemachineVirtualCamera specialCamera;
 
+    public AudioClip InteractNoise;
+
+    public AudioManager audio_AM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,9 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         cursor = FindObjectOfType<CustomCursor>();
 
         ds = FindObjectOfType<DialogueScript>();
+
+
+        audio_AM = FindObjectOfType<AudioManager>();
     }
 
 
@@ -59,7 +66,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
         if (ds.isMonologuing) return; //Don't do stuff if dialogue is already monologuing
         if (specialCameraReq && !active) return;
 
-
+        audio_AM.PlaySFX(InteractNoise);
         StartCoroutine(ShowInfo());
         //Show info and dialogue on counter
         //UPdate state

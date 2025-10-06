@@ -11,6 +11,10 @@ public class ClockSpin : MonoBehaviour, IHoverable, IClickable
     private Color hoverColor = Color.white;
     public ParticleSystem sparks;
 
+    public AudioClip InteractNoise;
+
+    public AudioManager audio_AM;
+
     public Animator anim;
 
     private void Start()
@@ -40,12 +44,15 @@ public class ClockSpin : MonoBehaviour, IHoverable, IClickable
             }
         }
 
+        audio_AM = FindObjectOfType<AudioManager>();
+
     }
 
 
     public void OnClick()
     {
         Debug.Log("Clock clicked");
+        audio_AM.PlaySFX(InteractNoise);
         PlayAnim();
     }
 

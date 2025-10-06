@@ -22,6 +22,7 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
     [Header("Sound Settings")]
     public AudioManager audio_AM;
     public AudioClip correctAlignmentNoise;
+    public AudioClip onStartDragNoise;
 
     [Header("Completed Settings")]
     public GameObject shadow;
@@ -41,6 +42,8 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
 
         lastMousePos = Input.mousePosition;
         Debug.Log("Begin drag rotate");
+
+        audio_AM.PlaySFX(onStartDragNoise);
 
     }
 

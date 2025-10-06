@@ -12,6 +12,10 @@ public class ToggleLight : MonoBehaviour, IHoverable, IClickable
     private Color hoverColor = Color.white;
     public ParticleSystem sparks;
 
+    public AudioClip InteractNoise;
+
+    public AudioManager audio_AM;
+
     private void Start()
     {
         Renderer rend = GetComponent<Renderer>();
@@ -39,9 +43,14 @@ public class ToggleLight : MonoBehaviour, IHoverable, IClickable
             }
         }
 
+
+        audio_AM = FindObjectOfType<AudioManager>();
+
+
     }
     public void OnClick()
     {
+        audio_AM.PlaySFX(InteractNoise);
         ToggleLightSwitch();
     }
 

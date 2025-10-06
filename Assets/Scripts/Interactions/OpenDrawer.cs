@@ -19,6 +19,10 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     private PlacementSpot[] childPlacementSpots;
     private Coroutine triggerPlacementSpots;
 
+    public AudioClip InteractNoise;
+
+    public AudioManager audio_AM;
+
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +35,8 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     public void OnClick()
     {
         OnClick(!animatorState);
+
+        audio_AM.PlaySFX(InteractNoise);
     }
     public void OnClick(bool active)
     {
@@ -50,6 +56,9 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
         childPlacementSpots = GetComponentsInChildren<PlacementSpot>();
 
         triggerPlacementSpots = StartCoroutine(TogglePlacementSpots(false));
+
+
+        audio_AM = FindObjectOfType<AudioManager>();
     }
 
     public void ToggleObjects(bool boolean)
