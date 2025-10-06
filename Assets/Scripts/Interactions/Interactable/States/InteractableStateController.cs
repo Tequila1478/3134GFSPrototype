@@ -14,7 +14,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public FloatState floatState = new FloatState();
     public PushedState pushedState = new PushedState();
     public PoppedState poppedState = new PoppedState();
-    public HoopedState hoopedState = new HoopedState();
+    public DunkedState dunkedState = new DunkedState();
 
     [Header("Debug Settings")]
     public TextMeshProUGUI debugText;
@@ -219,7 +219,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     // This function checks the current state. If it is a state in which the object is considered placed and thus "complete", this returns true.
     public bool IsComplete()
     {
-        return (currentState == poppedState || currentState == hoopedState);
+        return (currentState == poppedState || currentState == dunkedState);
     }
 
     public void OnClick()
@@ -315,11 +315,14 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         isInteractive = true;
     }
 
-    public void DropObject(PlacementSpot newPlacementSpot)
+    // This function is called by BasketballHoop.cs to push an object into a placement spot.
+    public void PushObject(PlacementSpot newPlacementSpot)
     {
+        ps = newPlacementSpot;
         ChangeState(pushedState);
     }
 
+    // States cannot use MonoBehaviour functions, including Destroy(). DoDestroy() provides a method to run the Destroy() function in states.
     public void DoDestroy()
     {
         Destroy(this);

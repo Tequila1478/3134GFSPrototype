@@ -4,16 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-/* HoopedState - State used by InteractableStateController when trash is thrown away.
+/* DunkedState - State used by InteractableStateController when trash is thrown away, i.e. "dunked".
  */
-public class HoopedState : State
+public class DunkedState : State
 {
-    private Vector3 scaleShrink = new Vector3(0.95f, 0.98f, 0.95f);
+    private Vector3 scaleShrink = new Vector3(0.95f, 0.98f, 0.95f); //y value is larger than x & z value for a more stylised shrink effect.
 
     protected override void OnEnter()
     {
         // "What was that!?"
-        Debug.Log("Ran OnEnter in HoopedState");
+        Debug.Log("Ran OnEnter in DunkedState");
 
         // Update physics
         sc.rb.useGravity = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 /* FloatState - State used by InteractableStateController when an interactable is selected and moving around the game world.
  * Right click will cancel the float selection, switching to IdleState.
- * Moving the mouse near a placement spot will trigger the PushedState.
+ * Moving the mouse near a placement spot's basketball hoop will trigger the PushedState.
  */
 public class FloatState : State
 {
@@ -39,7 +39,7 @@ public class FloatState : State
     {
         if (!sc.isInteractive) return; // Cancel if not currently interactive 
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Set up raycast stuff with current mouse position
         RaycastHit hit;
 
         // Move to basketball hoop (if elligible)
@@ -47,15 +47,16 @@ public class FloatState : State
         {
             if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
             {
-                bbhoop.HoopIt(sc.GetComponent<InteractableStateController>());
+                bbhoop.HoopIt(sc); // Run basketball hoop's HoopIt() function to kickstart push state
             }
         }
         // Move to mouse position within world
         if (Physics.Raycast(ray, out hit, 100f, sc.interactionLayer))
         {
             sc.maxRayOffset = hit.distance - sc.minRayOffset; // Update maximum offset to match ray hit distance
-            sc.rayOffset = Mathf.Max(sc.rayOffset + Input.mouseScrollDelta.normalized.y, sc.minRayOffset);
-            sc.rayVisualOffset = Mathf.Clamp(sc.rayOffset, sc.minRayOffset, sc.maxRayOffset);
+            sc.rayOffset = Mathf.Max(sc.rayOffset + Input.mouseScrollDelta.normalized.y, sc.minRayOffset); // Update internal offset based on mouse scroll
+            sc.rayVisualOffset = Mathf.Clamp(sc.rayOffset, sc.minRayOffset, sc.maxRayOffset); // Update visible offset
+            // Reset internal offset to match visible offset if scrolling
             if (Input.mouseScrollDelta.y < 0)
             {
                 sc.rayOffset = sc.rayVisualOffset;
@@ -65,6 +66,7 @@ public class FloatState : State
                 sc.rayOffset = sc.rayVisualOffset;
             }
 
+            // Move to mouse position within world using updated offsets
             Vector3 newPoint = ray.GetPoint(hit.distance - (sc.maxRayOffset - sc.rayVisualOffset));
             sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
         }
@@ -82,8 +84,10 @@ public class FloatState : State
         // "Must've been the wind"
         sc.ToggleParticles();
 
+        // Update layer
         sc.SetNewLayer(sc.layerWhenUnselected);
 
+        // Deselect item
         if (sc.playerInteraction.itemHeld == sc)
         {
             sc.playerInteraction.itemHeld = null;

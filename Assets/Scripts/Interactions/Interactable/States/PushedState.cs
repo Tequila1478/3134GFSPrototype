@@ -4,8 +4,8 @@ using System.Security.Claims;
 using UnityEngine;
 
 
-/* PushedState - State used by InteractableStateController when an interactable is positioned at a placement spot.
- * Both Left and Right click will place the interactable at the placement spot, changing to PoppedState or HoopedState.
+/* PushedState - State used by InteractableStateController when an interactable is positioned at a placement hoop.
+ * Both Left and Right click will place the interactable at the placement hoop, changing to PoppedState or DunkedState.
  * Pulling the mouse away will switch back to FloatState.
  */
 public class PushedState : State
@@ -41,7 +41,7 @@ public class PushedState : State
     {
         if (!sc.isInteractive) return; // Cancel if not currently interactive 
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Set up raycast stuff with current mouse position
         RaycastHit hit;
 
         // Move to basketball hoop (if elligible)
@@ -49,9 +49,9 @@ public class PushedState : State
         {
             if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
             {
-                bbhoop.HoopIt(sc.GetComponent<InteractableStateController>());
+                bbhoop.HoopIt(sc); // Run basketball hoop's HoopIt() function to update push state
             }
-        } else // If illegible, go back to flaoting
+        } else // If illegible, go back to floating
         {
             sc.ChangeState(sc.floatState);
         }
@@ -84,7 +84,7 @@ public class PushedState : State
 
         if (sc.taskType == "Trash")
         {
-            sc.ChangeState(sc.hoopedState); // Change state to "hooped"
+            sc.ChangeState(sc.dunkedState); // Change state to "dunked"
         } else
         {
             sc.ChangeState(sc.poppedState); // Change state to "popped"
