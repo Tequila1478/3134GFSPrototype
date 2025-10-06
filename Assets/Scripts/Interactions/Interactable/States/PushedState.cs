@@ -4,8 +4,8 @@ using System.Security.Claims;
 using UnityEngine;
 
 
-/* PushedState - State used by InteractableStateController when an interactable is positioned at a placement spot.
- * Both Left and Right click will place the interactable at the placement spot, changing to PoppedState or HoopedState.
+/* PushedState - State used by InteractableStateController when an interactable is positioned at a placement hoop.
+ * Both Left and Right click will place the interactable at the placement hoop, changing to PoppedState or DunkedState.
  * Pulling the mouse away will switch back to FloatState.
  */
 public class PushedState : State
@@ -84,7 +84,7 @@ public class PushedState : State
 
         if (sc.taskType == "Trash")
         {
-            sc.ChangeState(sc.hoopedState); // Change state to "hooped"
+            sc.ChangeState(sc.dunkedState); // Change state to "dunked"
         } else
         {
             sc.ChangeState(sc.poppedState); // Change state to "popped"

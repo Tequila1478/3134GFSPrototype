@@ -25,8 +25,7 @@ public class BasketballHoop : MonoBehaviour
             )
             {
                 Debug.Log("POOP BasketballHoop success triggered by: " + interactable.gameObject);
-                interactable.ps = placementSpot;
-                interactable.DropObject(interactable.ps); // Pass onto Interactable's DropObject function for object placement behaviour
+                interactable.PushObject(placementSpot); // Pass onto Interactable's DropObject function for object placement behaviour
                 return;
             }
         }
