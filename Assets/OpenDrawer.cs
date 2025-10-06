@@ -14,6 +14,11 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
 
     public CinemachineVirtualCamera specialCamera;
 
+    public bool enablePlacementPointsOnOpen = true;
+
+    private PlacementSpot[] childPlacementSpots;
+    private Coroutine triggerPlacementSpots;
+
     // Update is called once per frame
     void Update()
     {
@@ -31,14 +36,20 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     {
         animatorState = active;
         animator.SetBool(animatorBoolName, animatorState);
-
+        StopCoroutine(triggerPlacementSpots);
         ToggleObjects(animatorState);
+        triggerPlacementSpots = StartCoroutine(TogglePlacementSpots(active));
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         ToggleObjects(animatorState);
+
+        childPlacementSpots = GetComponentsInChildren<PlacementSpot>();
+
+        triggerPlacementSpots = StartCoroutine(TogglePlacementSpots(false));
     }
 
     public void ToggleObjects(bool boolean)
@@ -63,5 +74,26 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     public void OnRelease()
     {
         //throw new System.NotImplementedException();
+    }
+
+    public IEnumerator TogglePlacementSpots(bool active)
+    {
+        if (!active)
+        {
+            yield return new WaitForSecondsRealtime(2);
+
+            foreach (PlacementSpot ps in childPlacementSpots)
+            {
+                ps.gameObject.SetActive(active);
+            }
+        }
+
+        else
+        {
+            foreach (PlacementSpot ps in childPlacementSpots)
+            {
+                ps.gameObject.SetActive(active);
+            }
+        }
     }
 }
