@@ -8,7 +8,7 @@ using UnityEngine.UI;
  */
 public class DunkedState : State
 {
-    private Vector3 scaleShrink = new Vector3(0.95f, 0.98f, 0.95f);
+    private Vector3 scaleShrink = new Vector3(0.95f, 0.98f, 0.95f); //y value is larger than x & z value for a more stylised shrink effect.
 
     protected override void OnEnter()
     {

@@ -41,7 +41,7 @@ public class PushedState : State
     {
         if (!sc.isInteractive) return; // Cancel if not currently interactive 
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Set up raycast stuff with current mouse position
         RaycastHit hit;
 
         // Move to basketball hoop (if elligible)
@@ -49,9 +49,9 @@ public class PushedState : State
         {
             if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
             {
-                bbhoop.HoopIt(sc.GetComponent<InteractableStateController>());
+                bbhoop.HoopIt(sc); // Run basketball hoop's HoopIt() function to update push state
             }
-        } else // If illegible, go back to flaoting
+        } else // If illegible, go back to floating
         {
             sc.ChangeState(sc.floatState);
         }
