@@ -2279,7 +2279,7 @@ MonoBehaviour:
   inspectionText: 
   inspectionDialogue:
   - text: This was a good one
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
     spriteOnRight: 1
   - text: His acting is larger than life!
@@ -2288,11 +2288,11 @@ MonoBehaviour:
     spriteOnRight: 1
   alternativeDialogue:
   - text: This was a good one
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
     spriteOnRight: 1
   - text: His acting is larger than life!
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
     spriteOnRight: 1
   specialCameraReq: 1
@@ -43242,11 +43242,11 @@ MonoBehaviour:
   inspectionText: 
   inspectionDialogue:
   - text: I never did understand why they were so obesessed with this movie
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   - text: The ending was so cliche
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   - text: You could see it coming a mile off!
@@ -43255,15 +43255,15 @@ MonoBehaviour:
     spriteOnRight: 1
   alternativeDialogue:
   - text: I never did understand why they were so obesessed with this movie
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   - text: The ending was so cliche
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   - text: You could see it coming a mile off!
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   specialCameraReq: 1
@@ -52520,11 +52520,11 @@ MonoBehaviour:
   inspectionText: 
   inspectionDialogue:
   - text: Not long to go now...
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 9bd23ff6432ed5741a9e5fe6893dd073, type: 3}
     spriteOnRight: 1
   - text: I wonder what it means?
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: fc7118460acedc64e8bef5a9dc866966, type: 3}
     spriteOnRight: 1
   alternativeDialogue:
@@ -56969,12 +56969,12 @@ MonoBehaviour:
   inspectionText: 
   inspectionDialogue:
   - text: Such a lovely drawing
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 4b5e16b0784ca114d94f01c42002f6ca, type: 3}
     spriteOnRight: 1
   alternativeDialogue:
   - text: ...
-    heading: Ghost
+    heading: Evelyn
     characterSprite: {fileID: 21300000, guid: 0763b23136dcec94f8954c039cb47e6c, type: 3}
     spriteOnRight: 1
   specialCameraReq: 1
@@ -69890,6 +69890,50 @@ PrefabInstance:
       propertyPath: nextDialogueSFX
       value: 
       objectReference: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: startDialogue.Array.data[2].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: startDialogue.Array.data[3].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: startDialogue.Array.data[4].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: startDialogue.Array.data[5].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueBad.Array.data[1].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueBad.Array.data[2].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueGood.Array.data[1].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueGood.Array.data[2].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueFoundDivorcePapers.Array.data[0].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueFoundDivorcePapers.Array.data[1].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: endDialogueFoundDivorcePapers.Array.data[2].heading
+      value: Evelyn
+      objectReference: {fileID: 0}
     - target: {fileID: 5025415053366279225, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
