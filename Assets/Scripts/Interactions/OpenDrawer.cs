@@ -89,7 +89,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     {
         if (!active)
         {
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSecondsRealtime(0.7f);
 
 
             foreach (PlacementSpot ps in childPlacementSpots)
@@ -105,6 +105,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
 
         else
         {
+            yield return new WaitForSecondsRealtime(0.4f);
             foreach (PlacementSpot ps in childPlacementSpots)
             {
                 ps.gameObject.SetActive(active);
