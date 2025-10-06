@@ -69732,6 +69732,50 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
     - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ca82dec326fb99444ba814cf1241546f, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c7d20c6738ed743b3912043ebaa091, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5fcfda76e5c5f454fbb3a6ef99e487c8, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: e72932a15c6c7c74da7af1cbe59b9a06, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1506f51a86a39fc49bec47f3618d760f, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: f8aca88f16bc0d140b96b48b7d691a67, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ea164672e3d46546984b9ddc1887bec, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5325c3ac1863be54eb7736d13e97e33a, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5a07480d500dd24b98364c41a460ef3, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
+      propertyPath: characterSFX.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: ee92ea9e90f394045b963ffd3d03f30e, type: 3}
+    - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: startDialogue.Array.data[2].heading
       value: Evelyn
       objectReference: {fileID: 0}

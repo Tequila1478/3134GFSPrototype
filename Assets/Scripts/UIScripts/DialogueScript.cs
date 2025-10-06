@@ -23,9 +23,13 @@ public class DialogueScript : MonoBehaviour
     public CustomCursor cursor;
     public string loadNextScene;
     public AudioClip nextDialogueSFX;
+    public AudioClip[] characterSFX;
 
     private float waitSystem;
     private AudioManager audio_AM;
+
+    private bool skipLine = false;
+    private bool lineCompleted = false;
 
     public bool isMonologuing = false;
 
@@ -111,9 +115,6 @@ public class DialogueScript : MonoBehaviour
 
     void OnDestroy()
     {
-        Debug.LogError($"DialogueScript destroyed! Stacktrace:\n{System.Environment.StackTrace}");
-
-        Debug.Log("DialogueScript destroyed!");
     }
 
     IEnumerator PlayDialogue(List<DialogueLine> lines)
@@ -124,16 +125,18 @@ public class DialogueScript : MonoBehaviour
         dialogueText.gameObject.SetActive(true);
         headingText.gameObject.SetActive(true);
         skipReminderText.gameObject.SetActive(true);
-        
-        //characterImage.gameObject.SetActive(true);
         dialoguePanel.SetActive(true);
 
         yield return null;
 
         foreach (DialogueLine line in lines)
         {
+            skipLine = false;
+            lineCompleted = false;
+
             headingText.text = line.heading;
-            dialogueText.text = (headingText.text.Length > 0) ? "<br>" + line.text : line.text; // Dialogue text is shifted into next line if there is a heading present
+            string newLine = line.text;
+            bool startInNewLine = (headingText.text.Length > 0) ? true: false; // Dialogue text is shifted into next line if there is a heading present
 
             if(line.characterSprite == null) characterImage.gameObject.SetActive(false);
             else characterImage.gameObject.SetActive(true);
@@ -142,11 +145,9 @@ public class DialogueScript : MonoBehaviour
             characterImage.sprite = line.characterSprite;
             LayoutSprite(line.spriteOnRight);
 
-            yield return StartCoroutine(WaitForSecondsOrTap(delayBetweenLines));
-            if (nextDialogueSFX != null)
-            {
-                audio_AM.PlaySFX(nextDialogueSFX);
-            }
+            yield return StartCoroutine(TypeLine(newLine, startInNewLine));
+
+
         }
 
         dialogueCompleted = true;
@@ -166,12 +167,62 @@ public class DialogueScript : MonoBehaviour
         isMonologuing = false;
     }
 
+    public float textSpeed = 0.05f; // seconds per letter
+
+    IEnumerator TypeLine(string lineText, bool startInNewLine)
+    {
+        //Check to see if there is a heading and if not add a break to the start
+        dialogueText.text = startInNewLine ? "<br>" : string.Empty;
+
+        //Start typing letter by letter
+        for (int i = 0; i < lineText.Length; i++)
+        {
+            dialogueText.text += lineText[i];
+
+            // Play a random audio clip for this character
+            if (characterSFX != null && characterSFX.Length > 0)
+            {
+                AudioClip clip = characterSFX[Random.Range(0, characterSFX.Length)];
+                audio_AM.PlaySFX(clip);
+            }
+
+
+            // Wait for a short delay before next letter
+            float timer = 0f;
+            while (timer < textSpeed)
+            {
+                if (skipLine)
+                {
+                    dialogueText.text = startInNewLine ? "<br>" + lineText : lineText;
+                    skipLine = false;
+                    goto AfterTyping; //Skips to the coroutine AfterTyping: section
+                }
+
+                timer += Time.unscaledDeltaTime;
+                yield return null;
+            }
+        }
+
+    AfterTyping:
+        // Wait for delay or click
+        yield return StartCoroutine(WaitForSecondsOrTap(delayBetweenLines));
+
+        // Optional SFX
+        if (nextDialogueSFX != null)
+            audio_AM.PlaySFX(nextDialogueSFX);
+    }
+
+
     IEnumerator WaitForSecondsOrTap(float seconds)
     {
         waitSystem = seconds;
         while (waitSystem > 0.0f)
         {
-            //Debug.Log($"WaitSystem ticking... {waitSystem}");
+            if (skipLine)
+            {
+                skipLine = false; // consume click
+                break;
+            }
             waitSystem -= Time.unscaledDeltaTime;
             yield return null;
         }
@@ -185,7 +236,7 @@ public class DialogueScript : MonoBehaviour
 
     void CancelWait()
     {
-        waitSystem = 0.0f;
+        skipLine = true;
     }
 
     private void LayoutSprite(bool onRight)
