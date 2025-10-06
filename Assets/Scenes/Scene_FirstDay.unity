@@ -70927,6 +70927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4849141736376025755, guid: c7da0334e8cb8b7428ed292ecf2c1e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7592779048949685056, guid: c7da0334e8cb8b7428ed292ecf2c1e31, type: 3}
       propertyPath: taskType
       value: Shoe
@@ -71920,6 +71924,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271205894086908280, guid: a98694217f0a73642a70e2c64e42697b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849141736376025755, guid: a98694217f0a73642a70e2c64e42697b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7592779048949685056, guid: a98694217f0a73642a70e2c64e42697b, type: 3}
@@ -73273,6 +73281,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4849141736376025755, guid: 9f036417ea30dab46abb9c5b147c44d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7592779048949685056, guid: 9f036417ea30dab46abb9c5b147c44d3, type: 3}
       propertyPath: taskType
       value: Shoe
@@ -73664,6 +73676,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271205894086908280, guid: 751ba3d440f838f4390c20711a04548b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849141736376025755, guid: 751ba3d440f838f4390c20711a04548b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7592779048949685056, guid: 751ba3d440f838f4390c20711a04548b, type: 3}

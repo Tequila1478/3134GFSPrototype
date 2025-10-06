@@ -186,7 +186,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shoe (Interactable) (Jogger L)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7235501452485393062, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5051542566785449089, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
     m_AddedGameObjects:
