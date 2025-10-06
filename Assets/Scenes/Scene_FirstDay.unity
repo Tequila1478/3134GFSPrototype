@@ -52598,31 +52598,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03236406, y: 0.017628154, z: 0.015611998}
   m_Center: {x: -0.00050660595, y: -0.0021853235, z: 0.0050729215}
---- !u!114 &1537992074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537992066}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a405111c0f2e6a448fe2eab7f613d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHovered: 0
-  cursor: {fileID: 0}
-  dialogueScript: {fileID: 0}
-  info: {fileID: 0}
-  isDivorcePapers: 0
-  inspectionImage: {fileID: 0}
-  displayInfoImage: 1
-  inspectionText: 
-  inspectionDialogue: []
-  alternativeDialogue: []
-  specialCameraReq: 0
-  active: 0
-  specialCamera: {fileID: 0}
 --- !u!114 &1537992075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72315,9 +72290,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5746608696210936522, guid: 68fc16f259bc2574ea16a95e325b9187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1537992075}
-    - targetCorrespondingSourceObject: {fileID: 5746608696210936522, guid: 68fc16f259bc2574ea16a95e325b9187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1537992074}
   m_SourcePrefab: {fileID: 100100000, guid: 68fc16f259bc2574ea16a95e325b9187, type: 3}
 --- !u!23 &6550603990387247226
 MeshRenderer:

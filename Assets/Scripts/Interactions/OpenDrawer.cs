@@ -36,7 +36,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     {
         animatorState = active;
         animator.SetBool(animatorBoolName, animatorState);
-        StopCoroutine(triggerPlacementSpots);
+        if(triggerPlacementSpots != null) StopCoroutine(triggerPlacementSpots);
         ToggleObjects(animatorState);
         triggerPlacementSpots = StartCoroutine(TogglePlacementSpots(active));
 
@@ -82,6 +82,12 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
         {
             yield return new WaitForSecondsRealtime(2);
 
+
+            foreach (PlacementSpot ps in childPlacementSpots)
+            {
+                ps.transform.GetChild(1).gameObject.GetComponent<MeshFilter>().mesh = null;
+            }
+
             foreach (PlacementSpot ps in childPlacementSpots)
             {
                 ps.gameObject.SetActive(active);
@@ -95,5 +101,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
                 ps.gameObject.SetActive(active);
             }
         }
+
+
     }
 }
