@@ -1850,7 +1850,7 @@ MonoBehaviour:
   playAudioOnClick: 0
   nextUI: {fileID: 919145690}
   previousUI: {fileID: 7224467646822753510}
-  sceneToLoad: Scene_FirstDay
+  sceneToLoad: IntroAnim
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
   isMusic: 0

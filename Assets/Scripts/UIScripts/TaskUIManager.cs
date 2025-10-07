@@ -130,14 +130,14 @@ public class TaskUIManager : MonoBehaviour
             }
 
         }
-        Debug.Log("Percentage complete = " + overallPercent + "%");
 
+        bool isHouseClean = false;
 
         // Show end day button if all required tasks are complete
         if (!dayEnded && Mathf.RoundToInt(requiredPercent * 100f) >= 100)
         {
             dayEnded = true;
-            FindObjectOfType<DialogueScript>().houseClean = overallPercent >= 0.8f;
+            isHouseClean = FindObjectOfType<DialogueScript>().houseClean = overallPercent >= 0.7f;
             endDayButton.SetActive(true);
             Debug.Log("All required tasks complete");
         }
@@ -145,6 +145,9 @@ public class TaskUIManager : MonoBehaviour
         {
             endDayButton.SetActive(false);
         }
+
+        Debug.Log("Percentage complete = " + overallPercent + "%" + " houseClean = " + isHouseClean);
+
     }
 
     int GetDayNumber()
