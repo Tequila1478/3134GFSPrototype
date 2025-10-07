@@ -64695,7 +64695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: endDialogueFoundPhotoNoDivorce.Array.data[2].text
-      value: Somethign like that has never happened before
+      value: Nothing like that has ever happened before
       objectReference: {fileID: 0}
     - target: {fileID: 4898078858960735394, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
       propertyPath: endDialogueFoundPhotoDivorce.Array.data[0].heading
