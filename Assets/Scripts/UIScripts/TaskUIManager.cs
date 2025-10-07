@@ -130,7 +130,7 @@ public class TaskUIManager : MonoBehaviour
             }
 
         }
-
+        Debug.Log("Percentage complete = " + overallPercent + "%");
 
 
         // Show end day button if all required tasks are complete
