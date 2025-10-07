@@ -13,8 +13,21 @@ public class PoppedState : State
         Debug.Log("Ran OnEnter in PoppedState");
 
         // Teleport to placement spot
-        sc.transform.position = sc.ps.transform.position;
-        sc.transform.rotation = sc.ps.transform.rotation * sc._rotationOffset;
+        // Target location and rotation
+        Vector3 offsetSocketPoint = sc.ps.offsetSocket.position;
+        Quaternion offsetSocketAngle = sc.ps.offsetSocket.rotation;
+
+        //Offset location and rotation
+        Vector3 offsetPlugPoint = sc.offsetPlug.localPosition;
+        Quaternion offsetPlugAngle = sc.offsetPlug.localRotation;
+
+        //Final position
+        Quaternion newAngle = offsetSocketAngle * Quaternion.Inverse(offsetPlugAngle);
+        Vector3 newPoint = offsetSocketPoint - newAngle * offsetPlugPoint;
+
+        sc.transform.rotation = newAngle;
+        sc.transform.position = newPoint;
+
 
         // Update physics
         sc.rb.useGravity = false;

@@ -228,6 +228,26 @@ PrefabInstance:
       propertyPath: rayVisualOffset
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 6745289917864795662, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.1

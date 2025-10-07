@@ -94,7 +94,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
 
             foreach (PlacementSpot ps in childPlacementSpots)
             {
-                ps.transform.GetChild(1).gameObject.GetComponent<MeshFilter>().mesh = null;
+                ps.transform.GetChild(0).gameObject.GetComponent<MeshFilter>().mesh = null;
             }
 
             foreach (PlacementSpot ps in childPlacementSpots)

@@ -59,12 +59,29 @@ public class PushedState : State
         // Move to target placement spot
         if (sc.ps)
         {
+            //Target location and rotation
+            Vector3 offsetSocketPoint = sc.ps.offsetSocket.position;
+            Quaternion offsetSocketAngle = sc.ps.offsetSocket.rotation;
+
+            //Offset location and rotation
+            Vector3 offsetPlugPoint = sc.offsetPlug.localPosition;
+            Quaternion offsetPlugAngle = sc.offsetPlug.localRotation;
+
+            //Final position
+            Quaternion newAngle = offsetSocketAngle * Quaternion.Inverse(offsetPlugAngle);
+            Vector3 newPoint = offsetSocketPoint - newAngle * offsetPlugPoint;
+
+            sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
+            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+
+            /*
             Vector3 newPoint = sc.ps.transform.position;
             Quaternion newAngle = sc.ps.transform.rotation * sc._rotationOffset;
             sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
             sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
+            */
         }
-        
+
     }
     protected override void OnHurt()
     {

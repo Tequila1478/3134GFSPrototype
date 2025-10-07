@@ -186,6 +186,26 @@ PrefabInstance:
       propertyPath: layerableObjects.Array.data[2]
       value: 
       objectReference: {fileID: 372460948659651769}
+    - target: {fileID: 2884882815052843781, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.035811957
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884882815052843781, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_Size.z
+      value: 0.054164626
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884882815052843781, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00018814798
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884882815052843781, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_Center.y
+      value: -0.000000004461749
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884882815052843781, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_Center.z
+      value: -0.00078323775
+      objectReference: {fileID: 0}
     - target: {fileID: 3030253332731624246, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -233,6 +253,18 @@ PrefabInstance:
     - target: {fileID: 4447783242137429637, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
       propertyPath: m_Name
       value: Cup (Interactable) (Mug)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009250962723989698, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009250962723989698, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009250962723989698, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0301
       objectReference: {fileID: 0}
     - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
       propertyPath: layerableObjects.Array.size

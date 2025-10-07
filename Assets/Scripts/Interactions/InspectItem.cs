@@ -7,7 +7,6 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 {
     public bool isHovered;
     public CustomCursor cursor;
-    private Renderer objectRenderer;
     public bool onlyOnce = false;
 
     public DialogueScript dialogueScript;

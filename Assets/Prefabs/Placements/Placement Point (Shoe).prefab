@@ -55,6 +55,26 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2562827719368855778, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562827719368855778, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562827719368855778, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562827719368855778, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562827719368855778, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4523295686659762863, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: offset.y
       value: 0
@@ -131,6 +151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Placement Point (Shoe)
       objectReference: {fileID: 0}
+    - target: {fileID: 7001897315892348272, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f0f20394b2e9c140a869069c9341a16, type: 2}
     - target: {fileID: 7201434926003114707, guid: 6aa829aeb5c95e944bb9b4b0273a76bc, type: 3}
       propertyPath: m_LocalScale.x
       value: 50

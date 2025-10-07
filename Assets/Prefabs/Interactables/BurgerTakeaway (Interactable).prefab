@@ -273,6 +273,26 @@ PrefabInstance:
       propertyPath: layerableObjects.Array.data[3]
       value: 
       objectReference: {fileID: 1186667843873140409}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

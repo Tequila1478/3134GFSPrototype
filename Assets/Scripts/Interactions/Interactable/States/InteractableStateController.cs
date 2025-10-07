@@ -21,6 +21,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 
     [Header("Interaction Settings")]
     [NonSerialized] public bool isHovered = false; //Whether object is currently hovered over with mouse
+    public Transform offsetPlug;
 
     public string taskType;
     public bool isRequired;
@@ -74,7 +75,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     [NonSerialized] public Renderer objectRenderer;
     [NonSerialized] public CharacterController charController;
 
-    [Header("References")]
+    [Header("Particle References")]
     [Tooltip("These particles show up when object is selected.")]
     public ParticleSystem ghostParticles;
     [Tooltip("These particles also show up when object is selected.")]
@@ -162,6 +163,8 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
                 originalColors[i] = Color.clear; // or some default value
             }
         }
+        offsetPlug = gameObject.transform.Find("Offset Plug");
+
     }
     private void Awake()
     {
@@ -189,6 +192,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     private void Start()
     {
         ChangeState(idleState);
+
     }
 
     void Update()
@@ -490,4 +494,5 @@ public abstract class State
             rend.SetPropertyBlock(mpb);
         }
     }
+
 }

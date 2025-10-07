@@ -22,6 +22,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public bool isTrashcan = false;
     public bool isActive = true;
 
+    [Header("PLacement Settings")]
     public float maxHeightAbovePoint;
     public GameObject selectionHighlight;
     public Vector3 placementRescale = new Vector3 (1f, 1f, 1f);
@@ -30,21 +31,19 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     public bool claimed = false;
 
-    //public bool highlightSpots = false;
-
-
+    [Header("Spot Type")]
     public SpotType spotType = SpotType.Any;
 
-
-    public Vector3 placementPoint;
-    public Vector3 direction;
-    public Vector3 startingPosition;
+    [Header("placement Offset Settings")]
+    public Transform offsetSocket;
+    private Vector3 direction;
     public Vector3 placementOffset;
 
-    public CustomCursor cursor;
+    [Header("Other Settings")]
     public Collider otherObject;
     public int numOfTrash = 0;
 
+    //Increases the number of trash tasks completed
     public void IncrementTrash()
     {
         if (isTrashcan)
@@ -58,48 +57,12 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (player == null)
             player = FindObjectOfType<PlayerInteraction>();
 
-        placementPoint = transform.position;
         direction = transform.forward;
-        cursor = FindObjectOfType<CustomCursor>();
-
-        //placementVisualisation = transform.GetChild(0).gameObject;
-        //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
-
-        //placementVisualisation.SetActive(false);
-        selectionHighlight = transform.GetChild(1).gameObject;
+        selectionHighlight = transform.GetChild(0).gameObject;
         selectionHighlight.layer = 14;
         selectionHighlight.SetActive(false);
-    }
 
-    protected virtual void Update()
-    {
-        if (otherObject == null) return;
-
-        var interactable = otherObject.GetComponent<InteractableStateController>();
-        if (interactable == null) return;
-    }
-
-
-    protected virtual void OnDrawGizmos()
-    {
-        DrawArrow.ForGizmo(transform.position, transform.forward);
-        Gizmos.DrawSphere(transform.position, 0.15f);
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (!isActive) return;
-
-        SelectObject(other);
-        SetLayer(2); // Intentional: Ignore Raycast
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        isActive = true;
-        DeselectObject(other);
-        SetLayer(8);
-        //claimed = false;
+        offsetSocket = gameObject.transform.Find("Offset Socket");
     }
         
     protected virtual void SelectObject(Collider other = null)
@@ -135,29 +98,18 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             interactable.newDirection = direction;
             ApplyVisualisation(otherObject.gameObject.GetComponent<InteractableStateController>().visualisationObj, interactable);
         }
-        //highlightSpots = true;
     }
 
     public void UpdateHighlightForHeldItem(InteractableStateController heldItem)
     {
         bool valid = false;
-        Debug.Log("POOP Updating Highlights");
 
         if (heldItem != null && isActive && !claimed)
         {
             if (spotType == SpotType.Any || heldItem.taskType == spotType.ToString())
             {
                 valid = true;
-                Debug.Log("POOP valid = true");
             }
-            else
-            {
-                Debug.Log("POOP valid = false");
-            }
-        }
-        else
-        {
-            Debug.Log("POOP valid = false");
         }
 
         selectionHighlight.SetActive(valid);
@@ -181,17 +133,11 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
 
     protected virtual void DeselectObject(Collider other = null)
     {
-        if (other != null)
-        {
-            if (!claimed || other == otherObject)
-            {
-                otherObject = null;
-            }
-        }
-        else if (otherObject != null && !claimed)
+        if (!claimed && (other != null || other == otherObject))
         {
             otherObject = null;
         }
+        
     }
 
     protected virtual void ApplyVisualisation(GameObject obj, InteractableStateController interactable)
@@ -199,39 +145,22 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         var meshFilter = obj.GetComponent<MeshFilter>();
         if (meshFilter == null) return;
 
-        // Set mesh
-        //placementVisualisation.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
-
-        // Set scale
-        //placementVisualisation.transform.localScale = new Vector3(obj.transform.localScale.x * placementRescale.x, obj.transform.localScale.y * placementRescale.y, obj.transform.localScale.z * placementRescale.z);
-
-        if (isTrashcan)
+        if (!isTrashcan)
         {
-            // Trashcan: center placement visualisation on bin, ignore offset
-            //placementVisualisation.transform.position = transform.position;
-        }
-        else
-        {
-            // Normal spots: apply offset
             placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
-            //placementVisualisation.transform.position = transform.position + placementOffset;
         }
     }
 
     protected virtual Vector3 GetModifiedOffsetPosition(Vector3 baseOffset)
     {
         return Vector3.zero;
-        //return new Vector3(baseOffset.x * direction.x, baseOffset.y * direction.y, baseOffset.z * direction.z);
     }
 
     public void OnHoverEnter()
     {
         if (player.itemHeld == null) return;
 
-        //Debug.Log("Mouse is over " + gameObject.name);
         SelectObject();
-        startingPosition = player.itemHeld.transform.position;
-        //cursor.ChangeVisual(1);
         CursorScript.instance.UpdateCursor("Interact");
     }
 
@@ -239,7 +168,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
         DeselectObject();
         CursorScript.instance.UpdateCursor("Default");
-        SetLayer(8);
     }
 
     public void OnClick()
@@ -251,58 +179,4 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     {
 
     }
-
-    protected virtual void DisablePlacementPointCollidersSafely()
-    {
-        player.DisablePlacementPointColliders();
-    }
-
-    public void SetLayer(int layerNum)
-    {
-        if (isTrashcan) return; //trashcan should never change layer
-        this.gameObject.layer = layerNum;
-    }
-}
-
-	public static class DrawArrow
-{
-	public static void ForGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
-	{
-		Gizmos.DrawRay(pos, direction);
-
-		Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
-		Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
-	}
-
-	public static void ForGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
-	{
-		Gizmos.color = color;
-		Gizmos.DrawRay(pos, direction);
-
-		Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
-		Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
-	}
-
-	public static void ForDebug(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
-	{
-		Debug.DrawRay(pos, direction);
-
-		Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Debug.DrawRay(pos + direction, right * arrowHeadLength);
-		Debug.DrawRay(pos + direction, left * arrowHeadLength);
-	}
-	public static void ForDebug(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
-	{
-		Debug.DrawRay(pos, direction, color);
-
-		Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * new Vector3(0, 0, 1);
-		Debug.DrawRay(pos + direction, right * arrowHeadLength, color);
-		Debug.DrawRay(pos + direction, left * arrowHeadLength, color);
-	}
 }
