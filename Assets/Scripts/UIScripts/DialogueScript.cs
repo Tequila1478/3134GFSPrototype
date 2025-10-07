@@ -18,7 +18,8 @@ public class DialogueScript : MonoBehaviour
 
     public bool dialogueCompleted = false;
     public bool houseClean = false;
-    public bool foundDivorcePapers = true;
+    public bool foundDivorcePapers = false;
+    public bool foundPhoto = false;
     public GameObject hud;
     public CustomCursor cursor;
     public string loadNextScene;
@@ -41,6 +42,9 @@ public class DialogueScript : MonoBehaviour
     public List<DialogueLine> endDialogueBad;
 
     public List<DialogueLine> endDialogueFoundDivorcePapers;
+    public List<DialogueLine> endDialogueFoundPhotoNoDivorce;
+    public List<DialogueLine> endDialogueFoundPhotoDivorce;
+
 
     public void Start()
     {
@@ -107,6 +111,20 @@ public class DialogueScript : MonoBehaviour
         else
         {
             Debug.Log("Divorce papers not found");
+        }
+
+        if (foundPhoto)
+        {
+            Debug.Log("photo found");
+            if (foundDivorcePapers)
+                yield return StartCoroutine(PlayDialogue(endDialogueFoundPhotoDivorce));
+
+            else
+                yield return StartCoroutine(PlayDialogue(endDialogueFoundPhotoNoDivorce));
+        }
+        else
+        {
+            Debug.Log("photo not found");
         }
 
         Debug.Log("End of day sequence complete.");

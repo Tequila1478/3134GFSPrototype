@@ -8,6 +8,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     public bool isHovered;
     public CustomCursor cursor;
     private Renderer objectRenderer;
+    public bool onlyOnce = false;
 
     public DialogueScript dialogueScript;
 
@@ -17,6 +18,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     private DialogueScript ds;
 
     public bool isDivorcePapers = false;
+    public bool isPhoto = false;
     public Sprite inspectionImage;
     public bool displayInfoImage = true;
     public string inspectionText = "";
@@ -30,10 +32,19 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
     public bool specialCameraReq = false;
     public bool active = false;
     public CinemachineVirtualCamera specialCamera;
+    
 
     public AudioClip InteractNoise;
 
     public AudioManager audio_AM;
+
+    [Header("Change Image Settings")]
+    public bool changeImage = false;
+    public Material newImage;
+    public GameObject imageObj;
+    public AudioClip imageChangeSound;
+
+    private bool hasInteracted;
 
     // Start is called before the first frame update
     void Start()
@@ -63,20 +74,36 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
 
     public void OnClick()
     {
-        if (ds.isMonologuing) return; //Don't do stuff if dialogue is already monologuing
-        if (specialCameraReq && !active) return;
-
-        audio_AM.PlaySFX(InteractNoise);
-        StartCoroutine(ShowInfo());
-        //Show info and dialogue on counter
-        //UPdate state
-
-        if (dialogueScript != null && isDivorcePapers)
+        if ((onlyOnce && !hasInteracted) || !onlyOnce)
         {
-            dialogueScript.foundDivorcePapers = true;
+            if (ds.isMonologuing) return; //Don't do stuff if dialogue is already monologuing
+            if (specialCameraReq && !active) return;
+
+            audio_AM.PlaySFX(InteractNoise);
+            StartCoroutine(ShowInfo());
+            //Show info and dialogue on counter
+            //UPdate state
+
+            if (dialogueScript != null && isDivorcePapers)
+            {
+                dialogueScript.foundDivorcePapers = true;
+            }
+
+            if (isPhoto)
+            {
+                dialogueScript.foundPhoto = true;
+            }
+
+            if (changeImage)
+            {
+                if (!hasInteracted)
+                {
+                    imageObj.GetComponent<MeshRenderer>().material = newImage;
+                    audio_AM.PlaySFX(imageChangeSound);
+                }
+            }
         }
-
-
+        hasInteracted = true;
     }
 
     public IEnumerator ShowInfo()
