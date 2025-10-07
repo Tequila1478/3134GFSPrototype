@@ -101,7 +101,7 @@ public class ObjectInteractions : MonoBehaviour
             {
                 Debug.Log(spot);
                 //GameObject glow = Instantiate(glowPrefab, hit.transform.position + Vector3.up * 0.1f, Quaternion.identity);
-                GameObject glow = spot.highlightVisualisation;
+                GameObject glow = spot.selectionHighlight;
                 glow.SetActive(true);
                 activeGlows.Add(glow);
             }

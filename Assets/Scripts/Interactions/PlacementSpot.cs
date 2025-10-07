@@ -11,7 +11,8 @@ public enum SpotType
     Trash,
     Any,  //for spots that accept any type
     Stationary,
-    Shoe
+    Shoe,
+    Cup,
 }
 
 
@@ -21,16 +22,13 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public bool isTrashcan = false;
     public bool isActive = true;
 
-    public Vector3 offset = new Vector3(0, 1, 0);
     public float maxHeightAbovePoint;
-    //public GameObject placementVisualisation;
-    public GameObject highlightVisualisation;
+    public GameObject selectionHighlight;
     public Vector3 placementRescale = new Vector3 (1f, 1f, 1f);
     public Vector3 highlightRescale = new Vector3 (1f, 1f, 1f);
     public PlayerInteraction player;
 
     public bool claimed = false;
-    public bool withinRange = false;
 
     //public bool highlightSpots = false;
 
@@ -38,7 +36,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public SpotType spotType = SpotType.Any;
 
 
-    public Vector3[] controlPoints = new Vector3[4];
     public Vector3 placementPoint;
     public Vector3 direction;
     public Vector3 startingPosition;
@@ -69,9 +66,9 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         //placementVisualisation.GetComponent<MeshFilter>().mesh = null;
 
         //placementVisualisation.SetActive(false);
-        highlightVisualisation = transform.GetChild(1).gameObject;
-        highlightVisualisation.layer = 14;
-        highlightVisualisation.SetActive(false);
+        selectionHighlight = transform.GetChild(1).gameObject;
+        selectionHighlight.layer = 14;
+        selectionHighlight.SetActive(false);
     }
 
     protected virtual void Update()
@@ -82,21 +79,10 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (interactable == null) return;
     }
 
-    protected virtual void CreateBezierCurvePoints(InteractableStateController interactable)
-    {
-        placementOffset = GetModifiedOffsetPosition(interactable.edgeOfObject);
-        controlPoints[3] = transform.position + placementOffset;
-        controlPoints[2] = controlPoints[3] + offset * maxHeightAbovePoint;
-        controlPoints[1] = startingPosition - offset * maxHeightAbovePoint;
-        controlPoints[0] = startingPosition;
-
-        Debug.Log($"Point 1: {controlPoints[0]}, Point 2: {controlPoints[0]}, Point 3: {controlPoints[0]}, Point 4: {controlPoints[0]},");
-    }
 
     protected virtual void OnDrawGizmos()
     {
         DrawArrow.ForGizmo(transform.position, transform.forward);
-        DrawBezierCurve();
         Gizmos.DrawSphere(transform.position, 0.15f);
     }
 
@@ -115,23 +101,7 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         SetLayer(8);
         //claimed = false;
     }
-    
-    //Debuggin stuff
-    protected virtual void DrawBezierCurve()
-    {
-        for (float t = 0; t <= 1; t += 0.05f)
-        {
-            Vector3 position = Mathf.Pow(1 - t, 3) * controlPoints[0] +
-                               3 * Mathf.Pow(1 - t, 2) * t * controlPoints[1] +
-                               3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] +
-                               Mathf.Pow(t, 3) * controlPoints[3];
-            Gizmos.DrawSphere(position, 0.15f);
-        }
-
-        Gizmos.DrawLine(controlPoints[0], controlPoints[1]);
-        Gizmos.DrawLine(controlPoints[2], controlPoints[3]);
-    }
-
+        
     protected virtual void SelectObject(Collider other = null)
     {
         if (claimed || !isActive) return;
@@ -154,7 +124,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (other != null && other.CompareTag("Held Item"))
         {
             otherObject = other;
-            withinRange = true;
             interactable.newDirection = direction;
 
             ApplyVisualisation(other.gameObject.GetComponent<InteractableStateController>().visualisationObj, interactable);
@@ -163,7 +132,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         {
             otherObject = player.itemHeld.GetComponent<Collider>();
 
-            withinRange = true;
             interactable.newDirection = direction;
             ApplyVisualisation(otherObject.gameObject.GetComponent<InteractableStateController>().visualisationObj, interactable);
         }
@@ -192,20 +160,20 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             Debug.Log("POOP valid = false");
         }
 
-        highlightVisualisation.SetActive(valid);
+        selectionHighlight.SetActive(valid);
 
         if (!valid) return;
 
-        var meshFilter = highlightVisualisation.GetComponent<MeshFilter>();
+        var meshFilter = selectionHighlight.GetComponent<MeshFilter>();
         var heldMeshFilter = heldItem.visualisationObj.GetComponent<MeshFilter>();
 
         if (meshFilter != null && heldMeshFilter != null)
         {
             meshFilter.mesh = heldMeshFilter.mesh;
-            highlightVisualisation.transform.localScale = new Vector3(heldItem.visualisationObj.transform.localScale.x * highlightRescale.x, heldItem.visualisationObj.transform.localScale.y * highlightRescale.y, heldItem.visualisationObj.transform.localScale.z * highlightRescale.z);
+            selectionHighlight.transform.localScale = new Vector3(heldItem.visualisationObj.transform.localScale.x * highlightRescale.x, heldItem.visualisationObj.transform.localScale.y * highlightRescale.y, heldItem.visualisationObj.transform.localScale.z * highlightRescale.z);
 
             // Align highlight position with placementVisualisation
-            highlightVisualisation.transform.position = isTrashcan
+            selectionHighlight.transform.position = isTrashcan
                 ? transform.position
                 : transform.position + GetModifiedOffsetPosition(heldItem.edgeOfObject);
         }
@@ -218,13 +186,11 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
             if (!claimed || other == otherObject)
             {
                 otherObject = null;
-                withinRange = false;
             }
         }
         else if (otherObject != null && !claimed)
         {
             otherObject = null;
-            withinRange = false;
         }
     }
 
@@ -272,9 +238,6 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
     public void OnHoverExit()
     {
         DeselectObject();
-        //claimed = false;
-        withinRange = false;
-        //cursor.ChangeVisual(0);
         CursorScript.instance.UpdateCursor("Default");
         SetLayer(8);
     }
