@@ -33,6 +33,15 @@ public class FloatState : State
 
         // Update layer
         sc.SetNewLayer(sc.layerWhenSelected);
+
+        // Reset rayOffset to match current position in scene
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Set up raycast stuff with current mouse position
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, sc.interactionLayer))
+        {
+            sc.rayOffset = hit.distance; // Update offset to match ray hit distance
+        }
     }
 
     protected override void OnUpdate()
@@ -72,7 +81,7 @@ public class FloatState : State
             }
 
             // Move to mouse position within world using updated offsets
-            Vector3 newPoint = ray.GetPoint(hit.distance - (sc.maxRayOffset - sc.rayVisualOffset));
+            Vector3 newPoint = ray.GetPoint(hit.distance - (sc.maxRayOffset + sc.minRayOffset - sc.rayVisualOffset));
             sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
         }
     }
