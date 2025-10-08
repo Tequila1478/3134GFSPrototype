@@ -224,6 +224,18 @@ PrefabInstance:
       propertyPath: rayVisualOffset
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00152
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1531631957759763986, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
     m_RemovedGameObjects: []

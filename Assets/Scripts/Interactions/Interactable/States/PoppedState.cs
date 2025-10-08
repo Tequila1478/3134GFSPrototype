@@ -28,6 +28,8 @@ public class PoppedState : State
         sc.transform.rotation = newAngle;
         sc.transform.position = newPoint;
 
+        
+
 
         // Update physics
         sc.rb.useGravity = false;
@@ -52,6 +54,9 @@ public class PoppedState : State
 
         // Yield interactivity when first entering this state
         sc.StartCoroutine(sc.HaltInteractions(0.1f));
+
+        sc.sfx_AM?.PlaySFX(sc.putDown);
+        sc.ToggleParticles("PLACE");
     }
 
     protected override void OnUpdate()

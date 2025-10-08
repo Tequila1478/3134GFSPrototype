@@ -129,8 +129,8 @@ public class PushedState : State
         Debug.Log("Started StartMoveToSetSpot");
 
         sc.ps = placementSpot;
-        sc.sfx_AM?.PlaySFX(sc.putDown);
-        sc.ToggleParticles("PLACE");
+        sc.sfx_AM?.PlaySFX(sc.pushed);
+        //sc.ToggleParticles("PLACE");
 
         return true;
 

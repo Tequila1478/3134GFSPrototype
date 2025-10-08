@@ -66,7 +66,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
         // Set active of toggled objects
         foreach (GameObject obj in toggledObjects)
         {
-            obj.SetActive(boolean);
+            obj.GetComponent<PlacementSpot>().isActive = boolean;
         }
     }
 
@@ -89,7 +89,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
     {
         if (!active)
         {
-            yield return new WaitForSecondsRealtime(0.7f);
+            yield return new WaitForSecondsRealtime(1f);
 
 
             foreach (PlacementSpot ps in childPlacementSpots)
@@ -99,7 +99,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
 
             foreach (PlacementSpot ps in childPlacementSpots)
             {
-                ps.gameObject.SetActive(active);
+                ps.isActive = false;
             }
         }
 
@@ -108,7 +108,7 @@ public class OpenDrawer : MonoBehaviour, IClickable, IHoverable
             yield return new WaitForSecondsRealtime(0.4f);
             foreach (PlacementSpot ps in childPlacementSpots)
             {
-                ps.gameObject.SetActive(active);
+                ps.isActive = true;
             }
         }
 

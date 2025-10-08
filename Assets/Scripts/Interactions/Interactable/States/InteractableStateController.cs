@@ -89,8 +89,10 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public GameObject floatingParticles;
     [NonSerialized] public ParticleSystem[] floatingParticleSystems;
     
+    [Header("AUdio cues")]
     public AudioClip pickUp;
     public AudioClip putDown;
+    public AudioClip pushed;
 
     [NonSerialized] public bool isMoving = false;
 
