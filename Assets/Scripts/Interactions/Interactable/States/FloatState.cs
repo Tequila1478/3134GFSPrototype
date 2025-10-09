@@ -56,9 +56,7 @@ public class FloatState : State
         {
             // Check if this hoop or any of its parents belong to an active PlacementSpot
             PlacementSpot ps = hit.collider.GetComponentInParent<PlacementSpot>();
-            if (ps == null || !ps.isActive)
-                return; // Skip if no PlacementSpot or it's inactive
-
+            if (ps != null && ps.isActive) // Only do if PlacementSpot exists and is inactive
             if (hit.collider.TryGetComponent<BasketballHoop>(out var bbhoop))
             {
                 bbhoop.HoopIt(sc); // Run basketball hoop's HoopIt() function to kickstart push state
