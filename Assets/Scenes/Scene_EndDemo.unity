@@ -339,6 +339,7 @@ MonoBehaviour:
   sceneToLoad: Main_Menu
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -699,9 +700,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thats the end of the Homely Haunting demo! Thank you so much for spending
-    your time with us. If you enjoyed it feel free to follow along with our development
-    at: ~Link~'
+  m_text: Thats the end of the Homely Haunting demo! Thank you so much for spending
+    your time with us. If you enjoyed, be sure to check out the devs' socials in
+    the Credits for updates and more cool stuff!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
   m_sharedMaterial: {fileID: -1273417531249181135, guid: d16eb522da857bc41988b9fdb851a123, type: 2}
@@ -1221,6 +1222,7 @@ MonoBehaviour:
   sceneToLoad: Main_Menu
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
