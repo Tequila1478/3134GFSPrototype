@@ -6,6 +6,7 @@ public class ChangeUI : MonoBehaviour
 {
     public GameObject settingsUI;
     public GameObject howToPlayUI;
+    public GameObject creditsUI;
     public GameObject mainMenuUI;
 
     public void DisplayHowToPlayUI()
@@ -16,6 +17,11 @@ public class ChangeUI : MonoBehaviour
     public void DisplaySettingUI()
     {
         settingsUI.SetActive(true);
+    }
+
+    public void DisplayCreditUI()
+    {
+        creditsUI.SetActive(true);
     }
 
     public void DisplayMainMenuUI()
@@ -36,5 +42,10 @@ public class ChangeUI : MonoBehaviour
     public void RemoveSettingUI()
     {
         settingsUI.SetActive(false);
+    }
+
+    public void RemoveCreditUI()
+    {
+        creditsUI.SetActive(false);
     }
 }

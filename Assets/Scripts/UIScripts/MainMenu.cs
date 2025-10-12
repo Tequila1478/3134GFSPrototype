@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
                 case "HowToPlayScreen":
                     FindObjectOfType<AnimatorController_BG>().FromSettingsMenu();
                     break;
+                case "CreditsScreen":
+                    FindObjectOfType<AnimatorController_BG>().TransitionToMenu(AnimatorController_BG.InMenu.outCredits);
+                    break;
                 default:
                     break;
             }

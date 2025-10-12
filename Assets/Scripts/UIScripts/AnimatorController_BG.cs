@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,53 +9,111 @@ public class AnimatorController_BG : MonoBehaviour
     [Header("All animators to control")]
     [SerializeField] private Animator[] animators;
 
-    public bool isSetting = false;
+    public enum InMenu
+    {
+        isNone,
+        isSetting,
+        outSetting,
+        isHowToPlay,
+        outHowToPlay,
+        isCredits,
+        outCredits
+    }
+    public InMenu inMenu = InMenu.isNone;
+    [NonSerialized] public InMenu _inMenu = InMenu.isNone;
+
+    /*public bool isSetting = false;
     private bool _isSetting = false;
     public bool isHowToPlay = false;
-    public bool _isHowToPlay = false;
+    public bool _isHowToPlay = false;*/
 
 
-    private const string transitionParam = "TransitionToSettings";
-    private const string transitionParam2 = "TransitionToHowToPlay";
+    private const string transitionParamSettings = "TransitionToSettings";
+    private const string transitionParamHowToPlay = "TransitionToHowToPlay";
+    private const string transitionParamCredits = "TransitionToCredits";
 
+    private void Start()
+    {
+        _inMenu = inMenu;
+    }
 
     private void Update()
     {
-        if(_isSetting != isSetting)
+        if(_inMenu != inMenu)
         {
-            TransitionToSettings(transitionParam, isSetting);
+            TransitionToMenu(inMenu);
         }
-        _isSetting = isSetting;
-
-        if (_isHowToPlay != isHowToPlay)
-        {
-            TransitionToSettings(transitionParam2, isHowToPlay);
-        }
-        _isHowToPlay = isHowToPlay;
+        _inMenu = inMenu;
     }
 
+    public void OpenMenu(InMenu newMenu)
+    {
+        inMenu = newMenu;
+    }
+    public void OpenMenu(string newMenu)
+    {
+        if (System.Enum.TryParse(newMenu, out InMenu parsed_enum))
+        {
+            inMenu = parsed_enum;
+        }
+    }
     public void ToSettingsMenu()
     {
-        isSetting = true;
+        inMenu = InMenu.isSetting;
     }
 
     public void FromSettingsMenu()
     {
-        isSetting = false;
-        isHowToPlay = false;
+        inMenu = InMenu.outSetting;
     }
 
     public void ToHowToPlayMenu()
     {
-        isHowToPlay = true;
+        inMenu = InMenu.isHowToPlay;
     }
 
-    public void TransitionToSettings(string transitionParam, bool condition)
+
+    public void TransitionToMenu(InMenu newMenu)
+    {
+        switch (newMenu)
+        {
+            case (InMenu.isSetting):
+                TransitionToMenu(transitionParamSettings, true);
+                break;
+            case (InMenu.outSetting):
+                TransitionToMenu(transitionParamSettings, false);
+                inMenu = InMenu.isNone;
+                _inMenu = InMenu.isNone;
+                break;
+            case (InMenu.isHowToPlay):
+                TransitionToMenu(transitionParamHowToPlay, true);
+                break;
+            case (InMenu.outHowToPlay):
+                TransitionToMenu(transitionParamHowToPlay, false);
+                inMenu = InMenu.isNone;
+                _inMenu = InMenu.isNone;
+                break;
+            case (InMenu.isCredits):
+                TransitionToMenu(transitionParamCredits, true);
+                break;
+            case (InMenu.outCredits):
+                TransitionToMenu(transitionParamCredits, false);
+                inMenu = InMenu.isNone;
+                _inMenu = InMenu.isNone;
+                break;
+            default: //InMenu.None
+                Debug.Log("No transition performed.");
+                break;
+        }
+    }
+    public void TransitionToMenu(string nextTransitionParam, bool entering)
     {
         foreach (Animator anim in animators)
         {
             if (anim != null)
-                anim.SetBool(transitionParam, condition);
+            {
+                anim.SetBool(nextTransitionParam, entering);
+            }
         }
     }
 }
