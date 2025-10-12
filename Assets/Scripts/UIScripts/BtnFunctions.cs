@@ -15,6 +15,7 @@ public class BtnFunctions : MonoBehaviour
     public GameObject triggerUI;
 
     public Slider slider;
+    public Slider[] sliders;
     private AudioManager audio_AM;
     public bool isMusic;
     public bool isSFX;
@@ -88,7 +89,24 @@ public class BtnFunctions : MonoBehaviour
 
     public void ResetDataOnClick()
     {
-        Debug.Log("Functionality needed");
+        // Reset volume
+        audio_AM.SetMusicVolume(audio_AM.startingMusicVol);
+        audio_AM.SetSFXVolume(audio_AM.startingSfxVol);
+
+        // Reset sliders
+        foreach (Slider s in sliders)
+        {
+            if (s != null)
+            {
+                BtnFunctions btnf = s.GetComponent<BtnFunctions>(); // Must have the slider's btnfunctions to work
+                if (btnf != null)
+                { // Set slider value by checking the setting type
+                    if (btnf.isMusic) s.value = audio_AM.startingMusicVol;
+                    else if (btnf.isSFX) s.value = audio_AM.startingSfxVol;
+                    else if (btnf.isDialogue) s.value = audio_AM.startingDialogueVol;
+                }
+            }
+        }
 
         if (playAudioOnClick)
         {

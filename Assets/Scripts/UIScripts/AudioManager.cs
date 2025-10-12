@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -30,9 +31,21 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        //Initialise volume
+        musicVol = startingMusicVol;
+        sfxVol = startingSfxVol;
+        dialogueVol = startingDialogueVol;
+
         //Start music
         musicSource.clip = musicClips[0];
         musicSource.Play();
+    }
+
+    private void OnValidate()
+    {
+        if (musicVol != startingMusicVol) musicVol = startingMusicVol;
+        if (sfxVol != startingSfxVol) sfxVol = startingSfxVol;
+        if (dialogueVol != startingDialogueVol) dialogueVol = startingDialogueVol;
     }
 
     // Update is called once per frame
@@ -46,6 +59,7 @@ public class AudioManager : MonoBehaviour
     //Music volume
 
     public float musicVol = 0.5f;
+    public float startingMusicVol = 0.5f;
     public AudioSource musicSource; // Assign in the Inspector
     public AudioClip[] musicClips; // Assign in the Inspector
 
@@ -101,6 +115,7 @@ public class AudioManager : MonoBehaviour
     //SFX volume
 
     public float sfxVol = 1f;
+    public float startingSfxVol = 1f;
 
     //Plays non 3D SFX
     public void PlaySFX(AudioClip clip, float volumeOverride = 1f)
@@ -138,6 +153,7 @@ public class AudioManager : MonoBehaviour
 
     //Dialogue Settings
     public float dialogueVol = 0.75f;
+    public float startingDialogueVol = 0.75f;
 
 
 }

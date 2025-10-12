@@ -1889,6 +1889,7 @@ MonoBehaviour:
   sceneToLoad: IntroAnim
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -2285,8 +2286,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1493805268}
   m_HandleRect: {fileID: 1493805267}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6398612
+  m_Value: 0.99999976
+  m_Size: 0.6398611
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2531,6 +2532,7 @@ MonoBehaviour:
   sceneToLoad: Scene_Teenager
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -3149,6 +3151,7 @@ MonoBehaviour:
   sceneToLoad: Scene_FirstDay
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -3486,12 +3489,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicVol: 0.5
+  startingMusicVol: 0.5
   musicSource: {fileID: 841643610}
   musicClips:
   - {fileID: 8300000, guid: a4cd52caf389b3b438934be43a6aa1d8, type: 3}
   - {fileID: 8300000, guid: 8f0eb7daf652b6c47b05e25e23e800c8, type: 3}
   sfxVol: 1
+  startingSfxVol: 1
   dialogueVol: 0.75
+  startingDialogueVol: 0.75
 --- !u!4 &841643612
 Transform:
   m_ObjectHideFlags: 0
@@ -4242,6 +4248,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 1104822990}
+  sliders: []
   isMusic: 0
   isSFX: 1
   isDialogue: 0
@@ -4630,6 +4637,7 @@ MonoBehaviour:
   sceneToLoad: Scene_FirstDay
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -4997,6 +5005,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -6260,6 +6269,10 @@ MonoBehaviour:
   sceneToLoad: Scene_Teenager
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders:
+  - {fileID: 2881016717812141694}
+  - {fileID: 2584669864246276436}
+  - {fileID: 6172272078082109268}
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -6711,6 +6724,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -6998,8 +7012,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 50282420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.36013877}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.3601388}
+  m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
   m_SizeDelta: {x: 956, y: 1210}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7663,6 +7677,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 1654283582}
+  sliders: []
   isMusic: 1
   isSFX: 0
   isDialogue: 0
@@ -8373,6 +8388,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -8568,6 +8584,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -8949,6 +8966,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -9436,6 +9454,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -12460,6 +12479,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 2881016717812141694}
+  sliders: []
   isMusic: 1
   isSFX: 0
   isDialogue: 0
@@ -12504,6 +12524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3891098001885903353}
   - component: {fileID: 6172272078082109268}
+  - component: {fileID: 6172272078082109269}
   m_Layer: 5
   m_Name: Dialogue_Sld
   m_TagString: Untagged
@@ -12578,6 +12599,32 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6172272078082109269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911629498856293568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c91d5cbe7770d44daa3ddb55b77ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playAudioOnClick: 1
+  nextUI: {fileID: 0}
+  previousUI: {fileID: 0}
+  sceneToLoad: 
+  triggerUI: {fileID: 0}
+  slider: {fileID: 2584669864246276436}
+  sliders: []
+  isMusic: 0
+  isSFX: 0
+  isDialogue: 1
+  animator: {fileID: 0}
+  animationBoolName: 
+  startingState: 1
+  onClickAudio: {fileID: 8300000, guid: 5108a6f928e02aa43b717bfcf0e7bcf2, type: 3}
 --- !u!114 &6173651956742058295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13180,6 +13227,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 2584669864246276436}
+  sliders: []
   isMusic: 0
   isSFX: 1
   isDialogue: 0
@@ -13251,6 +13299,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
@@ -13440,6 +13489,7 @@ MonoBehaviour:
   sceneToLoad: 
   triggerUI: {fileID: 0}
   slider: {fileID: 0}
+  sliders: []
   isMusic: 0
   isSFX: 0
   isDialogue: 0
