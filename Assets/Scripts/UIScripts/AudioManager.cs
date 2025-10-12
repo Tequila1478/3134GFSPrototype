@@ -129,7 +129,6 @@ public class AudioManager : MonoBehaviour
         tempSource.volume = sfxVol * volumeOverride;
         tempSource.Play();
         Destroy(tempGO, clip.length);
-
     }
 
     //Plays SFX at point
