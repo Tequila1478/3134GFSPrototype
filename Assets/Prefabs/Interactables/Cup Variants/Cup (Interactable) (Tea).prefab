@@ -243,6 +243,14 @@ PrefabInstance:
       propertyPath: taskType
       value: Trash
       objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: layerableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 3686941835974575444}
     - target: {fileID: 6633105268379534805, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
