@@ -42,13 +42,13 @@ public class VideoController : MonoBehaviour
         // Use spacebar to advance
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (nextSceneButton.activeSelf)
-            {
-                LoadSceneFirstDay();
-            }
-            else if (nextButton.activeSelf)
+            if (nextButton.activeSelf)
             {
                 Continue();
+            }
+            else if (nextSceneButton.activeSelf)
+            {
+                LoadSceneFirstDay();
             }
             else if (skipButton.activeSelf)
             {
