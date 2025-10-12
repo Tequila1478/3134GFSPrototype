@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 918f13551290e76478dc225dc90759a0
   - enabled: 1
+    path: Assets/Scenes/IntroAnim.unity
+    guid: 5d26198e386b0ee448e150f52d4190fb
+  - enabled: 1
     path: Assets/Scenes/Scene_FirstDay.unity
     guid: 61df22726be822446ba839d05a559207
   - enabled: 1
     path: Assets/Scenes/Scene_EndDemo.unity
     guid: b4b4a954e97a72648b4b39c39619d759
-  - enabled: 1
-    path: Assets/Scenes/IntroAnim.unity
-    guid: 5d26198e386b0ee448e150f52d4190fb
   m_configObjects: {}

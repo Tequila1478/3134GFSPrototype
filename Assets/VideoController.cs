@@ -10,6 +10,7 @@ public class VideoController : MonoBehaviour
     public bool paused;
     public VideoPlayer videoPlayer;
     public GameObject nextButton;
+    public GameObject skipButton;
     public GameObject nextSceneButton;
     private int pauseNumber = 0;
 
@@ -34,15 +35,39 @@ public class VideoController : MonoBehaviour
                 Debug.Log("Video paused at frame: " + videoPlayer.frame);
                 pauseNumber++;
                 nextButton.SetActive(true);
+                skipButton.SetActive(false);
+            }
+        }
+
+        // Use spacebar to advance
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (nextSceneButton.activeSelf)
+            {
+                LoadSceneFirstDay();
+            }
+            else if (nextButton.activeSelf)
+            {
+                Continue();
+            }
+            else if (skipButton.activeSelf)
+            {
+                SkipToNext();
             }
         }
     }
 
     public void Continue()
-    {        
+    {
         nextButton.SetActive(false);
+        skipButton.SetActive(true);
         videoPlayer.Play();
         paused = false;
+    }
+
+    public void SkipToNext()
+    {
+        videoPlayer.frame = pauseFrames[pauseNumber] - 1; // This skips to the next pause frame. Update() then handles pausing like usual.
     }
 
     void OnVideoFinished(VideoPlayer vp)
