@@ -8,9 +8,20 @@ public class BasketballHoop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // HoopIt() if other object is an InteractableStateController.cs
-        /*InteractableStateController interactableSC = other.GetComponent<InteractableStateController>();
-        if (interactableSC != null) HoopIt(interactableSC);*/
+        // This code is for auto-dunking idle trash into a bin
+        var isc = other.GetComponent<InteractableStateController>();
+        if (isc && placementSpot) // Do if triggering object is interactable and this hoop's placement spot still exists
+        {
+            if
+            (
+                placementSpot.isTrashcan // Check if placement spot is for dunking
+                && isc.taskType == placementSpot.spotType.ToString() // Check if task types match
+                && isc.currentState == isc.idleState // Check if interactable is idle
+            )
+            {
+                isc.ChangeState(isc.dunkedState); // Start dunk state for interactable
+            }
+        }
     }
 
     public void HoopIt(InteractableStateController interactable)
