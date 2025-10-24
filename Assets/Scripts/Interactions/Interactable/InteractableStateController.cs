@@ -451,19 +451,15 @@ public abstract class State
     }
     public virtual void OnHoverEnter()
     {
-        Debug.Log("StateController: Hovering over object"); //Debug
-        sc.isHovered = true;
-
-        if (!sc.playerInteraction.isHolding)
+        Debug.Log("StateController: Hovering over object and playerInteraction.isHolding = " + sc.playerInteraction.isHolding); //Debug
+        
+        if (!sc.playerInteraction.itemHeld) // Check if no valid item is being held
         {
+            sc.isHovered = true;
+
             HighlightObject();
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Interact");
             if (sc.hoverParticles != null) sc.hoverParticles.Play();
-
-        }
-        if (sc.playerInteraction.itemHeld == sc)
-        {
-            CursorScript.instance.UpdateCursor("Interact");
         }
     }
 
@@ -474,15 +470,14 @@ public abstract class State
 
         if (sc.hoverParticles != null) sc.hoverParticles.Stop();
 
-
-        if (!sc.playerInteraction.isHolding)
-        {
-            UnhighlightObject();
-            CursorScript.instance.UpdateCursor("Default");
-        }
         if (sc.playerInteraction.itemHeld == sc)
         {
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Default");
+        }
+        else if (!sc.playerInteraction.itemHeld) // Check if no valid item is being held
+        {
+            UnhighlightObject();
+            //CursorScript.instance.UpdateCursor("Default");
         }
     }
 

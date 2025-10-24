@@ -154,7 +154,7 @@ public class InspectItem : MonoBehaviour, IClickable, IHoverable
             HighlightObject();
             Debug.Log("hi"); ;
             //cursor?.ChangeVisual(1);
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Interact");
             isHovered = true;
         }
     }

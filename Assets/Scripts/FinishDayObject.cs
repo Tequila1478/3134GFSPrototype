@@ -51,12 +51,12 @@ public class FinishDayObject : MonoBehaviour, IHoverable, IClickable
         {
             HighlightObject();
             //cursor?.ChangeVisual(1);
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Interact");
         }
         if (pi.itemHeld == this)
         {
             //cursor?.ChangeVisual(1);
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Interact");
         }
     }
 
@@ -69,12 +69,12 @@ public class FinishDayObject : MonoBehaviour, IHoverable, IClickable
         {
             UnhighlightObject();
             //cursor?.ChangeVisual(0);
-            CursorScript.instance.UpdateCursor("Default");
+            //CursorScript.instance.UpdateCursor("Default");
         }
         if (pi.itemHeld == this)
         {
             //cursor?.ChangeVisual(1);
-            CursorScript.instance.UpdateCursor("Interact");
+            //CursorScript.instance.UpdateCursor("Interact");
         }
     }
 

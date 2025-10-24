@@ -161,13 +161,13 @@ public class PlacementSpot : MonoBehaviour, IHoverable, IClickable
         if (player.itemHeld == null) return;
 
         SelectObject();
-        CursorScript.instance.UpdateCursor("Interact");
+        //CursorScript.instance.UpdateCursor("Interact");
     }
 
     public void OnHoverExit()
     {
         DeselectObject();
-        CursorScript.instance.UpdateCursor("Default");
+        //CursorScript.instance.UpdateCursor("Default");
     }
 
     public void OnClick()

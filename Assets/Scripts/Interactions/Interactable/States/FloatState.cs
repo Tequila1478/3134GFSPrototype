@@ -132,7 +132,7 @@ public class FloatState : State
         {
             sc.moveComplete = true;
             //cursor?.ChangeVisual(0);
-            CursorScript.instance.UpdateCursor("Default");
+            //CursorScript.instance.UpdateCursor("Default");
         }*/
 
         base.OnRelease();
