@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /* IdleState - The default state used by InteractableStateController.
  * In this state, the interactable uses gravity and isn't controlled by the player.
@@ -20,6 +21,10 @@ public class IdleState : State
 
         // Update particles
         sc.ToggleParticles();
+
+        if (sc.pg)
+            sc.pg.AddActionAsListener(UnhighlightObject, nameof(UnhighlightObject)); // Set up pause listener
+        else Debug.LogError("WHere the fook is the sc.pg");
     }
 
     protected override void OnUpdate()
@@ -47,6 +52,8 @@ public class IdleState : State
     protected override void OnExit()
     {
         // "Must've been the wind"
+        Debug.Log("Hi POOP OnExit here");
+        sc.pg.RemoveActionAsListener(UnhighlightObject, nameof(UnhighlightObject)); // Set up pause listener
         OnHoverExit();
     }
     public override void OnHoverEnter()
@@ -61,7 +68,8 @@ public class IdleState : State
     }
     public override void OnClick()
     {
-        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+        if (!sc.isInteractive) return; // Cancel if not currently interactive
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
 
         if (sc.ps != null) sc.ps.claimed = false;
 
@@ -80,6 +88,6 @@ public class IdleState : State
     }
     public override void OnRelease()
     {
-        // Do nothing
+        //
     }
 }

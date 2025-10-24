@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /* PoppedState - State used by InteractableStateController when an interactable has been placed.
  * Uses some logic from IdleState so that the interactable can be picked up again.
@@ -87,6 +88,7 @@ public class PoppedState : State
     public override void OnClick()
     {
         if (!sc.isInteractive) return; // Cancel if not currently interactive 
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
 
         if (sc.ps != null) sc.ps.claimed = false; // Unclaim placement spot
 

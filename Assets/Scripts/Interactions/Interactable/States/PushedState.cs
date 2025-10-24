@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 /* PushedState - State used by InteractableStateController when an interactable is positioned at a placement hoop.
@@ -86,7 +87,8 @@ public class PushedState : State
     }
     protected override void OnLeftClick() // In PushedState, left-click will confirm place the interactable in its current placement spot.
     {
-        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+        if (!sc.isInteractive) return; // Cancel if not currently interactive
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
 
         sc.ps.claimed = !sc.ps.isTrashcan; // Set placement spot as claimed (if it isn't a trash can)
 

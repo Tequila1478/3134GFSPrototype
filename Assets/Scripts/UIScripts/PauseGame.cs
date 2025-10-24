@@ -1,10 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Events;
+using static UnityEngine.UI.Image;
 
 public class PauseGame : MonoBehaviour
 {
-    public bool isPaused = false;
+    //public bool isPaused = false;
+    public enum PauseState
+    {
+        Playing,
+        Resuming,
+        Pausing,
+        Paused
+    }
+    public PauseState pauseState;
     public bool isDialogue = false;
 
     public Animator pauseAnimator;
@@ -19,6 +30,8 @@ public class PauseGame : MonoBehaviour
     private CameraCinemaSwitch css;
     private AudioManager sfx_AM;
 
+    public UnityEvent pauseListeners = new UnityEvent();
+
     void Start()
     {
         if (pauseAnimator != null)
@@ -29,6 +42,31 @@ public class PauseGame : MonoBehaviour
         }
         css = FindObjectOfType<CameraCinemaSwitch>();
         sfx_AM = FindObjectOfType<AudioManager>();
+    }
+
+    public void AddActionAsListener(UnityAction action, string name, bool persistent = false)
+    {
+        Debug.Log("Adding action " + name + " as listener, persistent = " + persistent);
+        if (persistent)
+        {
+            UnityEditor.Events.UnityEventTools.AddPersistentListener(pauseListeners, action);
+        }
+        else
+        {
+            pauseListeners.AddListener(action);
+        }
+    }
+    public void RemoveActionAsListener(UnityAction action, string name, bool persistent = false)
+    {
+        Debug.Log("Removing action " + name + " as listener, persistent = " + persistent);
+        if (persistent)
+        {
+            UnityEditor.Events.UnityEventTools.RemovePersistentListener(pauseListeners, action);
+        }
+        else
+        {
+            pauseListeners.RemoveListener(action);
+        }
     }
 
     void Update()
@@ -42,15 +80,15 @@ public class PauseGame : MonoBehaviour
                     css.LeaveSpecialCamera();
                     return;
                 }
-                if (isPaused) EndPause();
-                else StartPause();
+                if (pauseState == PauseState.Playing) StartPause();
+                else EndPause();
             }
         }
     }
 
     public void StartPause()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (pauseAnimator != null)
             pauseAnimator.SetBool("isPaused", true);
@@ -60,7 +98,7 @@ public class PauseGame : MonoBehaviour
             sfx_AM.PlaySFX(startPauseSFX);
         }
 
-        isPaused = true;
+        pauseState = PauseState.Pausing;
     }
 
     public void SetHUDActive(bool active)
@@ -70,9 +108,13 @@ public class PauseGame : MonoBehaviour
 
     public void SetPauseMenuActive(bool active)
     {
+        Time.timeScale = active ? 0 : 1;
         pauseScreen.SetActive(active);
         settingsScreen.SetActive(false);
         howToPlayScreen.SetActive(false);
+
+        pauseState = PauseState.Paused;
+        pauseListeners.Invoke(); //Invoke listeners
     }
 
     public void EndPause()
@@ -87,6 +129,6 @@ public class PauseGame : MonoBehaviour
             sfx_AM.PlaySFX(endPauseSFX);
         }
 
-        isPaused = false;
+        pauseState = PauseState.Playing;
     }
 }

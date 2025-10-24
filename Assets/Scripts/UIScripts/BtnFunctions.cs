@@ -68,8 +68,12 @@ public class BtnFunctions : MonoBehaviour
 
     public void LoadSceneOnClick()
     {
+        LoadSceneOnClick(LoadSceneMode.Single);
+    }
+    public void LoadSceneOnClick(LoadSceneMode mode)
+    {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad, mode);
         audio_AM.NextMusicClip();
         if (playAudioOnClick)
         {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, IInteractable
 {
@@ -16,6 +17,7 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public CameraCinemaSwitch cameraController;
     public CinemachineVirtualCamera specialCamera;
+    public PauseGame pg;
 
     private InspectItem ii;
 
@@ -31,10 +33,18 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
         {
             cameraController = FindObjectOfType<CameraCinemaSwitch>();
         }
+        if (pg == null)
+        {
+            pg = FindObjectOfType<PauseGame>();
+        }
     }
 
     private void Start()
     {
+        if (pg) {
+            pg.AddActionAsListener(OnHoverExit, nameof(OnHoverExit)); // Set up pause listener
+        }
+
         Renderer rend = GetComponent<Renderer>();
         if (rend == null)
         {
@@ -79,6 +89,8 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public void OnClick()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
+
         Debug.Log("going to special camera");
         StartSpecialView(); // Start special camera view when clicked on
         if (disableGodRays)
@@ -94,6 +106,7 @@ public class InteractWithSpecialCamera : MonoBehaviour, IHoverable, IClickable, 
 
     public void OnHoverEnter()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
         HighlightObject();
     }
 

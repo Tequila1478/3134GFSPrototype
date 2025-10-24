@@ -177,11 +177,11 @@ MonoBehaviour:
   speed: 6
   height: 2
   rotation: 0.1
-  rotationOffset: {x: 0, y: 0, z: 90}
   rayOffset: 1
   rayVisualOffset: 1
   oi: {fileID: 373699228119165412}
   ps: {fileID: 0}
+  pg: {fileID: 2367576876745039106, guid: 84f472bb6091388428cf36ee7ce21abd, type: 3}
   ghostParticles: {fileID: 1781555148658507782}
   secondaryParticles: {fileID: 0}
   hoverParticles: {fileID: 2613107453020168141}

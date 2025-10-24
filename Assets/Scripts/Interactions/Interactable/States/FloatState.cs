@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /* FloatState - State used by InteractableStateController when an interactable is selected and moving around the game world.
  * Right click will cancel the float selection, switching to IdleState.
@@ -47,12 +48,13 @@ public class FloatState : State
 
     protected override void OnUpdate()
     {
-        if (!sc.isInteractive) return; // Cancel if not currently interactive 
+        if (!sc.isInteractive) return; // Cancel if not currently interactive
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Set up raycast stuff with current mouse position
         RaycastHit hit;
 
         // Move to basketball hoop (if elligible)
+        if (!EventSystem.current.IsPointerOverGameObject()) // Do if mouse isn't over UI
         if (Physics.Raycast(ray, out hit, 100f, sc.basketballLayer))
         {
             // Check if this hoop or any of its parents belong to an active PlacementSpot
@@ -93,6 +95,7 @@ public class FloatState : State
     }
     protected override void OnRightClick()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
         base.OnRightClick();
     }
     protected override void OnExit()

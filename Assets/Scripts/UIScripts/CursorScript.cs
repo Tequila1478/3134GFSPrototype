@@ -17,11 +17,12 @@ public class CursorScript : MonoBehaviour
     public LayerMask onHoldLayer;
     [Tooltip("Layers that contain interactable objects. Layers put here are only counted while an interactable object is NOT being held.")]
     public LayerMask offHoldLayer;
-    [Header("Cursors")]
+    [Header("Components")]
     public List<Texture2D> cursorTexture;
     public List<string> cursorName = new List<string> { "Default" };
     public List<Vector2> cursorHotspot = new List<Vector2> { Vector2.zero };
 
+    private PauseGame pg;
     private PlayerInteraction playerInteraction;
 
     private void OnValidate()
@@ -94,10 +95,8 @@ public class CursorScript : MonoBehaviour
 
     private void CacheComponents()
     {
-        if (playerInteraction == null)
-        {
-            playerInteraction = FindObjectOfType<PlayerInteraction>();
-        }
+        if (playerInteraction == null) playerInteraction = FindObjectOfType<PlayerInteraction>();
+        if (pg == null) pg = FindObjectOfType<PauseGame>();
     }
 
     // Start is called before the first frame update
@@ -109,7 +108,14 @@ public class CursorScript : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.mousePosition.x <= 0 || Input.mousePosition.y <= 0 || Input.mousePosition.x >= Handles.GetMainGameViewSize().x - 1 || Input.mousePosition.y >= Handles.GetMainGameViewSize().y - 1) return;
+        if (!pg || pg.pauseState != PauseGame.PauseState.Paused) // If not paused (or no pause menu exists)
+        {
+            ProcessCursorUpdate();
+        }
+    }
 
+    public void ProcessCursorUpdate()
+    {
         RaycastHit hit;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
@@ -122,11 +128,12 @@ public class CursorScript : MonoBehaviour
                 {
                     bool b;
                     var ps = obj.GetComponent<BasketballHoop>().placementSpot; //Get placement spot if specifically hovering over basketball hoop
-                    
+
                     if (ps && playerInteraction.itemHeld) // Do if placement spot and a held item exist
                     {
                         b = (ps.spotType.ToString() == playerInteraction.itemHeld.taskType); // Basketball hoop behaviour; Set bool based on if placement spot type matches held item type
-                    } else
+                    }
+                    else
                     {
                         b = (bool)playerInteraction.itemHeld; // Default behaviour; Set bool based on whether an item is held
                     }
@@ -136,21 +143,26 @@ public class CursorScript : MonoBehaviour
                 if ((offHoldLayer & thisObjMask) != 0) // Check if object's layer affects cursor while item is NOT held; Compare bits of layermask and object's layer, continue if layer is in offHoldLayer layermask
                 {
                     bool b;
-                    
+
                     b = (bool)playerInteraction.itemHeld;
 
                     UpdateCursor(b ? 0 : 1); // Set cursor based on resulting bool
                     return;
                 }
             }
-            
+
             UpdateCursor(1); // Set cursor to interaction if any raycast was found
-        } else
+        }
+        else
         {
             UpdateCursor(0); // Set cursor to default if no raycast found
         }
     }
 
+    public void ResetCursor()
+    {
+        UpdateCursor(0);
+    }
     public void UpdateCursor(string newName)
     {
         int newIndex = cursorName.IndexOf(newName); // Find the index of the given cursor name

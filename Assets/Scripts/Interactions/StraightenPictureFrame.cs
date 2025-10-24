@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
 {
@@ -36,6 +37,7 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
     public void OnClick()
     {
         if (!active || targetObject == null) return;
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
 
         // Toggle drag mode
         isDragging = true;
@@ -70,6 +72,8 @@ public class StraightenPictureFrame : MonoBehaviour, IHoverable, IClickable
     // Update is called once per frame
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject() && isDragging) OnRelease(); // Cancel grab if mouse is over UI
+
         if (css.currentSpecialCamera == specialCameraNum)
         {
             active = true;

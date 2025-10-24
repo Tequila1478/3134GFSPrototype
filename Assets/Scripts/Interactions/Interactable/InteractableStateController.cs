@@ -6,6 +6,7 @@ using System.Transactions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 {
@@ -55,8 +56,6 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
-    public Vector3 rotationOffset = new Vector3(0, 0, 90);
-    [NonSerialized] public Quaternion _rotationOffset = new Quaternion(0, 0, 90, 0);
     [Tooltip("Ray Offset controls how far a selected object floats from whatever surfaces you are pointing the cursor at.")]
     public float rayOffset = 2f; // This is the literal offset.
     public float rayVisualOffset = 2f; // This is the offset that can be seen in-game.
@@ -71,6 +70,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     [NonSerialized] public bool coroutineFinished = false;
 
     [Header("References")]
+    public PauseGame pg;
     [NonSerialized] public PlayerInteraction playerInteraction;
     [NonSerialized] public Rigidbody rb;
     [NonSerialized] public Renderer objectRenderer;
@@ -135,6 +135,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         if (charController == null) charController = GetComponent<CharacterController>();
         if (playerInteraction == null) playerInteraction = FindObjectOfType<PlayerInteraction>();
         if (oi == null) oi = GetComponent<ObjectInteractions>();
+        if (pg == null) pg = GetComponent<PauseGame>();
 
         if (materialObj != null) objectRenderer = materialObj.GetComponent<Renderer>();
         else
@@ -200,8 +201,6 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
 
         edgeOfObject = objectRenderer != null ? objectRenderer.localBounds.extents * transform.localScale.magnitude : new Vector3(1, 1, 1) * transform.localScale.magnitude;
 
-        _rotationOffset = Quaternion.Euler(rotationOffset);
-
         //if (floatingParticles != null) floatingParticles.SetActive(false);
     }
 
@@ -234,6 +233,12 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
         }
         currentState = newState;
         currentState.OnStateEnter(this);
+    }
+
+    public void UpdateStateForPause()
+    {
+        Debug.Log("Running UpdateStateForPause");
+        currentState.OnHoverExit();
     }
 
     // This function checks the current state. If it is a state in which the object is considered placed and thus "complete", this returns true.
@@ -451,6 +456,7 @@ public abstract class State
     }
     public virtual void OnHoverEnter()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
         Debug.Log("StateController: Hovering over object and playerInteraction.isHolding = " + sc.playerInteraction.isHolding); //Debug
         
         if (!sc.playerInteraction.itemHeld) // Check if no valid item is being held
@@ -465,6 +471,7 @@ public abstract class State
 
     public virtual void OnHoverExit()
     {
+        //if (EventSystem.current.IsPointerOverGameObject()) return; // Cancel if mouse is over UI
         Debug.Log("StateController: No longer hovering over object"); //Debug
         sc.isHovered = false;
 
@@ -481,7 +488,7 @@ public abstract class State
         }
     }
 
-    private void HighlightObject()
+    public void HighlightObject()
     {
         Debug.Log("StateController: Highlighting object"); //Debug
         foreach (var rend in sc.renderers)
@@ -493,7 +500,7 @@ public abstract class State
         }
     }
 
-    private void UnhighlightObject()
+    public void UnhighlightObject()
     {
         Debug.Log("StateController: Un-highlighting object"); //Debug
         for (int i = 0; i < sc.renderers.Length; i++)
