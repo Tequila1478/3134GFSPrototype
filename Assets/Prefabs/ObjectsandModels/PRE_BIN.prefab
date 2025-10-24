@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5415273404441755545}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: PRE_BIN
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -146,7 +146,7 @@ public class TaskUIManager : MonoBehaviour
             endDayButton.SetActive(false);
         }
 
-        Debug.Log("Percentage complete = " + overallPercent + "%" + " houseClean = " + isHouseClean);
+        //Debug.Log("Percentage complete = " + overallPercent + "%" + " houseClean = " + isHouseClean);
 
     }
 
