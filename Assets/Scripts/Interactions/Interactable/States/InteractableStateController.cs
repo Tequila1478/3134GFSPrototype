@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Transactions;
 using TMPro;
 using Unity.VisualScripting;
@@ -43,14 +44,14 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     public GameObject visualisationObj;
     [NonSerialized] public Renderer[] renderers;
     [NonSerialized] public MaterialPropertyBlock mpb;
-    [NonSerialized] public Color[] originalColors;
-    [NonSerialized] public Color hoverColor = Color.white;
+    [NonSerialized] public UnityEngine.Color[] originalColors;
+    [NonSerialized] public UnityEngine.Color hoverColor = UnityEngine.Color.white;
 
     [Header("Floating Settings")]
     [Tooltip("Rate at which the object follows the cursor when selected.")]
-    [Range(0.01f, 1f)]
-    public float followRate = 0.05f;
-    [Tooltip("Speed of the object when moving to a placement spot.")]
+    [Range(0.01f, 100f)]
+    public float followRate = 20f;
+    [Tooltip("Speed of the object when moving to a placement spot. Note that this is also modified by the follow rate.")]
     public float speed = 2f;
     public float height = 0.01f;
     public float rotation = 0.1f;
@@ -121,6 +122,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             inspectorOffset = rayOffset;
             rayVisualOffset = rayOffset;
         }
+        minRayOffset = rayOffset; // Update min ray offset for gizmo
 
         CacheComponents();
     }
@@ -151,7 +153,7 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             renderers = new Renderer[] { rend };
         }
 
-        originalColors = new Color[renderers.Length];
+        originalColors = new UnityEngine.Color[renderers.Length];
 
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -162,12 +164,24 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
             }
             else
             {
-                originalColors[i] = Color.clear; // or some default value
+                originalColors[i] = UnityEngine.Color.clear; // or some default value
             }
         }
         offsetPlug = gameObject.transform.Find("Offset Plug");
 
     }
+
+    void OnDrawGizmos()
+    {
+        // Draw sphere of raycastoffset
+        Gizmos.color = new UnityEngine.Color(0f, 1f, 0f, 0.1f); // Set the color of the Gizmo to Green with custom alpha
+        Gizmos.DrawSphere(Vector3.zero, minRayOffset/transform.localScale.x);
+        // Draw a wire sphere outline.
+        Gizmos.color = UnityEngine.Color.white;
+        Gizmos.DrawWireSphere(Vector3.zero, minRayOffset / transform.localScale.x);
+    }
+
+
     private void Awake()
     {
         CacheComponents();

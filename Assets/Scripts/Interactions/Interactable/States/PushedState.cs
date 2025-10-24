@@ -72,12 +72,12 @@ public class PushedState : State
             Vector3 newPoint = offsetSocketPoint - newAngle * offsetPlugPoint;
 
             sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
-            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint) * Time.deltaTime);
 
             /*
             Vector3 newPoint = sc.ps.transform.position;
             Quaternion newAngle = sc.ps.transform.rotation * sc._rotationOffset;
-            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint) * Time.deltaTime);
             sc.transform.rotation = Quaternion.RotateTowards(sc.transform.rotation, newAngle, 10);
             */
         }

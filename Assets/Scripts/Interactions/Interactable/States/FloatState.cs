@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 /* FloatState - State used by InteractableStateController when an interactable is selected and moving around the game world.
@@ -80,7 +81,10 @@ public class FloatState : State
 
             // Move to mouse position within world using updated offsets
             Vector3 newPoint = ray.GetPoint(hit.distance - (sc.maxRayOffset + sc.minRayOffset - sc.rayVisualOffset));
-            sc.transform.position = Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint));
+            sc.rb.MovePosition
+            (
+                Vector3.MoveTowards(sc.transform.position, newPoint, sc.followRate * Vector3.Distance(sc.transform.position, newPoint) * Time.deltaTime)
+            );
         }
     }
     protected override void OnHurt()

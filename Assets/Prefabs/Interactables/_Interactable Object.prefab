@@ -173,7 +173,7 @@ MonoBehaviour:
   originalMat: {fileID: 0}
   materialObj: {fileID: 68092545606601618}
   visualisationObj: {fileID: 68092545606601618}
-  followRate: 0.25
+  followRate: 23.01
   speed: 6
   height: 2
   rotation: 0.1

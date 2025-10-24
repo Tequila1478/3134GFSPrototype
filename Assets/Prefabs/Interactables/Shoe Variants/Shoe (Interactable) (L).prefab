@@ -252,6 +252,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1758215692155232477}
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayCubeOffset.x
+      value: 0.4314393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayCubeOffset.y
+      value: 0.3619348
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayCubeOffset.z
+      value: 1.021349
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: rotationOffset.w
       value: 0.70710677
       objectReference: {fileID: 0}
