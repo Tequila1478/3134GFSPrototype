@@ -267,6 +267,14 @@ PrefabInstance:
       value: -0.0301
       objectReference: {fileID: 0}
     - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: rayOffset
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
+      propertyPath: rayVisualOffset
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652884010187307278, guid: 059da2f3d78860d4b884b0cf518244b9, type: 3}
       propertyPath: layerableObjects.Array.size
       value: 3
       objectReference: {fileID: 0}

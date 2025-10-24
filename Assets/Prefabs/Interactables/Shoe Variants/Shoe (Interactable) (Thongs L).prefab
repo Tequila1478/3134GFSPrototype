@@ -37,6 +37,14 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: rayOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
+      propertyPath: rayVisualOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635261685032581382, guid: 1fd27bf14cd2b704fbf66cf8e8163b86, type: 3}
       propertyPath: layerableObjects.Array.size
       value: 4
       objectReference: {fileID: 0}

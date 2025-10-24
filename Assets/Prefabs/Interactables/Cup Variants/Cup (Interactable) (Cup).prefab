@@ -152,6 +152,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -7387706064836869012, guid: a7246b952696cd34d87419e85262122a, type: 3}
+    - target: {fileID: 8199237069739059665, guid: 2aad1b2eedcb9bf4fa53dab61cd05a95, type: 3}
+      propertyPath: rayOffset
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199237069739059665, guid: 2aad1b2eedcb9bf4fa53dab61cd05a95, type: 3}
+      propertyPath: rayVisualOffset
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

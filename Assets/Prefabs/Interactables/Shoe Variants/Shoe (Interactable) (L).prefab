@@ -248,6 +248,10 @@ PrefabInstance:
       value: Shoe
       objectReference: {fileID: 0}
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayOffset
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: materialObj
       value: 
       objectReference: {fileID: 1758215692155232477}
@@ -262,6 +266,10 @@ PrefabInstance:
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: rayCubeOffset.z
       value: 1.021349
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayVisualOffset
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: rotationOffset.w

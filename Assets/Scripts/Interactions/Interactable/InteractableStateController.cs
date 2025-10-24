@@ -175,10 +175,10 @@ public class InteractableStateController : MonoBehaviour, IClickable, IHoverable
     {
         // Draw sphere of raycastoffset
         Gizmos.color = new UnityEngine.Color(0f, 1f, 0f, 0.1f); // Set the color of the Gizmo to Green with custom alpha
-        Gizmos.DrawSphere(Vector3.zero, minRayOffset/transform.localScale.x);
+        Gizmos.DrawSphere(transform.position, minRayOffset);
         // Draw a wire sphere outline.
         Gizmos.color = UnityEngine.Color.white;
-        Gizmos.DrawWireSphere(Vector3.zero, minRayOffset / transform.localScale.x);
+        Gizmos.DrawWireSphere(transform.position, minRayOffset);
     }
 
 

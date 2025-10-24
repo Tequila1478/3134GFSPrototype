@@ -258,6 +258,14 @@ PrefabInstance:
       value: Trash
       objectReference: {fileID: 0}
     - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayOffset
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
+      propertyPath: rayVisualOffset
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998259659521233945, guid: dbbd3a2484e36034dba401e7590270e1, type: 3}
       propertyPath: layerableObjects.Array.size
       value: 4
       objectReference: {fileID: 0}
